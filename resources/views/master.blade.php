@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand atext" href="index.php">
-            <img src="logo_1.png" width="150" height="30" alt="Multifranquicias">
+           <img src="{{ asset('images/logo_1.png') }}" width="150" height="30" alt="Multifranquicias">
         </a>
     </div>
 
@@ -88,12 +88,13 @@
         <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <img src="publicidad.gif" class="img-responsive" alt="Responsive image">
+                    <img src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
                 </div>
             </div>
             <div class="row">
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <?php require_once 'extras/carousel.blade.php' ?>
+                    @include('extras.carousel')
+                    <?php //require_once 'extras/carousel.blade.php' ?>
                 </div>
             </div>
 
@@ -159,7 +160,7 @@
 
                 </form>
                 <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                    <img id="patrocinado" class="img-responsive" src="anunci.jpg" alt="prueba" style="width: auto">
+                    <img id="patrocinado" class="img-responsive" src="{{ asset('images/anunci.jpg') }}"  alt="prueba" style="width: auto">
                 </div>
             </div>
             <!-- FIN BUSCADOR -->
@@ -173,7 +174,7 @@
                             <h4 class="text-center"><strong>Fraquicias de éxito</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong><a href="perfil.php">Nombre franquicia</a></strong></h4>
-                            <img class="img-responsive" src="anunci.jpg" alt="prueba" >
+                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
                         </div>
                     </div>
 
@@ -182,7 +183,7 @@
                             <h4 class="text-center"><strong>Fraquicias rentables</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
-                            <img class="img-responsive" src="anunci.jpg" alt="prueba" >
+                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
                         </div>
                     </div>
                 </section>
@@ -192,7 +193,7 @@
                             <h4 class="text-center"><strong>Fraquicias baratas</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
-                            <img class="img-responsive" src="anunci.jpg" alt="prueba" >
+                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -200,7 +201,7 @@
                             <h4 class="text-center"><strong>Fraquicias low cost</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
-                            <img class="img-responsive" src="anunci.jpg" alt="prueba" >
+                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
                         </div>
                     </div>
                 </section>
@@ -211,26 +212,26 @@
                     <div class="row">
                         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                                <img class="img-responsive" src="seform.gif" alt="prueba" >
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
                             </div>
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-2">
-                                <img class="img-responsive" src="seform.gif" alt="prueba" >
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
                             </div>
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-3" style="display:none">
-                                <img class="img-responsive" src="seform.gif" alt="prueba">
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba">
                             </div>
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-4" style="display:none">
-                                <img class="img-responsive" src="seform.gif" alt="prueba" >
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
                             </div>
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-5" style="display:none">
-                                <img class="img-responsive" src="seform.gif" alt="prueba" >
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
                             </div>
                         </div>
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <img src="multifranquicias_anucio.png" class="img-responsive" alt="Responsive image">
+                                        <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
                                     </div>
                                 </div>
                                 <div class="row panel panel-inf" id="panelNoticias">
@@ -246,41 +247,41 @@
                                             <div class="col col-xs-2 col-sm-2 col-md-3 col-lg-3">
                                                 <br>
                                                 <br>
-                                                <img class="img-responsive" src="anunci.jpg" alt="prueba" >
+                                                <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" if="noticia1">
+                                <div class="row" id="noticia1">
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="img_noticia.jpg" class="img-responsive" alt="Responsive image">
+                                        <img src="{{ asset('images/img_noticia.jpg') }}" class="img-responsive" alt="Responsive image">
                                     </div>
                                     <h3 id="tituloNotica">No+Vello, franquicia española entre las 50 mas rentables del mundo</h3>
                                     <p id="textoNoticia">Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
                                         Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.</p>
                                 </div>
                                 <hr class='separador_post'/>
-                                <div class="row" if="noticia2">
+                                <div class="row" id="noticia2">
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="img_noticia2.jpg" class="img-responsive" alt="Responsive image">
+                                        <img src="{{ asset('images/img_noticia2.jpg') }}" class="img-responsive" alt="Responsive image">
                                     </div>
                                     <h3 id="tituloNotica">Las 10 franquicias más rentables</h3>
                                     <p id="textoNoticia">   Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
                                         Según el último informe publicado en 2015 por Tormo Franchise, el sector de la franquicia en España creó el pasado año, 4.200 nuevas empresas y 25.700 nuevos puestos de trabajo. La franquicia se consolidó así como una de las mejores y más fiables inversiones generadoras de autoempleo. bles del mundo según la consultora Franchis</p>
                                 </div>
                                 <hr class='separador_post'/>
-                                <div class="row" if="noticia3">
+                                <div class="row" id="noticia3">
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="img_noticia2.jpg" class="img-responsive" alt="Responsive image">
+                                        <img src="{{ asset('images/img_noticia2.jpg') }}" class="img-responsive" alt="Responsive image">
                                     </div>
                                     <h3 id="tituloNotica">Las 10 franquicias más rentables</h3>
                                     <p id="textoNoticia">   Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
                                         Según el último informe publicado en 2015 por Tormo Franchise, el sector de la franquicia en España creó el pasado año, 4.200 nuevas empresas y 25.700 nuevos puestos de trabajo. La franquicia se consolidó así como una de las mejores y más fiables inversiones generadoras de autoempleo. bles del mundo según la consultora Franchis</p>
                                 </div>
                                 <hr class='separador_post'/>
-                                <div class="row" if="noticia4">
+                                <div class="row" id="noticia4">
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="img_noticia.jpg" class="img-responsive" alt="Responsive image">
+                                        <img src="{{ asset('images/img_noticia.jpg') }}" class="img-responsive" alt="Responsive image">
                                     </div>
                                     <h3 id="tituloNotica">No+Vello, franquicia española entre las 50 mas rentables del mundo</h3>
                                     <p id="textoNoticia">Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
@@ -307,12 +308,12 @@
 
         <section class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
-                <img class="img-responsive" src="seform.gif" alt="prueba" >
+                <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
             </div>
 
 
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
-                <img class="img-responsive" src="seform.gif" alt="prueba" >
+                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
             </div>
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
@@ -322,11 +323,11 @@
                     <div class="panel-body" style="margin-bottom: -16px;">
                         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                             <h3>NOMBRE</h3>
-                            <img class="img-responsive img-rounded" src="anunci.jpg" alt="prueba" >
+                            <img class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
                         </div>
                         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:30px">
                             <h3>NOMBRE</h3>
-                            <img class="img-responsive img-rounded" src="anunci.jpg" alt="prueba">
+                            <img class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}" alt="prueba">
                         </div>
                     </div>
                 </div>
@@ -337,9 +338,9 @@
     <hr id="subir">
     <div class="row" style="background: #F0F0F0;margin-top: 5%">
         <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="subir-icon">
-            <img src="go-to-top.png"  id="subir-click">
+            <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
         </section>
-        <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:4%">
+        <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" >
             <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
                 <p>Copyright © 2014 Multifranquicias.com | Todos los derechos reservados. </p>
             </div>
@@ -374,8 +375,9 @@
 
 
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="../private/js/bootstrap/bootstrap.min.js"></script>
+<script src="{{ URL::asset('js/jquery-2.1.1.min.js') }}"></script>
+<script src="{{ URL::asset('js/boostrap.min.js') }}"></script>
+<script src=""></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -432,11 +434,6 @@
                 $(".desplegar")[0].setAttribute("style", "display:block");
             },600);
             $(".ocultar")[0].setAttribute("style", "display:none");
-        });
-
-        $(".fancybox").fancybox({
-            openEffect	: 'none',
-            closeEffect	: 'none'
         });
 
     });

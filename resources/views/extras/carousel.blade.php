@@ -10,7 +10,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-        <img src="pp.jpg" alt="Chania" class="imgcarousel">
+        <img src="{{ asset('images/pp.jpg') }}" alt="Chania" class="imgcarousel">
       <div class="carousel-caption">
         <h3>Chania</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
@@ -18,7 +18,8 @@
     </div>
 
     <div class="item">
-      <img src="pp.jpg" alt="Chania">
+
+      <img src="{{ asset('images/pp.jpg') }}" alt="Chania">
       <div class="carousel-caption">
         <h3>Chania</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
@@ -26,7 +27,7 @@
     </div>
 
     <div class="item">
-      <img src="pp.jpg" alt="Flower">
+      <img src="{{ asset('images/pp.jpg') }}" alt="Flower">
       <div class="carousel-caption">
         <h3>Flowers</h3>
         <p>Beatiful flowers in Kolymbari, Crete.</p>
@@ -34,7 +35,7 @@
     </div>
 
     <div class="item">
-      <img src="pp.jpg" alt="Flower">
+      <img src="{{ asset('images/pp.jpg') }}" alt="Flower">
       <div class="carousel-caption">
         <h3>Flowers</h3>
         <p>Beatiful flowers in Kolymbari, Crete.</p>
