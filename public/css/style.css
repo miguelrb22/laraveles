@@ -387,29 +387,44 @@ hr.separador_post:after {
 }
 
 h1, h2{
-    
    font-family: Prociono;
    font-weight: bold;
 }
 
-h1{
-       font-size: 35px;
+h1{ font-size: 35px; }
 
-}
+h2{ font-size: 25px; }
 
-h2{
-       font-size: 25px;
-
-    
-}
-
-p{
-    
-    text-align: justify;
-}
-
+p{ text-align: justify; }
 
 .navbar-nav>li>a {
 padding-top: 16px;
 padding-bottom: 21px;
+}
+
+#separador{ border-top-width: 5; }
+
+#tperfil td { width: 50%; }
+
+#mycarousel{
+    -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow: 0px 4px 15px 0px #4a4a4a;
+}
+
+.fcontacto section{
+    padding: 1%;
+}
+
+.areaform{
+    resize:vertical;
+}
+
+#main {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+li:hover{
+    background-color: transparent;
 }

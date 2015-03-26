@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome-animated.min.css') }}" />
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
-    @yield('nuestrojs')
+    @yield('include')
 
 </head>
 
@@ -83,6 +83,8 @@
 
 <div class="container-fluid" id="main">
     @yield('main')
+
+
 </div> <!-- Contenido dinámico
 
 <!-- INICIO FOOTER -->
@@ -91,9 +93,7 @@
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="subir-icon">
         <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
     </section>
-    <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-        <br/>
-        <br/>
+    <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:4%">
         <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
             <p>Copyright © 2014 Multifranquicias.com | Todos los derechos reservados. </p>
         </div>
@@ -103,21 +103,22 @@
                     <label>Multifranquicias</label>
                     <li><a href="#"> ¿Quienes somos?</a></li>
                     <li><a href="#"> Registro de franquicias</a></li>
-                    <li><a href="#"> Publicidad <a></li>
+                    <li><a href="#"> Publicidad </a></li>
+                    <li><a href="{{ URL::route('privacidad') }}"> Politica de privacidad </a></li>
                     <li><a href="#"> Aviso Legal</a></li>
                 </ul>
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
-                    <label>Consultas<label>
+                    <label>Consultas</label>
                             <li><a href="#"> Dudas generales</a></li>
                             <li><a href="#"> Dudas franquiciados y franquiciadores</a></li>
                 </ul>
             </div>
         </div>
-        <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 caja-redes pull-right" id="footer3">
+        <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 caja-redes" id="footer3">
             <a href="#" class="icon-button youtube" style="margin-right:-1%"><i class="fa fa-youtube fa-smile-o icon-youtube"></i><span></span></a>
             <a href="#" class="icon-button twitter" style="margin-right:-1%"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
             <a href="#" class="icon-button facebook" style="margin-right:-1%"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
-            <a href="#" class="icon-button google-plus"><i class="fa fa-google-plus icon-google-plus"></i><span></span></a>
+            <a href="#" class="icon-button google-plus"><i class="fa fa-google-plus icon-google-plus"   ></i><span></span></a>
         </div>
     </section>
 </div>
@@ -126,7 +127,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ URL::asset('js/jquery-2.1.1.min.js') }}"></script>
 <script src="{{ URL::asset('js/boostrap.min.js') }}"></script>
-<script src=""></script>
+
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -185,6 +186,7 @@
 
     });
 </script>
+@yield('javascript')
 
 
 </body>
