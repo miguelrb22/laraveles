@@ -909,10 +909,6 @@
 
     today = dd+'/'+mm+'/'+yyyy;
 
-
-
-
-    // START AND FINISH DATE
     $('#inicio').datepicker({
     dateFormat : 'dd/mm/yy',
     prevText : '<i class="fa fa-chevron-left"></i>',
@@ -941,17 +937,11 @@
     }
     }).on;
 
-
     Dropzone.autoDiscover = true;
     Dropzone.options.mydropzone = {
     paramName: "file", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
-    dictDefaultMessage: '<span class="text-center"><span
-                class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i
-                        class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span
-                        class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha
-                    aquí)</h4></span>',
+    dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha aquí)</h4></span>',
                            addRemoveLinks: true
                         };
-
 @endsection
