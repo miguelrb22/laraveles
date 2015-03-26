@@ -13,4 +13,19 @@ class AreaPrivadaController extends Controller {
         return view('area_privada.inicio');
     }
 
+    public function alta()
+    {
+        return view('area_privada.alta');
+    }
+
+    public function publicidad()
+    {
+        return view('area_privada.publicidad');
+    }
+
+    public function categorias()
+    {
+        return view('area_privada.categorias');
+    }
+
 }

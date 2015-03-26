@@ -320,9 +320,10 @@
 				$.speechApp.stop();
 				window.location = $('#logout > span > a').attr("href");
 			}
-		}; 
-		
-	};
+		};
+
+
+}
 /*
  * END APP.CONFIG
  */ 

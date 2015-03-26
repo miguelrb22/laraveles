@@ -17,8 +17,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/css/font-awesome.min.css') }}">
 
-    @yield('css')
-
     <!-- Para el datepicker -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/css/datepicker.css') }}">
 
@@ -59,7 +57,8 @@
     <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/ipad-landscape.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
     <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/ipad-portrait.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/iphone.png') }}" media="screen and (max-device-width: 320px)">
-    <script src="{{ asset('area_privada/js/libs/jquery-2.1.1.min.js') }}"></script>
+
+    @yield('css')
 
 </head>
 
@@ -107,7 +106,12 @@
             * 'fixed-page-footer' - Fixes footer
             * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
     -->
+
+
     <body id="cuerpo" class="smart-style-">
+
+
+
 
     <!-- HEADER -->
         <header id="header" class="container-fluid">
@@ -252,21 +256,21 @@
         <nav>
             <ul style="">
                 <li class="active">
-                    <a href="multifranquicias.php" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+                    <a href="{{ URL::route('private') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
                 </li>
                 <li class="">
                     <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Gestión Franquicias</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
                         <li>
-                            <a href="alta-franquicia.php">Alta Franquicia</a>
+                            <a href="{{ URL::route('nueva_alta') }}">Alta Franquicia</a>
                         </li>
                         <li>
-                            <a href="gestion-publicidad.php">Gestión Publicidad</a>
+                            <a href="{{ URL::route('publicidad') }}">Gestión Publicidad</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="gestion-categorias.php"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
+                    <a href="{{ URL::route('categorias') }}"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
@@ -349,12 +353,11 @@
     <!-- END PAGE FOOTER -->
         
         <!--================================================== -->
+        <script src="{{ asset('area_privada/js/libs/jquery-2.1.1.min.js') }}"></script>
 
         <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
         <script data-pace-options='{ "restartOnRequestAfter": true }' src="{{ asset('area_privada/js/plugin/pace/pace.min.js') }}"></script>
 
-        <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <!--<script src="../private/js/libs/jquery-2.1.1.min.js"></script>-->
         <script>
             if (!window.jQuery) {
@@ -379,9 +382,6 @@
 
         <!-- JARVIS WIDGETS -->
         <script src="{{ asset('area_privada/js/smartwidgets/jarvis.widget.min.js') }}"></script>
-
-
-        @yield('js')
 
         <!-- JQUERY VALIDATE -->
         <script src="{{ asset('area_privada/js/plugin/jquery-validate/jquery.validate.min.js') }}"></script>
@@ -414,104 +414,65 @@
         <script src="{{ asset('area_privada/js/plugin/datatables/dataTables.bootstrap.min.js') }}"></script>
         <script src="{{ asset('area_privada/js/plugin/datatable-responsive/datatables.responsive.min.js') }}"></script>
 
+        @yield('js')
+
+
     <script type="text/javascript">
-		
-		// DO NOT REMOVE : GLOBAL FUNCTIONS!
-		
-		$(document).ready(function() {                   
-			
-                        //Asignamos estilo al cargar la pagina
-                        var estilo = localStorage.getItem('color');
-                        $("#cuerpo").addClass(estilo);
 
-			pageSetUp();
-			/* BASIC ;*/
-				var responsiveHelper_dt_basic = undefined;
-				
-				
-				var breakpointDefinition = {
-					tablet : 1024,
-					phone : 480
-				};
-	
-				$('#dt_basic').dataTable({
-					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-						"t"+
-						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-					"autoWidth" : true,
-                                        
-					"preDrawCallback" : function() {
-						// Initialize the responsive datatables helper once.
-						if (!responsiveHelper_dt_basic) {
-							responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
-						}
-					},
-					"rowCallback" : function(nRow) {
-						responsiveHelper_dt_basic.createExpandIcon(nRow);
-					},
-					"drawCallback" : function(oSettings) {
-						responsiveHelper_dt_basic.respond();
-					}
-				});
-	
-			/* END BASIC */
-			
-			/* COLUMN FILTER  */
-		    
-		    
-		    // custom toolbar
-		    $("div.toolbar").html('<div class="text-right"><img src="{{ asset('area_privada/js/libs/jquery-ui-1.10.3.min.js') }}../private/img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
-		    	   
-		    // Apply the filter
-		    $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
-		    	
-		        otable
-		            .column( $(this).parent().index()+':visible' )
-		            .search( this.value )
-		            .draw();
-		            
-		    } );
-		    /* END COLUMN FILTER */
-                    /* Jquery varios */
-		    $("#titulo-tabla").html("Lista Franquicias");
-                    
-                    $("#smart-style-0").on("click", function() {
-                        localStorage.setItem('color', 'smart-style-0');
-                    });
-                    
-                    $("#smart-style-1").on("click", function()
-                    {
-                        localStorage.setItem('color', 'smart-style-1');
-                    });
-                    
-                    $("#smart-style-2").on("click", function()
-                    {
-                        localStorage.setItem('color', 'smart-style-2');
-                    });
-                    
-                    $("#smart-style-3").on("click", function()
-                    {
-                        localStorage.setItem('color', 'smart-style-3');
-                    });
-                    
-                    $("#smart-style-4").on("click", function()
-                    {
-                        localStorage.setItem('color', 'smart-style-4');
-                    });
-                    
-                    $("#smart-style-5").on("click", function()
-                    {
-                        localStorage.setItem('color', 'smart-style-5');
-                    });
-                    
-                    $("#limpiar-cache").on("click", function()
-                    {
-                       location.reload();
-                       localStorage.removeItem('color');
-                    });
-		})
 
-		</script>
+        $(document).ready(function() {
+
+            //Asignamos estilo al cargar la pagina
+            var estilo = localStorage.getItem('color');
+            $("#cuerpo").addClass(estilo);
+
+            pageSetUp();
+
+            // custom toolbar
+            $("div.toolbar").html('<div class="text-right"><img src="{{ asset('area_privada/js/libs/jquery-ui-1.10.3.min.js') }} alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+
+
+
+            $("#smart-style-0").on("click", function() {
+                localStorage.setItem('color', 'smart-style-0');
+            });
+
+            $("#smart-style-1").on("click", function()
+            {
+                localStorage.setItem('color', 'smart-style-1');
+            });
+
+            $("#smart-style-2").on("click", function()
+            {
+                localStorage.setItem('color', 'smart-style-2');
+            });
+
+            $("#smart-style-3").on("click", function()
+            {
+                localStorage.setItem('color', 'smart-style-3');
+            });
+
+            $("#smart-style-4").on("click", function()
+            {
+                localStorage.setItem('color', 'smart-style-4');
+            });
+
+            $("#smart-style-5").on("click", function()
+            {
+                localStorage.setItem('color', 'smart-style-5');
+            });
+
+            $("#limpiar-cache").on("click", function()
+            {
+                location.reload();
+                localStorage.removeItem('color');
+            });
+
+            @yield('ready')
+        })
+
+    </script>
+
 
     </body>
 
