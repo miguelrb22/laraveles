@@ -1,0 +1,79 @@
+#menu-ventana{
+    font-size: 12px !important;
+}
+
+@media (max-width: 320px){
+ .logo-responsive
+ {
+    margin-right: -40px !important;
+ }
+ .head-responsive{
+    width: 177px !important;
+ }
+}
+
+@media (min-width: 768px) {
+    /*minimo para que aparezca*/   
+#nombre-programa
+{
+    display:block;
+    color: #ffffff;
+    /* font-family: 'Josefin Sans', sans-serif;*/
+    font-family: 'Amatic SC', cursive;
+    margin-top: -2px;
+    font-size: 3em;
+   
+    //margin-top: auto;
+}
+}
+
+@media (max-width: 767px) {
+    /*tope máximo para ocultarlo*/
+    #nombre-programa
+    {
+        display:none;
+        width: auto;
+    }
+}
+
+#paciente-perfil
+{
+    /*ejemplo letra de google*/
+   font-family: 'Ubuntu Condensed', sans-serif;
+   font-weight:bold;
+   margin-left: 5px;
+}
+
+#pre-nom
+{
+    font-family: ' Ubuntu ', sans-serif;
+}
+@media (max-width: 319px)
+{
+    #nom-lista
+    {
+        display:none;
+    }
+}
+
+@media (min-width: 769px)
+{
+    #campo-grupo
+    {
+        width: 158px;
+    }
+}
+
+.form-control-feedback
+{
+    top: 0px;
+}
+
+#notificaciones
+{
+    font-family: ' Ubuntu ', sans-serif;
+}
+
+thead{
+    text-align: center !important;
+}
