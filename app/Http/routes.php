@@ -26,10 +26,14 @@ Route::get('areaprivada/categorias', ['as' => 'categorias', 'uses' => 'AreaPriva
 
 
 
-
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('perfil/{name}', function ($name) {
+    $name = ucwords(str_replace('-', ' ', $name));
+    return View::make('perfil')->with('name', $name);
+});
+
+Route::get('privacidad', ['as' => 'privacidad', 'uses' => 'PrivacidadController@privacidad']);
