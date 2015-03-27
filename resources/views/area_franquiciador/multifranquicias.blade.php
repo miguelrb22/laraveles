@@ -256,24 +256,21 @@
         <nav>
             <ul style="">
                 <li class="active">
-                    <a href="{{ URL::route('private') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+                    <a href="{{ URL::route('Fprivate') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión Franquicias</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
                         <li>
-                            <a href="{{ URL::route('nueva_alta') }}">Alta Franquicia</a>
+                            <a href="{{ URL::route('Fnueva_alta') }}">Añadir Franquicia</a>
                         </li>
                         <li>
-                            <a href="{{ URL::route('publicidad') }}">Gestión Publicidad</a>
+                            <a href="{{ URL::route('Fpublicidad') }}">Publicidad</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ URL::route('categorias') }}"><i class="fa fa-lg fa-fw fa-reorder"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
-                </li>
-                <li>
-                    <a href="{{ URL::route('noticias') }}"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"></b></a>
+                    <a href="{{ URL::route('Fnoticias') }}"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"></b></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>

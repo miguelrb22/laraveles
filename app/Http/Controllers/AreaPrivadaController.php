@@ -28,4 +28,9 @@ class AreaPrivadaController extends Controller {
         return view('area_privada.categorias');
     }
 
+    public function noticias()
+    {
+        return view('area_privada.noticias');
+    }
+
 }
