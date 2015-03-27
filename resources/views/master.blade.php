@@ -61,7 +61,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle atext" data-toggle="dropdown">Servicios y garantías<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="atext">Franquiciados</a></li>
+                    <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>
                     <li><a href="#" class="atext">Franquiciadores &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
                     <li class="divider"></li>
@@ -105,7 +105,7 @@
                     <li><a href="#"> Registro de franquicias</a></li>
                     <li><a href="#"> Publicidad </a></li>
                     <li><a href="{{ URL::route('privacidad') }}"> Politica de privacidad </a></li>
-                    <li><a href="#"> Aviso Legal</a></li>
+                    <li><a href="{{ URL::route('aviso') }}"> Aviso Legal</a></li>
                 </ul>
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Consultas</label>

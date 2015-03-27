@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-class PrivacidadController extends Controller {
+class WebController extends Controller {
 
     /*
     |--------------------------------------------------------------------------
@@ -22,14 +22,25 @@ class PrivacidadController extends Controller {
     |
     */
 
-    /**
-     * Show the application dashboard to the user.
-     *
-     * @return Response
+    /*
+     * Devolcer la vista privacidad
      */
     public function privacidad()
     {
         return view('privacidad');
+    }
+
+    /*
+     * Devolcer la vista aviso
+     */
+    public function aviso()
+    {
+        return view('aviso-legal');
+    }
+
+    public function emprendedor()
+    {
+        return view('emprendedor-consultoria');
     }
 
 }

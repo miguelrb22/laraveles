@@ -37,4 +37,10 @@ Route::get('perfil/{name}', function ($name) {
 });
 
 //privacidad
-Route::get('privacidad', ['as' => 'privacidad', 'uses' => 'PrivacidadController@privacidad']);
+Route::get('privacidad', ['as' => 'privacidad', 'uses' => 'WebController@privacidad']);
+
+//aviso
+Route::get('aviso-legal', ['as' => 'aviso', 'uses' => 'WebController@aviso']);
+
+//emprendor consultoria
+Route::get('emprendedor-consultoria', ['as' => 'emprendedor', 'uses' => 'WebController@emprendedor']);
