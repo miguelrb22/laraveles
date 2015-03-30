@@ -254,28 +254,28 @@
 
         <!-- NAVIGATION : This navigation is also responsive-->
         <nav>
-            <ul style="">
-                <li class="active">
+            <ul id="navul">
+                <li id="dashboard" class="active">
                     <a href="{{ URL::route('private') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
                 </li>
-                <li class="">
+                <li id="gestion">
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión Franquicias</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
-                        <li>
+                        <li id="alta">
                             <a href="{{ URL::route('nueva_alta') }}">Alta Franquicia</a>
                         </li>
-                        <li>
+                        <li id="publi">
                             <a href="{{ URL::route('publicidad') }}">Gestión Publicidad</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li id="categorias">
                     <a href="{{ URL::route('categorias') }}"><i class="fa fa-lg fa-fw fa-reorder"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
                 </li>
-                <li>
+                <li id= "publicaciones">
                     <a href="{{ URL::route('noticias') }}"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"></b></a>
                 </li>
-                <li>
+                <li id="estadisticas" class="disabled">
                     <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
                 </li>
             </ul>
@@ -425,6 +425,9 @@
                 location.reload();
                 localStorage.removeItem('color');
             });
+
+
+            $( ".fa-plus-square-o").hide();
 
             @yield('ready')
         })

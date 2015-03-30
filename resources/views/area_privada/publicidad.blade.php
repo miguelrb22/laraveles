@@ -127,3 +127,10 @@
     </section>
     @endsection
 
+@section('ready')
+
+    $('#dashboard').removeClass("active")
+    $('#publi').addClass("active");
+    $('#gestion').addClass("active");
+
+    @endsection

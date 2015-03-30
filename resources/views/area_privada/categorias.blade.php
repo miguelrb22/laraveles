@@ -156,3 +156,10 @@
 </section>
 
  @endsection
+
+@section('ready')
+
+    $('#dashboard').removeClass("active")
+    $('#categorias').addClass("active");
+
+@endsection

@@ -123,7 +123,7 @@
 
                 <!-- Note: The activity badge color changes when clicked and resets the number to 0
                 Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-                <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+                <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge">3</b> </span>
 
                 <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
                 <div class="ajax-dropdown">
@@ -132,13 +132,13 @@
                     <div class="btn-group btn-group-justified" data-toggle="buttons">
                         <label class="btn btn-default">
                             <input type="radio" name="activity" id="ajax/notify/mail.html">
-                            Msgs (14) </label>
+                            Msgs (1) </label>
                         <label class="btn btn-default">
                             <input type="radio" name="activity" id="ajax/notify/notifications.html">
-                            notify (3) </label>
+                            notify (1) </label>
                         <label class="btn btn-default">
                             <input type="radio" name="activity" id="ajax/notify/tasks.html">
-                            Tasks (4) </label>
+                            Tasks (1) </label>
                     </div>
 
                     <!-- notification content -->
@@ -243,7 +243,7 @@
                 <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
                     <img src="{{ asset('area_privada/img/avatars/female.png') }}" alt="me" class="online" />
                     <span>
-                        Nombre de usuario
+                        Juanka de la jungla
                     </span>
                 </a>
 
@@ -254,27 +254,32 @@
 
         <!-- NAVIGATION : This navigation is also responsive-->
         <nav>
-            <ul style="">
-                <li class="active">
-                    <a href="{{ URL::route('Fprivate') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+            <ul id="navul">
+
+                <li id="estadisticas" class="disabled">
+                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
                 </li>
-                <li class="">
+
+                <li id="gestion">
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
-                        <li>
-                            <a href="{{ URL::route('Fnueva_alta') }}">Añadir Franquicia</a>
+                        <li id="alta">
+                            <a href="{{ URL::route('Fnueva_alta') }}">Nueva Franquicia</a>
                         </li>
-                        <li>
-                            <a href="{{ URL::route('Fpublicidad') }}">Publicidad</a>
+                        <li id="publi">
+                            <a href="{{ URL::route('Fpublicidad') }}">Paquetes</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+
+                <li id= "publicaciones">
                     <a href="{{ URL::route('Fnoticias') }}"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"></b></a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
+
+                <li id="dashboard" CLASS="active">
+                    <a href="{{ URL::route('Fprivate') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Cargar Perfil</span></a>
                 </li>
+
             </ul>
         </nav><!--END NAGIVATION -->
         <span class="minifyme" data-action="minifyMenu">
@@ -422,6 +427,9 @@
                 location.reload();
                 localStorage.removeItem('color');
             });
+
+
+            $( ".fa-plus-square-o").hide();
 
             @yield('ready')
         })

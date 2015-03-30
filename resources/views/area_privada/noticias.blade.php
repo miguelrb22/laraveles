@@ -24,9 +24,19 @@
 
                     </br>
 
+
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil"></i></span>
                         <input type="text" class="form-control" placeholder="Título...">
+                    </div>
+                    </br>
+
+                    <div class="input-group">
+                        <span><strong>Selecciona una imagen para la publicación:</strong></span>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-file-image-o"></i></span>
+                        <input type="file" accept="image/x-png, image/gif, image/jpeg" class="form-control" placeholder="Título...">
                     </div>
                     </br>
 
@@ -67,4 +77,8 @@
 
 @section('ready')
 
-    @endsection
+    $('#dashboard').removeClass("active")
+    $('#publicaciones').addClass("active");
+
+
+@endsection
