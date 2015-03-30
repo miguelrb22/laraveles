@@ -43,4 +43,8 @@ class WebController extends Controller {
         return view('emprendedor-consultoria');
     }
 
+    public function exito()
+    {
+        return view('exito');
+    }
 }

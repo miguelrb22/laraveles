@@ -37,11 +37,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inicio</a></li>
+            <li class="active"><a href="{{ URL::route('home') }}">Inicio</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle atext" data-toggle="dropdown">Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="box"><a href="#" class="atext">Franquicias de éxito</a></li>
+                    <li class="box"><a href="{{ URL::route('exito') }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
                     <li><a href="#" class="atext">Franquicias rentables</a></li>
                     <li class="divider"></li>
@@ -63,7 +63,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="atext">Franquiciadores &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                    <li><a href="#" class="atext">Franquiciadores</a></li>
                     <li class="divider"></li>
                     <li><a href="#" class="atext">Seguimiento</a></li>
                 </ul>
@@ -89,7 +89,7 @@
 
 <!-- INICIO FOOTER -->
 <hr id="subir">
-<div class="row" style="background: #F0F0F0;margin-top: 5%">
+<div class="row myfooter" style="background: #F0F0F0;margin-top: 5%">
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="subir-icon">
         <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
     </section>

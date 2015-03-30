@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
 
 Route::get('home', 'HomeController@index');
 
@@ -53,3 +53,6 @@ Route::get('aviso-legal', ['as' => 'aviso', 'uses' => 'WebController@aviso']);
 
 //emprendor consultoria
 Route::get('emprendedor-consultoria', ['as' => 'emprendedor', 'uses' => 'WebController@emprendedor']);
+
+//emprendor consultoria
+Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@exito']);

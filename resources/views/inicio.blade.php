@@ -18,7 +18,7 @@
 
             <!-- INICIO BUSCADOR -->
             <div class="row"  style="background:#A4C7A8;margin:0;padding:10px;margin-top: 1%">
-                <div id="busquedaT"class="row col col-xs-12 col-sm-12 col-md-10 col-lg-10 pull-left">
+                <div id="busquedaT" class="row col col-xs-12 col-sm-12 col-md-10 col-lg-10 pull-left">
                     <h4>Búsqueda de franquicias: </h4>
                 </div>
                 <div class="row col col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
@@ -228,7 +228,6 @@
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
                 <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
             </div>
-
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
                 <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
             </div>

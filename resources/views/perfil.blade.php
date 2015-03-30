@@ -384,6 +384,41 @@
                                                     </div>
                                                 </section>
                                                 <section>
+                                                    <h4><strong>¿Desea información sobre otras franquicias de la misma actividad?</strong></h4>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                        <label>Marque las franquicias de su interés.</label>
+                                                    </div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                        <button>Desmarmar todas las opciones</button>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <table class="table-responsive">
+                                                        <tr>
+                                                            <td>
+                                                                <label class="checkbox-inline" style="margin-right: 20px">
+                                                                    <input type="checkbox" id="nombrefranquicia" value="nombrefranquicia" checked> franquicia 2
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="checkbox-inline" style="margin-right: 20px">
+                                                                    <input type="checkbox" id="nombrefranquicia" value="nombrefranquicia" checked> franquicia 3
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="checkbox-inline" style="margin-right: 20px">
+                                                                    <input type="checkbox" id="nombrefranquicia" value="nombrefranquicia" checked> franquicias de todos 4
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="checkbox-inline" style="margin-right: 20px">
+                                                                    <input type="checkbox" id="nombrefranquicia" value="nombrefranquicia" checked> franquicia 5
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </section>
+                                                <section>
                                                     <p>Enviando estos datos usted acepta la política de privacidad.</p>
                                                 </section>
                                             </fieldset>

@@ -428,3 +428,20 @@ padding-bottom: 21px;
 li:hover{
     background-color: transparent;
 }
+
+.aSuperior
+{
+    margin-bottom: 3%;
+}
+
+.myfooter{
+    margin-right: 0;
+}
+
+h2 > a {
+    color: #606 !important;
+}
+
+.tservices{
+    width:31%;
+}
