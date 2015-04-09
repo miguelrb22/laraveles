@@ -18,16 +18,6 @@
                                 <a href="#tabs-a" class="ui-tabs-anchor" role="presentation" tabindex="-1"
                                    id="ui-id-25">Datos franquicia</a>
                             </li>
-                            <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-b"
-                                aria-labelledby="ui-id-26" aria-selected="false">
-                                <a href="#tabs-b" class="ui-tabs-anchor" role="presentation" tabindex="-1"
-                                   id="ui-id-26">Opción 1</a>
-                            </li>
-                            <li class="ui-state-default ui-corner-top ui-state-hover" role="tab" tabindex="-1"
-                                aria-controls="tabs-c" aria-labelledby="ui-id-27" aria-selected="false">
-                                <a href="#tabs-c" class="ui-tabs-anchor" role="presentation" tabindex="-1"
-                                   id="ui-id-27">Opción 2</a>
-                            </li>
                         </ul>
                         <div id="tabs-a" aria-labelledby="ui-id-25"
                              class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
@@ -496,96 +486,94 @@
                                                                 </label>
                                                             </section>
                                                         </div>
+
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Categoria:</label>
+                                                                <label>Categoria especial:</label>
                                                                 <label class="select">
                                                                     <select name="categoria">
-                                                                        <option value="1" selected="">- Selecciona
-                                                                            categoría -
-                                                                        </option>
-                                                                        <option value="2">Abogados</option>
-                                                                        <option value="3">Administración de Fincas
-                                                                        </option>
-                                                                        <option value="4">Agencias de Viajes</option>
-                                                                        <option value="5">Alimentación</option>
-                                                                        <option value="6">Deportes</option>
-                                                                        <option value="7">Educación</option>
-                                                                        <option value="8">Eficiencia Energética</option>
-                                                                        <option value="9">Fotografía</option>
-                                                                        <option value="10">Hogar</option>
-                                                                        <option value="11">Informática</option>
-                                                                        <option value="12">Regalos, Fiestas y Juguetes
-                                                                        </option>
-                                                                        <option value="13">Inmobiliarias</option>
-                                                                        <option value="14">Librerías y Material de
-                                                                            oficina
-                                                                        </option>
-                                                                        <option value="15">Limpieza</option>
-                                                                        <option value="16">Mensajería y Transporte
-                                                                        </option>
-                                                                        <option value="17">Modas</option>
-                                                                        <option value="18">Negocios Especializados
-                                                                        </option>
-                                                                        <option value="19">Ocio</option>
-                                                                        <option value="20">Ópticas</option>
-                                                                        <option value="21">Publicidad e Impresión
-                                                                        </option>
-                                                                        <option value="22">Reciclaje Consumibles
-                                                                        </option>
-                                                                        <option value="23">Reformas y Suministros
-                                                                        </option>
-                                                                        <option value="24">Restauración</option>
-                                                                        <option value="25">Salud y Belleza</option>
-                                                                        <option value="26">Seguros</option>
-                                                                        <option value="27">Servicios a Pymes</option>
-                                                                        <option value="28">Servicios Asistenciales
-                                                                        </option>
-                                                                        <option value="29">Servicios Financieros
-                                                                        </option>
-                                                                        <option value="30">Telecomunicaciones</option>
-                                                                        <option value="31">Tintorería y Arreglos
-                                                                        </option>
-                                                                        <option value="32">Vending</option>
-                                                                    </select> <i></i>
+                                                                        <option value="1" selected="">- Selecciona categoría especial - </option>
+                                                                        <option value="2">Franquicias de éxito</option>
+                                                                        <option value="3">Fanquicias rentables</option>
+                                                                        <option value="4">Fanquicias low cost</option>
+                                                                        <option value="5">Fanquicias baratas</option>
+                                                                    </select><i></i>
                                                                 </label>
-
-                                                                <div class="row">
-                                                                    <section class="col col-xs-12 col-md-12 col-sm-12"
-                                                                             style="margin-top: 2px">
-                                                                        <label>Fax:</label>
-                                                                        <label class="input"> <i
-                                                                                    class="icon-append fa fa-calendar"></i>
-                                                                            <input type="text" name="fax"
-                                                                                   placeholder="Fax">
-                                                                        </label>
-                                                                    </section>
-                                                                </div>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Selecciona Subcategorias:</label>
-                                                                <label class="select select-multiple">
-                                                                    <select multiple="" class="custom-scroll">
-                                                                        <option value="1">Subcat1</option>
-                                                                        <option value="2">Subcat2</option>
-                                                                        <option value="3">Subcat3</option>
-                                                                        <option value="4">Subcat4</option>
-                                                                        <option value="5">Subcat5</option>
-                                                                        <option value="6">Subcat6</option>
-                                                                        <option value="7">Subcat7</option>
-                                                                        <option value="8">Subcat8</option>
-                                                                        <option value="9">Subcat9</option>
-                                                                    </select> </label>
-
-                                                                <div class="note">
-                                                                    <strong>Note:</strong> Presiona el botón Ctrl y
-                                                                    selecciona las subcategorias pertinentes.
-                                                                </div>
+                                                                <label>Fax:</label>
+                                                                <label class="input"> <i
+                                                                            class="icon-append fa fa-calendar"></i>
+                                                                    <input type="text" name="fax"
+                                                                           placeholder="Fax">
+                                                                </label>
                                                             </section>
-
                                                         </div>
                                                         <div class="row">
-
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
+                                                                    <label>Categoria:</label>
+                                                                    <select multiple style="width:100%" class="select2" id="tags">
+                                                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                                            <option value="AK">Alaska</option>
+                                                                            <option value="HI">Hawaii</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Pacific Time Zone">
+                                                                            <option value="CA">California</option>
+                                                                            <option value="NV" selected="selected">Nevada</option>
+                                                                            <option value="OR">Oregon</option>
+                                                                            <option value="WA">Washington</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Mountain Time Zone">
+                                                                            <option value="AZ">Arizona</option>
+                                                                            <option value="CO">Colorado</option>
+                                                                            <option value="ID">Idaho</option>
+                                                                            <option value="MT" selected="selected">Montana</option><option value="NE">Nebraska</option>
+                                                                            <option value="NM">New Mexico</option>
+                                                                            <option value="ND">North Dakota</option>
+                                                                            <option value="UT">Utah</option>
+                                                                            <option value="WY">Wyoming</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="IL">Illinois</option>
+                                                                            <option value="IA">Iowa</option>
+                                                                            <option value="KS">Kansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                            <option value="LA">Louisiana</option>
+                                                                            <option value="MN">Minnesota</option>
+                                                                            <option value="MS">Mississippi</option>
+                                                                            <option value="MO">Missouri</option>
+                                                                            <option value="OK">Oklahoma</option>
+                                                                            <option value="SD">South Dakota</option>
+                                                                            <option value="TX">Texas</option>
+                                                                            <option value="TN">Tennessee</option>
+                                                                            <option value="WI">Wisconsin</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="FL">Florida</option>
+                                                                            <option value="GA">Georgia</option>
+                                                                            <option value="IN">Indiana</option>
+                                                                            <option value="ME">Maine</option>
+                                                                            <option value="MD">Maryland</option>
+                                                                            <option value="MA">Massachusetts</option>
+                                                                            <option value="MI" selected="selected">Michigan</option>
+                                                                            <option value="NH">New Hampshire</option>
+                                                                            <option value="NJ">New Jersey</option>
+                                                                            <option value="NY">New York</option>
+                                                                            <option value="NC">North Carolina</option>
+                                                                            <option value="OH">Ohio</option>
+                                                                            <option value="PA">Pennsylvania</option>
+                                                                            <option value="RI">Rhode Island</option>
+                                                                            <option value="SC">South Carolina</option>
+                                                                            <option value="VT">Vermont</option>
+                                                                            <option value="VA">Virginia</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                            </section>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -719,113 +707,11 @@
                                                 data-widget-sortable="false"
 
                                                 -->
-                                                <header role="heading">
-                                                    <div class="jarviswidget-ctrls" role="menu"><a
-                                                                href="javascript:void(0);"
-                                                                class="button-icon jarviswidget-toggle-btn"
-                                                                rel="tooltip" title="" data-placement="bottom"
-                                                                data-original-title="Collapse"><i
-                                                                    class="fa fa-minus "></i></a> <a
-                                                                href="javascript:void(0);"
-                                                                class="button-icon jarviswidget-fullscreen-btn"
-                                                                rel="tooltip" title="" data-placement="bottom"
-                                                                data-original-title="Fullscreen"><i
-                                                                    class="fa fa-expand "></i></a> <a
-                                                                href="javascript:void(0);"
-                                                                class="button-icon jarviswidget-delete-btn"
-                                                                rel="tooltip" title="" data-placement="bottom"
-                                                                data-original-title="Delete"><i class="fa fa-times"></i></a>
-                                                    </div>
-                                                    <div class="widget-toolbar" role="menu"><a data-toggle="dropdown"
-                                                                                               class="dropdown-toggle color-box selector"
-                                                                                               href="javascript:void(0);"></a>
-                                                        <ul class="dropdown-menu arrow-box-up-right color-select pull-right">
-                                                            <li><span class="bg-color-green"
-                                                                      data-widget-setstyle="jarviswidget-color-green"
-                                                                      rel="tooltip" data-placement="left"
-                                                                      data-original-title="Green Grass"></span></li>
-                                                            <li><span class="bg-color-greenDark"
-                                                                      data-widget-setstyle="jarviswidget-color-greenDark"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Dark Green"></span></li>
-                                                            <li><span class="bg-color-greenLight"
-                                                                      data-widget-setstyle="jarviswidget-color-greenLight"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Light Green"></span></li>
-                                                            <li><span class="bg-color-purple"
-                                                                      data-widget-setstyle="jarviswidget-color-purple"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Purple"></span></li>
-                                                            <li><span class="bg-color-magenta"
-                                                                      data-widget-setstyle="jarviswidget-color-magenta"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Magenta"></span></li>
-                                                            <li><span class="bg-color-pink"
-                                                                      data-widget-setstyle="jarviswidget-color-pink"
-                                                                      rel="tooltip" data-placement="right"
-                                                                      data-original-title="Pink"></span></li>
-                                                            <li><span class="bg-color-pinkDark"
-                                                                      data-widget-setstyle="jarviswidget-color-pinkDark"
-                                                                      rel="tooltip" data-placement="left"
-                                                                      data-original-title="Fade Pink"></span></li>
-                                                            <li><span class="bg-color-blueLight"
-                                                                      data-widget-setstyle="jarviswidget-color-blueLight"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Light Blue"></span></li>
-                                                            <li><span class="bg-color-teal"
-                                                                      data-widget-setstyle="jarviswidget-color-teal"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Teal"></span></li>
-                                                            <li><span class="bg-color-blue"
-                                                                      data-widget-setstyle="jarviswidget-color-blue"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Ocean Blue"></span></li>
-                                                            <li><span class="bg-color-blueDark"
-                                                                      data-widget-setstyle="jarviswidget-color-blueDark"
-                                                                      rel="tooltip" data-placement="top"
-                                                                      data-original-title="Night Sky"></span></li>
-                                                            <li><span class="bg-color-darken"
-                                                                      data-widget-setstyle="jarviswidget-color-darken"
-                                                                      rel="tooltip" data-placement="right"
-                                                                      data-original-title="Night"></span></li>
-                                                            <li><span class="bg-color-yellow"
-                                                                      data-widget-setstyle="jarviswidget-color-yellow"
-                                                                      rel="tooltip" data-placement="left"
-                                                                      data-original-title="Day Light"></span></li>
-                                                            <li><span class="bg-color-orange"
-                                                                      data-widget-setstyle="jarviswidget-color-orange"
-                                                                      rel="tooltip" data-placement="bottom"
-                                                                      data-original-title="Orange"></span></li>
-                                                            <li><span class="bg-color-orangeDark"
-                                                                      data-widget-setstyle="jarviswidget-color-orangeDark"
-                                                                      rel="tooltip" data-placement="bottom"
-                                                                      data-original-title="Dark Orange"></span></li>
-                                                            <li><span class="bg-color-red"
-                                                                      data-widget-setstyle="jarviswidget-color-red"
-                                                                      rel="tooltip" data-placement="bottom"
-                                                                      data-original-title="Red Rose"></span></li>
-                                                            <li><span class="bg-color-redLight"
-                                                                      data-widget-setstyle="jarviswidget-color-redLight"
-                                                                      rel="tooltip" data-placement="bottom"
-                                                                      data-original-title="Light Red"></span></li>
-                                                            <li><span class="bg-color-white"
-                                                                      data-widget-setstyle="jarviswidget-color-white"
-                                                                      rel="tooltip" data-placement="right"
-                                                                      data-original-title="Purity"></span></li>
-                                                            <li><a href="javascript:void(0);"
-                                                                   class="jarviswidget-remove-colors"
-                                                                   data-widget-setstyle="" rel="tooltip"
-                                                                   data-placement="bottom"
-                                                                   data-original-title="Reset widget color to default">Remove</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                <header role="heading"><div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);" aria-expanded="false"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
                                                     <span class="widget-icon"> <i class="fa fa-cloud"></i> </span>
-
                                                     <h2>My Dropzone! </h2>
 
-                                                    <span class="jarviswidget-loader"><i
-                                                                class="fa fa-refresh fa-spin"></i></span></header>
+                                                    <span class="jarviswidget-loader" style="display: none;"><i class="fa fa-refresh fa-spin"></i></span></header>
 
                                                 <!-- widget div-->
                                                 <div role="content">
@@ -840,45 +726,17 @@
                                                     <!-- widget content -->
                                                     <form action="../private/file-upload" class="dropzone dz-clickable"
                                                           id="mydropzone">
-
                                                     </form>
                                                     <!-- end widget content -->
                                                 </div>
-
                                                 <!-- end widget div -->
                                             </div>
                                         </div>
                                     </div>
-
-
-                                    <!-- end widget content -->
-
-                                    <!--</div>-->
-
-                                    <!-- end widget div -->
                                 </div>
-
                             </div>
                         </div>
-                        <!--END TAB-A-->
-                        <div id="tabs-b" aria-labelledby="ui-id-26"
-                             class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
-                             aria-expanded="false" aria-hidden="true" style="display: none;">
-                        </div>
-                        <!--END TAB-B-->
-                        <div id="tabs-c" aria-labelledby="ui-id-27"
-                             class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
-                             aria-expanded="false" aria-hidden="true" style="display: none;">
-                        </div>
-                        <!--END TAB-C-->
-                        <div id="tabs-d" aria-labelledby="ui-id-27"
-                             class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
-                             aria-expanded="false" aria-hidden="true" style="display: none;">
-                        </div>
-                        <!--END TAB-D-->
                     </div>
-                    <!--END TABS-->
-                    <!--</div> <!-- END WELL -->
                 </article>
             </div>
         </div>
@@ -890,6 +748,9 @@
     <script src="{{ asset('area_privada/js/plugin/jquery-form/jquery-form.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/dropzone/dropzone.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrap-timepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('area_privada/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
+
 @endsection
 
 @section('ready')
@@ -943,12 +804,90 @@
     maxFilesize: 2, // MB
     dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha aquí)</h4></span>',
                            addRemoveLinks: true
-                        };
+    }
 
-            $('#dashboard').removeClass("active")
-            $('#alta').addClass("active");
-            $('#gestion').addClass("active");
 
+    $('#dashboard').removeClass("active")
+    $('#alta').addClass("active");
+    $('#gestion').addClass("active");
+
+    $("#tags").select2({
+        maximumSelectionSize: 4
+    });
 
 
 @endsection
+
+
+<!--
+                                                                            <label class="select">
+                                                                    <select name="categoria">
+                                                                        <option value="1" selected="">- Selecciona
+                                                                            categoría -
+                                                                        </option>
+                                                                        <option value="2">Abogados</option>
+                                                                        <option value="3">Administración de Fincas
+                                                                        </option>
+                                                                        <option value="4">Agencias de Viajes</option>
+                                                                        <option value="5">Alimentación</option>
+                                                                        <option value="6">Deportes</option>
+                                                                        <option value="7">Educación</option>
+                                                                        <option value="8">Eficiencia Energética</option>
+                                                                        <option value="9">Fotografía</option>
+                                                                        <option value="10">Hogar</option>
+                                                                        <option value="11">Informática</option>
+                                                                        <option value="12">Regalos, Fiestas y Juguetes
+                                                                        </option>
+                                                                        <option value="13">Inmobiliarias</option>
+                                                                        <option value="14">Librerías y Material de
+                                                                            oficina
+                                                                        </option>
+                                                                        <option value="15">Limpieza</option>
+                                                                        <option value="16">Mensajería y Transporte
+                                                                        </option>
+                                                                        <option value="17">Modas</option>
+                                                                        <option value="18">Negocios Especializados
+                                                                        </option>
+                                                                        <option value="19">Ocio</option>
+                                                                        <option value="20">Ópticas</option>
+                                                                        <option value="21">Publicidad e Impresión
+                                                                        </option>
+                                                                        <option value="22">Reciclaje Consumibles
+                                                                        </option>
+                                                                        <option value="23">Reformas y Suministros
+                                                                        </option>
+                                                                        <option value="24">Restauración</option>
+                                                                        <option value="25">Salud y Belleza</option>
+                                                                        <option value="26">Seguros</option>
+                                                                        <option value="27">Servicios a Pymes</option>
+                                                                        <option value="28">Servicios Asistenciales
+                                                                        </option>
+                                                                        <option value="29">Servicios Financieros
+                                                                        </option>
+                                                                        <option value="30">Telecomunicaciones</option>
+                                                                        <option value="31">Tintorería y Arreglos
+                                                                        </option>
+                                                                        <option value="32">Vending</option>
+                                                                    </select> <i></i>
+                                                                </label>
+
+                                                                                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                                <label>Selecciona Subcategorias:</label>
+                                                                <label class="select select-multiple">
+                                                                    <select multiple="" class="custom-scroll">
+                                                                        <option value="1">Subcat1</option>
+                                                                        <option value="2">Subcat2</option>
+                                                                        <option value="3">Subcat3</option>
+                                                                        <option value="4">Subcat4</option>
+                                                                        <option value="5">Subcat5</option>
+                                                                        <option value="6">Subcat6</option>
+                                                                        <option value="7">Subcat7</option>
+                                                                        <option value="8">Subcat8</option>
+                                                                        <option value="9">Subcat9</option>
+                                                                    </select> </label>
+
+                                                                <div class="note">
+                                                                    <strong>Note:</strong> Presiona el botón Ctrl y
+                                                                    selecciona las subcategorias pertinentes.
+                                                                </div>
+                                                            </section>-->

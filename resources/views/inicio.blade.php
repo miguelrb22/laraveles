@@ -250,5 +250,12 @@
             </div>
         </section>
     </div>
+
+
+    @include('extras.modal')
     @stop
+
+
+
+
 

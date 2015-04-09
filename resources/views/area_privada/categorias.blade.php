@@ -106,7 +106,7 @@
                                                 </label>
                                             </section>
                                             <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                <label>Subcategoría:</label>
+                                                <label>Categoría:</label>
                                                 <label class="select">
                                                     <select name="inversion">
                                                         <option value="1" selected="">- Categoría -</option>

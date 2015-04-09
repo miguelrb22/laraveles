@@ -426,11 +426,10 @@
                 localStorage.removeItem('color');
             });
 
-
             $( ".fa-plus-square-o").hide();
 
             @yield('ready')
-        })
+        });
 
     </script>
 
