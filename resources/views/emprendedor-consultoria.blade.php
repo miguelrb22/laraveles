@@ -138,6 +138,7 @@
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/tipos.blade.php");
         });
+        //aqui mas rutas comentario para commit
     </script>
 
 @endsection
