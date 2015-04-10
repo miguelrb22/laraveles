@@ -128,7 +128,8 @@
 
                                     <!-- widget content -->
                                     <div class="widget-body no-padding">
-                                        <form id="checkout-form" class="smart-form col-xs-12 col-md-12 col-sm-12"
+                                        <!-- comienzo form -->
+                                        <form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12"
                                               novalidate="novalidate">
                                             <div class="row" style="margin:0px">
                                                 <h3 class="text-center"><span> Datos Públicos</span></h3>
@@ -138,139 +139,143 @@
                                                     <fieldset>
                                                         <h5>Datos ficha franquicia:</h5>
                                                         <br>
-
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Nombre Comercial:</label>
-                                                                <label class="input"><i
-                                                                            class="icon-prepend fa fa-user"></i>
-                                                                    <input id="NomBre" type="text" name="fname"
-                                                                           placeholder="Nombre">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Ciudad:</label>
-                                                                <label class="input"><i
-                                                                            class="icon-prepend fa fa-user"></i>
-                                                                    <input id="ciudad" type="text" name="ciudad"
-                                                                           placeholder="Ciudad">
-                                                                </label>
-                                                            </section>
-
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6 has-feedback">
+                                                                    <label>Nombre Comercial:</label>
+                                                                    <label class="input"><i
+                                                                                class="icon-prepend fa fa-user"></i>
+                                                                        <input id="NomBre" type="text" name="fname" class="form-control" placeholder="Nombre">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6 has-feedback">
+                                                                    <label>Ciudad:</label>
+                                                                    <label class="input"><i
+                                                                                class="icon-prepend fa fa-user"></i>
+                                                                        <input id="ciudad" type="text" name="ciudad" class="form-control" placeholder="Ciudad">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Dirección:</label>
-                                                                <label for="address2" class="input">
-                                                                    <input type="text" name="direccion" id="Direccion"
-                                                                           placeholder="Dirección">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label>Dirección:</label>
+                                                                    <label for="address2" class="input">
+                                                                        <input type="text" name="direccion" id="Direccion" class="form-control" placeholder="Dirección">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Codigo Postal:</label>
-                                                                <label class="input"><i
-                                                                            class="icon-prepend fa fa-user"></i>
-                                                                    <input id="cp" type="text" name="cp"
-                                                                           placeholder="Código Postal">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Web:</label>
-                                                                <label class="input"><i
-                                                                            class="icon-prepend fa fa-user"></i>
-                                                                    <input id="web" type="text" name="web"
-                                                                           placeholder="Página Web">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Codigo Postal:</label>
+                                                                    <label class="input"><i
+                                                                                class="icon-prepend fa fa-user"></i>
+                                                                        <input id="cp" type="text" name="cp" class="form-control" placeholder="Código Postal">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Web:</label>
+                                                                    <label class="input"><i
+                                                                                class="icon-prepend fa fa-user"></i>
+                                                                        <input id="web" type="text" name="web" class="form-control"  placeholder="Página Web">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12"
-                                                                     style="margin-bottom: 12px">
-                                                                <label>Descripción:</label>
-                                                                <label class="textarea textarea-resizable">
-                                                                    <textarea class="custom-scroll" rows="1"
-                                                                              id="fdescripcion"
-                                                                              name="fdescripcion"></textarea>
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12"
+                                                                         style="margin-bottom: 12px">
+                                                                    <label>Descripción:</label>
+                                                                    <label class="textarea textarea-resizable">
+                                                                        <textarea class="custom-scroll" rows="1"
+                                                                                  id="fdescripcion"
+                                                                                  name="fdescripcion"></textarea>
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label class="label">Logo:</label>
 
                                                                 <div class="input input-file">
                                                                     <span class="button"><input type="file" id="file"
-                                                                                                name="file"
+                                                                                                name="logo"
                                                                                                 onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
                                                                             type="text"
                                                                             placeholder="Seleciona una imagen"
                                                                             readonly="">
                                                                 </div>
                                                             </section>
+                                                            </div>
                                                         </div>
                                                         <hr>
                                                         <br>
                                                         <h5>Datos economicos:</h5>
                                                         <br>
 
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Inversión:</label>
-                                                                <label class="input">
-                                                                    <input id="inversion" type="text" name="inversion"
-                                                                           placeholder="Inversión">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label>Inversión:</label>
+                                                                    <label class="input">
+                                                                        <input id="inversion" type="text" name="inversion" class="form-control" placeholder="Inversión">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Presencia Internacional:</label>
-                                                                <label class="input">
-                                                                    <input id="presencia" type="text" name="presencia"
-                                                                           placeholder="Presencia Internacional">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Royalti:</label>
-                                                                <label class="input">
-                                                                    <input id="royalti" type="text" name="edad"
-                                                                           placeholder="Royalti">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Presencia Internacional:</label>
+                                                                    <label class="input">
+                                                                        <input id="presencia" type="text" name="presencia" class="form-control" placeholder="Presencia Internacional">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Royalti:</label>
+                                                                    <label class="input">
+                                                                        <input id="royalti" type="text" name="royalti" class="form-control" placeholder="Royalti">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Canon Entrada:</label>
-                                                                <label class="input">
-                                                                    <input id="entrada" type="text" name="edad"
-                                                                           placeholder="Canon Entrada">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Canon Publicitario:</label>
-                                                                <label class="input">
-                                                                    <input id="cpublicitario" type="text"
-                                                                           name="cpublicitario"
-                                                                           placeholder="Canon Publicitario">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Canon Entrada:</label>
+                                                                    <label class="input">
+                                                                        <input id="entrada" type="text" name="entrada" class="form-control" placeholder="Canon Entrada">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Canon Publicitario:</label>
+                                                                    <label class="input">
+                                                                        <input id="cpublicitario" type="text" name="cpublicitario" class="form-control" placeholder="Canon Publicitario">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row" style="margin-bottom: -2px;">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Duración Contrato:</label>
-                                                                <label class="input">
-                                                                    <input id="contrato" type="text" name="contrato"
-                                                                           placeholder="Duración Contrato">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Amortización:</label>
-                                                                <label class="input">
-                                                                    <input id="amortizacion" type="text"
-                                                                           name="amortizacion"
-                                                                           placeholder="Amortización">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row" style="margin-bottom: -2px;">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Duración Contrato:</label>
+                                                                    <label class="input">
+                                                                        <input id="contrato" type="text" name="contrato" class="form-control" placeholder="Duración Contrato">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Amortización:</label>
+                                                                    <label class="input">
+                                                                        <input id="amortizacion" type="text" name="amortizacion" class="form-control" placeholder="Amortización">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -279,155 +284,153 @@
                                                     <fieldset>
                                                         <h5>Datos del local y negocio:</h5>
                                                         <br>
+                                                        <div class="from-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Requisítos del Local:</label>
+                                                                    <label class="input">
+                                                                        <input id="requisitos" type="text" name="requisitos" class="form-control" placeholder="Requisítos del Local">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Locales Propios:</label>
+                                                                    <label class="input">
+                                                                        <input id="localesp" type="text" name="localesp" class="form-control" placeholder="Locales Propios">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Locales Franquiciados:</label>
+                                                                    <label class="input">
+                                                                        <input id="localesf" type="text" name="localesf" class="form-control" placeholder="Locales Franquiciados">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Dimensiones del Local:</label>
+                                                                    <label class="input">
+                                                                        <input id="dimesion" type="text" name="dimension" class="form-control" placeholder="Dimensiones del Local">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Población Mínima:</label>
+                                                                    <label class="input">
+                                                                        <input id="poblacion" type="text" name="poblacion" class="form-control" placeholder="Poblacion Mínima">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Superficie Mínima del Local:</label>
+                                                                    <label class="input">
+                                                                        <input id="dimesion" type="text" name="superficie" class="form-control" placeholder="Superficie Mínima">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-4 col-sm-4 col-lg-4">
+                                                                    <label>Zona de Exlusividad:</label>
 
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Requisítos del Local:</label>
-                                                                <label class="input">
-                                                                    <input id="requisitos" type="text" name="requisitos"
-                                                                           placeholder="Requisítos del Local">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Locales Propios:</label>
-                                                                <label class="input">
-                                                                    <input id="localesp" type="text" name="localesp"
-                                                                           placeholder="Locales Propios">
-                                                                </label>
-                                                            </section>
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Locales Franquiciados:</label>
-                                                                <label class="input">
-                                                                    <input id="localesf" type="text" name="localesf"
-                                                                           placeholder="Locales Franquiciados">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Dimensiones del Local:</label>
-                                                                <label class="input">
-                                                                    <input id="dimesion" type="text" name="dimension"
-                                                                           placeholder="Dimensiones del Local">
-                                                                </label>
-                                                            </section>
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Población Mínima:</label>
-                                                                <label class="input">
-                                                                    <input id="poblacion" type="text" name="poblacion"
-                                                                           placeholder="Poblacion Mínima">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Superficie Mínima del Local:</label>
-                                                                <label class="input">
-                                                                    <input id="dimesion" type="text" name="dimension"
-                                                                           placeholder="Superficie Mínima">
-                                                                </label>
-                                                            </section>
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-4 col-sm-4">
-                                                                <label>Zona de Exlusividad:</label>
-
-                                                                <div class="inline-group" style="margin-top:5px">
-                                                                    <label class="radio">
-                                                                        <input id="sexo_h" class="form-control"
-                                                                               type="radio" name="exclusividad"
-                                                                               value="1">
-                                                                        <i></i>Si</label>
-                                                                    <label class="radio">
-                                                                        <input id="sexo_m" class="form-control"
-                                                                               type="radio" name="exclusividad"
-                                                                               value="0">
-                                                                        <i></i>No</label>
-                                                                </div>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-8 col-sm-8">
-                                                                <label>Perfil del Franquiciado:</label>
-                                                                <label class="input">
-                                                                    <input id="perfil" type="text" name="pefil"
-                                                                           placeholder="Perfil del Franquiciado">
-                                                                </label>
-                                                            </section>
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Zonas Preferentes:</label>
-                                                                <label class="input">
-                                                                    <input id="perfil" type="text" name="pefil"
-                                                                           placeholder="Zonas Preferentes">
-                                                                </label>
-                                                            </section>
+                                                                    <div class="inline-group" style="margin-top:5px">
+                                                                        <label class="radio">
+                                                                            <input id="sexo_h" class="form-control" type="radio" name="exclusividad" value="1">
+                                                                            <i></i>Si</label>
+                                                                        <label class="radio">
+                                                                            <input id="sexo_m" class="form-control" type="radio" name="exclusividad" value="0">
+                                                                            <i></i>No</label>
+                                                                    </div>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-8 col-sm-8 col-lg-8">
+                                                                    <label>Perfil del Franquiciado:</label>
+                                                                    <label class="input">
+                                                                        <input id="perfil" type="text" name="pefil" class="form-control" placeholder="Perfil del Franquiciado">
+                                                                    </label>
+                                                                </section>
+                                                            </div></div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label>Zonas Preferentes:</label>
+                                                                    <label class="input">
+                                                                        <input id="perfil" type="text" name="preferente" class="form-control" placeholder="Zonas Preferentes">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
                                                         <hr/>
                                                         <br>
                                                         <h5>Organización y expansión:</h5>
                                                         <br>
-
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Año de Creación:</label>
-                                                                <label class="input state-success">
-                                                                    <input type="text" name="creancion"
-                                                                           placeholder="Año de Creación"
-                                                                           data-mask="2099" class="invalid">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Inicio de Expansión:</label>
-                                                                <label class="input">
-                                                                    <input id="expasion" type="text" name="expansion"
-                                                                           placeholder="Incio de Expansión">
-                                                                </label>
-                                                            </section>
+                                                        <div class="from-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Año de Creación:</label>
+                                                                    <label class="input">
+                                                                        <input type="text" name="creacion" placeholder="Año de Creación" data-mask="2099" class="form-control">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Inicio de Expansión:</label>
+                                                                    <label class="input">
+                                                                        <input id="expasion" type="text" name="expansion" class="form-control" splaceholder="Incio de Expansión">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Red de España:</label>
-                                                                <label class="input">
-                                                                    <i class="icon-prepend fa fa-question-circle"></i>
-                                                                    <input type="text"
-                                                                           placeholder="Propios y Franquiciados">
-                                                                    <b class="tooltip tooltip-top-left">
-                                                                        <i class="fa fa-warning txt-color-teal"></i>
-                                                                        Nº de establecimientos propios y fraquiciados.
-                                                                        (Ejem: 3 propios y 5 franquiciados). </b>
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Nº de Países:</label>
-                                                                <label class="input">
-                                                                    <input id="paises" type="text" name="paises"
-                                                                           placeholder="Nº de Paises">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Nacionalidad:</label>
-                                                                <label class="input">
-                                                                    <input id="nacionalidad" type="text"
-                                                                           name="nacionalidad"
-                                                                           placeholder="Nacionalidad">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label>Red de España:</label>
+                                                                    <label class="input">
+                                                                        <i class="icon-prepend fa fa-question-circle"></i>
+                                                                        <input type="text" class="form-control" name="red" placeholder="Propios y Franquiciados">
+                                                                        <b class="tooltip tooltip-top-left">
+                                                                            <i class="fa fa-warning txt-color-teal"></i>
+                                                                            Nº de establecimientos propios y fraquiciados.
+                                                                            (Ejem: 3 propios y 5 franquiciados). </b>
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Red en Extranjero:</label>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Nº de Países:</label>
+                                                                    <label class="input">
+                                                                        <input id="paises" type="text" name="paises" class="form-control" placeholder="Nº de Paises">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Nacionalidad:</label>
+                                                                    <label class="input">
+                                                                        <input id="nacionalidad" type="text" name="nacionalidad" class="form-control" placeholder="Nacionalidad">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label>Red en Extranjero:</label>
 
-                                                                <div class="inline-group" style="margin-top:5px">
-                                                                    <label class="radio">
-                                                                        <input id="extranjero_s" class="form-control"
-                                                                               type="radio" name="extranjero" value="1">
-                                                                        <i></i>Si</label>
-                                                                    <label class="radio">
-                                                                        <input id="extranjero_n" class="form-control"
-                                                                               type="radio" name="extranjero" value="0">
-                                                                        <i></i>No</label>
-                                                                </div>
-                                                            </section>
+                                                                    <div class="inline-group" style="margin-top:5px">
+                                                                        <label class="radio">
+                                                                            <input id="extranjero_s" class="form-control"
+                                                                                   type="radio" name="extranjero" value="1">
+                                                                            <i></i>Si</label>
+                                                                        <label class="radio">
+                                                                            <input id="extranjero_n" class="form-control"
+                                                                                   type="radio" name="extranjero" value="0">
+                                                                            <i></i>No</label>
+                                                                    </div>
+                                                                </section>
+                                                            </div>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -435,80 +438,79 @@
                                             <div class="row" style="margin:0px">
                                                 <h3 class="text-center"><span>Datos Privados</span></h3>
 
-                                                <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6">
+                                                <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                     <hr/>
                                                     <fieldset>
                                                         <h5>Datos Franquicia:</h5>
                                                         <br>
-
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Nombre:</label>
-                                                                <label class="input">
-                                                                    <input id="nombre" type="text" name="nombre"
-                                                                           placeholder="Nombre">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>CIF:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cif" id="cif"
-                                                                           placeholder="CIF" class="hasDatepicker">
-                                                                </label>
-                                                            </section>
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label class="input">Fecha Alta Ficha:</label>
-                                                                <label class="input"><i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="inicio" id="inicio"
-                                                                           placeholder="Fecha Alta Ficha">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Fecha Vencimiento Ficha:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="final" id="final"
-                                                                           placeholder="Fecha Fin Ficha">
-                                                                </label>
-                                                            </section>
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Razón Social:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="razon" id="razon"
-                                                                           placeholder="Razón Social">
-                                                                </label>
-                                                            </section>
+                                                        <div class="from-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Nombre:</label>
+                                                                    <label class="input">
+                                                                        <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Nombre">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>CIF:</label>
+                                                                    <label class="input">
+                                                                        <input type="text" name="cif" id="cif" placeholder="CIF" class="form-control">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
 
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Categoria especial:</label>
-                                                                <label class="select">
-                                                                    <select name="categoria">
-                                                                        <option value="1" selected="">- Selecciona categoría especial - </option>
-                                                                        <option value="2">Franquicias de éxito</option>
-                                                                        <option value="3">Fanquicias rentables</option>
-                                                                        <option value="4">Fanquicias low cost</option>
-                                                                        <option value="5">Fanquicias baratas</option>
-                                                                    </select><i></i>
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Fax:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="fax"
-                                                                           placeholder="Fax">
-                                                                </label>
-                                                            </section>
+                                                        <div class="from-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label class="input">Fecha Alta Ficha:</label>
+                                                                    <label class="input"><i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="inicio" id="inicio" class="hasDatepicker form-control" placeholder="Fecha Alta Ficha">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Fecha Vencimiento Ficha:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="final" id="final" class="hasDatepicker form-control" placeholder="Fecha Fin Ficha">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
+                                                        <div class="from-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label>Razón Social:</label>
+                                                                    <label class="input">
+                                                                        <input type="text" name="razon" id="razon" class="form-control" placeholder="Razón Social">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Categoria especial:</label>
+                                                                    <label class="select">
+                                                                        <select name="categoria" class="form-control">
+                                                                            <option value="1" selected="">- Selecciona categoría especial - </option>
+                                                                            <option value="2">Franquicias de éxito</option>
+                                                                            <option value="3">Fanquicias rentables</option>
+                                                                            <option value="4">Fanquicias low cost</option>
+                                                                            <option value="5">Fanquicias baratas</option>
+                                                                        </select><i></i>
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Fax:</label>
+                                                                    <label class="input">
+                                                                        <input type="text" name="fax" class="form-control" placeholder="Fax">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-12 col-sm-12">
                                                                     <label>Categoria:</label>
@@ -684,11 +686,12 @@
                                                 </div>
                                             </div>
                                             <footer>
-                                                <button id="actualizar" type="button" class="btn btn-primary">
+                                                <button id="actualizar" type="submit" class="btn btn-primary">
                                                     Guardar Ficha
                                                 </button>
                                             </footer>
                                         </form>
+                                        <!-- fin form -->
                                         <div class="row col col-xs-12 col-md-12 col-sm-12" style="margin:0px">
                                             <h3 class="text-center"><span>Imagenes:</span></h3>
                                             <hr/>
@@ -750,6 +753,7 @@
     <script src="{{ asset('area_privada/js/plugin/bootstrap-timepicker/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
+    <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
 
 @endsection
 
@@ -815,6 +819,331 @@
         maximumSelectionSize: 4
     });
 
+    $('#form-alta').bootstrapValidator({
+					feedbackIcons : {
+						valid : 'glyphicon glyphicon-ok',
+						invalid : 'glyphicon glyphicon-remove',
+						validating : 'glyphicon glyphicon-refresh'
+					},
+					fields : {
+						fname : {
+                            group : '.col-lg-6',
+							validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								}
+							}
+						},
+                        ciudad : {
+                            group : '.col-lg-6',
+                            validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								}
+							}
+                        },
+                        direccion : {
+                            validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								}
+							}
+                        },
+                        cp : {
+                            group : '.col-lg-6',
+                            validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								},
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                                stringLength : {
+									max : 5,
+                                    min : 5,
+									message : 'La longitud del campo debe ser de 5 dígitos'
+								}
+							}
+                        },
+                        web : {
+                            group : '.col-lg-6',
+                            validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								}
+							}
+                        },
+                        fdescripcion : {
+                           validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                stringLength : {
+									min : 30,
+									message : 'La Descripción demasiado corta'
+								}
+                            }
+                        },
+                        logo : {
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        inversion : {
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        presencia : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        royalti : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        entrada : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        cpublicitario : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        contrato : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        amortizacion : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        requisitos : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        localesp : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                            }
+                        },
+                        dimension : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                            }
+                        },
+                        localesf : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                            }
+                        },
+                        poblacion : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                            }
+                        },
+                        superficie : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                            }
+                        },
+                        exclusividad : {
+                            group : '.col-lg-4',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        pefil : {
+                            group : '.col-lg-8',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        preferente : {
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        creacion : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                                stringLength : {
+									max : 4,
+                                    min : 4,
+                                    message : 'La longitud del campo debe ser de 4 dígitos'
+                                }
+                            }
+                        },
+                        expansion : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                                stringLength : {
+									max : 4,
+                                    min : 4,
+                                    message : 'La longitud del campo debe ser de 4 dígitos'
+                                }
+                            }
+                        },
+                        red: {
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        paises : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                numeric : {
+                                    message : 'Este campo debe ser numerico'
+                                },
+                            }
+                        },
+                        nacionalidad : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        extranjero : {
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        nombre : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+                        cif : {
+                            group : '.col-lg-6',
+                            validators : {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                },
+                                stringLength : {
+									max : 9,
+                                    min : 9,
+                                    message : 'La longitud del campo debe ser de 9'
+                                }
+                            }
+                        },
+
+                        razon : {
+                            validators: {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        },
+            			categoria : {
+							group : '.col-lg-6',
+							validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								}
+							}
+						},
+                        fax : {
+							group : '.col-lg-6',
+							validators : {
+								notEmpty : {
+									message : 'Este campo es requerido'
+								}
+							}
+						}
+					}
+				});
 
 @endsection
 
