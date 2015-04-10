@@ -8,6 +8,11 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select:none;
   
   
 }
@@ -32,6 +37,7 @@ body > .container {
 
 nav{  
     height: 50px;
+    z-index: 99;
 }
 
 .footer > .container {
@@ -67,10 +73,11 @@ li:hover{
 #navpersonal{
     
     background-color: #606;
+    max-height: 0px;
     border: none;
     border-radius: 0;
     color: white;
-    border-bottom: 4px solid rgba(242, 224, 197, 1);;
+    border-bottom: 59px solid #e3e3e3;
 }
 
  .atext{
@@ -131,6 +138,7 @@ a:hover{
     height: 100%;
 }
 
+
 @media (min-width: 1255px) {
  
     #patrocinado{
@@ -145,6 +153,8 @@ a:hover{
     }
   
 }
+
+
 #busquedaT{
     margin-left: 0.010%;
 }
@@ -164,6 +174,14 @@ a:hover{
 {
     #panelfe:after {
     margin-left:-160px;
+    }
+}
+
+@media (min-width: 993px)
+{
+    #panelfe:after {
+        margin-left:-60%;
+
     }
 }
 
@@ -291,8 +309,29 @@ hr.separador_post:after {
     #subir-icon{
         margin-top: -2.6%
     }
+
+
 }
 
+@media (min-width: 1316px )
+{
+    #subir-icon{
+        margin-top: -1.8%
+
+    }
+
+    #patrocinado{
+
+        margin-top: -17%;
+    }
+
+    #imagen-noticia{
+
+        margin-bottom: 10px;
+    }
+
+
+}
 .caja-redes {
     margin: 0 auto;
     padding: 15px;
@@ -445,3 +484,8 @@ h2 > a {
 .tservices{
     width:31%;
 }
+
+.textoblanco{
+    color: white;
+}
+

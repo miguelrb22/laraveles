@@ -19,11 +19,24 @@ Route::get('home', 'HomeController@index');
 
 /*area privada*/
 
-Route::get('areaprivada', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
-Route::get('areaprivada/alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
-Route::get('areaprivada/publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
-Route::get('areaprivada/categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
-Route::get('areaprivada/noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
+#Route::group(['middleware' => ''], function()
+
+
+Route::group([], function()
+{
+    Route::get('areaprivada', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
+    Route::get('areaprivada/alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
+    Route::get('areaprivada/publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
+    Route::get('areaprivada/categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
+    Route::get('areaprivada/noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
+
+});
+
+
+/**login **/
+Route::get('login', ['as' => 'login', 'uses' => 'AreaPrivadaController@index']);
+
+
 
 
 /*area franquiciador */
