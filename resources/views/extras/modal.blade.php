@@ -24,7 +24,7 @@
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="text" class="form-control" id="Usermodal" placeholder="Usuario" autofocus>
+                    <input type="text" class="form-control" id="Usermodal" placeholder="Usuario"  name="user" autofocus>
                 </div>
                 <br>
 
@@ -33,7 +33,7 @@
                         <i class="fa fa-key">
                         </i>
                     </div>
-                    <input type="text" class="form-control" id="Userpass" placeholder="Contraseña">
+                    <input type="text" class="form-control" id="Userpass" placeholder="Contraseña" name="pass">
 
                 </div>
             </div>

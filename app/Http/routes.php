@@ -15,6 +15,9 @@ Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
 
 Route::get('home', 'HomeController@index');
 
+#Route::post('login', 'AuthControllerB@postLogin'); // Verificar datos
+#Route::get('logout', 'AuthControllerB@logOut'); // Finalizar sesión
+
 
 
 /*area privada*/
@@ -25,6 +28,8 @@ Route::get('home', 'HomeController@index');
 Route::group([], function()
 {
     Route::get('areaprivada', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
+    Route::post('areaprivada', ['as' => 'private', 'uses' => 'AuthControllerB@postLogin']);
+
     Route::get('areaprivada/alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
     Route::get('areaprivada/publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
     Route::get('areaprivada/categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
