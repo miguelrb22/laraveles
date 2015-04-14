@@ -1,77 +1,76 @@
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    /* Margin bottom by footer height */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
     -webkit-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -ms-user-select:none;
-  
-  
+    font-size: 140%;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: rgba(0,0,0,0.7);
 
 }
 
 /** css **/
 
 body > .container {
-  padding: 60px 15px 0;
+    padding: 60px 15px 0;
 }
 .container .text-muted {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
-nav{  
+nav{
     height: 50px;
     z-index: 99;
 }
 
 .footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
-.navbar .dropdown-menu:after{    
+.navbar .dropdown-menu:after{
     color:white;
     background-color: #606;
 }
 
 .dropdown-menu{
-    
+
     background-color: #320033;
     border: 3px solid #320033;
 }
 
 li:hover{
-    
-        background-color: #320033;
+
+    background-color: #320033;
 
 }
 
-.navbar{  
+.navbar{
     color: white;
     height: 100px;
     height: 9%;
-    
 }
 
 
 #navpersonal{
-    
+
     background-color: #606;
     max-height: 0px;
     border: none;
@@ -80,22 +79,22 @@ li:hover{
     border-bottom: 59px solid #e3e3e3;
 }
 
- .atext{
-    
-     color: white !important;
+.atext{
+
+    color: white !important;
 
 }
 
-#navbar{  
+#navbar{
     margin-right: 0.8%;
     font-size: 1.2em;
     margin-top: -0.1%;
 }
 
 .divider{
-    
+
     background-color: #501950 !important;
-    
+
 }
 
 a:hover{
@@ -106,12 +105,12 @@ a:hover{
 
 
 .active{
-    
+
     background-color: #606;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
-    
+
     background-color: #320033 !important;
     color: white !important;
 }
@@ -119,39 +118,39 @@ a:hover{
 
 
 .navbar-collapse{
-    
+
     background-color: #606 !important;
 }
 
 .m-hefo{
-    
-    
+
+
     background-color: #606 !important;
     border-radius: 0px;
     color: white !important;
-    
+
 }
 
 #imgcarousel{
-    
+
     width: 100%;
     height: 100%;
 }
 
 
 @media (min-width: 1255px) {
- 
+
     #patrocinado{
         margin-top: -20%
     }
 }
 
 @media (min-width:300px) and (max-width: 1250px) {
- 
+
     #patrocinado,#patrocinadoT{
         display: none;
     }
-  
+
 }
 
 
@@ -160,20 +159,20 @@ a:hover{
 }
 
 #panelfe:after {
-  
-  content:"";
+
+    content:"";
     border-color: #333 transparent transparent transparent;
     border-style:solid;
     border-width:15px;
     position: absolute;
     margin-top: 25px;
-    margin-left: -65%; 
+    margin-left: -65%;
 }
 
 @media (max-width: 992px)
 {
     #panelfe:after {
-    margin-left:-160px;
+        margin-left:-160px;
     }
 }
 
@@ -195,42 +194,49 @@ a:hover{
 }
 #noticiasHeader
 {
-   background:#606;
-   color:white;
-   border-radius: 4px;
-    
+    background:#606;
+    color:white;
+    border-radius: 4px;
+
 }
 
 #tituloNotica,#textoNoticia{
     margin:5px;
     text-align: justify;
 }
-h1.post-title { 
-    display:block; 
-    position: relative; 
+
+#tituloNotica {
+    font-family: mia;
+    src: url(‘http://localhost/multifranquicias/public/fonts/Prociono-Regular.otf’);
+    font-size: 19px;
+    color : #606;
+}
+h1.post-title {
+    display:block;
+    position: relative;
     overflow:hidden;
-    width: 85%;height: 2em; 
-    margin: 5px 0 0 -33px;  
-    padding:2px 4px 4px 60px; 
+    width: 85%;height: 2em;
+    margin: 5px 0 0 -33px;
+    padding:2px 4px 4px 60px;
     border: 2px solid #EACB71;
     text-transform: none;
     font: normal normal 1.60em "Yanone Kaffeesatz", Helvetica;
-  line-height: 1.10em;
-  -moz-border-radius: 0 8px 8px 0;
-  -webkit-border-radius: 0 8px 8px 0;
-  border-radius: 0 8px 8px 0;
+    line-height: 1.10em;
+    -moz-border-radius: 0 8px 8px 0;
+    -webkit-border-radius: 0 8px 8px 0;
+    border-radius: 0 8px 8px 0;
 }
 
-hr.separador_post { 
- height: 30px;
- border-style: solid;
- border-color: #BFBFBF;
- border-width: 2px 0 0 0;
- border-radius: 20px;
- text-align: center;
+hr.separador_post {
+    height: 30px;
+    border-style: solid;
+    border-color: #BFBFBF;
+    border-width: 2px 0 0 0;
+    border-radius: 20px;
+    text-align: center;
     margin-bottom: -2%;
 }
- 
+
 hr.separador_post:before {
     display: block;
     content: "";
@@ -240,10 +246,10 @@ hr.separador_post:before {
     border-color: rgb(163, 150, 150);
     border-width: 0 0 1px 0;
     -webkit-border-radius:20px;
-       -moz-border-radius:20px;
-            border-radius:20px;
+    -moz-border-radius:20px;
+    border-radius:20px;
 }
- 
+
 hr.separador_post:after {
     content: "\f08d";
     font-family: FontAwesome;
@@ -274,14 +280,14 @@ hr.separador_post:after {
 
 #subir-click
 {
-   cursor: pointer; 
+    cursor: pointer;
 }
 
 #subir-icon
 {
-    margin-top: -2.3%;  
-   
-    
+    margin-top: -2.3%;
+
+
 }
 
 @media (min-width: 310px ) and (max-width:399px)
@@ -334,90 +340,88 @@ hr.separador_post:after {
 }
 .caja-redes {
     margin: 0 auto;
-    padding: 15px;
     position: relative;
-    width: 400px;
 }
 .caja-redes a {
-	text-align: center;
-	font-size: 20px;
+    text-align: center;
+    font-size: 20px;
 }
 .icon-button {
-	background-color: white;
-	border-radius: 3em;
-	cursor: pointer;
-	display: inline-block;
-	height: 3em;
-	line-height: 3em;
-	margin: 0 8px;
-	position: relative;
-	width: 3em;
+    background-color: white;
+    border-radius: 3em;
+    cursor: pointer;
+    display: inline-block;
+    height: 3em;
+    line-height: 3em;
+    margin: 0 8px;
+    position: relative;
+    width: 3em;
 }
 .icon-button span {
-	border-radius: 0;
-	display: block;
-	height: 0;
-	left: 50%;
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-	width: 0;
+    border-radius: 0;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 0;
 }
 .icon-button:hover span {
-	width: 3em;
-	height: 3em;
-	border-radius: 3em;
-	margin: -1.5em;
+    width: 3em;
+    height: 3em;
+    border-radius: 3em;
+    margin: -1.5em;
 }
 .youtube span {
-	background-color: #C92228;
+    background-color: #C92228;
 }
 .pinterest span {
-	background-color: #C92228;
+    background-color: #C92228;
 }
 .twitter span {
-	background-color: #4099ff;
+    background-color: #4099ff;
 }
 .facebook span {
-	background-color: #3B5998;
+    background-color: #3B5998;
 }
 .google-plus span {
-	background-color: #db5a3c;
+    background-color: #db5a3c;
 }
 /* Iconos */
 .icon-button i {
-	background: none;
-	color: white;
-	left: 0;
-	line-height: 3em;
-	position: absolute;
-	top: 0;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-	width: 3em;
-	z-index: 2;
+    background: none;
+    color: white;
+    left: 0;
+    line-height: 3em;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 3em;
+    z-index: 2;
 }
 
 .icon-button .icon-youtube {
-	color: #C92228;
+    color: #C92228;
 }
 .icon-button .icon-twitter {
-	color: #4099ff;
+    color: #4099ff;
 }
 .icon-button .icon-facebook {
-	color: #3B5998;
+    color: #3B5998;
 }
 .icon-button .icon-google-plus {
-	color: #db5a3c;
+    color: #db5a3c;
 }
 .icon-button:hover .icon-linkedin, .icon-button:hover .icon-youtube, .icon-button:hover .icon-twitter, .icon-button:hover .icon-facebook, .icon-button:hover .icon-google-plus {
-	color: white;
+    color: white;
 }
 
 .lista-footer li:hover
@@ -426,8 +430,8 @@ hr.separador_post:after {
 }
 
 h1, h2{
-   font-family: Prociono;
-   font-weight: bold;
+    font-family: Prociono;
+    font-weight: bold;
 }
 
 h1{ font-size: 35px; }
@@ -437,8 +441,8 @@ h2{ font-size: 25px; }
 p{ text-align: justify; }
 
 .navbar-nav>li>a {
-padding-top: 16px;
-padding-bottom: 21px;
+    padding-top: 16px;
+    padding-bottom: 21px;
 }
 
 #separador{ border-top-width: 5; }
@@ -475,6 +479,7 @@ li:hover{
 
 .myfooter{
     margin-right: 0;
+
 }
 
 h2 > a {
@@ -489,3 +494,30 @@ h2 > a {
     color: white;
 }
 
+.buscador
+{
+    background: #9BBBC7;
+    margin:0;
+    padding:10px;
+    margin-top: 1%
+}
+
+.especiales, a {
+    color: #606;
+}
+
+
+h4.active {
+    color : black;
+}
+a:active:hover{
+    color:black;
+}
+
+a:link:hover{
+    color:black;
+}
+
+a:hover, a:active {
+    color:black;
+}

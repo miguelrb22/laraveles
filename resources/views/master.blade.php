@@ -93,11 +93,11 @@
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="subir-icon">
         <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
     </section>
-    <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:4%">
+    <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 4%">
         <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
             <p>Copyright © 2014 Multifranquicias.com | Todos los derechos reservados. </p>
         </div>
-        <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3" id="footer2">
+        <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" id="footer2">
             <div class="row">
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Multifranquicias</label>
@@ -114,7 +114,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 caja-redes" id="footer3">
+        <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3 caja-redes" id="footer3">
             <a href="#" class="icon-button youtube" style="margin-right:-1%"><i class="fa fa-youtube fa-smile-o icon-youtube"></i><span></span></a>
             <a href="#" class="icon-button twitter" style="margin-right:-1%"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
             <a href="#" class="icon-button facebook" style="margin-right:-1%"><i class="fa fa-facebook icon-facebook"></i><span></span></a>

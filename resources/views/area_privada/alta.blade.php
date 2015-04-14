@@ -141,7 +141,7 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="row">
-                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6 has-feedback">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Nombre Comercial:</label>
                                                                     <label class="input"><i
                                                                                 class="icon-prepend fa fa-user"></i>
@@ -201,17 +201,17 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                                <label class="label">Logo:</label>
+                                                                    <label class="label">Logo:</label>
 
-                                                                <div class="input input-file">
+                                                                    <div class="input input-file">
                                                                     <span class="button"><input type="file" id="file"
                                                                                                 name="logo"
                                                                                                 onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                            type="text"
-                                                                            placeholder="Seleciona una imagen"
-                                                                            readonly="">
-                                                                </div>
-                                                            </section>
+                                                                                type="text"
+                                                                                placeholder="Seleciona una imagen"
+                                                                                readonly="">
+                                                                    </div>
+                                                                </section>
                                                             </div>
                                                         </div>
                                                         <hr>
@@ -284,7 +284,7 @@
                                                     <fieldset>
                                                         <h5>Datos del local y negocio:</h5>
                                                         <br>
-                                                        <div class="from-group">
+                                                        <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Requisítos del Local:</label>
@@ -367,7 +367,7 @@
                                                         <br>
                                                         <h5>Organización y expansión:</h5>
                                                         <br>
-                                                        <div class="from-group">
+                                                        <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Año de Creación:</label>
@@ -387,13 +387,12 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label>Red de España:</label>
-                                                                    <label class="input">
-                                                                        <i class="icon-prepend fa fa-question-circle"></i>
-                                                                        <input type="text" class="form-control" name="red" placeholder="Propios y Franquiciados">
+                                                                    <label class="input"> <i class="icon-prepend fa fa-question-circle"></i>
+                                                                        <input type="text" class="form-control" id="red" placeholder="Propios y Franquiciados">
                                                                         <b class="tooltip tooltip-top-left">
                                                                             <i class="fa fa-warning txt-color-teal"></i>
                                                                             Nº de establecimientos propios y fraquiciados.
-                                                                            (Ejem: 3 propios y 5 franquiciados). </b>
+                                                                            (Ejem: 3 propios y 5 franquiciados).</b>
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -438,12 +437,12 @@
                                             <div class="row" style="margin:0px">
                                                 <h3 class="text-center"><span>Datos Privados</span></h3>
 
-                                                <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6">
                                                     <hr/>
                                                     <fieldset>
                                                         <h5>Datos Franquicia:</h5>
                                                         <br>
-                                                        <div class="from-group">
+                                                        <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Nombre:</label>
@@ -460,30 +459,30 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="from-group">
-                                                            <div class="row">
-                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <div class="row" data-date-format="dd/mm/yyyy">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" id="fechaI">
                                                                     <label class="input">Fecha Alta Ficha:</label>
-                                                                    <label class="input"><i
+                                                                    <label class="input" ><i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="inicio" id="inicio" class="hasDatepicker form-control" placeholder="Fecha Alta Ficha">
+                                                                        <input type="text" class="span2" value="" id="dpd1" name="inicio" data-date-format="dd/mm/yyyy"  id="finicio">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Fecha Vencimiento Ficha:</label>
-                                                                    <label class="input"> <i
+                                                                    <label class="input" id="ffin"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="final" id="final" class="hasDatepicker form-control" placeholder="Fecha Fin Ficha">
+                                                                        <input type="text" class="span2" value="" id="dpd2" name="fin" data-date-format="dd/mm/yyyy">
                                                                     </label>
                                                                 </section>
                                                             </div>
                                                         </div>
-                                                        <div class="from-group">
+                                                        <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label>Razón Social:</label>
                                                                     <label class="input">
-                                                                        <input type="text" name="razon" id="razon" class="form-control" placeholder="Razón Social">
+                                                                        <input type="text" name="razon" id="razon" class="form-control" placeholder="Razón social">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -491,16 +490,14 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Categoria especial:</label>
-                                                                    <label class="select">
-                                                                        <select name="categoria" class="form-control">
-                                                                            <option value="1" selected="">- Selecciona categoría especial - </option>
-                                                                            <option value="2">Franquicias de éxito</option>
-                                                                            <option value="3">Fanquicias rentables</option>
-                                                                            <option value="4">Fanquicias low cost</option>
-                                                                            <option value="5">Fanquicias baratas</option>
-                                                                        </select><i></i>
-                                                                    </label>
+                                                                    <label>Categoría especial:</label>
+                                                                    <select class="form-control" name="especial">
+                                                                        <option value="">Selecciona categoria Especial</option>
+                                                                        <option value="exito">Franquicias de éxito</option>
+                                                                        <option value="rentables">Franquicias rentables</option>
+                                                                        <option value="baratas">Franquicias baratas</option>
+                                                                        <option value="low-cost">Franquicias low-cost</option>
+                                                                    </select>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Fax:</label>
@@ -510,18 +507,18 @@
                                                                 </section>
                                                             </div>
                                                         </div>
-
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12">
                                                                     <label>Categoria:</label>
-                                                                    <select multiple style="width:100%" class="select2" id="tags">
+                                                                    <select multiple style="width:100%" class="select2" id="categoria" name="categoria">
                                                                         <optgroup label="Alaskan/Hawaiian Time Zone">
                                                                             <option value="AK">Alaska</option>
                                                                             <option value="HI">Hawaii</option>
                                                                         </optgroup>
                                                                         <optgroup label="Pacific Time Zone">
                                                                             <option value="CA">California</option>
-                                                                            <option value="NV" selected="selected">Nevada</option>
+                                                                            <option value="NV">Nevada</option>
                                                                             <option value="OR">Oregon</option>
                                                                             <option value="WA">Washington</option>
                                                                         </optgroup>
@@ -529,7 +526,7 @@
                                                                             <option value="AZ">Arizona</option>
                                                                             <option value="CO">Colorado</option>
                                                                             <option value="ID">Idaho</option>
-                                                                            <option value="MT" selected="selected">Montana</option><option value="NE">Nebraska</option>
+                                                                            <option value="MT">Montana</option><option value="NE">Nebraska</option>
                                                                             <option value="NM">New Mexico</option>
                                                                             <option value="ND">North Dakota</option>
                                                                             <option value="UT">Utah</option>
@@ -561,7 +558,7 @@
                                                                             <option value="ME">Maine</option>
                                                                             <option value="MD">Maryland</option>
                                                                             <option value="MA">Massachusetts</option>
-                                                                            <option value="MI" selected="selected">Michigan</option>
+                                                                            <option value="MI">Michigan</option>
                                                                             <option value="NH">New Hampshire</option>
                                                                             <option value="NJ">New Jersey</option>
                                                                             <option value="NY">New York</option>
@@ -575,7 +572,8 @@
                                                                             <option value="WV">West Virginia</option>
                                                                         </optgroup>
                                                                     </select>
-                                                            </section>
+                                                                </section>
+                                                            </div>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -584,103 +582,97 @@
                                                     <fieldset>
                                                         <h5>Datos de Contacto:</h5>
                                                         <br>
-
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-9 col-sm-9">
-                                                                <label>Domicilio Facturación:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="facturación"
-                                                                           id="facturacion"
-                                                                           placeholder="Domicilio Facturación">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-3 col-sm-3">
-                                                                <label>Código Postal:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cpfacturacion"
-                                                                           id="facturacion" placeholder="CP">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
+                                                                    <label>Domicilio Facturación:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="facturación" id="facturacion" class="form-control" placeholder="Domicilio Facturación">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
+                                                                    <label>Código Postal:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="cpfacturacion" id="facturacion" class="form-control" placeholder="CP">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-9 col-sm-9">
-                                                                <label>Domicilio Fiscal:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="fiscal" id="fiscal"
-                                                                           placeholder="Domicilio Fiscal">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-3 col-sm-3">
-                                                                <label>Código Postal:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cpfacturacion"
-                                                                           id="postalfiscal" placeholder="CP">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
+                                                                    <label>Domicilio Fiscal:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="fiscal" id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
+                                                                    <label>Código Postal:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="cpfacturacion" class="form-control" id="postalfiscal" placeholder="CP">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-9 col-sm-9">
-                                                                <label>Domicilio Postal:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="fiscal"
-                                                                           id="domiciliopostal"
-                                                                           placeholder="Domicilio Fiscal">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-3 col-sm-3">
-                                                                <label>Código Postal:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cpfacturacion"
-                                                                           id="postalpostal" placeholder="CP">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
+                                                                    <label>Domicilio Postal:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="fiscal" class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-3 col-sm-3">
+                                                                    <label>Código Postal:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" name="cpfacturacion" class="form-control" id="postalpostal" placeholder="CP">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Nombre y Apellidos de Contacto:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="nombre_contacto"
-                                                                           id="contanto"
-                                                                           placeholder="Nombre y Apellidos">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Teléfono de Contacto:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="telefono_contacto"
-                                                                           id="telfcontatco"
-                                                                           placeholder="Teléfono de Contacto">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Nombre y Apellidos de Contacto:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="nombre_contacto" class="form-control" id="contanto" placeholder="Nombre y Apellidos">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Teléfono de Contacto:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="telefono_contacto" class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6"
-                                                                     style="margin-bottom: 38px;">
-                                                                <label>Email de Contacto:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="email_contacto"
-                                                                           id="emailcontacto"
-                                                                           placeholder="Email Contacto">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Cargo contacto:</label>
-                                                                <label class="input"> <i
-                                                                            class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="cpfacturacion"
-                                                                           id="cargcontacto"
-                                                                           placeholder="Cargo de Contacto">
-                                                                </label>
-                                                            </section>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" style="margin-bottom: 38px;">
+                                                                    <label>Email de Contacto:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="email_contacto"
+                                                                               id="emailcontacto"
+                                                                               placeholder="Email Contacto">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Cargo contacto:</label>
+                                                                    <label class="input"> <i
+                                                                                class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="cpfacturacion" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -750,57 +742,42 @@
     <!-- PAGE RELATED PLUGIN(S) -->
     <script src="{{ asset('area_privada/js/plugin/jquery-form/jquery-form.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/dropzone/dropzone.min.js') }}"></script>
-    <script src="{{ asset('area_privada/js/plugin/bootstrap-timepicker/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
-
+    <script src="{{ asset('area_privada/js/plugin/datepicker_mio/js/bootstrap-datepicker.js')}}"></script>
 @endsection
 
 @section('ready')
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
+    //prueba
 
-    if(dd<10) {
-    dd='0'+dd;
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+    var checkin = $('#dpd1').datepicker({
+    onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
-
-    if(mm<10) {
-    mm='0'+mm;
-    }
-
-    today = dd+'/'+mm+'/'+yyyy;
-
-    $('#inicio').datepicker({
-    dateFormat : 'dd/mm/yy',
-    prevText : '<i class="fa fa-chevron-left"></i>',
-    nextText : '<i class="fa fa-chevron-right"></i>',
-
-    onSelect: function(date) {
-
-
-    return date < today ? 'disabled' : '';
-    }
-
     }).on('changeDate', function(ev) {
     if (ev.date.valueOf() > checkout.date.valueOf()) {
-    var newDate = new Date(ev.date);
+    var newDate = new Date(ev.date)
     newDate.setDate(newDate.getDate() + 1);
     checkout.setValue(newDate);
     }
-    });
-
-    $('#final').datepicker({
-    dateFormat : 'dd/mm/yy',
-    prevText : '<i class="fa fa-chevron-left"></i>',
-    nextText : '<i class="fa fa-chevron-right"></i>',
-    onSelect : function(selectedDate) {
-    $('#startdate').datepicker('option', 'maxDate', selectedDate);
+    checkin.hide();
+    $('#dpd2')[0].focus();
+    }).data('datepicker');
+    var checkout = $('#dpd2').datepicker({
+    onRender: function(date) {
+    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
     }
-    }).on;
+    }).on('changeDate', function(ev) {
+    checkout.hide();
+    }).data('datepicker');
+
+    //prueba
+
 
     Dropzone.autoDiscover = true;
     Dropzone.options.mydropzone = {
@@ -815,9 +792,30 @@
     $('#alta').addClass("active");
     $('#gestion').addClass("active");
 
-    $("#tags").select2({
+    $("#categoria").select2({
         maximumSelectionSize: 4
     });
+
+
+    $('#finicio .datepicker')
+        .datepicker({
+            format: 'dd/mm/yyyy'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#form-alta').formValidation('revalidateField', 'inicio');
+        });
+
+    $('#ffin .datepicker')
+            .datepicker({
+            format: 'dd/mm/yyyy'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#form-alta').formValidation('revalidateField', 'fin');
+        });
+
+
 
     $('#form-alta').bootstrapValidator({
 					feedbackIcons : {
@@ -856,7 +854,7 @@
 									message : 'Este campo es requerido'
 								},
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                                 stringLength : {
 									max : 5,
@@ -961,7 +959,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                             }
                         },
@@ -972,7 +970,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                             }
                         },
@@ -983,7 +981,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                             }
                         },
@@ -994,7 +992,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                             }
                         },
@@ -1005,7 +1003,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                             }
                         },
@@ -1039,7 +1037,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                                 stringLength : {
 									max : 4,
@@ -1055,7 +1053,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                                 stringLength : {
 									max : 4,
@@ -1078,7 +1076,7 @@
                                     message : 'Este campo es requerido'
                                 },
                                 numeric : {
-                                    message : 'Este campo debe ser numerico'
+                                    message : 'Este campo debe ser numérico'
                                 },
                             }
                         },
@@ -1098,19 +1096,16 @@
                             }
                         },
                         nombre : {
-                            group : '.col-lg-6',
                             validators : {
+                            group : '.col-lg-6',
                                 notEmpty : {
                                     message : 'Este campo es requerido'
                                 }
                             }
                         },
                         cif : {
-                            group : '.col-lg-6',
                             validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
+                                group : '.col-lg-6',
                                 stringLength : {
 									max : 9,
                                     min : 9,
@@ -1118,7 +1113,6 @@
                                 }
                             }
                         },
-
                         razon : {
                             validators: {
                                 notEmpty : {
@@ -1126,29 +1120,20 @@
                                 }
                             }
                         },
-            			categoria : {
-							group : '.col-lg-6',
-							validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								}
-							}
-						},
-                        fax : {
-							group : '.col-lg-6',
-							validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								}
-							}
-						}
+                        categoria : {
+                            validators: {
+                                notEmpty : {
+                                    message : 'Este campo es requerido'
+                                }
+                            }
+                        }
 					}
 				});
 
 @endsection
 
 
-<!--
+        <!--
                                                                             <label class="select">
                                                                     <select name="categoria">
                                                                         <option value="1" selected="">- Selecciona
