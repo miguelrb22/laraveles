@@ -15,31 +15,35 @@ Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
 
 Route::get('home', 'HomeController@index');
 
-#Route::post('login', 'AuthControllerB@postLogin'); // Verificar datos
-#Route::get('logout', 'AuthControllerB@logOut'); // Finalizar sesión
+Route::controllers([
+    'auth' => '\App\Http\Controllers\Auth\AuthController',
+    'password' => '\App\Http\Controllers\Auth\PasswordController',
+]);
 
 
+/*************************************************************************************************************/
+/********************************** AREA PRIVADA ADMINISTRACION **********************************************/
+/*************************************************************************************************************/
 
-/*area privada*/
+// Validamos los datos de inicio de sesión.
+Route::post('login',  ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
 
-#Route::group(['middleware' => ''], function()
-
-
-Route::group([], function()
+// Las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
+Route::group(array(), function()
 {
     Route::get('areaprivada', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
-    Route::post('areaprivada', ['as' => 'private', 'uses' => 'AuthControllerB@postLogin']);
-
     Route::get('areaprivada/alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
     Route::get('areaprivada/publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
     Route::get('areaprivada/categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
     Route::get('areaprivada/noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
 
+    //Cerrar sesion
+    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 });
+/***************************************************************************************************************/
+/***************************************************************************************************************/
 
 
-/**login **/
-Route::get('login', ['as' => 'login', 'uses' => 'AreaPrivadaController@index']);
 
 
 
@@ -52,10 +56,7 @@ Route::get('franquiciador/noticias', ['as' => 'Fnoticias', 'uses' => 'AreaFranqu
 
 
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+
 
 //perfil
 Route::get('perfil/{name}', function ($name) {

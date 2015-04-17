@@ -11,11 +11,11 @@
                 <h4 class="modal-title" id="myModalLabel">
                     <i class="fa fa-exclamation-triangle faa-ring animated">
                     </i>
-                    Control de acceso
+                    Control de acceso jeje
                 </h4>
             </div>
 
-            <form method="post" action="{{ URL::route('private') }}">
+            <form method="post" action="{{ URL::route('login') }}">
             <div class="modal-body">
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -24,7 +24,7 @@
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="text" class="form-control" id="Usermodal" placeholder="Usuario"  name="user" autofocus>
+                    <input type="text" class="form-control" id="Usermodal" placeholder="Usuario"  name="username" autofocus>
                 </div>
                 <br>
 
@@ -33,7 +33,7 @@
                         <i class="fa fa-key">
                         </i>
                     </div>
-                    <input type="text" class="form-control" id="Userpass" placeholder="Contraseña" name="pass">
+                    <input type="text" class="form-control" id="Userpass" placeholder="Contraseña" name="password">
 
                 </div>
             </div>
