@@ -75,3 +75,19 @@ Route::get('emprendedor-consultoria', ['as' => 'emprendedor', 'uses' => 'WebCont
 
 //emprendor consultoria
 Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@exito']);
+
+Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
+
+
+Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
+
+    Route::get('dashboard', ['as' => 'private', 'uses' => 'franquiciaController@index']);
+    Route::get('alta', ['as' => 'nueva_alta', 'uses' => 'franquiciaController@alta']);
+    Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'franquiciaController@publicidad']);
+    Route::get('categorias', ['as' => 'categorias', 'uses' => 'franquiciaController@categorias']);
+    Route::get('noticias', ['as' => 'noticias', 'uses' => 'franquiciaController@noticias']);
+
+    Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@store']);
+    //Route::get('peticion',['as' => 'peticion' , 'uses' => 'FranquiciasController@registros']);
+
+});
