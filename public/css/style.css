@@ -207,6 +207,7 @@ a:hover{
 
 #tituloNotica {
     font-family: mia;
+    src: url(‘http://localhost/multifranquicias/public/fonts/Prociono-Regular.otf’);
     font-size: 19px;
     color : #606;
 }
@@ -444,7 +445,7 @@ p{ text-align: justify; }
     padding-bottom: 21px;
 }
 
-#separador{ border-top-width: 5px; }
+#separador{ border-top-width: 5; }
 
 #tperfil td { width: 50%; }
 

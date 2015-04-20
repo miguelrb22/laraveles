@@ -129,8 +129,8 @@
                                     <!-- widget content -->
                                     <div class="widget-body no-padding">
                                         <!-- comienzo form -->
-                                        <form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12"
-                                              novalidate="novalidate">
+                                        <!--<form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12" novalidate="novalidate">-->
+                                        {!! Form::open (['action' => 'areaprivada\franquiciaController@store' , 'method' =>'POST', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
                                             <div class="row" style="margin:0px">
                                                 <h3 class="text-center"><span> Datos Públicos</span></h3>
 
@@ -142,10 +142,9 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Nombre Comercial:</label>
-                                                                    <label class="input"><i
-                                                                                class="icon-prepend fa fa-user"></i>
-                                                                        <input id="NomBre" type="text" name="fname" class="form-control" placeholder="Nombre">
+                                                                    <label> Nombre:</label>
+                                                                    <label class="input"><i class="icon-prepend fa fa-user"></i>
+                                                                        <input id="nombre_comercial" type="text" name="nombre_comercial" class="form-control" placeholder="Nombre">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6 has-feedback">
@@ -178,8 +177,7 @@
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Web:</label>
-                                                                    <label class="input"><i
-                                                                                class="icon-prepend fa fa-user"></i>
+                                                                    <label class="input"><i class="icon-prepend fa fa-user"></i>
                                                                         <input id="web" type="text" name="web" class="form-control"  placeholder="Página Web">
                                                                     </label>
                                                                 </section>
@@ -191,9 +189,7 @@
                                                                          style="margin-bottom: 12px">
                                                                     <label>Descripción:</label>
                                                                     <label class="textarea textarea-resizable">
-                                                                        <textarea class="custom-scroll" rows="1"
-                                                                                  id="fdescripcion"
-                                                                                  name="fdescripcion"></textarea>
+                                                                        <textarea class="custom-scroll" rows="1" id="descripcion" name="descripcion"></textarea>
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -202,15 +198,9 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label class="label">Logo:</label>
-
-                                                                    <div class="input input-file">
-                                                                    <span class="button"><input type="file" id="file"
-                                                                                                name="logo"
-                                                                                                onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                                type="text"
-                                                                                placeholder="Seleciona una imagen"
-                                                                                readonly="">
-                                                                    </div>
+                                                                        <div class="input input-file">
+                                                                            <span class="button"><input type="file" id="file" name="logo_url" onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input type="text" readonly="">
+                                                                        </div>
                                                                 </section>
                                                             </div>
                                                         </div>
@@ -234,13 +224,13 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Presencia Internacional:</label>
                                                                     <label class="input">
-                                                                        <input id="presencia" type="text" name="presencia" class="form-control" placeholder="Presencia Internacional">
+                                                                        <input id="presencia" type="text" name="presencia_int" class="form-control" placeholder="Presencia Internacional">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Royalti:</label>
                                                                     <label class="input">
-                                                                        <input id="royalti" type="text" name="royalti" class="form-control" placeholder="Royalti">
+                                                                        <input id="royalti" type="text" name="royalty" class="form-control" placeholder="Royalti">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -250,13 +240,13 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Canon Entrada:</label>
                                                                     <label class="input">
-                                                                        <input id="entrada" type="text" name="entrada" class="form-control" placeholder="Canon Entrada">
+                                                                        <input id="entrada" type="text" name="canon_entrada" class="form-control" placeholder="Canon Entrada">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Canon Publicitario:</label>
                                                                     <label class="input">
-                                                                        <input id="cpublicitario" type="text" name="cpublicitario" class="form-control" placeholder="Canon Publicitario">
+                                                                        <input id="cpublicitario" type="text" name="canon_publicitario" class="form-control" placeholder="Canon Publicitario">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -266,7 +256,7 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Duración Contrato:</label>
                                                                     <label class="input">
-                                                                        <input id="contrato" type="text" name="contrato" class="form-control" placeholder="Duración Contrato">
+                                                                        <input id="contrato" type="text" name="duracion_contrato" class="form-control" placeholder="Duración Contrato">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -289,13 +279,13 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Requisítos del Local:</label>
                                                                     <label class="input">
-                                                                        <input id="requisitos" type="text" name="requisitos" class="form-control" placeholder="Requisítos del Local">
+                                                                        <input id="requisitos" type="text" name="requisitos_local" class="form-control" placeholder="Requisítos del Local">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Locales Propios:</label>
                                                                     <label class="input">
-                                                                        <input id="localesp" type="text" name="localesp" class="form-control" placeholder="Locales Propios">
+                                                                        <input id="localesp" type="text" name="locales_propios" class="form-control" placeholder="Locales Propios">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -305,13 +295,13 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Locales Franquiciados:</label>
                                                                     <label class="input">
-                                                                        <input id="localesf" type="text" name="localesf" class="form-control" placeholder="Locales Franquiciados">
+                                                                        <input id="localesf" type="text" name="locales_franquiciados" class="form-control" placeholder="Locales Franquiciados">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Dimensiones del Local:</label>
                                                                     <label class="input">
-                                                                        <input id="dimesion" type="text" name="dimension" class="form-control" placeholder="Dimensiones del Local">
+                                                                        <input id="dimesion" type="text" name="dimensiones_local" class="form-control" placeholder="Dimensiones del Local">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -321,13 +311,13 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Población Mínima:</label>
                                                                     <label class="input">
-                                                                        <input id="poblacion" type="text" name="poblacion" class="form-control" placeholder="Poblacion Mínima">
+                                                                        <input id="poblacion" type="text" name="poblacion_minima" class="form-control" placeholder="Poblacion Mínima">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Superficie Mínima del Local:</label>
                                                                     <label class="input">
-                                                                        <input id="dimesion" type="text" name="superficie" class="form-control" placeholder="Superficie Mínima">
+                                                                        <input id="dimesion" type="text" name="superficie_minima" class="form-control" placeholder="Superficie Mínima">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -339,17 +329,17 @@
 
                                                                     <div class="inline-group" style="margin-top:5px">
                                                                         <label class="radio">
-                                                                            <input id="sexo_h" class="form-control" type="radio" name="exclusividad" value="1">
+                                                                            <input id="sexo_h" class="form-control" type="radio" name="zona_exclusividad" value="1">
                                                                             <i></i>Si</label>
                                                                         <label class="radio">
-                                                                            <input id="sexo_m" class="form-control" type="radio" name="exclusividad" value="0">
+                                                                            <input id="sexo_m" class="form-control" type="radio" name="zona_exclusividad" value="0">
                                                                             <i></i>No</label>
                                                                     </div>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-8 col-sm-8 col-lg-8">
                                                                     <label>Perfil del Franquiciado:</label>
                                                                     <label class="input">
-                                                                        <input id="perfil" type="text" name="pefil" class="form-control" placeholder="Perfil del Franquiciado">
+                                                                        <input id="perfil" type="text" name="perfil_franquiciado" class="form-control" placeholder="Perfil del Franquiciado">
                                                                     </label>
                                                                 </section>
                                                             </div></div>
@@ -358,7 +348,7 @@
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label>Zonas Preferentes:</label>
                                                                     <label class="input">
-                                                                        <input id="perfil" type="text" name="preferente" class="form-control" placeholder="Zonas Preferentes">
+                                                                        <input id="perfil" type="text" name="zonas_preferentes" class="form-control" placeholder="Zonas Preferentes">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -372,13 +362,13 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Año de Creación:</label>
                                                                     <label class="input">
-                                                                        <input type="text" name="creacion" placeholder="Año de Creación" data-mask="2099" class="form-control">
+                                                                        <input type="text" name="anyo_creacion" placeholder="Año de Creación" data-mask="2099" class="form-control">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Inicio de Expansión:</label>
                                                                     <label class="input">
-                                                                        <input id="expasion" type="text" name="expansion" class="form-control" splaceholder="Incio de Expansión">
+                                                                        <input id="expasion" type="text" name="inicio_expansion" class="form-control" splaceholder="Incio de Expansión">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -388,7 +378,7 @@
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label>Red de España:</label>
                                                                     <label class="input"> <i class="icon-prepend fa fa-question-circle"></i>
-                                                                        <input type="text" class="form-control" id="red" placeholder="Propios y Franquiciados">
+                                                                        <input type="text" class="form-control" name="red_spain" id="red_spain" placeholder="Propios y Franquiciados">
                                                                         <b class="tooltip tooltip-top-left">
                                                                             <i class="fa fa-warning txt-color-teal"></i>
                                                                             Nº de establecimientos propios y fraquiciados.
@@ -402,7 +392,7 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Nº de Países:</label>
                                                                     <label class="input">
-                                                                        <input id="paises" type="text" name="paises" class="form-control" placeholder="Nº de Paises">
+                                                                        <input id="paises" type="text" name="n_paises" class="form-control" placeholder="Nº de Paises">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -421,11 +411,11 @@
                                                                     <div class="inline-group" style="margin-top:5px">
                                                                         <label class="radio">
                                                                             <input id="extranjero_s" class="form-control"
-                                                                                   type="radio" name="extranjero" value="1">
+                                                                                   type="radio" name="red_extranjero" value="1">
                                                                             <i></i>Si</label>
                                                                         <label class="radio">
                                                                             <input id="extranjero_n" class="form-control"
-                                                                                   type="radio" name="extranjero" value="0">
+                                                                                   type="radio" name="red_extranjero" value="0">
                                                                             <i></i>No</label>
                                                                     </div>
                                                                 </section>
@@ -447,7 +437,7 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Nombre:</label>
                                                                     <label class="input">
-                                                                        <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Nombre">
+                                                                        <input id="nombre" type="text" name="nombre_franquicia" class="form-control" placeholder="Nombre">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -463,16 +453,15 @@
                                                             <div class="row" data-date-format="dd/mm/yyyy">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" id="fechaI">
                                                                     <label class="input">Fecha Alta Ficha:</label>
-                                                                    <label class="input" ><i
-                                                                                class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" class="span2" value="" id="dpd1" name="inicio" data-date-format="dd/mm/yyyy"  id="finicio">
+                                                                    <label class="input" ><i class="icon-append fa fa-calendar"></i>
+                                                                        <input type="text" class="span2" value="" id="dpd1" name="fecha_alta_ficha" data-date-format="dd/mm/yyyy"  id="finicio">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Fecha Vencimiento Ficha:</label>
                                                                     <label class="input" id="ffin"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" class="span2" value="" id="dpd2" name="fin" data-date-format="dd/mm/yyyy">
+                                                                        <input type="text" class="span2" value="" id="dpd2" name="fecha_vencimiento_ficha" data-date-format="dd/mm/yyyy">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -482,7 +471,7 @@
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label>Razón Social:</label>
                                                                     <label class="input">
-                                                                        <input type="text" name="razon" id="razon" class="form-control" placeholder="Razón social">
+                                                                        <input type="text" name="razon_social" id="razon_social" class="form-control" placeholder="Razón social">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -588,14 +577,14 @@
                                                                     <label>Domicilio Facturación:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="facturación" id="facturacion" class="form-control" placeholder="Domicilio Facturación">
+                                                                        <input type="text" name="domicilio_facturacion" id="facturacion" class="form-control" placeholder="Domicilio Facturación">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
                                                                     <label>Código Postal:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="cpfacturacion" id="facturacion" class="form-control" placeholder="CP">
+                                                                        <input type="text" name="cp_fac" id="facturacion" class="form-control" placeholder="CP">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -606,14 +595,14 @@
                                                                     <label>Domicilio Fiscal:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="fiscal" id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
+                                                                        <input type="text" name="domicio_fiscal" id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
                                                                     <label>Código Postal:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="cpfacturacion" class="form-control" id="postalfiscal" placeholder="CP">
+                                                                        <input type="text" name="cp_fiscal" class="form-control" id="postalfiscal" placeholder="CP">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -624,14 +613,14 @@
                                                                     <label>Domicilio Postal:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="fiscal" class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
+                                                                        <input type="text" name="domicilio_postal" class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-3 col-sm-3">
                                                                     <label>Código Postal:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-calendar"></i>
-                                                                        <input type="text" name="cpfacturacion" class="form-control" id="postalpostal" placeholder="CP">
+                                                                        <input type="text" name="cp_postal" class="form-control" id="postalpostal" placeholder="CP">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -642,14 +631,14 @@
                                                                     <label>Nombre y Apellidos de Contacto:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-home"></i>
-                                                                        <input type="text" name="nombre_contacto" class="form-control" id="contanto" placeholder="Nombre y Apellidos">
+                                                                        <input type="text" name="nombre_apellidos_contacto" class="form-control" id="contanto" placeholder="Nombre y Apellidos">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Teléfono de Contacto:</label>
                                                                     <label class="input"> <i
                                                                                 class="icon-append fa fa-home"></i>
-                                                                        <input type="text" name="telefono_contacto" class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
+                                                                        <input type="text" name="tf_contacto" class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -658,18 +647,14 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" style="margin-bottom: 38px;">
                                                                     <label>Email de Contacto:</label>
-                                                                    <label class="input"> <i
-                                                                                class="icon-append fa fa-home"></i>
-                                                                        <input type="text" name="email_contacto"
-                                                                               id="emailcontacto"
-                                                                               placeholder="Email Contacto">
+                                                                    <label class="input"> <i class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="email_contacto" id="emailcontacto" placeholder="Email Contacto">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Cargo contacto:</label>
-                                                                    <label class="input"> <i
-                                                                                class="icon-append fa fa-home"></i>
-                                                                        <input type="text" name="cpfacturacion" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
+                                                                    <label class="input"> <i class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="cargo_contacto" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -682,7 +667,8 @@
                                                     Guardar Ficha
                                                 </button>
                                             </footer>
-                                        </form>
+                                        {!! Form::close() !!}
+                                        <!--</form>-->
                                         <!-- fin form -->
                                         <div class="row col col-xs-12 col-md-12 col-sm-12" style="margin:0px">
                                             <h3 class="text-center"><span>Imagenes:</span></h3>
@@ -691,7 +677,6 @@
                                                  id="wid-id-0" data-widget-editbutton="false" role="widget">
                                                 <!-- widget options:
                                                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
                                                 data-widget-colorbutton="false"
                                                 data-widget-editbutton="false"
                                                 data-widget-togglebutton="false"
@@ -700,7 +685,6 @@
                                                 data-widget-custombutton="false"
                                                 data-widget-collapsed="true"
                                                 data-widget-sortable="false"
-
                                                 -->
                                                 <header role="heading"><div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);" aria-expanded="false"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
                                                     <span class="widget-icon"> <i class="fa fa-cloud"></i> </span>
@@ -824,7 +808,7 @@
 						validating : 'glyphicon glyphicon-refresh'
 					},
 					fields : {
-						fname : {
+						nombre_comercial : {
                             group : '.col-lg-6',
 							validators : {
 								notEmpty : {
@@ -871,7 +855,7 @@
 								}
 							}
                         },
-                        fdescripcion : {
+                        descripcion : {
                            validators : {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
@@ -882,7 +866,7 @@
 								}
                             }
                         },
-                        logo : {
+                        logo_url : {
                             validators : {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
@@ -896,7 +880,7 @@
                                 }
                             }
                         },
-                        presencia : {
+                        presencia_int : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -904,7 +888,7 @@
                                 }
                             }
                         },
-                        royalti : {
+                        royalty : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -912,7 +896,7 @@
                                 }
                             }
                         },
-                        entrada : {
+                        canon_entrada : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -920,7 +904,7 @@
                                 }
                             }
                         },
-                        cpublicitario : {
+                        canon_publicitario : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -928,7 +912,7 @@
                                 }
                             }
                         },
-                        contrato : {
+                        duracion_contrato : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -944,7 +928,7 @@
                                 }
                             }
                         },
-                        requisitos : {
+                        requisitos_local : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -952,7 +936,7 @@
                                 }
                             }
                         },
-                        localesp : {
+                        locales_propios : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -963,7 +947,7 @@
                                 },
                             }
                         },
-                        dimension : {
+                        dimensiones_local : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -974,7 +958,7 @@
                                 },
                             }
                         },
-                        localesf : {
+                        locales_franquiciados : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -985,7 +969,7 @@
                                 },
                             }
                         },
-                        poblacion : {
+                        poblacion_minima: {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -996,7 +980,7 @@
                                 },
                             }
                         },
-                        superficie : {
+                        superficie_minima : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -1007,7 +991,7 @@
                                 },
                             }
                         },
-                        exclusividad : {
+                        zona_exclusividad : {
                             group : '.col-lg-4',
                             validators : {
                                 notEmpty : {
@@ -1015,7 +999,7 @@
                                 }
                             }
                         },
-                        pefil : {
+                        perfil_franquiciado : {
                             group : '.col-lg-8',
                             validators : {
                                 notEmpty : {
@@ -1023,14 +1007,14 @@
                                 }
                             }
                         },
-                        preferente : {
+                        zonas_preferentes : {
                             validators : {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
                                 }
                             }
                         },
-                        creacion : {
+                        anyo_creacion : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -1046,7 +1030,7 @@
                                 }
                             }
                         },
-                        expansion : {
+                        inicio_expansion : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -1062,14 +1046,14 @@
                                 }
                             }
                         },
-                        red: {
+                        red_spain: {
                             validators : {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
                                 }
                             }
                         },
-                        paises : {
+                        n_paises : {
                             group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
@@ -1088,14 +1072,14 @@
                                 }
                             }
                         },
-                        extranjero : {
+                        red_extranjero : {
                             validators : {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
                                 }
                             }
                         },
-                        nombre : {
+                        nombre_franquicia : {
                             validators : {
                             group : '.col-lg-6',
                                 notEmpty : {
@@ -1113,7 +1097,7 @@
                                 }
                             }
                         },
-                        razon : {
+                        razon_social : {
                             validators: {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
@@ -1184,7 +1168,6 @@
                                                                         <option value="32">Vending</option>
                                                                     </select> <i></i>
                                                                 </label>
-
                                                                                                                             <section class="col col-xs-12 col-md-6 col-sm-6">
                                                                 <label>Selecciona Subcategorias:</label>
                                                                 <label class="select select-multiple">
@@ -1199,7 +1182,6 @@
                                                                         <option value="8">Subcat8</option>
                                                                         <option value="9">Subcat9</option>
                                                                     </select> </label>
-
                                                                 <div class="note">
                                                                     <strong>Note:</strong> Presiona el botón Ctrl y
                                                                     selecciona las subcategorias pertinentes.

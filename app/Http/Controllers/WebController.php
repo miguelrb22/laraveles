@@ -47,4 +47,9 @@ class WebController extends Controller {
     {
         return view('exito');
     }
+
+    public function buscar()
+    {
+        return view('busqueda');
+    }
 }

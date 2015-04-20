@@ -132,7 +132,7 @@
         });
         $(".content-12").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquicia.blade.php");
+            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/areaprivada.blade.php");
         });
         $(".content-13").on('click',function()
         {
