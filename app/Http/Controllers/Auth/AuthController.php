@@ -43,7 +43,7 @@ class AuthController extends Controller
             return redirect('/areaprivada');
 
         } else {
-            return redirect('/');
+            return redirect('/?e=1');
         }
 
     }

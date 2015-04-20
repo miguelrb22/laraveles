@@ -33,20 +33,27 @@
                         <i class="fa fa-key">
                         </i>
                     </div>
-                    <input type="text" class="form-control" id="Userpass" placeholder="Contraseña" name="password">
+                    <input type="password" class="form-control" id="Userpass" placeholder="Contraseña" name="password">
 
                 </div>
-            </div>
+                </br>
 
-            <div class="modal-footer m-hefo">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Cancelar
+                <div class="pull-right">
+                <button type="button" class="btn btn-default  btn-lg" data-dismiss="modal">
+                    Salir
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-success btn-lg">
                     Entrar
                 </button>
+                    </div>
+                </br>
             </div>
-                </form>
+            </form>
+
+
+            <div class="modal-footer m-hefo">
+
+            </div>
 
         </div>
     </div>
