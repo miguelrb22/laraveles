@@ -78,6 +78,9 @@ Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@ex
 
 Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
 
+Route::get('quienes-somos', ['as' => 'quien-soy', 'uses' => 'WebController@quiensoy']);
+
+
 
 Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
 

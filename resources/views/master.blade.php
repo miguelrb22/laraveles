@@ -14,6 +14,17 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome-animated.min.css') }}" />
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+    @yield('css')
+    <style>
+
+
+
+
+        /* mouse over link */
+        a:hover {
+            color: #00aba9 !important;
+        }
+    </style>
     @yield('include')
 
 </head>
@@ -29,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand atext" href="index.php">
+        <a class="navbar-brand atext" href="{{ URL::route('home') }}">
            <img src="{{ asset('images/logo_1.png') }}" width="150" height="30" alt="Multifranquicias">
         </a>
     </div>
@@ -101,7 +112,7 @@
             <div class="row">
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Multifranquicias</label>
-                    <li><a href="#"> ¿Quienes somos?</a></li>
+                    <li><a href="{{ URL::route('quien-soy') }}"> ¿Quienes somos?</a></li>
                     <li><a href="#"> Registro de franquicias</a></li>
                     <li><a href="#"> Publicidad </a></li>
                     <li><a href="{{ URL::route('privacidad') }}"> Politica de privacidad </a></li>
@@ -127,10 +138,14 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ URL::asset('js/jquery-2.1.1.min.js') }}"></script>
 <script src="{{ URL::asset('js/boostrap.min.js') }}"></script>
+@yield('javascript')
+
 
 
 <script type="text/javascript">
     $(document).ready(function() {
+
+        @yield('ready')
 
         $(window).on("load resize", function() {
 
@@ -185,8 +200,8 @@
         });
 
     });
+
 </script>
-@yield('javascript')
 
 
 </body>
