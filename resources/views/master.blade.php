@@ -39,7 +39,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="{{ URL::route('home') }}">Inicio</a></li>
             <li class="dropdown">
-                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext">Franquicias<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle atext" data-toggle="dropdown">Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li class="box"><a href="{{ URL::route('exito') }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
@@ -186,8 +186,6 @@
 
     });
 </script>
-
-
 @yield('javascript')
 
 

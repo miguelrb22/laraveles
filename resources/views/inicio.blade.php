@@ -2,11 +2,20 @@
 
 @section('main')
 
+    <style>
+        #publicidad{
+
+            width: 1920px;
+            height: 90px;
+        }
+
+    </style>
+
     <div class="row" >
         <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <img src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
+                    <img  id="publicidad" src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
                 </div>
             </div>
             <div class="row">
@@ -17,7 +26,7 @@
             </div>
 
             <!-- INICIO BUSCADOR -->
-            <div class="row"  id="buscador" style="background:#6C9600;margin:0;padding:10px;margin-top: 1%">
+            <div class="row"  id="buscador" style="background:#99b433;margin:0;padding:10px;margin-top: 1%">
                 <div id="busquedaT" class="row col col-xs-12 col-sm-12 col-md-10 col-lg-10 pull-left">
                     <h4 class="textoblanco">Búsqueda de franquicias </h4>
                 </div>
@@ -78,7 +87,7 @@
 
                 </form>
                 <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                    <img id="patrocinado" class="img-responsive" src="{{ asset('images/anunci.jpg') }}"  alt="prueba" style="width: auto">
+                    <img id="patrocinado" class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}"  alt="prueba" style="width: auto">
                 </div>
             </div>
             <!-- FIN BUSCADOR -->
@@ -253,6 +262,13 @@
 
 
     @include('extras.modal')
+    @stop
+
+    @section('ready')
+
+        $('.carousel').carousel({
+        interval: 3000
+        })
     @stop
 
 

@@ -78,8 +78,6 @@ Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@ex
 
 Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
 
-Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franquicias']);
-
 
 Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
 
