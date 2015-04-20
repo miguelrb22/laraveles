@@ -521,3 +521,11 @@ a:link:hover{
 a:hover, a:active {
     color:black;
 }
+
+
+ul, ol {
+    list-style: none;
+}
+#accordion1 li.panel{
+    margin-bottom: 0px;
+}
