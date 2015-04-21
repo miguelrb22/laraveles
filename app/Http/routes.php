@@ -97,3 +97,10 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
     //Route::get('peticion',['as' => 'peticion' , 'uses' => 'FranquiciasController@registros']);
 
 });
+
+
+/*************************************************************************************************************/
+/**********************************           ENVIO EMAIL                 * **********************************/
+/*************************************************************************************************************/
+
+Route::post('enviar' ,  ['as' => 'email', 'uses' => 'email\EmailController@enviar']);

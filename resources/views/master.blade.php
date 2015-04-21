@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome-animated.min.css') }}" />
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
+    <script>
+
+    </script>
+
     @yield('css')
     <style>
 
@@ -138,12 +143,21 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ URL::asset('js/jquery-2.1.1.min.js') }}"></script>
 <script src="{{ URL::asset('js/boostrap.min.js') }}"></script>
+<script src="{{ URL::asset('lolibox/dist/js/lobibox.min.js') }}"></script>
+<script src="{{ URL::asset('js/blockUI.js') }}"></script>
+
+
 @yield('javascript')
 
 
 
+
 <script type="text/javascript">
+
+    $(document).ajaxStop($.unblockUI);
+
     $(document).ready(function() {
+
 
         @yield('ready')
 
