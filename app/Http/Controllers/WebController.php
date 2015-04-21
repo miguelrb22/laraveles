@@ -52,4 +52,14 @@ class WebController extends Controller {
     {
         return view('busqueda');
     }
+
+    public function quiensoy()
+    {
+        return view('quien-soy');
+    }
+
+    public function contacto()
+    {
+        return view('contacto');
+    }
 }
