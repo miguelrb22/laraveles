@@ -57,4 +57,9 @@ class WebController extends Controller {
     {
         return view('quien-soy');
     }
+
+    public function contacto()
+    {
+        return view('contacto');
+    }
 }
