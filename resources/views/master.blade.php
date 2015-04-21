@@ -16,10 +16,6 @@
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     @yield('css')
     <style>
-
-
-
-
         /* mouse over link */
         a:hover {
             color: #00aba9 !important;
