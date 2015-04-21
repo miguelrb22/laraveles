@@ -82,7 +82,7 @@ Route::get('quienes-somos', ['as' => 'quien-soy', 'uses' => 'WebController@quien
 
 Route::get('contacto', ['as' => 'contacto', 'uses' => 'WebController@contacto']);
 
-
+Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franquicias']);
 
 
 Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {

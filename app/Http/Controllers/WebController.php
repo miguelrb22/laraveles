@@ -62,4 +62,8 @@ class WebController extends Controller {
     {
         return view('contacto');
     }
+
+    public function franquicias(){
+        return view ('franquicias');
+    }
 }
