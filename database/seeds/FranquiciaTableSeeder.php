@@ -18,9 +18,12 @@ class FranquiciaTableSeeder extends Seeder {
             //creamos el user guardando el nombre de la imágen.
             $user = Franquicia::create(array(
                 'nombre_comercial' => $faker->company,
+                'cif' => $faker->hexColor,
+                'tf_contacto' => $faker->phoneNumber,
                 'ciudad' => $faker->city,
                 'direccion' => $faker->address,
-                'web' => $faker->url
+                'web' => $faker->url,
+                'email_contacto'=> $faker->email
 
             ));
 
