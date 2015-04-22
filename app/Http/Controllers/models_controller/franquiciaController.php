@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\areaprivada;
+<?php namespace App\Http\Controllers\models_controller;
 
 use App\Model\Franquicia;
 use App\Http\Requests;
@@ -12,7 +12,14 @@ class franquiciaController extends Controller {
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
+     *
 	 */
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
 	public function create()
 	{
 		//
@@ -76,36 +83,5 @@ class franquiciaController extends Controller {
 	{
 		//
 	}
-
-    public function __construct()
-    {
-    }
-
-
-    public function index()
-    {
-        return view('area_privada.inicio');
-    }
-
-    public function alta()
-    {
-        return view('area_privada.alta');
-    }
-
-    public function publicidad()
-    {
-        return view('area_privada.publicidad');
-    }
-
-    public function categorias()
-    {
-        return view('area_privada.categorias');
-    }
-
-    public function noticias()
-    {
-        return view('area_privada.noticias');
-    }
-
 
 }

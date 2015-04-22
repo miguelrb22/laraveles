@@ -1,4 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\areaprivada;
+
+use App\Http\Controllers\Controller;
+use App\model\Franquicia as Franquicia;
+
 
 class AreaPrivadaController extends Controller {
 
@@ -12,6 +16,8 @@ class AreaPrivadaController extends Controller {
 
     public function index()
     {
+
+
         return view('area_privada.inicio');
     }
 

@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+        <meta charset="ISO-8859-1">
 
 		<style>
 			body {
@@ -34,7 +35,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Be right back.</div>
+				<div class="title">404 P&aacute;gina no Encontrada</div>
 			</div>
 		</div>
 	</body>

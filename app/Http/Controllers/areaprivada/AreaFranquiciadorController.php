@@ -1,4 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\areaprivada;
+
+use App\Http\Controllers\Controller;
+
 
 class AreaFranquiciadorController extends Controller {
 

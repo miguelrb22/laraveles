@@ -40,7 +40,7 @@ class AuthController extends Controller
 
         if ($this->auth->attempt($credentials)) {
 
-            return redirect('/areaprivada');
+            return redirect('/areaprivada/dashboard');
 
         } else {
             return redirect('/?e=1');
