@@ -17,8 +17,8 @@ class AreaPrivadaController extends Controller {
     public function index()
     {
 
-
-        return view('area_privada.inicio');
+        $franquicias = Franquicia::all();
+        return view('area_privada.inicio', compact('franquicias'));
     }
 
     public function alta()

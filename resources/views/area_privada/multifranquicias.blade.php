@@ -58,6 +58,20 @@
     <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/ipad-portrait.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/iphone.png') }}" media="screen and (max-device-width: 320px)">
 
+    <style>
+
+        body {
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        td{
+            cursor: pointer;
+        }
+    </style>
+
     @yield('css')
 
 </head>
