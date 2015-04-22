@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
     <title>Multifranquicias</title>
-
+    <link href='http://fonts.googleapis.com/css?family=Prociono' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome-animated.min.css') }}" />
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -26,9 +26,7 @@
 
 
         /* mouse over link */
-        a:hover {
-            color: #00aba9 !important;
-        }
+
     </style>
     @yield('include')
 
@@ -84,7 +82,7 @@
                     <li><a href="#" class="atext">Seguimiento</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="atext">Contacto</a></li>
+            <li><a href="{{ URL::route('contacto') }}" class="atext">Contacto</a></li>
 
         </ul>
 
@@ -98,9 +96,17 @@
 </nav>
 
 <div class="container-fluid" id="main">
-    @yield('main')
-
-
+    <div class="row" >
+        <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            @yield('anuncio')
+            @yield('carousel')
+            @yield('buscador')
+            @yield('contenido')
+        </section>
+        <section class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            @yield('der')
+        </section>
+    </div>
 </div> <!-- Contenido dinámico
 
 <!-- INICIO FOOTER -->

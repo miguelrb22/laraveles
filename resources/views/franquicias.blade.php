@@ -89,7 +89,6 @@
                             </div>
                         </section>
                         <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                            <div class="well"></div>
                             <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
                             <h2>Listado de franquicias</h2>
                             <hr id="separador">

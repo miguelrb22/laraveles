@@ -1,7 +1,5 @@
 @extends('master')
 
-@section('main')
-
     <style>
         #publicidad{
 
@@ -11,93 +9,25 @@
 
     </style>
 
-    <div class="row" >
-        <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <img  id="publicidad" src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    @include('extras.carousel')
-                    <?php //require_once 'extras/carousel.blade.php' ?>
-                </div>
-            </div>
+        @section('anuncio')
+            @include('extras.anuncio')
+        @endsection
+        @section('carousel')
+            @include('extras.carousel')
+        @endsection
 
-            <!-- INICIO BUSCADOR -->
-            <div class="row"  id="buscador" style="background:#99b433;margin:0;padding:10px;margin-top: 1%">
-                <div id="busquedaT" class="row col col-xs-12 col-sm-12 col-md-10 col-lg-10 pull-left">
-                    <h4 class="textoblanco">Búsqueda de franquicias </h4>
-                </div>
-                <div class="row col col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
-                </div>
-                <form class="form-inline col col-xs-12 col-sm-12 col-md-10 col-lg-10" style="margin:auto">
-                    <div class="form-group">
-                        <select class="form-control" name="categoria">
-                            <option value="1" selected="">- Selecciona categoría -</option>
-                            <option value="2">Abogados</option>
-                            <option value="3">Administración de Fincas</option>
-                            <option value="4">Agencias de Viajes</option>
-                            <option value="5">Alimentación</option>
-                            <option value="6">Deportes</option>
-                            <option value="7">Educación</option>
-                            <option value="8">Eficiencia Energética</option>
-                            <option value="9">Fotografía</option>
-                            <option value="10">Hogar</option>
-                            <option value="11">Informática</option>
-                            <option value="12">Regalos, Fiestas y Juguetes</option>
-                            <option value="13">Inmobiliarias</option>
-                            <option value="14">Librerías y Material de oficina</option>
-                            <option value="15">Limpieza</option>
-                            <option value="16">Mensajería y Transporte</option>
-                            <option value="17">Modas</option>
-                            <option value="18">Negocios Especializados</option>
-                            <option value="19">Ocio</option>
-                            <option value="20">Ópticas</option>
-                            <option value="21">Publicidad e Impresión</option>
-                            <option value="22">Reciclaje Consumibles</option>
-                            <option value="23">Reformas y Suministros</option>
-                            <option value="24">Restauración</option>
-                            <option value="25">Salud y Belleza</option>
-                            <option value="26">Seguros</option>
-                            <option value="27">Servicios a Pymes</option>
-                            <option value="28">Servicios Asistenciales</option>
-                            <option value="29">Servicios Financieros</option>
-                            <option value="30">Telecomunicaciones</option>
-                            <option value="31">Tintorería y Arreglos</option>
-                            <option value="32">Vending</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select class="form-control">
-                            <option value="1" selected="">- Rango de inversión -</option>
-                            <option value="2">0 - 20.000</option>
-                            <option value="3">20.001 - 40.000</option>
-                            <option value="4">40.001 - 60.000</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="text"  class="form-control" placeholder="Nombre de franquicia">
-                    </div>
-                    <button type="submit" class="btn btn-default">Buscar</button>
-                    <div id="patrocinadoT" class="form-group pull-right">
-                        <label class="textoblanco">Patrocinado por </label>
-                    </div>
+        @section('buscador')
+            @include('extras.buscador')
+        @endsection
 
-                </form>
-                <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                    <img id="patrocinado" class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}"  alt="prueba" style="width: auto">
-                </div>
-            </div>
-            <!-- FIN BUSCADOR -->
+        @section('contenido')
             <!--Seccion franquicias especiales -->
             <br>
             <div class="row">
                 <section class="col col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right:0">
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="well">
+                        <div class="well well_efect">
                             <h4 class="text-center"><strong>Fraquicias de éxito</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong><a href="http://localhost/laraveles/public/perfil/prueba1" title="perfil">Prueba1</a></strong></h4>
@@ -106,7 +36,7 @@
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="well">
+                        <div class="well well_efect">
                             <h4 class="text-center"><strong>Fraquicias rentables</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong><a href="http://localhost/laraveles/public/perfil/prueba2" title="perfil">Prueba2</a></strong></h4>
@@ -116,7 +46,7 @@
                 </section>
                 <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="well">
+                        <div class="well well_efect">
                             <h4 class="text-center"><strong>Fraquicias baratas</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
@@ -124,7 +54,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="well">
+                        <div class="well well_efect">
                             <h4 class="text-center"><strong>Fraquicias low cost</strong></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
@@ -231,9 +161,9 @@
                 </div>
             </div>
             <!-- FIN PARTE NOTICIAS -->
-        </section>
+        @endsection
+        @section('der')
 
-        <section class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
                 <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
             </div>
@@ -242,7 +172,7 @@
             </div>
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
-                    <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
+                    <div class="panel-heading textoblanco" id="panelDes" style="background:#333">
                         <i class="glyphicon glyphicon-thumbs-up textoblanco"></i> <span class="textoblanco">Destacados</span>
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
@@ -257,12 +187,10 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        @endsection
 
 
     @include('extras.modal')
-    @stop
 
     @section('ready')
 

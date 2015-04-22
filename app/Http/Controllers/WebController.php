@@ -9,6 +9,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Model\Categoria;
+use App\Model\Subcategoria;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+
 class WebController extends Controller {
 
     /*
@@ -45,7 +50,30 @@ class WebController extends Controller {
 
     public function exito()
     {
-        return view('exito');
+        //return view('dinamica');
+    }
+
+    public function select(Request $request){
+        $id=$request::Input('categoria');
+        $categoria = Categoria::find($id); //en caso de el id ser tipo ORM
+        $num_subcategorias = Subcategoria::where('categoria_id', '=', $id )->count();
+
+        if($num_subcategorias !=0)
+        {
+            //dd("entra");
+            //return Redirect::to('subcategoria', ['name' => str_replace(' ','-',$categoria->nombre)]);
+            return redirect()->route('subcategoria', ['name' => str_replace(' ','-',$categoria->nombre)]);
+        }else{
+            //return Redirect::to('franquicia-de-'.str_replace(' ','-',$categoria->nombre));
+            //return Redirect::route('categorias.categoria',['tipo' => str_replace(' ','-',$categoria->nombre)]);
+            return redirect()->route('categoria', ['tipo' => str_replace(' ','-',$categoria->nombre)]);
+
+        }
+        //$categoria =  \DB::table('categoria')->where('idcategoria', '=', $request::Input('categoria'))->get();
+        //dd($categoria->nombre);
+
+
+        //return view('exito', compact('categoria'));
     }
 
     public function buscar()

@@ -163,7 +163,7 @@ a:hover{
     content:"";
     border-color: #333 transparent transparent transparent;
     border-style:solid;
-    border-width:15px;
+    border-width:25px;
     position: absolute;
     margin-top: 25px;
     margin-left: -65%;
@@ -179,8 +179,34 @@ a:hover{
 @media (min-width: 993px)
 {
     #panelfe:after {
-        margin-left:-60%;
+        margin-left:-10%;
+        border-style:solid;
+        border-width:32px;
+    }
+}
 
+#panelDes:after {
+
+    content:"";
+    border-color: #333 transparent transparent transparent;
+    border-style:solid;
+    border-width:25px;
+    position: absolute;
+    margin-top: 30px;
+
+}
+
+@media (max-width: 992px)
+{
+    #panelDes:after {
+        margin-left:-80px;
+    }
+}
+
+@media (min-width: 993px)
+{
+    #panelDes:after {
+        margin-left:-80%;
     }
 }
 
@@ -203,12 +229,13 @@ a:hover{
 #tituloNotica,#textoNoticia{
     margin:5px;
     text-align: justify;
+
 }
 
 #tituloNotica {
-    font-family: mia;
-    src: url(‘http://localhost/multifranquicias/public/fonts/Prociono-Regular.otf’);
+    font-family: 'Prociono', serif;
     font-size: 19px;
+    font-weight: bold;
     color : #606;
 }
 h1.post-title {
@@ -445,7 +472,7 @@ p{ text-align: justify; }
     padding-bottom: 21px;
 }
 
-#separador{ border-top-width: 5; }
+#separador{ border-top-width: 5px; }
 
 #tperfil td { width: 50%; }
 
@@ -491,7 +518,8 @@ h2 > a {
 }
 
 .textoblanco{
-    color: white;
+    color: white !important;
+    font-size:19px;
 }
 
 .buscador
@@ -528,4 +556,40 @@ ul, ol {
 }
 #accordion1 li.panel{
     margin-bottom: 0px;
+}
+
+#accordion{
+    font: bold 14px Arial, sans-serif;
+}
+.panel > a {
+    background-color: #ECECEC;
+}
+
+.list-group-item > span {
+    margin-right: 1%;
+}
+
+.small{
+    padding-left: 8%;
+}
+
+a:hover {
+    color: #000 !important;
+}
+
+body,a,label,h1,h2,h3,h4,h5,h6 {
+    font-family: 'Prociono', serif;
+}
+
+.well_efect{
+    box-shadow: 0 0 3px rgba(0,0,0,.6);
+}
+
+.nav{
+    padding-left: 2%;
+    margin-top: 5px;
+}
+
+.nav > li a:hover{
+    color: white !important;
 }

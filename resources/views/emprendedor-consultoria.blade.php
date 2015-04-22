@@ -1,50 +1,72 @@
 @extends('master')
 
-@section('main')
+
+
+    @section('anuncio')
+        @include('extras.anuncio')
+    @endsection
     <div>
-        <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 aSuperior">
-                    <img src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
-                </div>
-            </div>
-            <div class="row">
+
+    @section('contenido')
+        </br>
+        <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="row panel panel-info text-center">
-                        <div class="panel-heading" id="panelfe" style="background:#333">
-                            Servicios para franquiciados
+                        <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
+                            Servicios para franquiciadores
                         </div>
                         <div class="panel-body" style="margin-bottom: -16px;">
                             <ul class="list-unstyled pull-left text-justify">
-                                <li><a class="content-1">Análisis financiero y patrimonial</a></li>
+                                <li><a class="content-1">Proyecto de la franquicia</a></li>
                                 <li><a class="content-2">Asistencia jurídica</a></li>
-                                <li><a class="content-3">Apoyo a la búsqueda y selección de la franquicia</a></li>
-                                <li><a class="content-4">Base de la negociación y planificación de la franquicia</a></li>
-                                <li><a class="content-5">Financiación</a></li>
-                                <li><a class="content-6">Formación</a></li>
-                                <li><a class="content-7">Seguimiento</a></li>
-                                <li><a class="content-8">Seguridad patrimonial</a></li>
-                                <li><a class="content-9">Valores de locales candidatos</a></li>
+                                <li><a class="content-3">Captación de candidatos</a></li>
+                                <li><a class="content-4">Comunicación e imagen corporativa</a></li>
+                                <li><a class="content-5">Expansión internacional</a></li>
+                                <li><a class="content-6">Financiación</a></li>
+                                <li><a class="content-7">Formación</a></li>
+                                <li><a class="content-8">Gestión de la red</a></li>
+                                <li><a class="content-9">Seguimiento</a></li>
+                                <li><a class="content-10">Seguridad y protección del patrimonio</a></li>
+                                <li><a class="content-11">Valoración de locales candidatos</a></li>
+                                <li><a class="content-12">Análisis financiero y patrimonial</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="row panel panel-info text-center">
-                        <div class="panel-heading" id="panelfe" style="background:#333">
+                        <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
+                            Servicios para franquiciados
+                        </div>
+                        <div class="panel-body" style="margin-bottom: -16px;">
+                            <ul class="list-unstyled pull-left text-justify">
+                                <li><a class="content-13">Análisis financiero y patrimonial</a></li>
+                                <li><a class="content-14">Asistencia jurídica</a></li>
+                                <li><a class="content-15">Apoyo a la búsqueda y selección de la franquicia</a></li>
+                                <li><a class="content-16">Base de la negociación y planificación de la franquicia</a></li>
+                                <li><a class="content-17">Financiación</a></li>
+                                <li><a class="content-18">Formación</a></li>
+                                <li><a class="content-19">Seguimiento</a></li>
+                                <li><a class="content-20">Seguridad patrimonial</a></li>
+                                <li><a class="content-21">Valores de locales candidatos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row panel panel-info text-center">
+                        <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
                             Le interesa conocer
                         </div>
                         <div class="panel-body" style="margin-bottom: -16px;">
                             <ul class="list-unstyled pull-left text-justify">
-                                <li><a class="content-10">Ser franquiciador</a></li>
-                                <li><a class="content-11">Qué es ser franquiciado</a></li>
-                                <li><a class="content-12">Franquicia: qué debemos saber</a></li>
-                                <li><a class="content-13">Tipos de franquicia</a></li>
+                                <li><a class="content-22">Ser franquiciador</a></li>
+                                <li><a class="content-23">Franquicia: qué debemos saber</a></li>
+                                <li><a class="content-24">Qué es ser franquiciado</a></li>
+                                <li><a class="content-25">Tipos de franquicia</a></li>
                             </ul>
                             <div class="row col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <hr/>
                             </div>
                             <ul class="list-unstyled pull-left text-justify">
                                 <li><a href="#">Dudas generales</a></li>
-                                <li><a href="">Dudas franquiciados y franquiciadores</a></li>
+                                <li><a href="#">Dudas franquiciados y franquiciadores</a></li>
                             </ul>
                         </div>
                     </div>
@@ -70,71 +92,86 @@
                     </table>
                 </div>
             </div>
-        </section>
-        <section class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
+
+    @endsection
+    @section('der')
             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
                 <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
             </div>
             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-2">
                 <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
             </div>
-        </section>
+    @endsection
     </div>
-@endsection
+
 
 @section('javascript')
 
     <script type="text/javascript">
 
-        $(".content-1").on('click',function()
+        $('a').on("click",function(){
+            alert ( $(this)[0].getAttribute('class')    )
+
+            //var
+        })
+
+        //EVENTOS
+        $("content-").on("click",function()
+        {
+            $("body").animate({ scrollTop: 0 }, "slow");
+            return false;
+
+        });
+
+        $(".content-13").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/analisis.blade.php");
         });
-        $(".content-2").on('click',function()
+        $(".content-14").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/asistencia.blade.php");
         });
-        $(".content-3").on('click',function()
+        $(".content-15").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/apoyo.blade.php");
         });
-        $(".content-4").on('click',function()
+        $(".content-16").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/negociacion.blade.php");
         });
-        $(".content-5").on('click',function()
+        $(".content-17").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/financiacion.blade.php");
         });
-        $(".content-6").on('click',function()
+        $(".content-18").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/formacion.blade.php");
         });
-        $(".content-7").on('click',function()
+        $(".content-19").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/seguimiento.blade.php");
         });
-        $(".content-8").on('click',function()
+        $(".content-20").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/seguridad.blade.php");
         });
-        $(".content-9").on('click',function()
+        $(".content-21").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/valores.blade.php");
         });
-        $(".content-10").on('click',function()
+        $(".content-22").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquiciador.blade.php");
         });
-        $(".content-11").on('click',function()
+        $(".content-23").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquiciado.blade.php");
         });
-        $(".content-12").on('click',function()
+        $(".content-24").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/areaprivada.blade.php");
+            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquicia.blade.php");
         });
-        $(".content-13").on('click',function()
+        $(".content-25").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/tipos.blade.php");
         });
@@ -142,3 +179,4 @@
     </script>
 
 @endsection
+

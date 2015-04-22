@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Http\Controllers\WebController;
 
 Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
 
@@ -28,34 +29,34 @@ Route::get('home', 'HomeController@index');
 // Validamos los datos de inicio de sesión.
 Route::post('login',  ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
 
-Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
-
-    Route::get('dashboard', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
-    Route::get('alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
-    Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
-    Route::get('categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
-    Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
-});
-
+// Las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
+Route::group(array(), function()
+{
+    Route::get('areaprivada', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
+    Route::get('areaprivada/alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
+    Route::get('areaprivada/publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
+    Route::get('areaprivada/categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
+    Route::get('areaprivada/noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
 
     //Cerrar sesion
     Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+});
 /***************************************************************************************************************/
 /***************************************************************************************************************/
 
 
 
 /*area franquiciador */
-Route::get('franquiciador', ['as' => 'Fprivate', 'uses' => 'areaprivada\AreaFranquiciadorController@index']);
-Route::get('franquiciador/alta', ['as' => 'Fnueva_alta', 'uses' => 'areaprivada\AreaFranquiciadorController@alta']);
-Route::get('franquiciador/publicidad', ['as' => 'Fpublicidad', 'uses' => 'areaprivada\AreaFranquiciadorController@publicidad']);
-Route::get('franquiciador/noticias', ['as' => 'Fnoticias', 'uses' => 'areaprivada\AreaFranquiciadorController@noticias']);
+Route::get('franquiciador', ['as' => 'Fprivate', 'uses' => 'AreaFranquiciadorController@index']);
+Route::get('franquiciador/alta', ['as' => 'Fnueva_alta', 'uses' => 'AreaFranquiciadorController@alta']);
+Route::get('franquiciador/publicidad', ['as' => 'Fpublicidad', 'uses' => 'AreaFranquiciadorController@publicidad']);
+Route::get('franquiciador/noticias', ['as' => 'Fnoticias', 'uses' => 'AreaFranquiciadorController@noticias']);
 
 
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 //perfil
@@ -76,6 +77,24 @@ Route::get('emprendedor-consultoria', ['as' => 'emprendedor', 'uses' => 'WebCont
 //emprendor consultoria
 Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@exito']);
 
+Route::post('select', ['as' => 'mostrar', 'uses' => 'WebController@select']); //ruta que se llama desde el form
+
+
+Route::group(['namespace' =>  'categorias'],function() {
+//Para redireccionar a la vista si la opcion del select es una categoria
+    Route::get('franquicias-de-{tipo}', ['as' => 'categoria', function ($tipo) {
+        //dd("se llama al categoria");
+        return view('dinamica')->with('categoria', $tipo);
+    }]);
+
+//Para redireccionar a la vista si la opcion del select es una subcategoria
+    Route::get('franquicia-de-{name}', ['as' => 'subcategoria', function ($name) {
+        //dd("se llama al subcategoria");
+        return view('dinamica_subcategorias')->with('categoria', $name);
+    }]);
+});
+
+
 Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
 
 Route::get('quienes-somos', ['as' => 'quien-soy', 'uses' => 'WebController@quiensoy']);
@@ -84,8 +103,18 @@ Route::get('contacto', ['as' => 'contacto', 'uses' => 'WebController@contacto'])
 
 Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franquicias']);
 
+//Grupo de rutas bajo un prefijo para tener todas las rutas agrupadas y  bajo un namespace
+Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
+    Route::get('dashboard', ['as' => 'private', 'uses' => 'franquiciaController@index']);
+    Route::get('alta', ['as' => 'nueva_alta', 'uses' => 'franquiciaController@alta']);
+    Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'franquiciaController@publicidad']);
+    Route::get('categorias', ['as' => 'categorias', 'uses' => 'franquiciaController@categorias']);
+    Route::get('noticias', ['as' => 'noticias', 'uses' => 'franquiciaController@noticias']);
 
+    Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@store']);
+    //Route::get('peticion',['as' => 'peticion' , 'uses' => 'FranquiciasController@registros']);
 
+});
 
 
 /*************************************************************************************************************/
@@ -93,9 +122,3 @@ Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franq
 /*************************************************************************************************************/
 
 Route::post('enviar' ,  ['as' => 'email', 'uses' => 'email\EmailController@enviar']);
-
-
-
-
-Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'models_controller\franquiciaController@store']);
-//Route::get('peticion',['as' => 'peticion' , 'uses' => 'FranquiciasController@registros']);
