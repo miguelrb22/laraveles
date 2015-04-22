@@ -15,19 +15,8 @@
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
-    <script>
-
-    </script>
-
     @yield('css')
-    <style>
 
-
-
-
-        /* mouse over link */
-
-    </style>
     @yield('include')
 
 </head>
