@@ -103,6 +103,10 @@ class WebController extends Controller {
         return view ('dudas-generales');
     }
 
+    public function dudasfranquicias(){
+        return view ('dudas-franquicias');
+    }
+
     public function noticias(){
         $articulos = Publicaciones::paginate(5);
         $total = Publicaciones::count();
