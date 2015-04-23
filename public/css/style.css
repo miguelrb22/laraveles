@@ -158,6 +158,8 @@ a:hover{
     margin-left: 0.010%;
 }
 
+
+/**
 #panelfe:after {
 
     content:"";
@@ -167,7 +169,7 @@ a:hover{
     position: absolute;
     margin-top: 25px;
     margin-left: -65%;
-}
+}*/
 
 @media (max-width: 992px)
 {

@@ -8,28 +8,7 @@
     @section('contenido')
         </br>
         <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="row panel panel-info text-center">
-                        <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
-                            Servicios para franquiciadores
-                        </div>
-                        <div class="panel-body" style="margin-bottom: -16px;">
-                            <ul class="list-unstyled pull-left text-justify">
-                                <li><a class="content-01">Proyecto de la franquicia</a></li>
-                                <li><a class="content-02">Asistencia jurídica</a></li>
-                                <li><a class="content-03">Captación de candidatos</a></li>
-                                <li><a class="content-04">Comunicación e imagen corporativa</a></li>
-                                <li><a class="content-05">Expansión internacional</a></li>
-                                <li><a class="content-06">Financiación</a></li>
-                                <li><a class="content-07">Formación</a></li>
-                                <li><a class="content-08">Gestión de la red</a></li>
-                                <li><a class="content-09">Seguimiento</a></li>
-                                <li><a class="content-10">Seguridad y protección del patrimonio</a></li>
-                                <li><a class="content-11">Valoración de locales candidatos</a></li>
-                                <li><a class="content-12">Análisis financiero y patrimonial</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <div class="row panel panel-info text-center">
                         <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
                             Servicios para franquiciados
@@ -69,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 dinamico">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7 col-lg-offset-1 dinamico">
                     <!-- Dinamic content here -->
                     <div class="well"></div>
                     <div>
@@ -113,70 +92,142 @@
             subir(number);
         })*/
 
+        $(".content-01").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/proyecto-franquicia.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-02").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/asistencia.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-03").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/captacion.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-04").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/comunicacion.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-05").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/expansion.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-06").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/financiacion.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-07").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/formacion.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-08").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/gestionred.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-09").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/seguimiento.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-10").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/seguridad.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-11").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/valores.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
+        $(".content-12").on('click',function()
+        {
+            $(".dinamico").load( "{{ asset('informacion/analisis.blade.php') }}");
+            $("body").animate({scrollTop: 0}, "slow");
+        });
+
 
         $(".content-13").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/analisis.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/analisis.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-14").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/asistencia.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/asistencia.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-15").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/apoyo.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/apoyo.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-16").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/negociacion.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/negociacion.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-17").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/financiacion.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/financiacion.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-18").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/formacion.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/formacion.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-19").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/seguimiento.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/seguimiento.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-20").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/seguridad.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/seguridad.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-21").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/valores.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/valores.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-22").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquiciador.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/franquiciador.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-23").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquiciado.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/franquiciado.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-24").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquicia.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/franquicia.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-25").on('click',function()
         {
-            $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/tipos.blade.php");
+            $(".dinamico").load( "{{ asset('informacion/tipos.blade.php') }}");
             $("body").animate({scrollTop: 0}, "slow");
         });
 

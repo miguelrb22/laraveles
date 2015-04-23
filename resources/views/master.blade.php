@@ -66,9 +66,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="atext">Franquiciadores</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" class="atext">Seguimiento</a></li>
+                    <li><a href="{{ URL::route('franquiciadores') }}" class="atext">Franquiciadores</a></li>
                 </ul>
             </li>
             <li><a href="{{ URL::route('contacto') }}" class="atext">Contacto</a></li>
@@ -117,14 +115,13 @@
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Multifranquicias</label>
                     <li><a href="{{ URL::route('quien-soy') }}"> ¿Quienes somos?</a></li>
-                    <li><a href="#"> Registro de franquicias</a></li>
-                    <li><a href="#"> Publicidad </a></li>
+                    <li><a href="{{ URL::route('contacto') }}"> Publicidad </a></li>
                     <li><a href="{{ URL::route('privacidad') }}"> Politica de privacidad </a></li>
                     <li><a href="{{ URL::route('aviso') }}"> Aviso Legal</a></li>
                 </ul>
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Consultas</label>
-                            <li><a href="#"> Dudas generales</a></li>
+                            <li><a href="{{ URL::route('dudas-generales') }}"> Dudas generales</a></li>
                             <li><a href="#"> Dudas franquiciados y franquiciadores</a></li>
                 </ul>
             </div>

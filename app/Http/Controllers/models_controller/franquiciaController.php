@@ -3,6 +3,7 @@
 use App\Model\Franquicia;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Request;
 
@@ -55,8 +56,9 @@ class franquiciaController extends Controller
 
     public function cargar(Request $request)
     {
-        $id = $request::input('id');
+        $id = $request->input('id');
         $franquiciacargada = Franquicia::findOrFail($id);
+        Session::put('franquicia', $franquiciacargada);
 
     }
 

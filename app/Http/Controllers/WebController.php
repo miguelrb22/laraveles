@@ -96,6 +96,14 @@ class WebController extends Controller {
         return view ('franquicias');
     }
 
+    public function franquiciadores(){
+        return view ('franquicias-consultoria');
+    }
+
+    public function dudasgenerales(){
+        return view ('dudas-generales');
+    }
+
     public function noticias(){
         $articulos = Publicaciones::paginate(3);
         $total = Publicacion::count();
