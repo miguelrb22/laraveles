@@ -209,17 +209,7 @@ img::-moz-selection,
 img::selection {
   background: transparent;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  text-rendering: optimizelegibility;
-}
+
 h1 small,
 h2 small,
 h3 small,

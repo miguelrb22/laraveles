@@ -29,7 +29,7 @@
                             <label>Resultados de búsqueda .... </label>
                         </div>
                         <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
-                        <h2>{{ str_replace('-',' ',$categoria) }}</h2>
+                        <h2>{{ ucfirst(str_replace('-',' ',$categoria)) }}</h2>
                         <hr id="separador">
                         <div class="row">
                             <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">

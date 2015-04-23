@@ -1,7 +1,5 @@
 @extends('master')
 
-
-
     @section('anuncio')
         @include('extras.anuncio')
     @endsection

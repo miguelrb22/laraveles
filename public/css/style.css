@@ -577,8 +577,9 @@ a:hover {
     color: #000 !important;
 }
 
-body,a,label,h1,h2,h3,h4,h5,h6 {
+body,a,label,h1,h2,h3,h4,h5,h6,div{
     font-family: 'Prociono', serif;
+    text-rendering: optimizelegibility;
 }
 
 .well_efect{
@@ -594,3 +595,10 @@ body,a,label,h1,h2,h3,h4,h5,h6 {
     color: white !important;
 }
 
+.paginacion{
+    text-align: center;
+}
+
+.pagination a,li{
+    color:#606 !important;
+}
