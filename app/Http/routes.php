@@ -111,7 +111,10 @@ Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franq
 
 Route::get('noticias', ['as' => 'noticias_web', 'uses' => 'WebController@noticias']);
 
+//para peticion ajax de cargar noticias
 Route::get('peticion',['as' => 'peticion' , 'uses' => 'WebController@masnoticias']); //si utilizamos el de abajo ponermos post
+
+Route::get('servicios_garantias', ['as' => 'servicios_garantias', 'uses' => 'WebController@servicios']);
 
 //para areaprivada guardar una franquicia
 Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@store']);

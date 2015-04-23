@@ -62,7 +62,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle atext" data-toggle="dropdown">Servicios y garantías<b class="caret"></b></a>
+                <a href="{{ URL::route('servicios_garantias') }}" class="dropdown-toggle atext" >Servicios y garantías<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>

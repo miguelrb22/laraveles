@@ -613,3 +613,13 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     position: relative;
     color: rgba(0, 0, 0, 0.53);
 }
+
+.capital:first-letter{
+    text-transform: capitalize;
+    font: 50px/40px Georgia,Times,serif;
+    float: left;
+}
+
+.servicios li>p {
+    color: black;
+}

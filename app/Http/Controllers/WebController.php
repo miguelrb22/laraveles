@@ -103,12 +103,23 @@ class WebController extends Controller {
         return view ('dudas-generales');
     }
 
+    public function servicios()
+    {
+        return view('servicios_garantias');
+    }
+
+    /*
+     * Mostramos las primeras 5 noticias al cargar la página
+     */
     public function noticias(){
         $articulos = Publicaciones::paginate(5);
         $total = Publicaciones::count();
         return view ('noticias' ,compact('articulos','total'));
     }
 
+    /*
+     * Funcion que devuelve las noticias en cuando pulsamos un número de página en la paginación
+     */
     public function masnoticias(Request $r)
     {
         $numpage = $r::Input('page')-1;

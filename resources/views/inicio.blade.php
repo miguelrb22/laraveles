@@ -163,13 +163,7 @@
             <!-- FIN PARTE NOTICIAS -->
         @endsection
         @section('der')
-
-            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
-                <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
-            </div>
-            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
-                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-            </div>
+            @include('extras.derecha')
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
                     <div class="panel-heading textoblanco" id="panelDes" style="background:#333">
