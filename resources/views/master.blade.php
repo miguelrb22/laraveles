@@ -15,19 +15,8 @@
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
-    <script>
-
-    </script>
-
     @yield('css')
-    <style>
 
-
-
-
-        /* mouse over link */
-
-    </style>
     @yield('include')
 
 </head>
@@ -53,19 +42,19 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="{{ URL::route('home') }}">Inicio</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle atext" data-toggle="dropdown">Franquicias<b class="caret"></b></a>
+                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext">Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="box"><a href="{{ URL::route('exito') }}" class="atext">Franquicias de éxito</a></li>
+                    <li class="box"><a href="{{ URL::route('categoria',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="atext">Franquicias rentables</a></li>
+                    <li><a href="{{ URL::route('categoria',array('tipo' => 'rentables')) }}" class="atext">Franquicias rentables</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="atext">Franquicias baratas</a></li>
+                    <li><a href="{{ URL::route('categoria',array('tipo' => 'baratas')) }}" class="atext">Franquicias baratas</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="atext">Franquicias low cost</a></li>
+                    <li><a href="{{ URL::route('categoria',array('tipo' => 'lowcost')) }}" class="atext">Franquicias low cost</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle atext" data-toggle="dropdown">Noticias<b class="caret"></b></a>
+                <a href="{{ URL::route('noticias_web') }}" class="dropdown-toggle atext" data-toggle="">Noticias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" class="atext">Reportajes</a></li>
                     <li class="divider"></li>
@@ -97,6 +86,10 @@
 
 <div class="container-fluid" id="main">
     <div class="row" >
+        <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            @yield('completa')
+        </section>
+
         <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
             @yield('anuncio')
             @yield('carousel')

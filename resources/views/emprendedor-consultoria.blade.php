@@ -1,7 +1,5 @@
 @extends('master')
 
-
-
     @section('anuncio')
         @include('extras.anuncio')
     @endsection
@@ -17,15 +15,15 @@
                         </div>
                         <div class="panel-body" style="margin-bottom: -16px;">
                             <ul class="list-unstyled pull-left text-justify">
-                                <li><a class="content-1">Proyecto de la franquicia</a></li>
-                                <li><a class="content-2">Asistencia jurídica</a></li>
-                                <li><a class="content-3">Captación de candidatos</a></li>
-                                <li><a class="content-4">Comunicación e imagen corporativa</a></li>
-                                <li><a class="content-5">Expansión internacional</a></li>
-                                <li><a class="content-6">Financiación</a></li>
-                                <li><a class="content-7">Formación</a></li>
-                                <li><a class="content-8">Gestión de la red</a></li>
-                                <li><a class="content-9">Seguimiento</a></li>
+                                <li><a class="content-01">Proyecto de la franquicia</a></li>
+                                <li><a class="content-02">Asistencia jurídica</a></li>
+                                <li><a class="content-03">Captación de candidatos</a></li>
+                                <li><a class="content-04">Comunicación e imagen corporativa</a></li>
+                                <li><a class="content-05">Expansión internacional</a></li>
+                                <li><a class="content-06">Financiación</a></li>
+                                <li><a class="content-07">Formación</a></li>
+                                <li><a class="content-08">Gestión de la red</a></li>
+                                <li><a class="content-09">Seguimiento</a></li>
                                 <li><a class="content-10">Seguridad y protección del patrimonio</a></li>
                                 <li><a class="content-11">Valoración de locales candidatos</a></li>
                                 <li><a class="content-12">Análisis financiero y patrimonial</a></li>
@@ -109,73 +107,80 @@
 
     <script type="text/javascript">
 
-        $('a').on("click",function(){
-            alert ( $(this)[0].getAttribute('class')    )
+        /*$('a').on("click",function(){
+            var number = $(this)[0].getAttribute('class').substring(8,10);
+            alert(number);
+            subir(number);
+        })*/
 
-            //var
-        })
-
-        //EVENTOS
-        $("content-").on("click",function()
-        {
-            $("body").animate({ scrollTop: 0 }, "slow");
-            return false;
-
-        });
 
         $(".content-13").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/analisis.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-14").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/asistencia.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-15").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/apoyo.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-16").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/negociacion.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-17").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/financiacion.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-18").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/formacion.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-19").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/seguimiento.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-20").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/seguridad.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-21").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/valores.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-22").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquiciador.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-23").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquiciado.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-24").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/franquicia.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
         $(".content-25").on('click',function()
         {
             $(".dinamico").load( "http://localhost/laraveles/resources/views/extras/tipos.blade.php");
+            $("body").animate({scrollTop: 0}, "slow");
         });
-        //aqui mas rutas comentario para commit
+
+
     </script>
 
 @endsection

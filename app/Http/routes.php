@@ -75,7 +75,7 @@ Route::get('aviso-legal', ['as' => 'aviso', 'uses' => 'WebController@aviso']);
 Route::get('emprendedor-consultoria', ['as' => 'emprendedor', 'uses' => 'WebController@emprendedor']);
 
 //emprendor consultoria
-Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@exito']);
+//Route::get('franquicias-de-exito', ['as' => 'exito', 'uses' => 'WebController@exito']);
 
 Route::post('select', ['as' => 'mostrar', 'uses' => 'WebController@select']); //ruta que se llama desde el form
 
@@ -94,7 +94,7 @@ Route::group(['namespace' =>  'categorias'],function() {
     }]);
 });
 
-
+//Rutas Web
 Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
 
 Route::get('quienes-somos', ['as' => 'quien-soy', 'uses' => 'WebController@quiensoy']);
@@ -103,9 +103,12 @@ Route::get('contacto', ['as' => 'contacto', 'uses' => 'WebController@contacto'])
 
 Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franquicias']);
 
+Route::get('noticias', ['as' => 'noticias_web', 'uses' => 'WebController@noticias']);
 
+Route::post('peticion',['as' => 'peticion' , 'uses' => 'WebController@masnoticias']);
 
-    Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@store']);
+//para areaprivada guardar una franquicia
+Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@store']);
     //Route::get('peticion',['as' => 'peticion' , 'uses' => 'FanquiciasController@registros']);
 
 

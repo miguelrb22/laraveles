@@ -2,21 +2,13 @@
 
 @section('css')
 
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('PieProgress/css/prelude.css')}}" />
+    <!--<link rel="stylesheet" type="text/css" href="{{ URL::asset('PieProgress/css/prelude.css')}}" />-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('PieProgress/css/progress.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('PieProgress/css/rainbow.css')}}"/>
 
-    <style>
-
-        .mainer{
-
-            font-family: 'Prociono', serif;
-        }
-    </style>
-
     @endsection
-@section('main')
-    <div class="container-fluid mainer" style="margin-top: 6.5%">
+@section('completa')
+    </br>
         <div class="row">
 
 
@@ -117,7 +109,6 @@
 
 
         </div>
-    </div>
     @endsection
 
 @section('javascript')
