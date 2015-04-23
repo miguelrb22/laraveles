@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="hero-unit">
                     <h1>Contacte con nosotros</h1>
-                    <p class="tagline">A continuación exponga el interés de su contacto y un consultor especializado en el ámbito de su consulta se pondrá en contacto con usted.</p>
+                    <p class="tagline">Si desea publicitarse en la web o tiene alguna otra consulta, exponga a continuación  el interés de su contacto y un consultor especializado se pondrá en contacto con usted.</p>
                 </div><!--end hero unit -->
                 <hr>
 

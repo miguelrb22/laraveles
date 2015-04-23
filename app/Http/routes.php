@@ -77,6 +77,8 @@ Route::get('comnsultoria/emprendedores', ['as' => 'emprendedor', 'uses' => 'WebC
 Route::get('consultoria/franquiciadores', ['as' => 'franquiciadores', 'uses' => 'WebController@franquiciadores']);
 
 Route::get('dudas-generales', ['as' => 'dudas-generales', 'uses' => 'WebController@dudasgenerales']);
+Route::get('dudas-franquicias-franquiciados', ['as' => 'dudas-franquicias', 'uses' => 'WebController@dudasfranquicias']);
+
 
 
 

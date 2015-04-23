@@ -184,7 +184,7 @@
         @endsection
 
 
-    @include('extras.modal')
+
 
     @section('ready')
 

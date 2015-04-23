@@ -11,7 +11,7 @@
                 <h4 class="modal-title" id="myModalLabel">
                     <i class="fa fa-exclamation-triangle faa-ring animated">
                     </i>
-                    Control de acceso jeje
+                    Control de acceso
                 </h4>
             </div>
 
