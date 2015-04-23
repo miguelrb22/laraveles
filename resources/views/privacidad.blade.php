@@ -1,8 +1,8 @@
 @extends('master')
 
-@section('main')
-    <div>
-        <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
+
+        @section('contenido')
+
             <h2><strong>Política de Privacidad</strong></h2>
             <hr/>
             <p class="text-justify">El presente documento establece la Política de Privacidad del sitio web www.multifranquicias.com por parte de los usuarios que accedan al mismo. Así mismo esta Política de Privacidad también es aplicable a las acciones que MultiFranquicias emprenda en Internet por sus empleados.</p>
@@ -32,15 +32,18 @@
                 <li>Cookies social media (Facebook, Twitter y Pinterest)</li>
             </ul>
             <p class="text-justify">La web tiene a disposición de los usuarios la opción de tener una cuenta de gestión de tramitaciones y marketing. Los datos de la misma tienen el mismo tratamiento que en el punto anterior: “Utilización de datos personales”. Para ser cancelada alguna de estas cuentas, debe ser notificado vía email a través del email con que dió de alta la cuenta junto con una fotocopia del DNI y en su caso, una declaración solicitando el cierre de la misma. En la declaración debe recogerse los datos como Nombre y Apellidos y DNI. MultiFranquicias por su parte determina unos estándares mínimos de seguridad que se ajustan a la normativa española vigente así como aquellas normativas europeas que de su aplicación sean necesarias. Si tiene alguna consulta sobre estos términos puede consultarnos en el teléfono<strong>91 751 82 20</strong>.</p>
-        </section>
-        <section class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
-            </div>
-            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-2">
-                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-            </div>
-        </section>
-    </div>
-@endsection
+
+        @endsection
+        @section('der')
+
+                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
+                    <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
+                </div>
+                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-2">
+                    <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
+                </div>
+        
+        @endsection
+
+
 

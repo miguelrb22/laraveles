@@ -12,7 +12,6 @@ namespace App\Http\Controllers;
 use App\Model\Categoria;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 
 class WebController extends Controller {
@@ -105,18 +104,16 @@ class WebController extends Controller {
     }
 
     public function noticias(){
-        $articulos = Publicaciones::paginate(3);
-        $total = Publicacion::count();
+        $articulos = Publicaciones::paginate(5);
+        $total = Publicaciones::count();
         return view ('noticias' ,compact('articulos','total'));
     }
 
     public function masnoticias(Request $r)
     {
-       //dd("entra en mas noticas");
-        dd($r);
         $numpage = $r::Input('page')-1;
-        if($r->ajax()) {
-            $result = Publicaciones::take(3)->skip($numpage*3)->get();
+        if($r::ajax()) {
+            $result = Publicaciones::take(5)->skip($numpage*5)->get();
             return response()->json($result);
         }
 

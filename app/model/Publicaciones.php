@@ -11,10 +11,10 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Publicacion extends Model{
+class Publicaciones extends Model{
 
     protected $table = 'publicacion';
 
-    protected $fillable = ['titulo','contenido','url_imagen','tipo'];
+    protected $fillable = ['titulo','contenido','url_imagen','tipo', 'fecha_publicacion'];
 }
 //comentario para commit

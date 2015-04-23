@@ -27,15 +27,18 @@
                     <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                         <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
                         <hr id="separador">
-                        <div class="row">
-                            <table class="table table-striped mitabla">
-                                @foreach($articulos as $articulo) 
-                                <tr>
-                                    <td>  {{ $articulo->titulo }} </td>
-                                    <td>  {{ $articulo->contenido }}  </td>
-                                </tr>
-                                 @endforeach
-                            </table>
+                        <div class="row noticias">
+                            @foreach($articulos as $articulo)
+                              <!--<div class="well">-->
+                            <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2 ">
+                                <img src="{{ asset($articulo->url_imagen.'.jpg') }}" class="img-responsive" alt="Responsive image">
+                            </div>
+                                <h3 id="tituloNotica">{{ $articulo->titulo }} </h3>
+                                <p id="textoNoticia">{{ $articulo->contenido }}</p>
+                            <br>
+                                <p class="fecha_publicacion pull-right">{{ $articulo->fecha_publicacion }}</p>
+                            <br>
+                            @endforeach    
                         </div>
                         <div class="paginacion"></div>
                     </section>
@@ -59,9 +62,15 @@
 
     <script type="text/javascript">
         var count = "{{ $total }}"//variable para contar el total de franquicias y mostrar en relacion con el nº de paginas
+        var paginas = 0;
+        if (count%5 != 0){
+            paginas = Math.floor(count/5)+1;
+        }else{
+            paginas = count/5 //4 es el número de items que queremos que aparezcan.
+        }
         $(document).ready(function() {
             $('.paginacion').bootpag({
-                total: count/3,
+                total: paginas,
                 page: 1,
                 maxVisible: 3,
                 leaps: true,
@@ -78,37 +87,45 @@
             }).on("page", function(event, num) {
 
                 var ruta = "{{ URL::route('peticion') }}";
-
-               alert(ruta);
-
-                /*$.getJSON(ruta,{'page' : num}, function(result){
+                var html = "";
+                $.getJSON(ruta,{'page' : num}, function(result){
                     var html = '';
                     for(var i = 0; i<result.length; i++){
-                        html += "<tr>";
-                        html += "<td>";
-                        html += result[i].idfranquicia;
-                        html += "</td>"
-
-                        html += "<td>"
-                        html += result[i].nombre_comercial;
-                        html += "</td>"
-                        html += "</tr>"
+                        html += "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";
+                        html += "<img src='{!! asset('"+result[i].url_imagen+".jpg') !!}' class='img-responsive' alt='Responsive image'>";
+                        html += "</div>";
+                        html += "<h3 id='tituloNotica'>" + " {!!' "+result[i].titulo +" '!!} " + "</h3>";
+                        html += "<p id='textoNoticia'> " + " {!!' " +result[i].contenido+ " '!!} " + "</p>";
+                        html += "<br>";
+                        html += "<label class='fecha_publicacion pull-right'> " + " {!!' " +result[i].fecha_publicacion+ " '!!}" + "</label>"
+                        html += "<br>";
                     }
-                    $(".mitabla").html("");
-                    $(".mitabla").append(html); // or some ajax content loading...
-                },'json');*/
+                    $(".noticias").html("");
+                    $(".noticias").append(html); // or some ajax content loading...
+                },'json');
 
-                $.ajax({
-                    type: 'PUT',
-                    url: ruta,
-                    data: {"page" : num},
-                    dataType: 'JSON',
-                    success: function (json) {
-                        alert('test');
-                        return true;
-                    },
-                    error: alert('fail')
-                });
+
+                /*$.ajax({
+                 type: 'POST',
+                 url: ruta,
+                 data: {"page" : num, _token: token},
+                 dataType: 'JSON',
+                 success: function (result) {
+                 for(var i = 0; i<result.length; i++){
+                 html += "<tr>";
+                 html += "<td>";
+                 html += result[i].titulo;
+                 html += "</td>"
+
+                 html += "<td>"
+                 html += result[i].contenido;
+                 html += "</td>"
+                 html += "</tr>"
+                 }
+                 $(".mitabla").html("");
+                 $(".mitabla").append(html);
+                 }
+                 });*/
 
 
             });
