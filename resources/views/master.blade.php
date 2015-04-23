@@ -122,7 +122,7 @@
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Consultas</label>
                             <li><a href="{{ URL::route('dudas-generales') }}"> Dudas generales</a></li>
-                            <li><a href="#"> Dudas franquiciados y franquiciadores</a></li>
+                            <li><a href="{{ URL::route('dudas-franquicias') }}"> Dudas franquiciados y franquiciadores</a></li>
                 </ul>
             </div>
         </div>
@@ -215,5 +215,7 @@
 
 
 </body>
+
+@include('extras.modal')
 
 </html>

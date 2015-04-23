@@ -42,8 +42,8 @@
                                 <hr/>
                             </div>
                             <ul class="list-unstyled pull-left text-justify">
-                                <li><a href="#">Dudas generales</a></li>
-                                <li><a href="#">Dudas franquiciados y franquiciadores</a></li>
+                                <li><a href="{{ URL::route('dudas-generales') }}">Dudas generales</a></li>
+                                <li><a href="{{ URL::route('dudas-franquicias') }}">Dudas franquiciados y franquiciadores</a></li>
                             </ul>
                         </div>
                     </div>
