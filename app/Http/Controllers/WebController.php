@@ -99,11 +99,15 @@ class WebController extends Controller {
         return view ('franquicias-consultoria');
     }
 
+    /**/
     public function dudasgenerales(){
+
         return view ('dudas-generales');
     }
 
+    /**/
     public function dudasfranquicias(){
+
         return view ('dudas-franquicias');
     }
 
