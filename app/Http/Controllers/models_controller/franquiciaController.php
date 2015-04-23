@@ -7,81 +7,57 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 
 
-class franquiciaController extends Controller {
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-     *
-	 */
+class franquiciaController extends Controller
+{
+
 
     public function __construct()
     {
 
         $this->middleware('auth');
     }
-	public function create()
-	{
-		//
-	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(Request $request)
-	{
-		$franquicia = new Franquicia($request::all());
+    public function create()
+    {
+        //
+    }
+
+
+    public function store(Request $request)
+    {
+        $franquicia = new Franquicia($request::all());
         $franquicia->save();
+    }
 
-        //Redireccionamos
-        //return redirect()->route('alta');
 
-	}
+    public function show($id)
+    {
+        //
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    public function edit($id)
+    {
+        //
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    public function update($id)
+    {
+        //
+    }
+
+
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function cargar(Request $request)
+    {
+        $id = $request::input('id');
+        $franquiciacargada = Franquicia::findOrFail($id);
+
+    }
 
 }

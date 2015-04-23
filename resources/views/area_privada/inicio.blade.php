@@ -1,3 +1,4 @@
+
 @extends('area_privada.multifranquicias')
 
 @section('main')
@@ -38,6 +39,7 @@
                                         <th>Telefono</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>email</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> web</th>
+                                        <th id="id" class="hidden"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -50,6 +52,7 @@
                                         <td>{{$franquicia->tf_contacto }}</td>
                                         <td>{{$franquicia->email_contacto }}</td>
                                         <td>{{$franquicia->web }}</td>
+                                        <td class="hidden">{{$franquicia->id }}</td>
                                     </tr>
                                         @endforeach
                                     </tbody>
@@ -123,5 +126,37 @@
             /* END COLUMN FILTER */
             /* Jquery varios */
             $("#titulo-tabla").html("Lista Franquicias");
+
+            $('tr').dblclick(function(e){
+
+            e.preventDefault();
+
+            var id = $(this)[0].children[6].textContent;
+
+            $.ajax({
+            type: "POST",
+            url: "{{ URL::route('email') }}",
+            data: "id="+id,
+            dataType: "html",
+            error: function() {
+            $('#loading').show();
+            alert("error petición ajax");
+            },
+            success: function(data) {
+
+
+            Lobibox.notify('success', {
+            title: 'Enviado!',
+            showClass: 'flipInX',
+            delay: 4000,
+            delayIndicator: false,
+
+            position: 'bottom left',
+            msg: 'Tu mensaje ha sido enviado con éxito. En breve nos pondremos en contacto con usted.'
+            });
+
+
+
+            });
 
 @endsection

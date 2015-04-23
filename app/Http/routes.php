@@ -115,3 +115,6 @@ Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franq
 /*************************************************************************************************************/
 
 Route::post('enviar' ,  ['as' => 'email', 'uses' => 'email\EmailController@enviar']);
+
+Route::post('cargarf' ,  ['as' => 'cargarf', 'uses' => 'franquiciaController@cargar']);
+

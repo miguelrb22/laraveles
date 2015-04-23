@@ -17,21 +17,9 @@ class ShareUser implements Middleware {
         $this->view = $view;
     }
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     *
-     * @return mixed
-     * @internal param View $view
-     *
-     */
     public function handle($request, Closure $next)
     {
-        // Compartimos el usuario logueado (de haberlo) en la variable
-        // user. Se podrá acceder desde cualquier vista del sistema
-        // al haberse compartido. Retorna null si no hay usuario.
+
         $this->view->share('user', Auth::user());
 
         return $next($request);
