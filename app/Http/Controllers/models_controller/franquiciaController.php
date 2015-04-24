@@ -1,11 +1,12 @@
-<?php namespace App\Http\Controllers\models_controller;
+<?php
+
+namespace App\Http\Controllers\models_controller;
 
 use App\Model\Franquicia;
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
-
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session as Session;
+use League\Flysystem\Exception;
 
 
 class franquiciaController extends Controller
@@ -26,7 +27,7 @@ class franquiciaController extends Controller
 
     public function store(Request $request)
     {
-        $franquicia = new Franquicia($request::all());
+        $franquicia = new Franquicia($request->all());
         $franquicia->save();
     }
 
@@ -45,7 +46,7 @@ class franquiciaController extends Controller
 
     public function update($id)
     {
-        //
+        return true;
     }
 
 
@@ -56,9 +57,19 @@ class franquiciaController extends Controller
 
     public function cargar(Request $request)
     {
-        $id = $request->input('id');
-        $franquiciacargada = Franquicia::findOrFail($id);
-        Session::put('franquicia', $franquiciacargada);
+       try {
+
+           $id = $request->input('id');
+           $franquiciacargada = Franquicia::findOrFail($id);
+           Session::put('franquicia', $franquiciacargada);
+           $ses = Session::get('franquicia');
+           return($ses->nombre_comercial);
+
+
+       }catch (Exception $e){
+
+           return($e->getMessage());
+         }
 
     }
 

@@ -41,4 +41,9 @@ class AreaPrivadaController extends Controller {
         return view('area_privada.noticias');
     }
 
+    public function modificar()
+    {
+        return view('area_privada.update');
+    }
+
 }
