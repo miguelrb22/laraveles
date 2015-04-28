@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\areaprivada;
 
 use App\Http\Controllers\Controller;
+use App\Model\Categoria;
 use App\model\Franquicia as Franquicia;
 
 
@@ -33,7 +34,8 @@ class AreaPrivadaController extends Controller {
 
     public function categorias()
     {
-        return view('area_privada.categorias');
+        $categorias = Categoria::all();
+        return view('area_privada.categorias', compact('categorias'));
     }
 
     public function noticias()

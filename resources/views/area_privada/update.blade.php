@@ -2,7 +2,7 @@
 
 @section('main')
 
-
+   <?php  $ses = Session::get('franquicia') ?>
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
@@ -144,14 +144,14 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label> Nombre:</label>
                                                                 <label class="input"><i class="icon-prepend fa fa-user"></i>
-                                                                    <input id="nombre_comercial" type="text" name="nombre_comercial" class="form-control" placeholder="Nombre">
+                                                                    <input id="nombre_comercial" type="text" name="nombre_comercial" class="form-control" placeholder="Nombre" value="{{$ses->nombre_comercial}}">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6 has-feedback">
                                                                 <label>Ciudad:</label>
                                                                 <label class="input"><i
                                                                             class="icon-prepend fa fa-user"></i>
-                                                                    <input id="ciudad" type="text" name="ciudad" class="form-control" placeholder="Ciudad">
+                                                                    <input id="ciudad" type="text" name="ciudad" class="form-control" placeholder="Ciudad" value="{{$ses->ciudad}}">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -161,7 +161,7 @@
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label>Dirección:</label>
                                                                 <label for="address2" class="input">
-                                                                    <input type="text" name="direccion" id="Direccion" class="form-control" placeholder="Dirección">
+                                                                    <input value="{{$ses->direccion}}" type="text" name="direccion" id="Direccion" class="form-control" placeholder="Dirección">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -172,13 +172,13 @@
                                                                 <label>Codigo Postal:</label>
                                                                 <label class="input"><i
                                                                             class="icon-prepend fa fa-user"></i>
-                                                                    <input id="cp" type="text" name="cp" class="form-control" placeholder="Código Postal">
+                                                                    <input value="{{$ses->cp}}" id="cp" type="text" name="cp" class="form-control" placeholder="Código Postal">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Web:</label>
                                                                 <label class="input"><i class="icon-prepend fa fa-user"></i>
-                                                                    <input id="web" type="text" name="web" class="form-control"  placeholder="Página Web">
+                                                                    <input value="{{$ses->web}}" id="web" type="text" name="web" class="form-control"  placeholder="Página Web">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -189,7 +189,7 @@
                                                                      style="margin-bottom: 12px">
                                                                 <label>Descripción:</label>
                                                                 <label class="textarea textarea-resizable">
-                                                                    <textarea class="custom-scroll" rows="1" id="descripcion" name="descripcion"></textarea>
+                                                                    <textarea value="{{$ses->descripcion}}" class="custom-scroll" rows="1" id="descripcion" name="descripcion"></textarea>
                                                                 </label>
                                                             </section>
                                                         </div>

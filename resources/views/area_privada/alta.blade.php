@@ -405,7 +405,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="row">
-                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Red en Extranjero:</label>
 
                                                                     <div class="inline-group" style="margin-top:5px">
@@ -419,6 +419,16 @@
                                                                             <i></i>No</label>
                                                                     </div>
                                                                 </section>
+
+                                                                <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Personal:</label>
+                                                                    <label class="input">
+                                                                        <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal">
+                                                                    </label>
+
+
+                                                                </section>
+
                                                             </div>
                                                         </div>
                                                     </fieldset>

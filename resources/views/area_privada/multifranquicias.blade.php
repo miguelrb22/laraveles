@@ -204,7 +204,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>S</u>alir</strong></a>
+                                <a href="{{ URL::route('logout') }}" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>S</u>alir</strong></a>
                             </li>
                         </ul>
                     </li>
@@ -212,7 +212,7 @@
 
                 <!-- logout button -->
                 <div id="logout" class="btn-header transparent pull-right">
-                    <span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="Cierra el navegador después de salir para más seguridad."><i class="fa fa-sign-out"></i></a> </span>
+                    <span> <a href="{{ URL::route('logout') }}" title="Sign Out" data-action="userLogout" data-logout-msg="Cierra el navegador después de salir para más seguridad."><i class="fa fa-sign-out"></i></a> </span>
                 </div>
                 <!-- end logout button -->
                 <!-- input: search field -->
@@ -259,7 +259,7 @@
                 <li id="dashboard" class="active">
                     <a href="{{ URL::route('private') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
                 </li>
-                <li id="gestion">
+                <li id="gestion" style="display: none">
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión Franquicias</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
                         <li id="alta">
@@ -383,19 +383,16 @@
 
         $(document).ready(function() {
 
-            <?php
+            var token = "{{ csrf_token()}}";
 
-               $ses = Session::get('franquicia');
+            <?php $ses = Session::get('franquicia');
 
-               if (!isset($ses)) {
+               if (!isset($ses)) { ?>
 
-                   ?>
+            $("#gestion").css("display", "none"); <?php
 
-            $("#gestion").hide();
-
-            <?php
-
-            }
+            } else{  ?> $("#gestion").css("display", "block");
+            <?php }
 
              ?>
 
@@ -544,7 +541,7 @@
                         });
 
                         $("#franquiciacargada").html(data);
-                        $("#gestion").show();
+                        $("#gestion").css("display", "block");
 
                     }
                 });
@@ -552,6 +549,169 @@
 
 
             /******************************************************************************/
+
+
+            /** PESTAÑA CATEGORIAS **·/
+             *
+             */
+
+            $('#nueva-categoria').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nuevacategoria') }}",
+                    data: $('#nueva-categoria').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido crear la categoria',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet o si la categoría ya existe'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Categoría creada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Mas categorías, mas dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
+            $('#nueva-subcategoria').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nuevasubcategoria') }}",
+                    data: $('#nueva-subcategoria').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido crear la categoria',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet o si la subcategoría ya existe'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Subcategoría creada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Mas categorías, mas dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
+
+
+            /**** ARTICULOS ****/
+
+            $('#nueva-publicacion').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                var tipo = document.getElementById('tipoarticulo').value;
+                var pertenece = document.getElementById('franquicia_id_articulo').value;
+                var titulo = document.getElementById('titulopublicacion').value;
+                var imagen = document.getElementById('url_imagen_publicacion').value;
+                var texto = $('.summernote').code();
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nueva-publicacion') }}",
+                    data: {tipo:tipo, franquicia_id:pertenece, titulo:titulo, url_imagen:imagen, contenido:texto, _token:token},
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido publicar el artículo',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Artículo creado con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'La informacion al poder!'
+                        });
+                    }
+                });
+
+
+            });
+
+
 
 
             @yield('ready')
