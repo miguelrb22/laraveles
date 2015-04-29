@@ -48,32 +48,33 @@ class WebController extends Controller {
         return view('emprendedor-consultoria');
     }
 
-    public function exito()
-    {
-        //return view('dinamica');
-    }
-
     public function select(Request $request){
-        $id=$request::Input('categoria');
-        $categoria = Categoria::find($id); //en caso de el id ser tipo ORM
-        $num_subcategorias = Subcategoria::where('categoria_id', '=', $id )->count();
 
-        if($num_subcategorias !=0)
-        {
-            //dd("entra");
-            //return Redirect::to('subcategoria', ['name' => str_replace(' ','-',$categoria->nombre)]);
-            return redirect()->route('subcategoria', ['name' => str_replace(' ','-',$categoria->nombre)]);
+            $id=$request::Input('categoria');
+            $categoria = Categoria::find($id);
+
+            //Si la categoria no es nula, es decir se ha enviado valor por el post hacemos la redireccion
+            if($categoria != null)
+            {
+                return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria->nombre)]);
+            }else {
+                return redirect()->route('home');
+            }
+
+
+        /*if($categoria != null) {
+
+            if ($num_subcategorias != 0) {
+                return redirect()->route('subcategoria', ['name' => str_replace(' ', '-', $categoria->nombre)]);
+            } else {
+
+                return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria->nombre)]);
+            }
         }else{
-            //return Redirect::to('franquicia-de-'.str_replace(' ','-',$categoria->nombre));
-            //return Redirect::route('categorias.categoria',['tipo' => str_replace(' ','-',$categoria->nombre)]);
-            return redirect()->route('categoria', ['tipo' => str_replace(' ','-',$categoria->nombre)]);
+            //return redirect()->route($request::Input('actual'));
 
-        }
-        //$categoria =  \DB::table('categoria')->where('idcategoria', '=', $request::Input('categoria'))->get();
-        //dd($categoria->nombre);
+        }*/
 
-
-        //return view('exito', compact('categoria'));
     }
 
     public function buscar()
@@ -104,15 +105,21 @@ class WebController extends Controller {
     }
 
     public function dudasfranquicias(){
+
         return view ('dudas-franquicias');
     }
-
+    /*
+     * Para cargar las primeras noticias nada más abrir la página
+     */
     public function noticias(){
         $articulos = Publicaciones::paginate(5);
         $total = Publicaciones::count();
         return view ('noticias' ,compact('articulos','total'));
     }
 
+    /*
+     * Metodo para cargar noticias según pinchamos en un número de página del paginador
+     */
     public function masnoticias(Request $r)
     {
         $numpage = $r::Input('page')-1;
@@ -122,4 +129,11 @@ class WebController extends Controller {
         }
 
     }
+
+    public function servicios()
+    {
+        return view('servicios_garantias');
+    }
 }
+
+

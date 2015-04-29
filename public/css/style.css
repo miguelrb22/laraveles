@@ -556,6 +556,7 @@ a:hover, a:active {
 ul, ol {
     list-style: none;
 }
+
 #accordion1 li.panel{
     margin-bottom: 0px;
 }
@@ -622,4 +623,17 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 
 .servicios li>p {
     color: black;
+}
+
+.panel_subcategorias {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.badge-info{
+    background-color: #3a87ad !important;
+}
+
+.claves{
+    list-style: inherit;
 }

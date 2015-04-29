@@ -11,9 +11,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model{
+class franquicia_categoria extends Model{
 
-    protected $table = 'categoria';
+    protected $table = 'franquicia_has_categoria';
 
-    protected $fillable = ['id','nombre'];
+    protected $fillable = ['franquicia_id','categoria_id'];
 }

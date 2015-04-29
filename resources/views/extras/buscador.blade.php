@@ -54,10 +54,14 @@
     <div class="form-group">
         <input type="text"  class="form-control" placeholder="Nombre de franquicia">
     </div>
+    <div class="form-group">
+        <input type="hidden"  name="actual" class="form-control" placeholder="" value="{{ Request::url()}}">
+    </div>
     <button type="submit" class="btn btn-default">Buscar</button>
     <div id="patrocinadoT" class="form-group pull-right">
         <label class="textoblanco">Patrocinado por </label>
     </div>
+
     {!! Form::Close() !!}
     <!--</form>-->
     <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">

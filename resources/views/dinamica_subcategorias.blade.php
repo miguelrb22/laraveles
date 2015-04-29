@@ -37,38 +37,143 @@
                         <label>Resultados de búsqueda .... </label>
                     </div>
                     <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
-                    <h2>{{ ucfirst (str_replace('-',' ',$categoria)) }}</h2>
+                    <h2>{{ "Franquicias " .str_replace('-',' ',$categoria)/*ucfirst(str_replace('-',' ',$categoria))*/ }}</h2>
                     <hr id="separador">
-                    <div class="row" style="padding-left: 2%;padding-right: 2%">
-                        <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <div class="row panel panel-info text-center subcategoria">
 
-                                    <div class="panel-heading textoblanco" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                        <span class="textoblanco">Congelados</span>
-                                    </div>
-                                    <div class="panel-body" style="margin-bottom: -16px;">
-                                        <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12 text-center" style="margin-bottom:30px">
-                                            <h3>NOMBRE</h3>
-                                            <img class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                        @for($i = 0; $i < count($subcategorias) ; $i+=2)
+                            @if(count($subcategorias)-$i === 1)
+                            <div class="row panel_subcategorias">
+                                <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
+                                    <div class="row panel panel-info subcategoria">
+                                        <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
+                                            <span><a href="/laraveles/public/franquicias-de-{{$subcategorias[$i]->nombre}}" class="textoblanco">{{$subcategorias[$i]->nombre}}</a></span>
+                                        </div>
+                                        <div class="panel-body" style="margin-bottom: -16px;">
+                                            <div class="row">
+                                                <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
+                                                    <img class="img-responsive img-rounded thumbnail" src="{{ asset('images/anunci.jpg') }}" alt="prueba" style="width: 250px">
+                                                </div>
+                                                <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                                    <h3 class="text-center">La sureña</h3>
+                                                </div>
+                                                <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">Bar y cerveceria la sureña Av.Europa, mucho mas texto que esto es una bazofia</p>
+                                                <div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <a href="#">+kcopas</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Tasca joselito</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <a href="#">+kcopas</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Tasca joselito</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
-                        <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                            <div class="row panel panel-info text-center subcategoria">
-                                <div class="panel-heading textoblanco" id=""  style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                    <span class="textoblanco">Delicatessem</span>
+                            </div>
+                            @else
+                                <div class="row panel_subcategorias" >
+                                <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
+                                    <div class="row panel panel-info subcategoria">
+                                        <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
+                                            <span><a href="/laraveles/public/franquicias-de-{{$subcategorias[$i]->nombre}}" class="textoblanco">{{$subcategorias[$i]->nombre}}</a></span>
+                                        </div>
+                                        <div class="panel-body" style="margin-bottom: -16px;">
+                                            <div class="row">
+                                                <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
+                                                    <img class="img-responsive img-rounded thumbnail" src="{{ asset('images/anunci.jpg') }}" alt="prueba" style="width: 250px">
+                                                </div>
+                                                <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                                    <h3 class="text-center">La sureña</h3>
+                                                </div>
+                                                <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">Bar y cerveceria la sureña Av.Europa, mucho mas texto que esto es una bazofia</p>
+                                                <div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <a href="#">+kcopas</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Tasca joselito</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <a href="#">+kcopas</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Tasca joselito</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="panel-body" style="margin-bottom: -16px;">
-                                    <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12 text-center" style="margin-bottom:30px">
-                                        <h3>nombre de la franquicia</h3>
-                                        <img class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                                <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-right: -60px;"></div>
+                                <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <div class="row panel panel-info subcategoria">
+                                        <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
+                                            <span><a href="/laraveles/public/franquicias-de-{{$subcategorias[$i+1]->nombre}}" class="textoblanco">{{$subcategorias[$i+1]->nombre}}</a></span>
+                                        </div>
+                                        <div class="panel-body" style="margin-bottom: -16px;">
+                                            <div class="row">
+                                                <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
+                                                    <img class="img-responsive img-rounded thumbnail" src="{{ asset('images/anunci.jpg') }}" alt="prueba" style="width: 250px">
+                                                </div>
+                                                <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                                    <h3 class="text-center">La sureña</h3>
+                                                </div>
+                                                <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">Bar y cerveceria la sureña Av.Europa, mucho mas texto que esto es una bazofia</p>
+                                                <div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <a href="#">+kcopas</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Tasca joselito</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <a href="#">+kcopas</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Tasca joselito</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            @endif
+                        @endfor
+
                 </section>
             </div>
         </div>
@@ -83,6 +188,5 @@
 
     <script type="text/javascript">
 
-        //var randomColor = Math.floor(Math.random()*16777215).toString(16);
     </script>
 @endsection
