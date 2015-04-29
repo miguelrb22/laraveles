@@ -30,7 +30,7 @@ class publicacionController extends Controller
     public function store(Request $request) {
 
         $publicacion = new Publicaciones($request->all());
-        dd($publicacion->contenido);
+        dd($publicacion->url_imagen);
         //$publicacion->save();
     }
 
