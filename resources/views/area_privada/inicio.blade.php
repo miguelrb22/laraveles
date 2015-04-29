@@ -8,8 +8,24 @@
                 <br>
                 <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
                     <!-- boton nueva areaprivada -->
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                     <a style="margin-bottom: 15px;" class="btn btn-success" id="nuevo-franquicia" href="{{ URL::route('nueva_alta') }}"><i class="fa fa-plus"></i> Alta Franquicia</a>
-                    <!-- Widget ID (each widget will need unique ID)-->
+                        </div>
+
+                        <div class="col-xs-6 col-sm-7 col-md-8 col-lg-9" style="margin-top: 5px;">
+                            <h4 id="franquiciacargada"> <?php
+
+                                $ses = Session::get('franquicia');
+
+                                    if($ses){
+                                           echo $ses->nombre_comercial;
+                                        } else echo "Ninguna franquicia cargada";?>
+
+                            </h4>
+                        </div>
+                        </div>
                     <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
 
                         <header>
@@ -30,7 +46,7 @@
                             <!-- widget content -->
                             <div class="widget-body no-padding">
 
-                                <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                                <table id="dt_basic_inicio" class="table table-striped table-bordered table-hover" width="100%">
                                     <thead>
                                     <tr>
                                         <th data-class="expand">Nombre Comercial</th>
@@ -71,92 +87,4 @@
                 <!-- WIDGET END -->
         </div>
     </section>
-@endsection
-
-@section('ready')
-
-            pageSetUp();
-            /* BASIC ;*/
-            var responsiveHelper_dt_basic = undefined;
-
-
-            var breakpointDefinition = {
-                tablet : 1024,
-                phone : 480
-            };
-
-            $('#dt_basic').dataTable({
-                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-                "t"+
-                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-                "autoWidth" : true,
-
-                "preDrawCallback" : function() {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelper_dt_basic) {
-                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
-                    }
-                },
-            "aLengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
-                "rowCallback" : function(nRow) {
-                    responsiveHelper_dt_basic.createExpandIcon(nRow);
-                },
-                "drawCallback" : function(oSettings) {
-                    responsiveHelper_dt_basic.respond();
-                }
-            });
-
-            /* END BASIC */
-
-            /* COLUMN FILTER  */
-
-
-            // custom toolbar
-            $("div.toolbar").html('<div class="text-right"><img src="{{ asset('area_privada/js/libs/jquery-ui-1.10.3.min.js') }}" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
-
-            // Apply the filter
-            $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
-
-                otable
-                        .column( $(this).parent().index()+':visible' )
-                        .search( this.value )
-                        .draw();
-
-            } );
-            /* END COLUMN FILTER */
-            /* Jquery varios */
-            $("#titulo-tabla").html("Lista Franquicias");
-
-            $('tr').dblclick(function(e){
-
-            e.preventDefault();
-
-            var id = $(this)[0].children[6].textContent;
-
-            $.ajax({
-            type: "POST",
-            url: "{{ URL::route('email') }}",
-            data: "id="+id,
-            dataType: "html",
-            error: function() {
-            $('#loading').show();
-            alert("error petición ajax");
-            },
-            success: function(data) {
-
-
-            Lobibox.notify('success', {
-            title: 'Enviado!',
-            showClass: 'flipInX',
-            delay: 4000,
-            delayIndicator: false,
-
-            position: 'bottom left',
-            msg: 'Tu mensaje ha sido enviado con éxito. En breve nos pondremos en contacto con usted.'
-            });
-
-
-
-            });
-
 @endsection

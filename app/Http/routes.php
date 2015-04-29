@@ -33,6 +33,8 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
     Route::get('dashboard', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
     Route::get('alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
+    Route::get('modificar', ['as' => 'modificar_franquicia', 'uses' => 'AreaPrivadaController@modificar']);
+
     Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
     Route::get('categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
     Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
@@ -47,10 +49,10 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
 
 /*area franquiciador */
-Route::get('franquiciador', ['as' => 'Fprivate', 'uses' => 'AreaFranquiciadorController@index']);
-Route::get('franquiciador/alta', ['as' => 'Fnueva_alta', 'uses' => 'AreaFranquiciadorController@alta']);
-Route::get('franquiciador/publicidad', ['as' => 'Fpublicidad', 'uses' => 'AreaFranquiciadorController@publicidad']);
-Route::get('franquiciador/noticias', ['as' => 'Fnoticias', 'uses' => 'AreaFranquiciadorController@noticias']);
+Route::get('franquiciador', ['as' => 'Fprivate', 'uses' => 'areaprivada\AreaFranquiciadorController@index']);
+Route::get('franquiciador/alta', ['as' => 'Fnueva_alta', 'uses' => 'areaprivada\AreaFranquiciadorController@alta']);
+Route::get('franquiciador/publicidad', ['as' => 'Fpublicidad', 'uses' => 'areaprivada\AreaFranquiciadorController@publicidad']);
+Route::get('franquiciador/noticias', ['as' => 'Fnoticias', 'uses' => 'areaprivada\AreaFranquiciadorController@noticias']);
 
 
 
@@ -119,7 +121,9 @@ Route::get('peticion',['as' => 'peticion' , 'uses' => 'WebController@masnoticias
 Route::get('servicios_garantias', ['as' => 'servicios_garantias', 'uses' => 'WebController@servicios']);
 
 //para areaprivada guardar una franquicia
-Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@store']);
+Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'models_controller\franquiciaController@store']);
+Route::post('actualizar' ,  ['as' => 'actualizar', 'uses' => 'models_controller\franquiciaController@update']);
+
     //Route::get('peticion',['as' => 'peticion' , 'uses' => 'FanquiciasController@registros']);
 
 
@@ -130,5 +134,13 @@ Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'franquiciaController@sto
 
 Route::post('enviar' ,  ['as' => 'email', 'uses' => 'email\EmailController@enviar']);
 
-Route::post('cargarf' ,  ['as' => 'cargarf', 'uses' => 'franquiciaController@cargar']);
+
+//cargar franquicia
+Route::post('cargarfranquicia' ,  ['as' => 'cargarfranquicia', 'uses' => 'models_controller\franquiciaController@cargar']);
+
+//nueva categoria
+
+Route::post('nuevacategoria' ,  ['as' => 'nuevacategoria', 'uses' => 'models_controller\categoriaController@store']);
+Route::post('nuevasubcategoria' ,  ['as' => 'nuevasubcategoria', 'uses' => 'models_controller\subcategoriaController@store']);
+Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
 

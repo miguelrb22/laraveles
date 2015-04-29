@@ -42,21 +42,8 @@
     <!-- GOOGLE FONT -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 
-    <!-- Specifying a Webpage Icon for Web Clip
-             Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-    <link rel="apple-touch-icon" href="{{ asset('area_privada/img/splash/sptouch-icon-iphone.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('area_privada/img/splash/touch-icon-ipad.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('area_privada/img/splash/touch-icon-iphone-retina.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('area_privada/img/splash/touch-icon-ipad-retina.png') }}">
+    <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
 
-    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-    <!-- Startup image for web apps -->
-    <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/ipad-landscape.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-    <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/ipad-portrait.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-    <link rel="apple-touch-startup-image" href="{{ asset('area_privada/img/splash/iphone.png') }}" media="screen and (max-device-width: 320px)">
 
     <style>
 
@@ -122,7 +109,7 @@
     -->
 
 
-    <body id="cuerpo" class="smart-style-03">
+    <body id="cuerpo" class="smart-style-1">
 
 
 
@@ -217,7 +204,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>S</u>alir</strong></a>
+                                <a href="{{ URL::route('logout') }}" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>S</u>alir</strong></a>
                             </li>
                         </ul>
                     </li>
@@ -225,7 +212,7 @@
 
                 <!-- logout button -->
                 <div id="logout" class="btn-header transparent pull-right">
-                    <span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="Cierra el navegador después de salir para más seguridad."><i class="fa fa-sign-out"></i></a> </span>
+                    <span> <a href="{{ URL::route('logout') }}" title="Sign Out" data-action="userLogout" data-logout-msg="Cierra el navegador después de salir para más seguridad."><i class="fa fa-sign-out"></i></a> </span>
                 </div>
                 <!-- end logout button -->
                 <!-- input: search field -->
@@ -257,7 +244,7 @@
                 <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
                     <img src="{{ asset('area_privada/img/avatars/female.png') }}" alt="me" class="online" />
                     <span>
-                        Nombre de usuario
+                        {{ $user->username }}
                     </span>
                 </a>
 
@@ -272,14 +259,14 @@
                 <li id="dashboard" class="active">
                     <a href="{{ URL::route('private') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
                 </li>
-                <li id="gestion">
+                <li id="gestion" style="display: none">
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión Franquicias</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
                         <li id="alta">
-                            <a href="{{ URL::route('nueva_alta') }}">Alta Franquicia</a>
+                            <a class="needlog" href="{{ URL::route('modificar_franquicia') }}">Modificar Franquicia</a>
                         </li>
                         <li id="publi">
-                            <a href="{{ URL::route('publicidad') }}">Gestión Publicidad</a>
+                            <a class="needlog" href="{{ URL::route('publicidad') }}">Gestión Publicidad</a>
                         </li>
                     </ul>
                 </li>
@@ -385,6 +372,8 @@
         <script src="{{ asset('area_privada/js/plugin/datatables/dataTables.tableTools.min.js') }}"></script>
         <script src="{{ asset('area_privada/js/plugin/datatables/dataTables.bootstrap.min.js') }}"></script>
         <script src="{{ asset('area_privada/js/plugin/datatable-responsive/datatables.responsive.min.js') }}"></script>
+        <script src="{{ URL::asset('lolibox/dist/js/lobibox.min.js') }}"></script>
+        <script src="{{ URL::asset('js/blockUI.js') }}"></script>
 
         @yield('js')
 
@@ -394,9 +383,24 @@
 
         $(document).ready(function() {
 
+            var token = "{{ csrf_token()}}";
+
+            <?php $ses = Session::get('franquicia');
+
+               if (!isset($ses)) { ?>
+
+            $("#gestion").css("display", "none"); <?php
+
+            } else{  ?> $("#gestion").css("display", "block");
+            <?php }
+
+             ?>
+
+
             //Asignamos estilo al cargar la pagina
             var estilo = localStorage.getItem('color');
             $("#cuerpo").addClass(estilo);
+            $(document).ajaxStop($.unblockUI);
 
             pageSetUp();
 
@@ -441,6 +445,274 @@
             });
 
             $( ".fa-plus-square-o").hide();
+
+
+            /*************************************/
+            /** JAVASCRIPT PARA LA VISTA INICIO **/
+            /*************************************/
+
+
+            var responsiveHelper_dt_basic = undefined;
+
+
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+            $('#dt_basic_inicio').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+                "t" +
+                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+                "autoWidth": true,
+
+                "preDrawCallback": function () {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper_dt_basic) {
+                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic_inicio'), breakpointDefinition);
+                    }
+                },
+                "aLengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+                "rowCallback": function (nRow) {
+                    responsiveHelper_dt_basic.createExpandIcon(nRow);
+                },
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_dt_basic.respond();
+                }
+            });
+
+            /* END BASIC */
+
+            /* COLUMN FILTER  */
+
+
+            // custom toolbar
+            $("div.toolbar").html('<div class="text-right"><img src="{{ asset('area_privada/js/libs/jquery-ui-1.10.3.min.js') }}" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+
+            // Apply the filter
+            $("#datatable_fixed_column thead th input[type=text]").on('keyup change', function () {
+
+                otable
+                        .column($(this).parent().index() + ':visible')
+                        .search(this.value)
+                        .draw();
+
+            });
+            /* END COLUMN FILTER */
+            /* Jquery varios */
+            $("#titulo-tabla").html("Lista Franquicias");
+
+            $("#dt_basic_inicio tbody").on("dblclick", "tr", function (e) {
+                e.preventDefault();
+
+                var id = $(this)[0].children[6].textContent;
+                var token = "{{ csrf_token()}}";
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('cargarfranquicia') }}",
+                    data: {id: id, _token: token},
+                    dataType: "html",
+                    error: function () {
+                        //$('#loading').show();
+                        alert("Error en la petición");
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Franquicia Carcaga con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Sigue así y ganarás mucho dinero'
+                        });
+
+                        $("#franquiciacargada").html(data);
+                        $("#gestion").css("display", "block");
+
+                    }
+                });
+            });
+
+
+            /******************************************************************************/
+
+
+            /** PESTAÑA CATEGORIAS **·/
+             *
+             */
+
+            $('#nueva-categoria').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nuevacategoria') }}",
+                    data: $('#nueva-categoria').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido crear la categoria',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet o si la categoría ya existe'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Categoría creada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Mas categorías, mas dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
+            $('#nueva-subcategoria').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nuevasubcategoria') }}",
+                    data: $('#nueva-subcategoria').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido crear la categoria',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet o si la subcategoría ya existe'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Subcategoría creada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Mas categorías, mas dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
+
+
+            /**** ARTICULOS ****/
+
+            $('#nueva-publicacion').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                var tipo = document.getElementById('tipoarticulo').value;
+                var pertenece = document.getElementById('franquicia_id_articulo').value;
+                var titulo = document.getElementById('titulopublicacion').value;
+                var imagen = document.getElementById('url_imagen_publicacion').value;
+                var texto = $('.summernote').code();
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nueva-publicacion') }}",
+                    data: {tipo:tipo, franquicia_id:pertenece, titulo:titulo, url_imagen:imagen, contenido:texto, _token:token},
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido publicar el artículo',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Artículo creado con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'La informacion al poder!'
+                        });
+                    }
+                });
+
+
+            });
+
+
+
 
             @yield('ready')
         });

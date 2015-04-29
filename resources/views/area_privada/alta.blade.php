@@ -130,8 +130,8 @@
                                     <div class="widget-body no-padding">
                                         <!-- comienzo form -->
                                         <!--<form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12" novalidate="novalidate">-->
-                                        {!! Form::open (['action' => 'areaprivada\franquiciaController@store' , 'method' =>'POST', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
-                                            <div class="row" style="margin:0px">
+                                        {!! Form::open (['action' => 'models_controller\franquiciaController@store' , 'method' =>'POST', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
+                                            <div class="row" style="margin:0">
                                                 <h3 class="text-center"><span> Datos Públicos</span></h3>
 
                                                 <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6">
@@ -405,7 +405,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="row">
-                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Red en Extranjero:</label>
 
                                                                     <div class="inline-group" style="margin-top:5px">
@@ -419,6 +419,16 @@
                                                                             <i></i>No</label>
                                                                     </div>
                                                                 </section>
+
+                                                                <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Personal:</label>
+                                                                    <label class="input">
+                                                                        <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal">
+                                                                    </label>
+
+
+                                                                </section>
+
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -1115,75 +1125,3 @@
 				});
 
 @endsection
-
-
-        <!--
-                                                                            <label class="select">
-                                                                    <select name="categoria">
-                                                                        <option value="1" selected="">- Selecciona
-                                                                            categoría -
-                                                                        </option>
-                                                                        <option value="2">Abogados</option>
-                                                                        <option value="3">Administración de Fincas
-                                                                        </option>
-                                                                        <option value="4">Agencias de Viajes</option>
-                                                                        <option value="5">Alimentación</option>
-                                                                        <option value="6">Deportes</option>
-                                                                        <option value="7">Educación</option>
-                                                                        <option value="8">Eficiencia Energética</option>
-                                                                        <option value="9">Fotografía</option>
-                                                                        <option value="10">Hogar</option>
-                                                                        <option value="11">Informática</option>
-                                                                        <option value="12">Regalos, Fiestas y Juguetes
-                                                                        </option>
-                                                                        <option value="13">Inmobiliarias</option>
-                                                                        <option value="14">Librerías y Material de
-                                                                            oficina
-                                                                        </option>
-                                                                        <option value="15">Limpieza</option>
-                                                                        <option value="16">Mensajería y Transporte
-                                                                        </option>
-                                                                        <option value="17">Modas</option>
-                                                                        <option value="18">Negocios Especializados
-                                                                        </option>
-                                                                        <option value="19">Ocio</option>
-                                                                        <option value="20">Ópticas</option>
-                                                                        <option value="21">Publicidad e Impresión
-                                                                        </option>
-                                                                        <option value="22">Reciclaje Consumibles
-                                                                        </option>
-                                                                        <option value="23">Reformas y Suministros
-                                                                        </option>
-                                                                        <option value="24">Restauración</option>
-                                                                        <option value="25">Salud y Belleza</option>
-                                                                        <option value="26">Seguros</option>
-                                                                        <option value="27">Servicios a Pymes</option>
-                                                                        <option value="28">Servicios Asistenciales
-                                                                        </option>
-                                                                        <option value="29">Servicios Financieros
-                                                                        </option>
-                                                                        <option value="30">Telecomunicaciones</option>
-                                                                        <option value="31">Tintorería y Arreglos
-                                                                        </option>
-                                                                        <option value="32">Vending</option>
-                                                                    </select> <i></i>
-                                                                </label>
-                                                                                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                                <label>Selecciona Subcategorias:</label>
-                                                                <label class="select select-multiple">
-                                                                    <select multiple="" class="custom-scroll">
-                                                                        <option value="1">Subcat1</option>
-                                                                        <option value="2">Subcat2</option>
-                                                                        <option value="3">Subcat3</option>
-                                                                        <option value="4">Subcat4</option>
-                                                                        <option value="5">Subcat5</option>
-                                                                        <option value="6">Subcat6</option>
-                                                                        <option value="7">Subcat7</option>
-                                                                        <option value="8">Subcat8</option>
-                                                                        <option value="9">Subcat9</option>
-                                                                    </select> </label>
-                                                                <div class="note">
-                                                                    <strong>Note:</strong> Presiona el botón Ctrl y
-                                                                    selecciona las subcategorias pertinentes.
-                                                                </div>
-                                                            </section>-->

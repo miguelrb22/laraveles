@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Session as Session;
 
 class AuthController extends Controller
 {
@@ -51,6 +52,7 @@ class AuthController extends Controller
     public function getLogout()
     {
         $this->auth->logout();
+        Session::flush();
 
         return redirect('/');
     }
