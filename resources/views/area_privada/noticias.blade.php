@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
                 <br>
-                <form id="nueva-publicacion">
+                <form id="nueva-publicacion" enctype="multipart/form-data">
 
                     <div class="input-group">
 
