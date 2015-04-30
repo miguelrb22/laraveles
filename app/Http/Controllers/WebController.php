@@ -93,6 +93,7 @@ class WebController extends Controller {
                         array_push($listaFinalFranquicias,$listaIdFranquicias);
                     }
 
+                    //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
                     if(!empty($listaFinalFranquicias)) {
                         $listaFinalFranquicias = $listaFinalFranquicias[0];
 
