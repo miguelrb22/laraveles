@@ -82,10 +82,10 @@ class WebController extends Controller {
                 }
                 if ($categoria != -1) {
 
-                    //Obtenemos los ids de las subcategorias de una categoria
+                    //Obtenemos los ids de las subcategorias de una categoria dada ($categoria)
                     $idsSubcategorias = subcategoria::where('categoria_id', '=', $categoria )->get();
                     $listaFinalFranquicias = array();
-                    $Franquicias = array();
+
                     //Vamos extrayendo franquicias que cumplan la condicion de anterior y esta
                     foreach($idsSubcategorias as $id)
                     {
@@ -93,6 +93,7 @@ class WebController extends Controller {
                         array_push($listaFinalFranquicias,$listaIdFranquicias);
                     }
 
+                    if(!$listaFinalFranquicias->isEmpty())
                     $listaFinalFranquicias = $listaFinalFranquicias[0];
 
                     $query = $query->where(function($query) use ($listaFinalFranquicias) {
@@ -114,7 +115,8 @@ class WebController extends Controller {
 
                 $franquicias = $query->get();
                 $resultados = count($franquicias);
-                //Obtenemos si para una categoria pasada por la url hay más de una subcategorias para llamar a una vista u otra
+
+                //Obtenemos si para la categoria pasada hay más de una subcategorias para llamar a una vista u otra
                 $totalFranquicias = subcategoria::where('categoria_id', '=', $categoria )->count();
 
                 if ($totalFranquicias > 1)
