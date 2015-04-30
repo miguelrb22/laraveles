@@ -9,11 +9,11 @@
     {!! Form::open (['action' => 'WebController@select' , 'method' =>'POST', 'class' => 'form-inline col col-xs-12 col-sm-12 col-md-10 col-lg-10' , 'id' => 'form-alta']) !!}
     <div class="form-group">
         <select class="form-control" name="categoria">
-            <option value="0" selected="">- Selecciona categoría -</option>
-            <option value="1">Abogados</option>
+            <option value="-1" selected="">- Selecciona categoría -</option>
+            <option value="4">Abogados</option>
             <option value="2">Administración de Fincas</option>
             <option value="3">Agencias de Viajes</option>
-            <option value="4">Alimentación</option>
+            <option value="1">Alimentación</option>
             <option value="5">Deportes</option>
             <option value="6">Educación</option>
             <option value="7">Eficiencia Energética</option>
@@ -43,19 +43,20 @@
             <option value="31">Vending</option>
         </select>
     </div>
-    <div class="form-group" name="inversion">
-        <select class="form-control">
-            <option value="1" selected="">- Rango de inversión -</option>
-            <option value="2">0 - 20.000</option>
-            <option value="3">20.001 - 40.000</option>
-            <option value="4">40.001 - 60.000</option>
+    <div class="form-group">
+        <select class="form-control" name="inversion">
+            <option value="-1" selected="">- Rango de inversión -</option>
+            <option value="20000">0 - 20.000</option>
+            <option value="40000">20.001 - 40.000</option>
+            <option value="60000">40.001 - 60.000</option>
+            <option value="80000">60.001 - 80.000</option>
+            <option value="100000">80.001 - 100.000</option>
+            <option value="150000">100.001 - 150.000</option>
+            <option value="150001">+ de 150.000</option>
         </select>
     </div>
     <div class="form-group">
-        <input type="text"  class="form-control" placeholder="Nombre de franquicia">
-    </div>
-    <div class="form-group">
-        <input type="hidden"  name="actual" class="form-control" placeholder="" value="{{ Request::url()}}">
+        <input type="text"  class="form-control" placeholder="Nombre de franquicia" name="nombre">
     </div>
     <button type="submit" class="btn btn-default">Buscar</button>
     <div id="patrocinadoT" class="form-group pull-right">

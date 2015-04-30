@@ -398,7 +398,7 @@
                                             <label>Marque las franquicias de su interés.</label>
                                         </div>
                                         <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <button>Desmarmar todas las opciones</button>
+                                            <button type="button" class="desmarcar">Desmarmar todas las opciones</button>
                                         </div>
                                         <br>
                                         <br>
@@ -407,7 +407,7 @@
                                                 @foreach( $similares as $similar)
                                                     <td>
                                                         <label class="checkbox-inline" style="margin-right: 20px">
-                                                            <input type="checkbox" id="{{$similar->nombre_comercial}}" value="{{$similar->nombre_comercial}}" checked> {{$similar->nombre_comercial}}
+                                                            <input class="similares" type="checkbox" id="{{$similar->nombre_comercial}}" value="{{$similar->nombre_comercial}}" checked> {{$similar->nombre_comercial}}
                                                         </label>
                                                     </td>
                                                 @endforeach
@@ -456,6 +456,11 @@
     <script type="text/javascript" src="{{ URL::asset('js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7') }}"></script>
 
     <script type="text/javascript">
+
+        $(".desmarcar").on('click',function(){
+            $(".similares").prop('checked', false);
+        })
+
         $(".fancybox").fancybox({
             //config 1
             //openEffect	: 'none',

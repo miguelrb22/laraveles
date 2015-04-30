@@ -10,6 +10,9 @@ namespace App\Http\Controllers;
 
 
 use App\Model\Categoria;
+use App\Model\Franquicia;
+use App\Model\franquicia_categoria;
+use App\Model\franquicia_subcategoria;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
 use Illuminate\Support\Facades\Request;
@@ -48,32 +51,91 @@ class WebController extends Controller {
         return view('emprendedor-consultoria');
     }
 
+    /**
+     * Este método es llamado desde el formulario de busqueda del buscador de franquicias
+     * @param Request $request la peticion enviada por el form
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function select(Request $request){
 
-            $id=$request::Input('categoria');
-            $categoria = Categoria::find($id);
 
-            //Si la categoria no es nula, es decir se ha enviado valor por el post hacemos la redireccion
-            if($categoria != null)
-            {
-                return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria->nombre)]);
-            }else {
+            ///Obtenemos los parámetros del post///
+            $categoria=$request::Input('categoria');
+            $inversion = $request::Input('inversion');
+            $nombre = $request::Input('nombre');
+            ///-------------------------------///
+
+
+            //dd('categoria: '. $categoria. ' inversion: ' . $inversion. ' nombre: '. $nombre);
+
+            ///Definimos la query///
+            $query = new Franquicia;
+            ///-----------------///
+
+            ///Vamos concatenando wheres para la busqueda segun existan los parámetros///
+            if($categoria != -1 || $inversion != -1 || $nombre != '') {
+
+                if ($inversion != -1) {
+                    //dd($inversion);
+                    $query = $query->where('inversion', '<=', $inversion);
+
+                }
+                if ($categoria != -1) {
+
+                    //Obtenemos los ids de las subcategorias de una categoria
+                    $idsSubcategorias = subcategoria::where('categoria_id', '=', $categoria )->get();
+                    $listaFinalFranquicias = array();
+                    $Franquicias = array();
+                    //Vamos extrayendo franquicias que cumplan la condicion de anterior y esta
+                    foreach($idsSubcategorias as $id)
+                    {
+                        $listaIdFranquicias = franquicia_subcategoria::where('subcategoria_id', '=', $id->id)->get();
+                        array_push($listaFinalFranquicias,$listaIdFranquicias);
+                    }
+
+                    $listaFinalFranquicias = $listaFinalFranquicias[0];
+
+                    $query = $query->where(function($query) use ($listaFinalFranquicias) {
+
+                        foreach ($listaFinalFranquicias as $franquicia) {
+
+                            $query = $query->orWhere('id', '=', $franquicia->franquicia_id);
+
+                        }
+                    });
+
+
+                }
+
+                if($nombre != '')
+                {
+                    $query = $query->where('nombre_comercial' ,'like', '%'.$nombre."%");
+                }
+
+                $franquicias = $query->get();
+                $resultados = count($franquicias);
+                //Obtenemos si para una categoria pasada por la url hay más de una subcategorias para llamar a una vista u otra
+                $totalFranquicias = subcategoria::where('categoria_id', '=', $categoria )->count();
+
+                if ($totalFranquicias > 1)
+                    return view ('resultados', compact('franquicias','resultados'));
+                else{
+                    return view ('resultados_lista', compact('franquicias','resultados'));
+                }
+            }
+            else{
                 return redirect()->route('home');
             }
 
 
-        /*if($categoria != null) {
+            //Si la categoria no es nula, es decir se ha enviado valor por el post hacemos la redireccion
+            /*if($categoria != null)
+            {
 
-            if ($num_subcategorias != 0) {
-                return redirect()->route('subcategoria', ['name' => str_replace(' ', '-', $categoria->nombre)]);
-            } else {
-
-                return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria->nombre)]);
-            }
-        }else{
-            //return redirect()->route($request::Input('actual'));
-
-        }*/
+                return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria->nombre), 'inversion' => $inversion]);
+            }else {
+                return redirect()->route('home');
+            }*/
 
     }
 
@@ -107,6 +169,10 @@ class WebController extends Controller {
     public function dudasfranquicias(){
 
         return view ('dudas-franquicias');
+    }
+
+    public function resultados(){
+        return view ('resultados');
     }
     /*
      * Para cargar las primeras noticias nada más abrir la página

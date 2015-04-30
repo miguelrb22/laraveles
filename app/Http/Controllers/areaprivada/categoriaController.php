@@ -84,35 +84,33 @@ class categoriaController extends Controller {
         $idCategoria = Categoria::where('nombre', '=', $tipo)->get();
 
         //Definimos variables de asignacion
-        $i = 0;
-        $j = 0;
         $lista_franquicias = array();
 
         if(!$idSubcategoria->isEmpty()){
+            //Obtenemos los ids de las franquicias del mismo tipo de la tabla n:m excepto la que se está visualizando
+            //para una categoria
             $idsFranquiciasSub = franquicia_subcategoria::where('subcategoria_id', '=', $idSubcategoria[0]->id )
-                ->where('subcategoria_id', '<>', $id)->get();
+                                                            ->where('franquicia_id', '<>', $id)->get();
 
             foreach($idsFranquiciasSub as $franquicia)
             {
                 $franquicia = Franquicia::where('id' , '=', $franquicia->franquicia_id)->firstOrFail();
                 array_push($lista_franquicias,$franquicia);
-                $j++;
             }
         }
 
 
         if(!$idCategoria->isEmpty()){
 
-
+            //Obtenemos los ids de las franquicias del mismo tipo de la tabla n:m excepto la que se está visualizando
+            //para una categoria
             $idsFranquiciasCa = franquicia_categoria::where('categoria_id', '=', $idCategoria[0]->id )
-                                                    ->where('franquicia_id', '<>' , $id)->get();
-            //dd($idsFranquiciasCa);
+                ->where('franquicia_id', '<>' , $id)->get();
 
             foreach($idsFranquiciasCa as $franquicia)
             {
                 $franquicia = Franquicia::where('id' , '=', $franquicia->franquicia_id)->firstOrFail();
                 array_push($lista_franquicias,$franquicia);
-                $i++;
             }
         }
 
