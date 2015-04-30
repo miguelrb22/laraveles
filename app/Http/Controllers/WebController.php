@@ -93,7 +93,7 @@ class WebController extends Controller {
                         array_push($listaFinalFranquicias,$listaIdFranquicias);
                     }
 
-                    if(!$listaFinalFranquicias->isEmpty())
+                    if(!$listaFinalFranquicias[0]->isEmpty())
                     $listaFinalFranquicias = $listaFinalFranquicias[0];
 
                     $query = $query->where(function($query) use ($listaFinalFranquicias) {
