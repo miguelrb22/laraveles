@@ -93,18 +93,18 @@ class WebController extends Controller {
                         array_push($listaFinalFranquicias,$listaIdFranquicias);
                     }
 
-                    if(!$listaFinalFranquicias[0]->isEmpty())
-                    $listaFinalFranquicias = $listaFinalFranquicias[0];
+                    if(!empty($listaFinalFranquicias)) {
+                        $listaFinalFranquicias = $listaFinalFranquicias[0];
 
-                    $query = $query->where(function($query) use ($listaFinalFranquicias) {
+                        $query = $query->where(function ($query) use ($listaFinalFranquicias) {
 
-                        foreach ($listaFinalFranquicias as $franquicia) {
+                            foreach ($listaFinalFranquicias as $franquicia) {
 
-                            $query = $query->orWhere('id', '=', $franquicia->franquicia_id);
+                                $query = $query->orWhere('id', '=', $franquicia->franquicia_id);
 
-                        }
-                    });
-
+                            }
+                        });
+                    }
 
                 }
 
