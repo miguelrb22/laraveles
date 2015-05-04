@@ -78,10 +78,10 @@ class categoriaController extends Controller {
      */
     public function franquiciasTipo($tipo,$id){
 
-        //Buscamos todos las franquicias de este tipo tanto si el tipo está en subcategorias como categorias y para ello
-        //obtenemos primero los id de la categoria o subcategoria en las tablas intermedias n:m
+        //Buscamos todos las franquicias de este tipo en las subcategorias puesto que un nombre de categoria se crea también en subcategoria
+        //obtenemos primero los id de la subcategoria en las tablas intermedias n:m
         $idSubcategoria = subcategoria::where('nombre', '=', $tipo)->get();
-        $idCategoria = Categoria::where('nombre', '=', $tipo)->get();
+        //$idCategoria = Categoria::where('nombre', '=', $tipo)->get();
 
         //Definimos variables de asignacion
         $lista_franquicias = array();
@@ -100,7 +100,7 @@ class categoriaController extends Controller {
         }
 
 
-        if(!$idCategoria->isEmpty()){
+        /*if(!$idCategoria->isEmpty()){
 
             //Obtenemos los ids de las franquicias del mismo tipo de la tabla n:m excepto la que se está visualizando
             //para una categoria
@@ -112,7 +112,7 @@ class categoriaController extends Controller {
                 $franquicia = Franquicia::where('id' , '=', $franquicia->franquicia_id)->firstOrFail();
                 array_push($lista_franquicias,$franquicia);
             }
-        }
+        }*/
 
         return $lista_franquicias;
     }

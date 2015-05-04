@@ -12,13 +12,26 @@ namespace App\Http\Controllers;
 use App\Model\Categoria;
 use App\Model\Franquicia;
 use App\Model\franquicia_categoria;
+use App\Model\franquicia_nom_subcategoria;
 use App\Model\franquicia_subcategoria;
+use App\Model\franquicias_especiales;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
+use App\Model\especial;
 use Illuminate\Support\Facades\Request;
+use phpDocumentor\Reflection\DocBlock\Type\Collection;
 
 class WebController extends Controller {
 
+
+    private $categorias_deplegables = null;
+
+    /**
+     *
+     */
+    public function __construct(){
+        $this->categorias_deplegables = Categoria::all();
+    }
     /*
     |--------------------------------------------------------------------------
     | Home Controller
@@ -58,43 +71,42 @@ class WebController extends Controller {
      */
     public function select(Request $request){
 
-
             ///Obtenemos los parámetros del post///
             $categoria=$request::Input('categoria');
             $inversion = $request::Input('inversion');
             $nombre = $request::Input('nombre');
+            $categorias = $this->categorias_deplegables; //para rellenar el desplegable
             ///-------------------------------///
 
-
-            //dd('categoria: '. $categoria. ' inversion: ' . $inversion. ' nombre: '. $nombre);
+            ///Deficinicion de variables///
+            //Obtenemos las subcategoria de una categoria dada ($categoria)
+            $subcategorias = subcategoria::where('categoria_id', '=', $categoria )->get(['id','nombre']);
 
             ///Definimos la query///
-            $query = new Franquicia;
+            $query = new franquicia_nom_subcategoria;
             ///-----------------///
 
             ///Vamos concatenando wheres para la busqueda segun existan los parámetros///
             if($categoria != -1 || $inversion != -1 || $nombre != '') {
 
                 if ($inversion != -1) {
-                    //dd($inversion);
-                    $query = $query->where('inversion', '<=', $inversion);
+                    $valores = explode('-',$inversion);
 
+                    $query = $query->where('inversion', '>=', $valores[0])->where('inversion' , '<=' ,$valores[1]);
                 }
                 if ($categoria != -1) {
 
-                    //Obtenemos los ids de las subcategorias de una categoria dada ($categoria)
-                    $idsSubcategorias = subcategoria::where('categoria_id', '=', $categoria )->get();
                     $listaFinalFranquicias = array();
 
                     //Vamos extrayendo franquicias que cumplan la condicion de anterior y esta
-                    foreach($idsSubcategorias as $id)
+                    foreach($subcategorias as $id)
                     {
                         $listaIdFranquicias = franquicia_subcategoria::where('subcategoria_id', '=', $id->id)->get();
                         array_push($listaFinalFranquicias,$listaIdFranquicias);
                     }
 
                     //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
-                    if(!empty($listaFinalFranquicias)) {
+                    if(!empty($listaFinalFranquicias)) { //Falta comprobar
                         $listaFinalFranquicias = $listaFinalFranquicias[0];
 
                         $query = $query->where(function ($query) use ($listaFinalFranquicias) {
@@ -111,8 +123,11 @@ class WebController extends Controller {
 
                 if($nombre != '')
                 {
-                    $query = $query->where('nombre_comercial' ,'like', '%'.$nombre."%");
+                    $query = $query->where('nombre_comercial' ,'like', '%'.$nombre.'%');
                 }
+
+                //Query para obtener las distintas categorias haciendo
+                $query2 = clone $query;
 
                 $franquicias = $query->get();
                 $resultados = count($franquicias);
@@ -120,10 +135,14 @@ class WebController extends Controller {
                 //Obtenemos si para la categoria pasada hay más de una subcategorias para llamar a una vista u otra
                 $totalFranquicias = subcategoria::where('categoria_id', '=', $categoria )->count();
 
-                if ($totalFranquicias > 1)
-                    return view ('resultados', compact('franquicias','resultados'));
-                else{
-                    return view ('resultados_lista', compact('franquicias','resultados'));
+                if ($totalFranquicias > 1) {
+
+                    //Obtenemos todas las subcategorias devueltas por la query
+                    $subcategorias = $query2->distinct()->get(array('nombre'));
+                    return view('resultados', compact('franquicias', 'resultados', 'categorias','subcategorias'));
+                }else{
+
+                    return view ('resultados_lista', compact('franquicias','resultados', 'categorias'));
                 }
             }
             else{
@@ -139,7 +158,46 @@ class WebController extends Controller {
             }else {
                 return redirect()->route('home');
             }*/
+    }
 
+    /**
+     * @param $tipo es si pertenece a franquicias baratas, rentables, low cost o éxito
+     */
+    public function especiales($tipo){
+
+        //Obtenemos las categorias del desplegable
+        $categorias = $this->categorias_deplegables;
+
+        //Primero calculamos el id del tipo de categoria especial según el tipo pasado por parámetro
+        $id_categoria_especial = especial::where('nombre', 'like', $tipo)->get();
+
+        //Obtenemos los registros de la tabla intermedia que cumplen que el idcategoria especial es igual
+        //al obtenido anteriormente
+        if(!$id_categoria_especial->isEmpty()) {
+            $query = franquicias_especiales::where('idcategoria_especial', '=', $id_categoria_especial[0]->id)->get();
+        }else{
+            //Temporal que hacemos?
+            dd("no existen franquicias de este tipo");
+        }
+
+        if(!$query->isEmpty()) {
+            //Obtenemos las franquicias que estan en $query
+            $franquicias = array();
+
+            foreach ($query as $q) {
+                //dd("franquicia id". $q->franquicia_idfranquicia);
+                $franquicia = Franquicia::where('id', '=', $q->franquicia_idfranquicia)->get();
+                array_push($franquicias, $franquicia);
+            }
+
+            $franquicias = $franquicias[0];
+            return view('especiales',compact('franquicias','tipo','categorias'));
+
+        }else{
+            //Temporal que hacemos?
+            dd("no hay franquicias de este tipo: ".$tipo);
+
+        }
     }
 
     public function buscar()
@@ -158,7 +216,8 @@ class WebController extends Controller {
     }
 
     public function franquicias(){
-        return view ('franquicias');
+        $categorias = $this->categorias_deplegables;
+        return view ('franquicias',compact('categorias'));
     }
 
     public function franquiciadores(){
@@ -196,12 +255,43 @@ class WebController extends Controller {
             $result = Publicaciones::take(5)->skip($numpage*5)->get();
             return response()->json($result);
         }
-
     }
 
     public function servicios()
     {
-        return view('servicios_garantias');
+        //obtenemos las categorias del desplegable
+        $categorias = $this->categorias_deplegables;
+        return view('servicios_garantias',compact('categorias'));
+    }
+
+    /**
+     * Devolvemos a la vista la lista de subcategorias que cumplen los requisitos de la busqueda de una subcategoria
+     * @param $tipo
+     * @return \Illuminate\View\View
+     */
+    public function subcategoria($tipo){
+
+         $lista_franquicias = \Illuminate\Support\Facades\Session::get('franquicias');
+         $franquicias =  new \Illuminate\Database\Eloquent\Collection();
+
+
+        foreach ($lista_franquicias as $franquicia)
+        {
+            if($franquicia->nombre === $tipo)
+                $franquicias->add($franquicia);
+        }
+
+        $resultado = count($franquicias);
+
+        //dd("franquicias". $franquicias);
+        return view('resultados_subcategorias', compact('tipo','resultado','franquicias'));
+    }
+
+
+    private function Categorias(){
+
+        $this->categorias_deplegables = Categoria::all();
+        return $this->categorias_deplegables;
     }
 }
 

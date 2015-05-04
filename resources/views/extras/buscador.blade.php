@@ -46,12 +46,12 @@
     <div class="form-group">
         <select class="form-control" name="inversion">
             <option value="-1" selected="">- Rango de inversión -</option>
-            <option value="20000">0 - 20.000</option>
-            <option value="40000">20.001 - 40.000</option>
-            <option value="60000">40.001 - 60.000</option>
-            <option value="80000">60.001 - 80.000</option>
-            <option value="100000">80.001 - 100.000</option>
-            <option value="150000">100.001 - 150.000</option>
+            <option value="0-20000">0 - 20.000</option>
+            <option value="20001-40000">20.001 - 40.000</option>
+            <option value="40001-60000">40.001 - 60.000</option>
+            <option value="60001-80000">60.001 - 80.000</option>
+            <option value="80001-100000">80.001 - 100.000</option>
+            <option value="100001-150000">100.001 - 150.000</option>
             <option value="150001">+ de 150.000</option>
         </select>
     </div>

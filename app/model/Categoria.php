@@ -15,5 +15,5 @@ class Categoria extends Model{
 
     protected $table = 'categoria';
 
-    protected $fillable = ['id','nombre'];
+    protected $fillable = ['id','nombre','descripcion'];
 }

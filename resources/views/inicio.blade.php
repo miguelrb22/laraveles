@@ -28,7 +28,7 @@
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('categoria',array('tipo' => 'exito')) }}" ><strong>Fraquicias de éxito</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" ><strong>Fraquicias de éxito</strong></a></h4>
                             <hr/>
                             <h4 class="text-center"><strong><a href="http://localhost/laraveles/public/perfil/prueba1" title="perfil">Prueba1</a></strong></h4>
                             <img  class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
@@ -37,7 +37,7 @@
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('categoria',array('tipo' => 'rentables')) }}"><strong>Fraquicias rentables</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" ><strong>Fraquicias rentables</strong></a></h4>
                             <hr/>
                             <h4 class="text-center"><strong><a href="http://localhost/laraveles/public/perfil/prueba2" title="perfil">Prueba2</a></strong></h4>
                             <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
@@ -47,7 +47,7 @@
                 <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('categoria',array('tipo' => 'baratas')) }}"><strong>Fraquicias baratas</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  ><strong>Fraquicias baratas</strong></a></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
                             <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('categoria',array('tipo' => 'lowcost')) }}"><strong>Fraquicias low cost</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" ><strong>Fraquicias low cost</strong></a></h4>
                             <hr/>
                             <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
                             <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >

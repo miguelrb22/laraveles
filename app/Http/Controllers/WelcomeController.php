@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Model\Categoria;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -29,7 +31,9 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('inicio');
+        //Pasamos los datos necesarios a la vista para cargar buscador
+        $categorias = Categoria::all();
+		return view('inicio',compact('categorias'));
 	}
 
 }

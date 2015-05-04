@@ -20,8 +20,6 @@ use Illuminate\Support\Collection;
 
 Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
 
-Route::get('home', 'HomeController@index');
-
 #Route::post('login', 'AuthControllerB@postLogin'); // Verificar datos
 #Route::get('logout', 'AuthControllerB@logOut'); // Finalizar sesión
 
@@ -67,7 +65,7 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-//perfil
+//perfil borrar
 Route::get('perfil/{name}', function ($name) {
     $name = ucwords(str_replace('-', ' ', $name));
     return View::make('perfil')->with('name', $name);
@@ -141,6 +139,7 @@ Route::group(['namespace' =>  'categorias'],function() {
 
     //Rute para una franquicia seleccionada
     Route::get('franquicias-de-{tipo}/{nombre}', ['as' => 'categoria', function ($tipo, $nombre) {
+
         //Debemos comprobar antes que la franquicia nombre es de la categoria tipo
         //para ello btenemos el id de la categoria por el tipo pasado en la url y el id de la franquicia
         //tanto para una categoria como para una subcateogria
@@ -179,6 +178,7 @@ Route::group(['namespace' =>  'categorias'],function() {
 
             if(!$idFran_Cat->isEmpty() || !$idFran_Subcat->isEmpty())
             {
+
                 $controller = App::make(\App\Http\Controllers\areaprivada\franquiciaController::class);
                 return $controller->callAction('index', array('nombre' => $nombre, 'tipo' => $tipo));
             } else{
@@ -204,12 +204,24 @@ Route::get('noticias', ['as' => 'noticias_web', 'uses' => 'WebController@noticia
 
 Route::get('resultados', ['as' => 'resultados', 'uses' => 'WebController@resultados']);
 
+//Para los resultado de busqueda de franquicias
+Route::get('busqueda-{tipo}', ['as' => 'categoria', function ($tipo) {
+    $controller = App::make(\App\Http\Controllers\WebController::class);
+    return $controller->callAction('subcategoria', array('tipo' => $tipo));
+}]);
+
+//Para exito, rentables, low cost y baratas
+Route::get('franquicias-{tipo}', ['as' => 'especiales', function($tipo){
+    $controller = App::make(\App\Http\Controllers\WebController::class);
+    return $controller->callAction('especiales', array('tipo' => $tipo));
+}]);
+
 //para peticion ajax de cargar noticias
 Route::get('peticion',['as' => 'peticion' , 'uses' => 'WebController@masnoticias']); //si utilizamos el de abajo ponermos post
 
 Route::get('servicios_garantias', ['as' => 'servicios_garantias', 'uses' => 'WebController@servicios']);
 
-//para areaprivada guardar una franquicia
+//para areaprivada, guardar una franquicia
 Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'models_controller\franquiciaController@store']);
 Route::post('actualizar' ,  ['as' => 'actualizar', 'uses' => 'models_controller\franquiciaController@update']);
 

@@ -15,5 +15,5 @@ class subcategoria extends Model{
 
     protected $table = 'subcategoria';
 
-    protected $fillable = ['id','categoria_id' , 'nombre'];
+    protected $fillable = ['id','categoria_id' , 'nombre' , 'descripcion'];
 }

@@ -45,13 +45,13 @@
             <li class="dropdown">
                 <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext">Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="box"><a href="{{ URL::route('categoria',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
+                    <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ URL::route('categoria',array('tipo' => 'rentables')) }}" class="atext">Franquicias rentables</a></li>
+                    <li><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}"  class="atext">Franquicias rentables</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ URL::route('categoria',array('tipo' => 'baratas')) }}" class="atext">Franquicias baratas</a></li>
+                    <li><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  class="atext">Franquicias baratas</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ URL::route('categoria',array('tipo' => 'lowcost')) }}" class="atext">Franquicias low cost</a></li>
+                    <li><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}"  class="atext">Franquicias low cost</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -209,6 +209,11 @@
             },600);
             $(".ocultar")[0].setAttribute("style", "display:none");
         });
+
+        $(".subcategoria").on('click',function(){
+
+
+})
 
     });
 

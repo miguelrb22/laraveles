@@ -15,5 +15,5 @@ class especial extends Model{
 
     protected $table = 'categoria_especial';
 
-    protected $fillable = ['nombre','descripcion'];
+    protected $fillable = ['id','nombre','descripcion'];
 }
