@@ -21,6 +21,6 @@ class franquicia_nom_subcategoria extends Model{
         'perfil_franquiciado', 'zonas_preferentes', 'anyo_creacion', 'inicio_expansion', 'red_spain', 'n_paises', 'nacionalidad',
         'red_extranjero', 'nombre_franquicia', 'cif', 'fecha_alta_ficha', 'fecha_vencimiento_ficha', 'razon_social', 'fax',
         'domicilio_facturacion', 'cp_fac', 'domicio_fiscal', 'cp_fiscal', 'domicilio_postal', 'cp_postal', 'nombre_apellidos_contacto',
-        'tf_contacto', 'email_contacto', 'cargo_contacto', 'password', 'user', 'descripcion', 'activo','personal','claves_negocio','nombre','subcategoria_id'];
+        'tf_contacto', 'email_contacto', 'cargo_contacto', 'password', 'user', 'descripcion', 'activo','personal','claves_negocio','nombre','subcategoria_id','especial'];
 }
 //comentario para commit

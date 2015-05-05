@@ -18,6 +18,7 @@ use App\Model\franquicias_especiales;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
 use App\Model\especial;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use phpDocumentor\Reflection\DocBlock\Type\Collection;
 
@@ -139,9 +140,12 @@ class WebController extends Controller {
 
                     //Obtenemos todas las subcategorias devueltas por la query
                     $subcategorias = $query2->distinct()->get(array('nombre'));
+
                     return view('resultados', compact('franquicias', 'resultados', 'categorias','subcategorias'));
+
                 }else{
 
+                    //return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria)]);
                     return view ('resultados_lista', compact('franquicias','resultados', 'categorias'));
                 }
             }
@@ -169,11 +173,11 @@ class WebController extends Controller {
         $categorias = $this->categorias_deplegables;
 
         //Primero calculamos el id del tipo de categoria especial según el tipo pasado por parámetro
-        $id_categoria_especial = especial::where('nombre', 'like', $tipo)->get();
+        //$id_categoria_especial = especial::where('nombre', 'like', $tipo)->get();
 
         //Obtenemos los registros de la tabla intermedia que cumplen que el idcategoria especial es igual
         //al obtenido anteriormente
-        if(!$id_categoria_especial->isEmpty()) {
+        /*if(!$id_categoria_especial->isEmpty()) {
             $query = franquicias_especiales::where('idcategoria_especial', '=', $id_categoria_especial[0]->id)->get();
         }else{
             //Temporal que hacemos?
@@ -197,6 +201,14 @@ class WebController extends Controller {
             //Temporal que hacemos?
             dd("no hay franquicias de este tipo: ".$tipo);
 
+        }*/
+        $franquicias = franquicia_nom_subcategoria::where('especial', 'like', $tipo )->get();
+        if(!$franquicias->isEmpty())
+        {
+            return view('especiales',compact('franquicias','tipo','categorias'));
+        }else{
+            //Que hacemos?
+            dd("no hay franquicias de este tipo");
         }
     }
 
@@ -216,8 +228,31 @@ class WebController extends Controller {
     }
 
     public function franquicias(){
+
+        //Declaramos variables de asignacion.
+        $lista = array();
+        $subcategorias = array();
+
+        //Obtenemos las categorias y subcategorias
+        $lista_categorias = Categoria::all();
+        $lista_subcategorias = subcategoria::all();
+
+        foreach($lista_categorias as $categoria) {
+            foreach($lista_subcategorias as $subcategoria){
+
+                if($subcategoria->categoria_id === $categoria->id) {
+                    //dd("subcategoria nombre ". $subcategoria->nombre);
+                    array_push($subcategorias, $subcategoria->nombre);
+                    //dd("entra");
+                }
+            }
+
+            array_push($lista, $categoria->nombre,$subcategorias);
+            $subcategorias = array();
+        }
+
         $categorias = $this->categorias_deplegables;
-        return view ('franquicias',compact('categorias'));
+        return view ('franquicias',compact('categorias','lista'));
     }
 
     public function franquiciadores(){
@@ -283,7 +318,6 @@ class WebController extends Controller {
 
         $resultado = count($franquicias);
 
-        //dd("franquicias". $franquicias);
         return view('resultados_subcategorias', compact('tipo','resultado','franquicias'));
     }
 
@@ -292,6 +326,79 @@ class WebController extends Controller {
 
         $this->categorias_deplegables = Categoria::all();
         return $this->categorias_deplegables;
+    }
+
+    /**
+     * Llama a vista dinámica para mostrar las frnaquicias de una categoria si la
+     * busqueda procede de la pestaña franquicias
+     * @param $tipo es el parametro que indíca de que subcategoria o categoria hay que devolver la lista
+     * de franquicias
+     */
+    public function franquiciasTipo($tipo)
+    {
+        //Obtenemos el id de la subcategoria o categoria por el nombre pasado en la url
+        $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
+        $idCategoria = Categoria::where('nombre', '=', $tipo)->get();
+
+        /*if(!$idSubcategoria->isEmpty())
+        {
+            $franquicias = franquicia_nom_subcategoria::where("subcategoria_id", '=',$idSubcategoria[0]->id)->get();
+            $resultados = count($franquicias);
+            return view("dinamica",compact('franquicias','resultados','tipo'));
+        }else{
+            $franquicias = new \Illuminate\Database\Eloquent\Collection();
+            $resultados = 0;
+            return view("dinamica",compact('franquicias','resultados','tipo'));
+        }*/
+
+        //Si no existe como subcategoria o categoria redireccionamos a la vista principal
+        if(!$idCategoria->isEmpty() || !$idSubcategoria->isEmpty())
+        {
+            //Comprobamos que si es subcategoria o categoria
+            if(!$idCategoria->isEmpty()){
+
+                //Parseamos el nombre de la categoria o subategoria pasado por la url y la volvemos a coger de la consulta por
+                //si tiene tildes.
+                $categoria = strtolower((str_replace('-',' ',$idCategoria[0]->nombre)));
+
+                //comprobamos si tiene suscategorias primero
+                $num_subcategorias = subcategoria::where('categoria_id', '=', $idCategoria[0]->id)->count();
+
+                    if($num_subcategorias == 1)
+                    {
+                        //delegamos en un controlador que me devuelve la vista con los parametros asociados en este caso
+                        //las subcategorias
+                        //$controller = App::make(\App\Http\Controllers\areaprivada\subcategoriaController::class);
+                        //return $controller->callAction('index', array('tipo' => $tipo , 'otro' => '1'));
+                        $franquicias = franquicia_nom_subcategoria::where("subcategoria_id", '=',$idSubcategoria[0]->id)->get();
+                        $resultados = count($franquicias);
+
+                        return view("dinamica",compact('franquicias','resultados','categoria'));
+                    }else {
+
+                        //delegamos en un controlador que me devuelve la vista con los parametros asociados en este caso
+                        //la lista de franquicias
+                        $controller = app::make(\App\Http\Controllers\areaprivada\categoriaController::class);
+                        return $controller->callAction('index', array('tipo' => $categoria));
+                    }
+             //sino sera subcategoria directamente
+            }else{
+
+                //Parseamos el nombre de la categoria o subategoria pasado por la url y la volvemos a coger de la consulta por
+                //si tiene tildes.
+                $categoria = strtolower((str_replace('-',' ',$idSubcategoria[0]->nombre)));
+
+                //Obtenemos las franquicias que son de esta subcategoria.
+                $franquicias = franquicia_nom_subcategoria::where("subcategoria_id", '=',$idSubcategoria[0]->id)->get();
+                $resultados = count($franquicias);
+                return view("dinamica",compact('franquicias','resultados','categoria'));
+            }
+
+        }
+        else{
+           //ambos son vacios no existe la categoria o subcategoria por tanto redirecioamos al index.
+            return redirect('/');
+        }
     }
 }
 

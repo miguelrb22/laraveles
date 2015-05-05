@@ -4,6 +4,7 @@ use App\Model\Franquicia;
 use App\Model\Categoria;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Model\franquicia_nom_subcategoria;
 use App\Model\franquicia_subcategoria;
 use App\Model\subcategoria;
 
@@ -21,23 +22,25 @@ class categoriaController extends Controller {
      */
     public function index($tipo)
     {
-        $idCategoria = Categoria::where('nombre', '=', $tipo)->get();
-        //extraemos las id de las franquicias para la categoria dada
-        $idFranquicias = franquicia_categoria::where('categoria_id', '=', $idCategoria[0]->id )->get();
 
-        $i = 0;
-        $lista_franquicias = array();
+        $idCategoria = Categoria::where('nombre', 'like', $tipo)->get();
+        //extraemos las id de las subcategorias para la categoria dada
+        $idSubcategorias = subcategoria::where('categoria_id', '=', $idCategoria[0]->id )->get();
+
+        $franquicias = array();
 
         //Vamos añadiendo franquicias a un nuevo array creado para pasarlo a la vista posteriormente
-        foreach($idFranquicias as $franquicia)
+        foreach($idSubcategorias as $subcategoria)
         {
-            $franquicia = Franquicia::where('id' , '=', $franquicia->franquicia_id)->firstOrFail();
-            array_push($lista_franquicias,$franquicia);
-            $i++;
+            $franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
+            array_push($franquicias,$franquicia);
         }
 
-        //Devolvemos la vista con el array de franquicias.
-        return view('dinamica')->with(array("franquicias" => $lista_franquicias, 'categoria' => $tipo , 'resultados' => count($lista_franquicias)));
+        $resultados = count($franquicias);
+
+        //Igualamos la categoria a la devuelta por la select por si tiene acentos y la formateamos para pasarla a la vista.
+        $categoria =  strtolower((str_replace('-',' ',$idCategoria[0]->nombre)));
+        return view ('dinamica_subcategorias',compact('franquicias','resultados','categoria'));
     }
 
     /**
@@ -54,8 +57,6 @@ class categoriaController extends Controller {
         $idFranquicias = franquicia_subcategoria::where('subcategoria_id', '=', $idSubcategoria[0]->id )->get();
         //también buscamos en las categorias por si también está
 
-
-        $i = 0;
         $lista_franquicias = array();
 
         //Vamos añadiendo franquicias a un nuevo array creado para pasarlo a la vista posteriormente
@@ -63,7 +64,6 @@ class categoriaController extends Controller {
         {
             $franquicia = Franquicia::where('id' , '=', $franquicia->franquicia_id)->firstOrFail();
             array_push($lista_franquicias,$franquicia);
-            $i++;
         }
 
         //Devolvemos la vista con el array de franquicias.

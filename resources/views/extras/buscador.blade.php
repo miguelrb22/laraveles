@@ -10,10 +10,10 @@
     <div class="form-group">
         <select class="form-control" name="categoria">
             <option value="-1" selected="">- Selecciona categoría -</option>
-            <option value="4">Abogados</option>
+            <option value="1">Abogados</option>
             <option value="2">Administración de Fincas</option>
             <option value="3">Agencias de Viajes</option>
-            <option value="1">Alimentación</option>
+            <option value="4">Alimentación</option>
             <option value="5">Deportes</option>
             <option value="6">Educación</option>
             <option value="7">Eficiencia Energética</option>

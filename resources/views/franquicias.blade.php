@@ -1,6 +1,5 @@
 @extends('master')
 
-
             @section('anuncio')
                 @include('extras.anuncio')
             @endsection
@@ -28,37 +27,29 @@
                             <hr id="separador">
                             <div class="row">
 
-                                    <div class="panel-group" id="accordion">
-                                        <div class="panel">
-                                            <a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion">Abogados</a>
+                                        <div class="panel-group" id="accordion">
+                                            @for($i=0 ; $i < count($lista); $i+=2)
+                                                @if(!(count($lista[$i+1])>1))
+                                                    <div class="panel">
+                                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lista[$i])))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
+                                                    </div>
+                                                @else
+                                                    <div class="panel">
+                                                        <a class="list-group-item" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}"><span class="glyphicon glyphicon-plus"></span>
+                                                            {{$lista[$i]}}
+                                                        </a>
+                                                        <div id="collapse{{$i}}" class="panel-collapse collapse">
+
+                                                            <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
+                                                                        'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item small"> {{$lista[$i]}} </a>
+                                                            @for($j=0 ; $j < count($lista[$i+1]); $j++)
+                                                                <a href="{{URL::to('franquicias-de-'.$lista[$i+1][$j])}}" class="list-group-item small"> {{$lista[$i+1][$j]}} </a>
+                                                            @endfor
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endfor
                                         </div>
-                                        <div class="panel">
-                                            <a class="list-group-item" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span>
-                                                Alimentacion
-                                            </a>
-                                            <div id="collapseTwo" class="panel-collapse collapse">
-                                                <a class="list-group-item small"> Congelados </a>
-                                                <a class="list-group-item small"> Delicatessen</a>
-                                                <a class="list-group-item small"> Fruterias</a>
-                                                <a class="list-group-item small"> Frutos Secos y Dulces</a>
-                                                <a class="list-group-item small"> Otros Alimentación </a>
-                                                <a class="list-group-item small"> Panaderias y Pastelerias</a>
-                                                <a class="list-group-item small"> Supermercados</a>
-                                            </div>
-                                        </div>
-                                        <div class="panel">
-                                            <a class="list-group-item" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-plus"></span>
-                                                Educación
-                                            </a>
-                                            <div id="collapseThree" class="panel-collapse collapse">
-                                                <a class="list-group-item small">Cocinas</a>
-                                                <a class="list-group-item small">Decoración Hogar</a>
-                                                <a class="list-group-item small">Descanso</a>
-                                                <a class="list-group-item small">Mobiliario Hogar</a>
-                                                <a class="list-group-item small">Textil Hogar</a>
-                                            </div>
-                                        </div>
-                                    </div>
                             </div>
                         </section>
                     </div>
