@@ -59,7 +59,7 @@
         });
 
         return elem;
-    }
+    };
     var svgSupported = "createElementNS" in document && new SvgElement("svg", {}).createSVGRect;
 
     function isPercentage(n) {

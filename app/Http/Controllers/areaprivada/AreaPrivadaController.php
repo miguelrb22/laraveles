@@ -3,6 +3,8 @@
 use App\Http\Controllers\Controller;
 use App\Model\Categoria;
 use App\model\Franquicia as Franquicia;
+use App\Model\PaquetesActivos;
+use Illuminate\Support\Facades\Session;
 
 
 class AreaPrivadaController extends Controller {
@@ -29,7 +31,11 @@ class AreaPrivadaController extends Controller {
 
     public function publicidad()
     {
-        return view('area_privada.publicidad');
+
+        $franquicia = Session::get('franquicia');
+        $id = $franquicia->id;
+        $paquetes = PaquetesActivos::where('id','=',$id)->get();
+        return view('area_privada.publicidad', compact('paquetes'));
     }
 
     public function categorias()

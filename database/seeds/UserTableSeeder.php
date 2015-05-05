@@ -11,13 +11,13 @@ class UserTableSeeder extends Seeder {
     public function run()
     {
 
-        /*App\model\User::create([
+        App\model\User::create([
             'first_name' => 'Miguel',
             'last_name'  => 'Ruiz',
             'username'   => 'admin',
             'email'      => 'hola@domain.com',
             'password'   =>  Hash::make('admin')
-        ]);*/
+        ]);
 
         //inicializamos Faker en modo Español
         $faker = Faker::create('es_ES');

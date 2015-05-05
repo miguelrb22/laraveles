@@ -13,8 +13,9 @@
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
                 <br>
-                <form id="nueva-publicacion" enctype="multipart/form-data">
+                <form id="nueva-publicacion"  accept-charset="UTF-8" enctype="multipart/form-data">
 
+                    {!! Form::token() !!}
                     <div class="input-group">
 
                              <label >Tipo de publicación</label>
@@ -30,7 +31,7 @@
 
                         <label >Pertenencia publicación</label>
                         <select name="franquicia_id" id="franquicia_id_articulo" class="form-control input input-sm">
-                            <option value="0" selected>General</option>
+                            <option value="-1" selected>General</option>
                             <?php $ses = Session::get('franquicia') ;
                              if(isset($ses)){
 
@@ -46,7 +47,7 @@
 
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil"></i></span>
-                        <input type="text" name="titulo" id="titulopublicacion" class="form-control" placeholder="Título...">
+                        <input type="text" name="titulo" id="titulopublicacion" class="form-control" placeholder="Título..." required>
                     </div>
                     <br>
 
@@ -55,11 +56,11 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-file-image-o"></i></span>
-                        <input type="file" name="url_imagen" id="url_imagen_publicacion" accept="image/x-png, image/jpeg" class="form-control" placeholder="Título...">
+                        <input type="file" name="file" id="url_imagen_publicacion" accept="image/x-png, image/jpeg" class="form-control" placeholder="Título...">
                     </div>
                     <br>
 
-                    <textarea class="summernote"></textarea>
+                    <textarea name ='contenido' class="summernote" placeholder="Escriba aqui el contenido de su publicación..."></textarea>
                     <br>
                     <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus-square"></i> Publicar</button>
                 </form>
@@ -81,14 +82,9 @@
     <script type="text/javascript">
         $(function() {
             $('.summernote').summernote({
-                height: 300
+                height: 450
 
             });
-
-           /* $('form').on('submit', function (e) {
-                e.preventDefault();
-                alert($('.summernote').code());
-            });*/
         });
     </script>
 

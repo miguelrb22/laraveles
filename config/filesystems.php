@@ -48,6 +48,11 @@ return [
 			'root'   => storage_path().'/app',
 		],
 
+        'publicaciones' => [
+            'driver' => 'local',
+            'root'   => public_path().'/images/publicaciones',
+        ],
+
 		's3' => [
 			'driver' => 's3',
 			'key'    => 'your-key',

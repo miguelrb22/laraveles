@@ -448,8 +448,8 @@ define([
           this.formatBlock($editable, 'H' + idx);
         };
       }(idx);
-    };
-    /* jshint ignore:end */
+    }
+      /* jshint ignore:end */
 
     /**
      * fontsize

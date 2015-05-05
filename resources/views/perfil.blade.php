@@ -459,7 +459,7 @@
 
         $(".desmarcar").on('click',function(){
             $(".similares").prop('checked', false);
-        })
+        });
 
         $(".fancybox").fancybox({
             //config 1

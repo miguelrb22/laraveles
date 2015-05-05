@@ -4,10 +4,10 @@
 namespace App\Http\Controllers\models_controller;
 
 use App\Model\Publicaciones;
-use App\Model\Subcategoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use League\Flysystem\Exception;
+use Ramsey\Uuid\Uuid;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class publicacionController extends Controller
@@ -30,8 +30,38 @@ class publicacionController extends Controller
     public function store(Request $request) {
 
         $publicacion = new Publicaciones($request->all());
-        dd($publicacion->url_imagen);
-        //$publicacion->save();
+
+        if($publicacion->franquicia_id=='-1'){$publicacion->franquicia_id=null;}
+
+
+        //obtenemos el campo file definido en el formulario
+
+       if($file = $request->file('file')) {
+
+
+           $uuid1 = Uuid::uuid4();
+
+           $extension = $file->getClientOriginalExtension();
+           //obtenemos el nombre del archivo
+           $nombre = $uuid1->toString() . "." . $extension;
+
+           //indicamos que queremos guardar un nuevo archivo en el disco local
+           \Storage::disk('publicaciones')->put($nombre, \File::get($file));
+
+           $url = '/images/publicaciones/' . $nombre;
+
+           $publicacion->url_imagen = $url;
+
+
+           //img resize
+           $location = public_path().$url;
+           $image = Image::make($location);
+           $image->resize(200,200);
+           $image->save($location);
+
+       }
+
+        $publicacion->save();
     }
 
 

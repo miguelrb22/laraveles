@@ -13,7 +13,7 @@ class FranquiciaTableSeeder extends Seeder {
 
         $faker = Faker::create('es_ES');
 
-        for($a = 0; $a < 500; $a++) {
+        for($a = 0; $a < 50; $a++) {
 
             //creamos el user guardando el nombre de la imágen.
             $user = Franquicia::create(array(
