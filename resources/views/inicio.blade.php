@@ -29,10 +29,24 @@
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <?php
-                                $a1 = mt_rand(0,count($franquicias_exito)-1);
-                                $a2 = mt_rand(0,count($franquicias_rentables)-1);
-                                $a3 = mt_rand(0,count($franquicias_baratas)-1);
-                                $a4 = mt_rand(0,count($franquicias_lowcost)-1);
+                                if(!$franquicias_exito->isEmpty()) {
+                                    $a1 = mt_rand(0,count($franquicias_exito)-1);
+                                }
+
+                                if(!$franquicias_rentables->isEmpty()) {
+                                    $a2 = mt_rand(0,count($franquicias_rentables)-1);
+                                }
+
+                                if(!$franquicias_baratas->isEmpty()) {
+                                    $a3 = mt_rand(0,count($franquicias_baratas)-1);
+                                }
+
+                                if(!$franquicias_lowcost->isEmpty()){
+                                    $a4 = mt_rand(0,count($franquicias_lowcost)-1);
+                                }
+
+
+
                             ?>
                             <h4 class="text-center">
                                 <a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" >
