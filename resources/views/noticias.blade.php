@@ -9,12 +9,8 @@
         @include('extras.buscador')
     @endsection
 
-    @section('content')
-
     @section('contenido')
         <br>
-        <div class="row">
-            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
                     <section class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
                         <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
@@ -25,27 +21,36 @@
                         </div>
                     </section>
                     <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
+
+                        <div class="row">
                         <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
                         <hr id="separador">
-                        <div class="row noticias">
-                            @foreach($articulos as $articulo)
-                              <!--<div class="well">-->
-                            <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2 ">
-                                <img src="{{ asset($articulo->url_imagen.'.jpg') }}" class="img-responsive" alt="Responsive image">
                             </div>
-                                <h3 id="tituloNotica">{{ $articulo->titulo }} </h3>
-                                <p id="textoNoticia">{{ $articulo->contenido }}</p>
-                            <br>
-                                <p class="fecha_publicacion pull-right">{{ $articulo->fecha_publicacion }}</p>
-                            <br>
-                            @endforeach    
+                        <div class="row noticias">
+
+
+
+                            @foreach($articulos as $articulo)
+
+
+                                <div class="row" >
+                                    <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
+                                        <img src = "{{ URL::asset($articulo->url_imagen)}} " alt="Responsive image" width='110' height="110">
+                                    </div>
+                                    <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
+                                        <h3 id="tituloNotica"><a> {{ $articulo->titulo }}</a></h3>
+                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->contenido),0,400)."... " }}<a>seguir leyendo</a></p>
+                                        <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                            @endforeach
+                                                          
                         </div>
                         <div class="paginacion"></div>
                     </section>
 
                 </div>
-            </div>
-        </div>
     @endsection
 
     @section('der')
@@ -61,7 +66,7 @@
         if (count%5 != 0){
             paginas = Math.floor(count/5)+1;
         }else{
-            paginas = count/5 //4 es el número de items que queremos que aparezcan.
+            paginas = count/5; //4 es el número de items que queremos que aparezcan.
         }
         $(document).ready(function() {
             $('.paginacion').bootpag({
@@ -85,18 +90,31 @@
                 var html = "";
                 $.getJSON(ruta,{'page' : num}, function(result){
                     var html = '';
-                    for(var i = 0; i<result.length; i++){
-                        html += "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";
-                        html += "<img src='{!! asset('"+result[i].url_imagen+".jpg') !!}' class='img-responsive' alt='Responsive image'>";
-                        html += "</div>";
-                        html += "<h3 id='tituloNotica'>" + " {!!' "+result[i].titulo +" '!!} " + "</h3>";
-                        html += "<p id='textoNoticia'> " + " {!!' " +result[i].contenido+ " '!!} " + "</p>";
-                        html += "<br>";
-                        html += "<label class='fecha_publicacion pull-right'> " + " {!!' " +result[i].fecha_publicacion+ " '!!}" + "</label>"
-                        html += "<br>";
-                    }
+                        for(var i = 0; i<result.length; i++){
+
+
+                            html += '<div class="row" >';
+                            html += '<div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">';
+                            html += "<img src='{!! URL::asset('"+result[i].url_imagen+"') !!}' class='img-rounded' alt='Responsive image' width='100' height='100'>";
+                            html +='</div>';
+                            html +='<div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">';
+                            html += "<h3 id='tituloNotica'>" + " {!!' "+result[i].titulo +" '!!} " + "</h3>";
+
+
+
+
+
+                        html += "<div id='textoNoticia'> " +  result[i].contenido  + "... <a>seguir leyendo</a></div>";
+
+                            html +=' <p class="fecha_publicacion pull-right">{{ "21-02-2012" }}</p>';
+                            html += '</div>';
+                            html +='</div>';
+                            html +='<hr>';
+                            //substr(strip_tags($articulo->contenido),0,400)."... " }}
+
+                        }
                     $(".noticias").html("");
-                    $(".noticias").append(html); // or some ajax content loading...
+                    $(".noticias").html(html); // or some ajax content loading...
                 },'json');
 
 

@@ -5391,8 +5391,12 @@ window.CodeMirror = (function() {
       delayedCallbacks = [];
       setTimeout(fireDelayed, 0);
     }
-    function bnd(f) {return function(){f.apply(null, args);};};
-    for (var i = 0; i < arr.length; ++i)
+      function bnd(f) {
+          return function () {
+              f.apply(null, args);
+          };
+      }
+      for (var i = 0; i < arr.length; ++i)
       delayedCallbacks.push(bnd(arr[i]));
   }
 

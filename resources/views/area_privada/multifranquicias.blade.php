@@ -671,16 +671,14 @@
 
                 });
 
-                var tipo = document.getElementById('tipoarticulo').value;
-                var pertenece = document.getElementById('franquicia_id_articulo').value;
-                var titulo = document.getElementById('titulopublicacion').value;
-                var imagen = document.getElementById('url_imagen_publicacion').value;
-                var texto = $('.summernote').code();
+
                 $.ajax({
 
                     type: "POST",
                     url: "{{ URL::route('nueva-publicacion') }}",
-                    data: {tipo:tipo, franquicia_id:pertenece, titulo:titulo, url_imagen:imagen, contenido:texto, _token:token},
+                    data: new FormData($("#nueva-publicacion")[0]),
+                    processData: false,
+                    contentType: false,
                     dataType: "html",
                     error: function () {
 
@@ -705,6 +703,13 @@
                             position: 'bottom left',
                             msg: 'La informacion al poder!'
                         });
+
+                        $('input[name=titulo]').val('');
+                        $('input[name=file]').val('');
+                        $('input[name=contenido]').val('');
+
+
+
                     }
                 });
 

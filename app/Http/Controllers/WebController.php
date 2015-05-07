@@ -319,6 +319,11 @@ class WebController extends Controller {
         $numpage = $r::Input('page')-1;
         if($r::ajax()) {
             $result = Publicaciones::take(5)->skip($numpage*5)->get();
+
+            foreach($result as $res){
+
+                $res->contenido =  substr(strip_tags($res->contenido),0,400);
+            }
             return response()->json($result);
         }
     }

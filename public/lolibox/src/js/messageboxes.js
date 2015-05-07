@@ -542,8 +542,7 @@ var Lobibox = Lobibox || {};
         
         this._init();
         this.debug(this);
-    };
-    
+    }
     LobiboxPrompt.prototype = $.extend({}, LobiboxBase, {
         constructor: LobiboxPrompt,
         
@@ -629,8 +628,7 @@ var Lobibox = Lobibox || {};
         this.$options   = this._processInput(options);
         this._init();
         this.debug(this);
-    };
-    
+    }
     LobiboxConfirm.prototype = $.extend({}, LobiboxBase, {
         constructor: LobiboxConfirm,
         
@@ -681,8 +679,7 @@ var Lobibox = Lobibox || {};
 
         this._init();
         this.debug(this);
-    };
-
+    }
     LobiboxAlert.prototype = $.extend({}, LobiboxBase, {
         constructor: LobiboxAlert,
 
@@ -756,8 +753,7 @@ var Lobibox = Lobibox || {};
         
         this._init();
         this.debug(this);
-    };
-    
+    }
     LobiboxProgress.prototype = $.extend({}, LobiboxBase, {
         constructor: LobiboxProgress,
         
@@ -849,8 +845,6 @@ var Lobibox = Lobibox || {};
         this._init();
         this.debug(this);
     }
-    ;
-
     LobiboxWindow.prototype = $.extend({}, LobiboxBase, {
         constructor: LobiboxWindow,
         _processInput: function(options) {
