@@ -25,46 +25,54 @@
             <br>
             <div class="row">
                 <section class="col col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right:0">
-
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="well well_efect">
-                            <?php
-
-                                if(!$franquicias_exito->isEmpty()) {
-                                    $a1 = mt_rand(0,count($franquicias_exito)-1);
-                                }
-
-                                if(!$franquicias_rentables->isEmpty()) {
-                                    $a2 = mt_rand(0,count($franquicias_rentables)-1);
-                                }
-
-                                if(!$franquicias_baratas->isEmpty()) {
-                                    $a3 = mt_rand(0,count($franquicias_baratas)-1);
-                                }
-
-                                if(!$franquicias_lowcost->isEmpty()){
-                                    $a4 = mt_rand(0,count($franquicias_lowcost)-1);
-                                }
-
-                            ?>
-                            <h4 class="text-center">
-                                <a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" >
-                                    <strong>Franquicias de éxito</strong>
-                                </a>
-                            </h4>
-                            <hr/>
-                            <h4 class="text-center">
-                                <strong>
-                                    <a href="{{URL::to('franquicias-de-'.$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)}}" title="perfil">
-                                        {{$franquicias_exito[$a1]->nombre_comercial}}
+                    @if(!$franquicias_exito->isEmpty())
+                        <?php
+                            $a1 = mt_rand(0,count($franquicias_exito)-1);
+                        ?>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="well well_efect">
+                                <h4 class="text-center">
+                                    <a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" >
+                                        <strong>Franquicias de éxito</strong>
                                     </a>
-                                </strong>
-                            </h4>
-                            <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" >
+                                </h4>
+                                <hr/>
+                                <h4 class="text-center">
+                                    <strong>
+                                        <a href="{{URL::to('franquicias-de-'.$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)}}" title="perfil">
+                                            {{$franquicias_exito[$a1]->nombre_comercial}}
+                                        </a>
+                                    </strong>
+                                </h4>
+                                <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" >
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="well well_efect">
+                                <h4 class="text-center">
+                                    <a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" >
+                                        <strong>Franquicias de éxito</strong>
+                                    </a>
+                                </h4>
+                                <hr/>
+                                <h4 class="text-center">
+                                    <strong>
+                                        <a href="#" title="perfil">
+                                          Multifranquicias
+                                        </a>
+                                    </strong>
+                                </h4>
+                                <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                            </div>
+                        </div>
+                    @endif
 
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @if(!$franquicias_rentables->isEmpty())
+                        <?php
+                            $a2 = mt_rand(0,count($franquicias_rentables)-1);
+                        ?>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" ><strong>Franquicias rentables</strong></a></h4>
                             <hr/>
@@ -76,9 +84,36 @@
                             <img class="img-responsive" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
                         </div>
                     </div>
+                    @else
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="well well_efect">
+                                    <h4 class="text-center">
+                                        <a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" >
+                                            <strong>Franquicias rentables</strong>
+                                        </a>
+                                    </h4>
+                                    <hr/>
+                                    <h4 class="text-center">
+                                        <strong>
+                                            <a href="#" title="perfil">
+                                                Multifranquicias
+                                            </a>
+                                        </strong>
+                                    </h4>
+                                    <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                                </div>
+                            </div>
+                    @endif
+
+
                 </section>
+
                 <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @if(!$franquicias_baratas->isEmpty())
+                    <?php
+                        $a3 = mt_rand(0,count($franquicias_baratas)-1);
+                    ?>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  ><strong>Fraquicias baratas</strong></a></h4>
                             <hr/>
@@ -90,7 +125,32 @@
                             <img class="img-responsive" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @else
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="well well_efect">
+                                <h4 class="text-center">
+                                    <a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}" >
+                                        <strong>Franquicias Baratas</strong>
+                                    </a>
+                                </h4>
+                                <hr/>
+                                <h4 class="text-center">
+                                    <strong>
+                                        <a href="" title="perfil">
+                                            Multifranquicias
+                                        </a>
+                                    </strong>
+                                </h4>
+                                <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(!$franquicias_lowcost->isEmpty())
+                    <?php
+                        $a4 = mt_rand(0,count($franquicias_lowcost)-1);
+                    ?>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" ><strong>Fraquicias low cost</strong></a></h4>
                             <hr/>
@@ -102,6 +162,26 @@
                             <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->nombre_comercial) }}" alt="prueba" >
                         </div>
                     </div>
+                    @else
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="well well_efect">
+                                <h4 class="text-center">
+                                    <a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" >
+                                        <strong>Franquicias lowcost</strong>
+                                    </a>
+                                </h4>
+                                <hr/>
+                                <h4 class="text-center">
+                                    <strong>
+                                        <a href="" title="perfil">
+                                            Multifranquicias
+                                        </a>
+                                    </strong>
+                                </h4>
+                                <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                            </div>
+                        </div>
+                    @endif
                 </section>
             </div>
             <!-- PARTE NOTICAS -->
@@ -208,15 +288,17 @@
 
             <?php
 
-                if(!$franquicias_descatas->isEmpty()){
+
+                if(!$fraquicias_destacadas->isEmpty()){
+
                     $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
                     $a2 = mt_rand(0,count($fraquicias_destacadas)-1);
+
+                    do {
+                        $a2 = rand(0,count($fraquicias_destacadas)-1);
+                    }while ($a2 === $a1);
                 }
 
-
-                do {
-                    $a2 = rand(0,count($fraquicias_destacadas)-1);
-                }while ($a2 === $a1)
             ?>
 
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
