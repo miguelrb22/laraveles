@@ -14,7 +14,7 @@ use App\Model\Franquicia;
 use App\Model\franquicia_categoria;
 use App\Model\franquicia_nom_subcategoria;
 use App\Model\franquicia_subcategoria;
-use App\Model\franquicias_especiales;
+use App\Model\franquicia_especial_subcategoria;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
 use App\Model\especial;
@@ -43,6 +43,37 @@ class WebController extends Controller {
     | controller as you wish. It is just here to get your app started!
     |
     */
+
+
+    /**
+     * Devuelve la vista del home con los arrays necesarios para cargar franquicias baratas, destacadas, éxito de
+     * la vista creada dinámicamente en la BD.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+
+        //$franquicias_especiales = franquicia_nom_subcategoria::all();
+
+        //asignamos las franquicias.
+        //foreach($franquicias_especiales as $especial)
+        //{
+            //Obtenemos todos los datos de la base de datos que hay que pasar a la página principal como
+            //las franquicias de éxito, rentables, destacadas, los articulos.
+            $franquicias_exito = franquicia_especial_subcategoria::where('especial','=', 'exito')->groupBy('id')->get();
+            $franquicias_baratas = franquicia_especial_subcategoria::where('especial','=', 'baratas')->groupBy('id')->get();
+            $franquicias_rentables = franquicia_especial_subcategoria::where('especial','=', 'rentables')->groupBy('id')->get();
+            $franquicias_lowcost = franquicia_especial_subcategoria::where('especial','=', 'lowcost')->groupBy('id')->get();
+            $fraquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
+
+            $articulos =
+        //}
+
+        //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
+        $categorias = Categoria::all();
+		return view('inicio',compact('categorias','franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'fraquicias_destacadas'));
+	}
 
     /*
      * Devolcer la vista privacidad
@@ -202,7 +233,7 @@ class WebController extends Controller {
             dd("no hay franquicias de este tipo: ".$tipo);
 
         }*/
-        $franquicias = franquicia_nom_subcategoria::where('especial', 'like', $tipo )->get();
+        $franquicias = franquicia_especial_subcategoria::where('especial', 'like', $tipo )->groupBy('id')->get();
         if(!$franquicias->isEmpty())
         {
             return view('especiales',compact('franquicias','tipo','categorias'));

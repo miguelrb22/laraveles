@@ -29,11 +29,7 @@
 
                                         <div class="panel-group" id="accordion">
                                             @for($i=0 ; $i < count($lista); $i+=2)
-                                                @if(!(count($lista[$i+1])>1))
-                                                    <div class="panel">
-                                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lista[$i])))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
-                                                    </div>
-                                                @else
+                                                @if(count($lista[$i+1])>1)
                                                     <div class="panel">
                                                         <a class="list-group-item" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}"><span class="glyphicon glyphicon-plus"></span>
                                                             {{$lista[$i]}}
@@ -47,6 +43,12 @@
                                                             @endfor
                                                         </div>
                                                     </div>
+                                                @else
+                                                    @if(count($lista[$i+1]) != 0)
+                                                        <div class="panel">
+                                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lista[$i])))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             @endfor
                                         </div>

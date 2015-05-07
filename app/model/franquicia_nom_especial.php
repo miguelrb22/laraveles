@@ -11,9 +11,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class franquicia_nom_subcategoria extends Model{
+class franquicia_nom_especial extends Model{
 
-    protected $table = 'franquicia_nom_subcategoria';
+    protected $table = 'franquicia_nom_especial';
 
     protected $fillable = [ 'nombre_comercial' , 'ciudad', 'direccion', 'cp' , 'web', 'logo_url', 'inversion', 'presencia_int', 'royalty',
         'canon_entrada', 'canon_publicitario', 'duracion_contrato', 'amortizacion', 'requisitos_local', 'locales_propios',
@@ -21,6 +21,6 @@ class franquicia_nom_subcategoria extends Model{
         'perfil_franquiciado', 'zonas_preferentes', 'anyo_creacion', 'inicio_expansion', 'red_spain', 'n_paises', 'nacionalidad',
         'red_extranjero', 'nombre_franquicia', 'cif', 'fecha_alta_ficha', 'fecha_vencimiento_ficha', 'razon_social', 'fax',
         'domicilio_facturacion', 'cp_fac', 'domicio_fiscal', 'cp_fiscal', 'domicilio_postal', 'cp_postal', 'nombre_apellidos_contacto',
-        'tf_contacto', 'email_contacto', 'cargo_contacto', 'password', 'user', 'descripcion', 'activo','personal','claves_negocio','nombre','subcategoria_id'];
+        'tf_contacto', 'email_contacto', 'cargo_contacto', 'password', 'user', 'descripcion', 'activo','personal','claves_negocio','especial'];
 }
 //comentario para commit

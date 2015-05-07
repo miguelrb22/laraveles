@@ -1,5 +1,5 @@
 <!-- INICIO BUSCADOR -->
-<div class="row well_efect"  id="buscador" style="background:#99b433;margin:0;padding:10px;margin-top: 1%">
+<div class="row well_efect buscador" >
     <div id="busquedaT" class="row col col-xs-12 col-sm-12 col-md-10 col-lg-10 pull-left">
         <h4 class="textoblanco">Búsqueda de franquicias </h4>
     </div>

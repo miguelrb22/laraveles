@@ -18,7 +18,7 @@ use App\Model\franquicia_categoria;
 use App\Model\franquicia_subcategoria;
 use App\Model\franquicia_nom_subcategoria;
 
-Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
+Route::get('/', ['as' => 'home', 'uses' =>  'WebController@index']);
 
 #Route::post('login', 'AuthControllerB@postLogin'); // Verificar datos
 #Route::get('logout', 'AuthControllerB@logOut'); // Finalizar sesión

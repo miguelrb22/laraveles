@@ -561,7 +561,7 @@ h2 > a {
 
 .buscador
 {
-    background: #9BBBC7;
+    background: #839AA8;
     margin:0;
     padding:10px;
     margin-top: 1%
@@ -677,4 +677,8 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     border: 0;
     border-top: 1px solid #eee;
     padding-bottom: 5px;
+}
+
+.img_destacados{
+    border-radius: 10px !important;
 }

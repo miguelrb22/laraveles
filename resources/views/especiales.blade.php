@@ -29,12 +29,13 @@
                         <label>Resultados de busqueda: <span class="badge badge-info"> {{count($franquicias)}} </span> franquicias  </label>
                     </div>
                     <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
-                    <h2> @if($tipo === 'exito')
+                    <h2>
+                        @if($tipo === 'exito')
                          {{"Franquicias de éxito"}}
                         @else
-                          {{"franquicias ".str_replace('-',' ',$tipo)/*ucfirst(str_replace('-',' ',$categoria))*/}}
-
+                          {{"franquicias ".str_replace('-',' ',$tipo)}}
                          @endif</h2>
+
                     <hr id="separador">
                     @foreach($franquicias as $franquicia)
                         <div class="row">

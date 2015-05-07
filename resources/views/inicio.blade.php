@@ -28,19 +28,39 @@
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" ><strong>Fraquicias de éxito</strong></a></h4>
+                            <?php
+                                $a1 = mt_rand(0,count($franquicias_exito)-1);
+                                $a2 = mt_rand(0,count($franquicias_rentables)-1);
+                                $a3 = mt_rand(0,count($franquicias_baratas)-1);
+                                $a4 = mt_rand(0,count($franquicias_lowcost)-1);
+                            ?>
+                            <h4 class="text-center">
+                                <a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" >
+                                    <strong>Franquicias de éxito</strong>
+                                </a>
+                            </h4>
                             <hr/>
-                            <h4 class="text-center"><strong><a href="http://localhost/laraveles/public/perfil/prueba1" title="perfil">Prueba1</a></strong></h4>
-                            <img  class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                            <h4 class="text-center">
+                                <strong>
+                                    <a href="{{URL::to('franquicias-de-'.$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)}}" title="perfil">
+                                        {{$franquicias_exito[$a1]->nombre_comercial}}
+                                    </a>
+                                </strong>
+                            </h4>
+                            <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" >
                         </div>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" ><strong>Fraquicias rentables</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" ><strong>Franquicias rentables</strong></a></h4>
                             <hr/>
-                            <h4 class="text-center"><strong><a href="http://localhost/laraveles/public/perfil/prueba2" title="perfil">Prueba2</a></strong></h4>
-                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                            <h4 class="text-center">
+                                <strong>
+                                    <a href="{{URL::to('franquicias-de-'.$franquicias_rentables[$a2]->nombre."/".$franquicias_rentables[$a2]->nombre_comercial)}}" title="perfil">{{$franquicias_rentables[$a2]->nombre_comercial}}</a>
+                                </strong>
+                            </h4>
+                            <img class="img-responsive" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
                         </div>
                     </div>
                 </section>
@@ -49,16 +69,24 @@
                         <div class="well well_efect">
                             <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  ><strong>Fraquicias baratas</strong></a></h4>
                             <hr/>
-                            <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
-                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                            <h4 class="text-center">
+                                <strong>
+                                    <a href="{{URL::to('franquicias-de-'.$franquicias_baratas[$a3]->nombre."/".$franquicias_baratas[$a3]->nombre_comercial)}}" title="perfil">{{$franquicias_baratas[$a3]->nombre_comercial}}</a>
+                                </strong>
+                            </h4>
+                            <img class="img-responsive" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" ><strong>Fraquicias low cost</strong></a></h4>
                             <hr/>
-                            <h4 class="text-center"><strong>Nombre franquicia</strong></h4>
-                            <img class="img-responsive" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                            <h4 class="text-center">
+                                <strong>
+                                    <a href="{{URL::to('franquicias-de-'.$franquicias_lowcost[$a4]->nombre."/".$franquicias_lowcost[$a4]->nombre_comercial)}}" title="perfil">{{$franquicias_lowcost[$a4]->nombre_comercial}}</a>
+                                </strong>
+                            </h4>
+                            <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->nombre_comercial) }}" alt="prueba" >
                         </div>
                     </div>
                 </section>
@@ -164,6 +192,16 @@
         @endsection
         @section('der')
             @include('extras.derecha')
+
+            <?php
+                $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
+                $a2 = mt_rand(0,count($fraquicias_destacadas)-1);
+
+                do {
+                    $a2 = rand(0,count($fraquicias_destacadas)-1);
+                }while ($a2 === $a1)
+            ?>
+
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
                     <div class="panel-heading textoblanco" id="panelDes" style="background:#333">
@@ -171,12 +209,12 @@
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
                         <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12 text-center">
-                            <h3>NOMBRE</h3>
-                            <img class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
+                            <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}">{{$fraquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
+                            <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" >
                         </div>
                         <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
-                            <h3>NOMBRE</h3>
-                            <img class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}" alt="prueba">
+                            <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}">{{$fraquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
+                            <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba">
                         </div>
                     </div>
                 </div>
