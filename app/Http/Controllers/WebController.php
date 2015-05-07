@@ -277,8 +277,6 @@ class WebController extends Controller {
                 echo "</div>";
                 echo "</div>";
                 echo "<hr>";
-
-
             }
         }
     }
