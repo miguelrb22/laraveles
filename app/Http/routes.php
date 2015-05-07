@@ -16,9 +16,9 @@ use App\Model\subcategoria;
 use App\Model\Franquicia;
 use App\Model\franquicia_categoria;
 use App\Model\franquicia_subcategoria;
-use Illuminate\Support\Collection;
+use App\Model\franquicia_nom_subcategoria;
 
-Route::get('/', ['as' => 'home', 'uses' =>  'WelcomeController@index']);
+Route::get('/', ['as' => 'home', 'uses' =>  'WebController@index']);
 
 #Route::post('login', 'AuthControllerB@postLogin'); // Verificar datos
 #Route::get('logout', 'AuthControllerB@logOut'); // Finalizar sesión
@@ -93,61 +93,23 @@ Route::group(['namespace' =>  'categorias'],function() {
 
     Route::get('franquicias-de-{tipo}', ['as' => 'categoria', function ($tipo) {
 
-    //dd($inversion);
-        //Obtenemos el id de la categoria por el nombre pasado en la url
-        $idCategoria=Categoria::where('nombre', '=', $tipo )->get();
-        $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
-
-        //Si no existe como subcategoria o categoria redireccionamos a la vista principal
-        if(!$idCategoria->isEmpty() || !$idSubcategoria->isEmpty())
-        {
-
-            //Comprobamos que es si es subcategoria o categoria
-            if(!$idCategoria->isEmpty()){
-
-                //comprobamos si tiene suscategorias primero
-                $num_subcategorias = subcategoria::where('categoria_id', '=', $idCategoria[0]->id)->count();
-
-                    if($num_subcategorias != 0)
-                    {
-                        //delegamos en un controlador que me devuelve la vista con los parametros asociados en este caso
-                        //las subcategorias
-                        $controller = App::make(\App\Http\Controllers\areaprivada\subcategoriaController::class);
-                        return $controller->callAction('index', array('tipo' => $tipo , 'otro' => '1'));
-                    }else {
-                        //delegamos en un controlador que me devuelve la vista con los parametros asociados en este caso
-                        //la lista de franquicias
-                        $controller = App::make(\App\Http\Controllers\areaprivada\categoriaController::class);
-                        return $controller->callAction('index', array('tipo' => $tipo));
-                        //return view('dinamica')->with('categoria', "éxito");
-                    }
-                //llamamos a controlador de categoria
-            }else{
-                //dd("debe buscarse en subcategoria");
-                //llamamos a controlador de subcategoria
-                $controller = App::make(\App\Http\Controllers\areaprivada\categoriaController::class);
-                return $controller->callAction('getFranquiciasSubcategoria', array('tipo' => $tipo , 'otro' => '1'));
-            }
-
-        }
-        else{
-           //ambos son vacios no existe la categoria o subcategoria por tanto redirecioamos al index.
-            return redirect('home');
-        }
+        $controller = App::make(\App\Http\Controllers\WebController::class);
+        return $controller->callAction('franquiciasTipo', array('tipo' => $tipo ));
 
     }]);
 
+    //FALTA REVISAR.
     //Rute para una franquicia seleccionada
     Route::get('franquicias-de-{tipo}/{nombre}', ['as' => 'categoria', function ($tipo, $nombre) {
 
         //Debemos comprobar antes que la franquicia nombre es de la categoria tipo
         //para ello btenemos el id de la categoria por el tipo pasado en la url y el id de la franquicia
         //tanto para una categoria como para una subcateogria
-
         $idCategoria= Categoria::where('nombre', '=', $tipo )->get();
         $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
 
         if(!$idCategoria->isEmpty() || !$idSubcategoria->isEmpty() ) {
+
 
             $idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
 
@@ -156,7 +118,7 @@ Route::group(['namespace' =>  'categorias'],function() {
 
             //dd($idFran_Cat);
             //Comprobamos si idCategoria no es vacio porque si es vacio significa que no hay id de categoria con ese nombre
-            if(!$idCategoria->isEmpty())
+            if(!$idCategoria->isEmpty() && !$idfranquicia->isEmpty())
             {
                 //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
                 $idFran_Cat->add( franquicia_categoria::where('franquicia_id', '=', $idfranquicia[0]->id)
@@ -167,7 +129,7 @@ Route::group(['namespace' =>  'categorias'],function() {
                 $idFran_Cat = $idFran_Cat[0];
             }
 
-            if(!$idSubcategoria->isEmpty())
+            if(!$idSubcategoria->isEmpty() && !$idfranquicia->isEmpty())
             {
                 //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
                 $idFran_Subcat->add( franquicia_subcategoria::where('franquicia_id', '=', $idfranquicia[0]->id)
@@ -178,14 +140,13 @@ Route::group(['namespace' =>  'categorias'],function() {
 
             if(!$idFran_Cat->isEmpty() || !$idFran_Subcat->isEmpty())
             {
-
                 $controller = App::make(\App\Http\Controllers\areaprivada\franquiciaController::class);
                 return $controller->callAction('index', array('nombre' => $nombre, 'tipo' => $tipo));
             } else{
-                return redirect('home');
+                return redirect('/');
             }
         }else{
-            return redirect('home');
+            return redirect('/');
         }
     }]);
 
@@ -207,7 +168,9 @@ Route::get('resultados', ['as' => 'resultados', 'uses' => 'WebController@resulta
 //Para los resultado de busqueda de franquicias
 Route::get('busqueda-{tipo}', ['as' => 'categoria', function ($tipo) {
     $controller = App::make(\App\Http\Controllers\WebController::class);
+    //$variable = $controller->callAction('dame',[]);
     return $controller->callAction('subcategoria', array('tipo' => $tipo));
+
 }]);
 
 //Para exito, rentables, low cost y baratas

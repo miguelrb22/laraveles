@@ -1,13 +1,6 @@
+{{\Illuminate\Support\Facades\Session::forget('franquicias',$franquicias)}}
 {{\Illuminate\Support\Facades\Session::put('franquicias',$franquicias)}}
 @extends('master')
-
-@section('css')
-    <style>
-        .subcategoria {
-
-        }
-    </style>
-@endsection
 
 @section('anuncio')
     @include('extras.anuncio')
@@ -67,6 +60,13 @@
                                                     </div>
                                                     <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ[0]->descripcion}}</p>
                                                     <div>
+
+
+                                                        @if(count($fran_categ)>1)
+                                                            <div class="text-center"><label>Más de esta categoría</label></div>
+                                                            <hr>
+                                                        @endif
+
                                                         @for($j = 1; $j<count($fran_categ); $j++)
                                                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
                                                                 <ul class="list-unstyled">
@@ -115,6 +115,12 @@
                                                     </div>
                                                     <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ[0]->descripcion}}</p>
                                                     <div>
+
+                                                        @if(count($fran_categ)>1)
+                                                            <div class="text-center"><label>Más de esta categoría</label></div>
+                                                            <hr>
+                                                        @endif
+
                                                         @for($j = 1; $j<count($fran_categ); $j++)
                                                                 <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
                                                                     <ul class="list-unstyled">
@@ -148,7 +154,10 @@
                                                     </div>
                                                     <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ1[0]->descripcion}}</p>
                                                     <div>
-
+                                                        @if(count($fran_categ1)>1)
+                                                            <div class="text-center"><label>Más de esta categoría</label></div>
+                                                            <hr>
+                                                        @endif
                                                         @for($j = 1; $j<count($fran_categ1); $j++)
                                                                 <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
                                                                     <ul class="list-unstyled">

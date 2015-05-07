@@ -1,5 +1,5 @@
 <!-- INICIO BUSCADOR -->
-<div class="row well_efect"  id="buscador" style="background:#99b433;margin:0;padding:10px;margin-top: 1%">
+<div class="row well_efect buscador" >
     <div id="busquedaT" class="row col col-xs-12 col-sm-12 col-md-10 col-lg-10 pull-left">
         <h4 class="textoblanco">Búsqueda de franquicias </h4>
     </div>
@@ -10,10 +10,10 @@
     <div class="form-group">
         <select class="form-control" name="categoria">
             <option value="-1" selected="">- Selecciona categoría -</option>
-            <option value="4">Abogados</option>
+            <option value="1">Abogados</option>
             <option value="2">Administración de Fincas</option>
             <option value="3">Agencias de Viajes</option>
-            <option value="1">Alimentación</option>
+            <option value="4">Alimentación</option>
             <option value="5">Deportes</option>
             <option value="6">Educación</option>
             <option value="7">Eficiencia Energética</option>

@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
                                     <p>
-                                        <label class="pull-right badge badge-success">Inversion: {{$franquicia->inversion}}</label>
+                                        <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
                                         <a href="{{URL::to('franquicias-de-'.$tipo."/".$franquicia->nombre_comercial)}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
                                     <p>{{ $franquicia->descripcion }}</p>
                                     <label>Actividad : {{$franquicia->nombre}}</label>

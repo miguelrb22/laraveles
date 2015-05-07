@@ -29,12 +29,13 @@
                         <label>Resultados de busqueda: <span class="badge badge-info"> {{count($franquicias)}} </span> franquicias  </label>
                     </div>
                     <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
-                    <h2> @if($tipo === 'exito')
+                    <h2>
+                        @if($tipo === 'exito')
                          {{"Franquicias de éxito"}}
                         @else
-                          {{"franquicias ".str_replace('-',' ',$tipo)/*ucfirst(str_replace('-',' ',$categoria))*/}}
-
+                          {{"franquicias ".str_replace('-',' ',$tipo)}}
                          @endif</h2>
+
                     <hr id="separador">
                     @foreach($franquicias as $franquicia)
                         <div class="row">
@@ -44,9 +45,10 @@
                             </div>
                             <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
                                 <p>
-                                    <label class="pull-right badge badge-success">Inversion: {{$franquicia->inversion}}</label>
-                                    <a href="{{Request::url().'/'.$franquicia->nombre_comercial}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
-                                <p>{{ $franquicia->descripcion }}</p>
+                                    <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
+                                    <a href="{{URL::to('franquicias-de-'.$franquicia->nombre."/".$franquicia->nombre_comercial)}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
+                                    <p>{{ $franquicia->descripcion }}</p>
+                                    <label>Actividad : {{$franquicia->nombre}}</label>
                                 </p>
                             </div>
                         </div>

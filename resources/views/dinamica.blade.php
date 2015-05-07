@@ -29,7 +29,7 @@
                             <label>Resultados de busqueda: <span class="badge badge-info"> {{ $resultados }} </span> franquicias  </label>
                         </div>
                         <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
-                        <h2>{{ "Franquicias " .str_replace('-',' ',$categoria)/*ucfirst(str_replace('-',' ',$categoria))*/ }}</h2>
+                        <h2>{{ "Franquicias " .str_replace('-',' ',$categoria )}}</h2>
                         <hr id="separador">
                         @foreach($franquicias as $franquicia)
                         <div class="row">
@@ -39,7 +39,7 @@
                             </div>
                             <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
                                 <p>
-                                    <label class="pull-right badge badge-success">Inversion: {{$franquicia->inversion}}</label>
+                                    <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
                                     <a href="{{Request::url().'/'.$franquicia->nombre_comercial}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
                                     <p>{{ $franquicia->descripcion }}</p>
                                 </p>

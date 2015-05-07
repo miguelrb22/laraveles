@@ -13,7 +13,7 @@ class subcategoriaController extends Controller {
     /**
      * Este método devuelve a la vista un array de categorias con sus correpondientes atributos para
      * pasarlos a la vista correspondiente y trabajar con ellos
-     * $tipo contiene el nombre de una categori
+     * $tipo contiene el nombre de una categoria
      * @return Response
      */
     public function index($tipo)
@@ -24,7 +24,6 @@ class subcategoriaController extends Controller {
         $subcategorias = subcategoria::where('categoria_id', '=',$idCategoria->id )->get();
         //Devolvemos la vista con el parámetro.
         return view('dinamica_subcategorias')->with(array('subcategorias' => $subcategorias , 'categoria' => $tipo));
-
     }
 
     public function create()

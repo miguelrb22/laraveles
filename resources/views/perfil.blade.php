@@ -398,7 +398,7 @@
                                             <label>Marque las franquicias de su interés.</label>
                                         </div>
                                         <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <button type="button" class="desmarcar">Desmarmar todas las opciones</button>
+                                            <button type="button" id="desmarcar" class="desmarcar">Desmarmar todas las opciones</button>
                                         </div>
                                         <br>
                                         <br>
@@ -458,8 +458,22 @@
     <script type="text/javascript">
 
         $(".desmarcar").on('click',function(){
-            $(".similares").prop('checked', false);
+
+            var string = $(".desmarcar").text()
+
+            if(string.substring(0,1) === 'D'){
+                $(".similares").prop('checked', false);
+                $(".desmarcar").html('Marcar todas las franquicias');
+            }else{
+                $(".similares").prop('checked', true);
+                $(".desmarcar").html('Desmarcar todas las franquicias');
+            }
+
+
+
+
         });
+
 
         $(".fancybox").fancybox({
             //config 1
