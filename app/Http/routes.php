@@ -245,3 +245,7 @@ Route::post('nuevacategoria' ,  ['as' => 'nuevacategoria', 'uses' => 'models_con
 Route::post('nuevasubcategoria' ,  ['as' => 'nuevasubcategoria', 'uses' => 'models_controller\subcategoriaController@store']);
 Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
 
+Route::get('noticias-franquicias/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion' ,function ($id) {
+
+
+}]);

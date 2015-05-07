@@ -20,6 +20,7 @@ use App\Model\Subcategoria;
 use App\Model\especial;
 use Illuminate\Support\Facades\Request;
 use phpDocumentor\Reflection\DocBlock\Type\Collection;
+use Illuminate\Support\Facades\URL;
 
 class WebController extends Controller {
 
@@ -251,14 +252,34 @@ class WebController extends Controller {
     public function masnoticias(Request $r)
     {
         $numpage = $r::Input('page')-1;
+
         if($r::ajax()) {
             $result = Publicaciones::take(5)->skip($numpage*5)->get();
 
             foreach($result as $res){
 
                 $res->contenido =  substr(strip_tags($res->contenido),0,400);
+                $img =  URL::asset($res->url_imagen);
+                $urln = URL::route('publicacion_individual', array($res->titulo));
+                $titulo = $res->titulo;
+                $contenido = $res->contenido;
+
+
+
+                echo "<div class='row'>";
+                echo "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";
+                echo "<img src='$img' class='img-rounded' alt='Imagen articulo' width='110' height='110'>";
+                echo "</div>";
+                echo "<div class='col col-xs-7 col-sm-7 col-md-10 col-lg-10'>";
+                echo "<h3 id='tituloNotica'><a href='$urln'> $titulo </a></h3>";
+                echo "<p  id='textoNoticia'> $contenido "."... "." <a>seguir leyendo</a></p>";
+                echo "<p class='fecha_publicacion pull-right'> 21-02-2012 }}</p>";
+                echo "</div>";
+                echo "</div>";
+                echo "<hr>";
+
+
             }
-            return response()->json($result);
         }
     }
 
@@ -297,6 +318,15 @@ class WebController extends Controller {
 
         $this->categorias_deplegables = Categoria::all();
         return $this->categorias_deplegables;
+    }
+
+    public function showpublicacion($id)
+    {
+
+        $articulo = Publicaciones::where('titulo','=',$id)->get();
+
+
+        return view('publicacion',compact('articulo'));
     }
 }
 
