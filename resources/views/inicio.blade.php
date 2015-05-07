@@ -29,6 +29,7 @@
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <?php
+
                                 if(!$franquicias_exito->isEmpty()) {
                                     $a1 = mt_rand(0,count($franquicias_exito)-1);
                                 }
@@ -44,8 +45,6 @@
                                 if(!$franquicias_lowcost->isEmpty()){
                                     $a4 = mt_rand(0,count($franquicias_lowcost)-1);
                                 }
-
-
 
                             ?>
                             <h4 class="text-center">
@@ -208,8 +207,12 @@
             @include('extras.derecha')
 
             <?php
-                $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
-                $a2 = mt_rand(0,count($fraquicias_destacadas)-1);
+
+                if(!$franquicias_descatas->isEmpty()){
+                    $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
+                    $a2 = mt_rand(0,count($fraquicias_destacadas)-1);
+                }
+
 
                 do {
                     $a2 = rand(0,count($fraquicias_destacadas)-1);
