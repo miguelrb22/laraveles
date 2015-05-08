@@ -316,7 +316,7 @@ class WebController extends Controller {
                 echo "<div class='col col-xs-7 col-sm-7 col-md-10 col-lg-10'>";
                 echo "<h3 id='tituloNotica'><a href='$urln'> $titulo </a></h3>";
                 echo "<p  id='textoNoticia'> $contenido "."... "." <a>seguir leyendo</a></p>";
-                echo "<p class='fecha_publicacion pull-right'> 21-02-2012 }}</p>";
+                echo "<p class='fecha_publicacion pull-right'> $res->created_at</p>";
                 echo "</div>";
                 echo "</div>";
                 echo "<hr>";
@@ -431,6 +431,16 @@ class WebController extends Controller {
             //ambos son vacios no existe la categoria o subcategoria por tanto redirecioamos al index.
             return redirect('/');
         }
+    }
+
+
+    public function showpublicacion($id)
+    {
+
+        $articulo = Publicaciones::where('titulo','=',$id)->get();
+
+
+        return view('publicacion',compact('articulo'));
     }
 }
 

@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
-                        <h3 id="tituloNotica"> {{ $articulo[0]->titulo }}></h3>
+                        <h3 id="tituloNotica"> {{ $articulo[0]->titulo }}</h3>
                         <br>
                         <p  id="textoNoticia"> {!! $articulo[0]->contenido !!}</p>
                         <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
