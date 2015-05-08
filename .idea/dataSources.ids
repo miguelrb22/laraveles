@@ -114,11 +114,13 @@
     <table name="franquicia_especial_subcategoria" schema="" catalog="bdeavisos2" type="VIEW">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="especial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="inversion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="idcategoria_especial" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="especial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="franquicia_has_categoria" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -153,114 +155,15 @@
     </table>
     <table name="franquicia_nom_especial" schema="" catalog="bdeavisos2" type="VIEW">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ciudad" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="direccion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
-      <column name="web" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="inversion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="presencia_int" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="royalty" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="canon_entrada" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="canon_publicitario" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="duracion_contrato" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="amortizacion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="requisitos_local" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="locales_propios" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="locales_franquiciados" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="dimensiones_local" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="poblacion_minima" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="superficie_minima" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="zona_exclusividad" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="perfil_franquiciado" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="zonas_preferentes" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="anyo_creacion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="inicio_expansion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="red_spain" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="n_paises" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="nacionalidad" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="red_extranjero" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="nombre_franquicia" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cif" sqlType="CHAR" precision="9" scale="0" nullable="true" jdbcType="1"/>
-      <column name="fecha_alta_ficha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="fecha_vencimiento_ficha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="razon_social" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="fax" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="domicilio_facturacion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp_fac" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="domicio_fiscal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp_fiscal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="domicilio_postal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp_postal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="nombre_apellidos_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="tf_contacto" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="email_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cargo_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="user" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="activo" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="personal" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" def="Jy0n"/>
-      <column name="claves_negocio" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="especial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="idcategoria_especial" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="franquicia_nom_subcategoria" schema="" catalog="bdeavisos2" type="VIEW">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ciudad" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="direccion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
-      <column name="web" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="inversion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="presencia_int" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="royalty" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="canon_entrada" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="canon_publicitario" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="duracion_contrato" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="amortizacion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="requisitos_local" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="locales_propios" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="locales_franquiciados" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="dimensiones_local" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="poblacion_minima" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="superficie_minima" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="zona_exclusividad" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="perfil_franquiciado" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="zonas_preferentes" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="anyo_creacion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="inicio_expansion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="red_spain" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="n_paises" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="nacionalidad" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="red_extranjero" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="nombre_franquicia" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cif" sqlType="CHAR" precision="9" scale="0" nullable="true" jdbcType="1"/>
-      <column name="fecha_alta_ficha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="fecha_vencimiento_ficha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="razon_social" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="fax" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="domicilio_facturacion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp_fac" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="domicio_fiscal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp_fiscal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="domicilio_postal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cp_postal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="nombre_apellidos_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="tf_contacto" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="email_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="cargo_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="user" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="activo" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="personal" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" def="Jy0n"/>
-      <column name="claves_negocio" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
     </table>

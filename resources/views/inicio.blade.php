@@ -230,52 +230,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" id="noticia1">
-                                    <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="{{ asset('images/img_noticia.jpg') }}" class="img-responsive" alt="Responsive image">
-                                    </div>
-                                    <h3 id="tituloNotica">No+Vello, franquicia española entre las 50 mas rentables del mundo</h3>
-                                    <p id="textoNoticia">Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
-                                        Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.</p>
-                                </div>
-                                <hr class='separador_post'/>
-                                <div class="row" id="noticia2">
-                                    <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="{{ asset('images/img_noticia2.jpg') }}" class="img-responsive" alt="Responsive image">
-                                    </div>
-                                    <h3 id="tituloNotica">Las 10 franquicias más rentables</h3>
-                                    <p id="textoNoticia">   Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
-                                        Según el último informe publicado en 2015 por Tormo Franchise, el sector de la franquicia en España creó el pasado año, 4.200 nuevas empresas y 25.700 nuevos puestos de trabajo. La franquicia se consolidó así como una de las mejores y más fiables inversiones generadoras de autoempleo. bles del mundo según la consultora Franchis</p>
-                                </div>
-                                <hr class='separador_post'/>
-                                <div class="row" id="noticia3">
-                                    <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="{{ asset('images/img_noticia2.jpg') }}" class="img-responsive" alt="Responsive image">
-                                    </div>
-                                    <h3 id="tituloNotica">Las 10 franquicias más rentables</h3>
-                                    <p id="textoNoticia">   Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
-                                        Según el último informe publicado en 2015 por Tormo Franchise, el sector de la franquicia en España creó el pasado año, 4.200 nuevas empresas y 25.700 nuevos puestos de trabajo. La franquicia se consolidó así como una de las mejores y más fiables inversiones generadoras de autoempleo. bles del mundo según la consultora Franchis</p>
-                                </div>
-                                <hr class='separador_post'/>
-                                <div class="row" id="noticia4">
-                                    <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src="{{ asset('images/img_noticia.jpg') }}" class="img-responsive" alt="Responsive image">
-                                    </div>
-                                    <h3 id="tituloNotica">No+Vello, franquicia española entre las 50 mas rentables del mundo</h3>
-                                    <p id="textoNoticia">Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.
-                                        Después de abrir 87 nuevos establecimientos en 9 países diferentes durante el año pasado y contar con más de 1.000 franquicias en todo el mundo, No + Vello se posiciona en el puesto 41 de la lista de franquicias internacionales más rentables del mundo según la consultora Franchise Direct.</p>
-                                </div>
-                                <br>
-                                <hr style="border-top: 4px solid #ccc;">
+
+                                <?php
+                                    $i= count($publicaciones);
+                                ?>
+
+                                @foreach($publicaciones as $publicacion)
+                                    <div class="row" id="noticia1">
+                                        <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
+                                            <img src="{{ asset($publicacion->url_imagen) }}" class="img-responsive" alt="Responsive image">
+                                        </div>
+                                        <h3 id="tituloNotica">{{$publicacion->titulo}}</h3>
+                                        <p id="textoNoticia"> {{substr($publicacion->contenido, 0, 300).' ...'}}
+                                            <a href="#">seguir leyendo</a>
+                                        </p>
+                                        @if(!(($i-=1) === 0))
+                                            <hr class="separador_post">
+                                        @endif
+                                @endforeach
+
+                                <hr style="border-top: 4px solid #ccc">
                                 <div class="row" style="margin-bottom: 5%">
-                                    <h3 class="col col-xs-12 col-sm-12 col-md-12 col-lg-12"><strong>Más...</strong></h3>
-                                    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
-                                        <a id="newsEnlace" href="#"><h6><i class="fa fa-share"></i></i> Las franquicias estéticas, un sector en crecimiento</h6></a>
-                                        <a id="newsEnlace" href="#"><h6><i class="fa fa-share"></i> Empresarios extremeños asisten el foro sobre franquicias de Mérida</h6></a>
-                                        <a id="newsEnlace" href="#"><h6><i class="fa fa-share"></i> Cómo, donde y cuando internacionalizar una franquicia</h6></a>
-                                        <a id="newsEnlace" href="#"><h6><i class="fa fa-share"></i> Burger King invertirá 70 millones en Andalucía</h6></a>
-                                    </div>
+                                    <h3 class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <strong>Más....</strong>
+                                    </h3>
                                 </div>
+
                             </section>
                         </div>
                     </div>
@@ -287,8 +267,6 @@
             @include('extras.derecha')
 
             <?php
-
-
                 if(!$fraquicias_destacadas->isEmpty()){
 
                     $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
@@ -298,7 +276,6 @@
                         $a2 = rand(0,count($fraquicias_destacadas)-1);
                     }while ($a2 === $a1);
                 }
-
             ?>
 
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -307,14 +284,14 @@
                         <i class="glyphicon glyphicon-thumbs-up textoblanco"></i> <span class="textoblanco">Destacados</span>
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
-                        <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12 text-center">
-                            <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}">{{$fraquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
-                            <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" >
-                        </div>
-                        <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
-                            <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}">{{$fraquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
-                            <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba">
-                        </div>
+                            <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12 text-center">
+                                <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}">{{$fraquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
+                                <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" >
+                            </div>
+                            <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
+                                <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}">{{$fraquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
+                                <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba">
+                            </div>
                     </div>
                 </div>
             </div>

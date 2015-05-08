@@ -2,6 +2,8 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ URL::asset('css/jssocials.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('css/jssocials-theme-classic.css')}}">
 @endsection
 
 @section('anuncio')
@@ -19,7 +21,7 @@
     <div class="row">
         <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <img class="img-rounded img-responsive" src="{{ asset($franquicia->logo_url) }}">
+                <img class="img-rounded img-responsive" src="{{ URL::asset($franquicia->logo_url) }}">
                 <br>
                 <table class="table-responsive">
                     <tr>
@@ -42,22 +44,22 @@
                     <tr>
                         <td>
                             <a class="fancybox" rel="group" href="1.png" title="imagen 1">
-                                <img class="img-responsive" src="{{ asset('images/1.png') }}">
+                                <img class="img-responsive" src="{{ URL::asset('images/kcopas1.jpg') }}">
                             </a>
                         </td>
                         <td>
                             <a class="fancybox" rel="group" href="2.jpg" title="imagen 2">
-                                <img class="img-responsive" src="{{ asset('images/2.jpg') }}">
+                                <img class="img-responsive" src="{{ URL::asset('images/kcopas.jpg') }}">
                             </a>
                         </td>
                         <td>
                             <a class="fancybox" rel="group" href="3.jpg" title="imagen 3">
-                                <img class="img-responsive" src="{{ asset('images/3.jpg') }}">
+                                <img class="img-responsive" src="{{ URL::asset('images/kcopas1.jpg') }}">
                             </a>
                         </td>
                         <td>
                             <a class="fancybox" rel="group" href="1.png" title="imagen 4">
-                                <img class="img-responsive" src="{{ asset('images/1.png') }}">
+                                <img class="img-responsive" src="{{ URL::asset('images/kcopas.jpg') }}">
                             </a>
                         </td>
                     </tr>
@@ -209,11 +211,11 @@
                         ?>
                     </ul>
                 </div>
+
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <H2>PARTE SOCIAL SHARING</H2>
-                </div>
-                <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <H2>PARTE MAS CATEGORIA</H2>
+                    <br>
+                    <br>
+                    <div id="share"></div>
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <hr id="separador">
@@ -455,6 +457,9 @@
     <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7') }}" type="text/css" media="screen" />
     <script type="text/javascript" src="{{ URL::asset('js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7') }}"></script>
 
+    <!-- Add social sharing -->
+    <script type="text/javascript" src="{{ URL::asset('js/jssocials.min.js') }}"></script>
+
     <script type="text/javascript">
 
         $(".desmarcar").on('click',function(){
@@ -468,9 +473,6 @@
                 $(".similares").prop('checked', true);
                 $(".desmarcar").html('Desmarcar todas las franquicias');
             }
-
-
-
 
         });
 
@@ -489,5 +491,16 @@
                 buttons	: {}
             }
         });
+
+        $("#share").jsSocials({
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"],
+            url: "{{Request::url()}}",
+            showLabel:true,
+            showCount:true
+        });
+
+
+
+
     </script>
 @stop

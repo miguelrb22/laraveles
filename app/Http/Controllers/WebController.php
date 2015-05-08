@@ -61,12 +61,12 @@ class WebController extends Controller {
         $franquicias_lowcost = franquicia_especial_subcategoria::where('especial','=', 'lowcost')->groupBy('id')->get();
         $fraquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
 
-        $articulos =
-
+        //Obtenemos las últimas 5 publicaciones para pasarlas a la vista principal
+        $publicaciones = Publicaciones::take(5)->orderBy('id','DES')->get();
 
             //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
         $categorias = Categoria::all();
-        return view('inicio',compact('categorias','franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'fraquicias_destacadas'));
+        return view('inicio',compact('categorias','franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'fraquicias_destacadas','publicaciones'));
     }
 
     /*
