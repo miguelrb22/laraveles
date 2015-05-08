@@ -30,17 +30,24 @@
                     <div class="input-group">
 
                         <label >Pertenencia publicación</label>
-                        <select name="franquicia_id" id="franquicia_id_articulo" class="form-control input input-sm">
-                            <option value="-1" selected>General</option>
+                        <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
+                            <option value="1" selected>General</option>
                             <?php $ses = Session::get('franquicia') ;
                              if(isset($ses)){
 
-                                 echo "<option value='$ses->id'>$ses->nombre_comercial</option>";
+                                 echo "<option value='2'>$ses->nombre_comercial</option>";
                              }
                             ?>
 
                         </select>
                     </div>
+
+                    <?php
+                    if(isset($ses)){
+
+                        echo "<input type='hidden' name ='franquicia_id' value='$ses->id'/>";
+                    }
+                    ?>
 
                     <br>
 

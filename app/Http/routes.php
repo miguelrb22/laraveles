@@ -163,6 +163,9 @@ Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franq
 
 Route::get('noticias', ['as' => 'noticias_web', 'uses' => 'WebController@noticias']);
 
+Route::get('reportajes', ['as' => 'reportajes_web', 'uses' => 'WebController@reportajes']);
+
+
 Route::get('resultados', ['as' => 'resultados', 'uses' => 'WebController@resultados']);
 
 //Para los resultado de busqueda de franquicias
@@ -208,7 +211,7 @@ Route::post('nuevacategoria' ,  ['as' => 'nuevacategoria', 'uses' => 'models_con
 Route::post('nuevasubcategoria' ,  ['as' => 'nuevasubcategoria', 'uses' => 'models_controller\subcategoriaController@store']);
 Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
 
-Route::get('noticias-franquicias/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion' ,function ($id) {
+Route::get('noticias/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion' ,function ($id) {
 
 
 }]);

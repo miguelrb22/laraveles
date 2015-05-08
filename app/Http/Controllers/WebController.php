@@ -285,9 +285,17 @@ class WebController extends Controller {
      * Para cargar las primeras noticias nada más abrir la página
      */
     public function noticias(){
-        $articulos = Publicaciones::paginate(5);
-        $total = Publicaciones::count();
-        return view ('noticias' ,compact('articulos','total'));
+        $articulos = Publicaciones::where('tipo','=','1')->paginate(5);
+        $total = Publicaciones::where('tipo','=','1')->count();
+        $tipo = 1;
+        return view ('noticias' ,compact('articulos','total','tipo'));
+    }
+
+    public function reportajes(){
+        $articulos = Publicaciones::where('tipo','=','2')->paginate(5);
+        $total = Publicaciones::where('tipo','=','2')->count();
+        $tipo = 2;
+        return view ('noticias' ,compact('articulos','total','tipo'));
     }
 
     /*
@@ -296,9 +304,16 @@ class WebController extends Controller {
     public function masnoticias(Request $r)
     {
         $numpage = $r::Input('page')-1;
+        $tipo = $r::Input('tipo');
 
         if($r::ajax()) {
-            $result = Publicaciones::take(5)->skip($numpage*5)->get();
+
+            $result = null;
+            if($tipo == 1) {
+                $result = Publicaciones::where('tipo', '=', '1')->take(5)->skip($numpage * 5)->get();
+            }else if($tipo == 2){
+                $result = Publicaciones::where('tipo', '=', '2')->take(5)->skip($numpage * 5)->get();
+            }
 
             foreach($result as $res){
 

@@ -41,9 +41,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ URL::route('home') }}">Inicio</a></li>
+            <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
             <li class="dropdown">
-                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext">Franquicias<b class="caret"></b></a>
+                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
@@ -55,22 +55,22 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="{{ URL::route('noticias_web') }}" class="dropdown-toggle atext" data-toggle="">Noticias<b class="caret"></b></a>
+                <a  class="dropdown-toggle atext" data-toggle=""><i class="fa fa-newspaper-o"></i> Actualidad<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="atext">Reportajes</a></li>
+                    <li><a href="{{ URL::route('reportajes_web') }}" class="atext">Reportajes</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="atext">Noticias de franqucias</a></li>
+                    <li><a href="{{ URL::route('noticias_web') }}" class="atext">Noticias</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="{{ URL::route('servicios_garantias') }}" class="dropdown-toggle atext" >Servicios y garantías<b class="caret"></b></a>
+                <a href="{{ URL::route('servicios_garantias') }}" class="dropdown-toggle atext" ><i class="fa fa-check"></i> Servicios y garantías<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('franquiciadores') }}" class="atext">Franquiciadores</a></li>
                 </ul>
             </li>
-            <li><a href="{{ URL::route('contacto') }}" class="atext">Contacto</a></li>
+            <li><a href="{{ URL::route('contacto') }}" class="atext"><i class="fa fa-envelope"></i> Contacto</a></li>
 
         </ul>
 

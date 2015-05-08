@@ -46,6 +46,7 @@
                             @endforeach
                                                           
                         </div>
+
                         <div class="paginacion"></div>
                     </section>
 
@@ -86,14 +87,16 @@
 
             }).on("page", function(event, num) {
 
+                var tipo_publicacion = "{{ $tipo }}";
                 var ruta = "{{ URL::route('peticion') }}";
+
                 var html = "";
 
                 $.ajax({
 
                     type: "get",
                     url: ruta,
-                    data: {page : num},
+                    data: {page : num, tipo: tipo_publicacion},
                     dataType: "html",
                     error: function () {
                         //$('#loading').show();

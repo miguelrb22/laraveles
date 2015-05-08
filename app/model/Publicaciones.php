@@ -15,6 +15,6 @@ class Publicaciones extends Model{
 
     protected $table = 'publicacion';
 
-    protected $fillable = ['id','titulo','contenido','url_imagen','tipo','fecha'];
+    protected $fillable = ['id','franquicia_id','titulo','contenido','url_imagen','tipo','fecha','pertenencia'];
 }
 //comentario para commit
