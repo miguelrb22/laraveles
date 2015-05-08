@@ -241,7 +241,7 @@
                                             <img src="{{ asset($publicacion->url_imagen) }}" class="img-responsive" alt="Responsive image">
                                         </div>
                                         <h3 id="tituloNotica">{{$publicacion->titulo}}</h3>
-                                        <p id="textoNoticia"> {{substr($publicacion->contenido, 0, 300).' ...'}}
+                                        <p id="textoNoticia"> {{substr(strip_tags($publicacion->contenido), 0, 300).' ...'}}
                                             <a href="#">seguir leyendo</a>
                                         </p>
                                         @if(!(($i-=1) === 0))
