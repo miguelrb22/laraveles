@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Model\Categoria;
+use App\Model\Franquicia;
 use App\Model\franquicia_nom_subcategoria;
 use App\Model\franquicia_subcategoria;
 use App\Model\franquicia_especial_subcategoria;
@@ -59,7 +60,7 @@ class WebController extends Controller {
         $fraquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
 
         //Obtenemos las últimas 5 publicaciones para pasarlas a la vista principal
-        $publicaciones = Publicaciones::take(5)->orderBy('id','DES')->get();
+        $publicaciones = Publicaciones::take(10)->orderBy('id','DES')->get();
 
             //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
         $categorias = Categoria::all();
@@ -104,9 +105,9 @@ class WebController extends Controller {
         ///Deficinicion de variables///
         //Obtenemos las subcategoria de una categoria dada ($categoria)
         $subcategorias = subcategoria::where('categoria_id', '=', $categoria )->get(['id','nombre']);
-
         ///Definimos la query///
         $query = new franquicia_nom_subcategoria;
+        //$query = new Franquicia;
         ///-----------------///
 
         ///Vamos concatenando wheres para la busqueda segun existan los parámetros///
@@ -119,25 +120,33 @@ class WebController extends Controller {
             }
             if ($categoria != -1) {
 
-                $listaFinalFranquicias = array();
+                $listaIdsFranquicias = array(); //Lista con los ids de las franquicias que cumplen que la subcategoria es igual a la categoria pasada
 
                 //Vamos extrayendo franquicias que cumplan la condicion de anterior y esta
                 foreach($subcategorias as $id)
                 {
-                    $listaIdFranquicias = franquicia_subcategoria::where('subcategoria_id', '=', $id->id)->get();
-                    array_push($listaFinalFranquicias,$listaIdFranquicias);
+                    $ids = franquicia_subcategoria::where('subcategoria_id', '=', $id->id)->get();
+                    array_push($listaIdsFranquicias,$ids);
                 }
 
+                $listaIdsFranquicias = $listaIdsFranquicias[0];
                 //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
-                if(!empty($listaFinalFranquicias)) { //Falta comprobar
-                    $listaFinalFranquicias = $listaFinalFranquicias[0];
+                if(!$listaIdsFranquicias->isEmpty()) { //Falta comprobar
 
-                    $query = $query->where(function ($query) use ($listaFinalFranquicias) {
+                    $query = $query->where(function ($query) use ($listaIdsFranquicias) {
 
-                        foreach ($listaFinalFranquicias as $franquicia) {
+                        foreach ($listaIdsFranquicias as $franquicia) {
 
                             $query = $query->orWhere('id', '=', $franquicia->franquicia_id);
 
+                        }
+                    });
+
+                    $query = $query->where(function ($query) use ($subcategorias) {
+
+                        foreach ($subcategorias as $subcategoria) {
+
+                            $query = $query->orWhere('subcategoria_id', '=', $subcategoria->id);
                         }
                     });
                 }
@@ -222,11 +231,6 @@ class WebController extends Controller {
             //Que hacemos?
             dd("no hay franquicias de este tipo");
         }
-    }
-
-    public function buscar()
-    {
-        return view('busqueda');
     }
 
     public function quiensoy()
@@ -383,6 +387,8 @@ class WebController extends Controller {
      */
     public function franquiciasTipo($tipo)
     {
+        //Parseamos el nombre de la categoria pasado por parámetro tipo por si tiene caracteres - y en la vista
+        $tipo = str_replace('-',' ',$tipo);
         //Obtenemos el id de la subcategoria o categoria por el nombre pasado en la url
         $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
         $idCategoria = Categoria::where('nombre', '=', $tipo)->get();
@@ -453,7 +459,6 @@ class WebController extends Controller {
     {
 
         $articulo = Publicaciones::where('titulo','=',$id)->get();
-
 
         return view('publicacion',compact('articulo'));
     }

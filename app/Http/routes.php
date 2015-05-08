@@ -102,50 +102,36 @@ Route::group(['namespace' =>  'categorias'],function() {
     //Rute para una franquicia seleccionada
     Route::get('franquicias-de-{tipo}/{nombre}', ['as' => 'categoria', function ($tipo, $nombre) {
 
-        //Debemos comprobar antes que la franquicia nombre es de la categoria tipo
-        //para ello btenemos el id de la categoria por el tipo pasado en la url y el id de la franquicia
-        //tanto para una categoria como para una subcateogria
-        $idCategoria= Categoria::where('nombre', '=', $tipo )->get();
+        //REVISAR SI PODEMOS HACERLO POR IDS DE TIPO o OPTIMIZALO DE ALGUNA MANERA
+
+        //Parseamos de nuevo la cadena para que se busque en bien en la base de datos.
+        $tipo = (str_replace('-',' ',$tipo));
+        $nombre = str_replace('-',' ',$nombre);
+        //Debemos comprobar antes que la franquicia nombre es de la subcategoria tipo
+        //para ello btenemos el id de la subcategoria por el tipo pasado en la url y el id de la franquicia
         $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
 
-        if(!$idCategoria->isEmpty() || !$idSubcategoria->isEmpty() ) {
+        $idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
+
+        $idFran_Subcat = new \Illuminate\Database\Eloquent\Collection;
 
 
-            $idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
+        //Comprobamos si idSubcategoria no es vacio porque si es vacio significa que no hay id de subcategoria con ese nombre
+        //y que haya una franquicia para esa categoria
+        if(!$idSubcategoria->isEmpty() && !$idfranquicia->isEmpty())
+        {
+            //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
+            $idFran_Subcat->add(franquicia_subcategoria::where('franquicia_id', '=', $idfranquicia[0]->id)
+                ->where('subcategoria_id','=',$idSubcategoria[0]->id)->get());
+            $idFran_Subcat = $idFran_Subcat[0];
+        }
 
-            $idFran_Cat = new \Illuminate\Database\Eloquent\Collection;
-            $idFran_Subcat = new \Illuminate\Database\Eloquent\Collection;
+        if(!$idFran_Subcat->isEmpty())
+        {
+            $controller = App::make(\App\Http\Controllers\areaprivada\franquiciaController::class);
+            return $controller->callAction('index', array('nombre' => $nombre, 'tipo' => $tipo));
+        } else{
 
-            //dd($idFran_Cat);
-            //Comprobamos si idCategoria no es vacio porque si es vacio significa que no hay id de categoria con ese nombre
-            if(!$idCategoria->isEmpty() && !$idfranquicia->isEmpty())
-            {
-                //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
-                $idFran_Cat->add( franquicia_categoria::where('franquicia_id', '=', $idfranquicia[0]->id)
-                    ->where('categoria_id', '=', $idCategoria[0]->id )->get());
-
-                //esta asignacion es porque add mete un array dentro de un array entonces ->isEmpty no devuelve vacio
-                //aunque el array sea vacío.
-                $idFran_Cat = $idFran_Cat[0];
-            }
-
-            if(!$idSubcategoria->isEmpty() && !$idfranquicia->isEmpty())
-            {
-                //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
-                $idFran_Subcat->add( franquicia_subcategoria::where('franquicia_id', '=', $idfranquicia[0]->id)
-                    ->where('subcategoria_id','=',$idSubcategoria[0]->id)->get());
-                $idFran_Subcat = $idFran_Subcat[0];
-            }
-
-
-            if(!$idFran_Cat->isEmpty() || !$idFran_Subcat->isEmpty())
-            {
-                $controller = App::make(\App\Http\Controllers\areaprivada\franquiciaController::class);
-                return $controller->callAction('index', array('nombre' => $nombre, 'tipo' => $tipo));
-            } else{
-                return redirect('/');
-            }
-        }else{
             return redirect('/');
         }
     }]);
@@ -153,7 +139,7 @@ Route::group(['namespace' =>  'categorias'],function() {
 });
 
 //Rutas Web
-Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
+//Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
 
 Route::get('quienes-somos', ['as' => 'quien-soy', 'uses' => 'WebController@quiensoy']);
 

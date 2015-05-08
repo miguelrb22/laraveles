@@ -23,6 +23,4 @@ class Franquicia extends Model {
                             'domicilio_facturacion', 'cp_fac', 'domicio_fiscal', 'cp_fiscal', 'domicilio_postal', 'cp_postal', 'nombre_apellidos_contacto',
                             'tf_contacto', 'email_contacto', 'cargo_contacto', 'password', 'user', 'descripcion', 'activo','personal','claves_negocio'];
 
-
-
 }

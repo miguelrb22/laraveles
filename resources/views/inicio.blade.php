@@ -231,31 +231,32 @@
                                     </div>
                                 </div>
 
-                                <?php
-                                    $i= count($publicaciones);
-                                ?>
-
-                                @foreach($publicaciones as $publicacion)
+                                @for($i=0; $i<5; $i++)
                                     <div class="row" id="noticia1">
                                         <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                            <img src="{{ asset($publicacion->url_imagen) }}" class="img-responsive" alt="Responsive image">
+                                            <img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" alt="Responsive image">
                                         </div>
-                                        <h3 id="tituloNotica">{{$publicacion->titulo}}</h3>
-                                        <p id="textoNoticia"> {{substr(strip_tags($publicacion->contenido), 0, 300).' ...'}}
+                                        <h3 id="tituloNotica">{{$publicaciones[$i]->titulo}}</h3>
+                                        <p id="textoNoticia"> {{substr(strip_tags($publicaciones[$i]->contenido), 0, 400).' ...'}}
                                             <a href="#">seguir leyendo</a>
                                         </p>
-                                        @if(!(($i-=1) === 0))
+                                        @if($i < 4)
                                             <hr class="separador_post">
                                         @endif
-                                @endforeach
+                                    </div>
+                                @endfor
 
                                 <hr style="border-top: 4px solid #ccc">
                                 <div class="row" style="margin-bottom: 5%">
                                     <h3 class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <strong>Más....</strong>
                                     </h3>
+                                    @for($i=5; $i<count($publicaciones); $i++)
+                                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
+                                            <a id="newsEnlace" href="#"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
+                                        </div>
+                                    @endfor
                                 </div>
-
                             </section>
                         </div>
                     </div>
