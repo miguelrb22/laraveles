@@ -10,17 +10,14 @@ namespace App\Http\Controllers;
 
 
 use App\Model\Categoria;
-use App\Model\Franquicia;
-use App\Model\franquicia_categoria;
 use App\Model\franquicia_nom_subcategoria;
 use App\Model\franquicia_subcategoria;
 use App\Model\franquicia_especial_subcategoria;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
-use App\Model\especial;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
-use phpDocumentor\Reflection\DocBlock\Type\Collection;
+use Illuminate\Support\Facades\URL;
 
 class WebController extends Controller {
 
