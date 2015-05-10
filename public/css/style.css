@@ -691,3 +691,28 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     }
 
 }
+
+@media(max-width: 610px) and (min-width: 525px)
+{
+    .letra{
+        font-size: 15px;
+    }
+
+}
+
+
+@media(max-width: 525px) and (min-width: 400px)
+{
+    .letra{
+        font-size: 13px;
+    }
+
+}
+
+@media(max-width: 1280px) and (min-width: 992px)
+{
+    .letra{
+        font-size: 13px;
+    }
+
+}

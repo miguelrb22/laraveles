@@ -37,7 +37,7 @@
                                     </a>
                                 </h4>
                                 <hr/>
-                                <h4 class="text-center">
+                                <h4 class="text-center letra">
                                     <strong>
                                         <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
                                             {{$franquicias_exito[$a1]->nombre_comercial}}
@@ -208,11 +208,11 @@
                                     </div>
                                     <div class="panel-body" style="margin-bottom: -16px;">
                                         <div class="row">
-                                            <div class="col col-xs-10 col-sm-10 col-md-9 col-lg-9">
+                                            <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
                                                 <h4>tilulo noticia</h4>
                                                 <p id="noticiaDes">Sweet Pharma cambia su estrategia redefiniendo las categorías de sus productos pasando a ocho categorías de tratamientos enfocadas según las necesidades del paciente: Ellos, Ellas, Amor, Salud, Emergencias, Dinero, Energía, Días grises. Esas cateogrías engloban todos sus productos y pretenden ser reflejo de todos los aspectos de Sweet Pharma. Sin embargo, sus productos como tal no cambian y ofrecen una amplia variedad de golosinas y chucherías para todos los que quieran endulzarse el día a día. </p>
                                             </div>
-                                            <div class="col col-xs-2 col-sm-2 col-md-3 col-lg-3">
+                                            <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
                                                 <br>
                                                 <br>
                                                 <img class="img-responsive" id="imagen-noticia" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
