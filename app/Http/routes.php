@@ -201,3 +201,6 @@ Route::get('noticias/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebCon
 
 
 }]);
+
+Route::post('contacto-franquicias' ,  ['as' => 'contacto_franquicias', 'uses' => 'WebController@enviarformulariofranquicia']);
+

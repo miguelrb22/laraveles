@@ -196,7 +196,7 @@
                             <td>{{$franquicia->zonas_preferentes}}</td>
                         </tr>
                         <tr>
-                            <td>Nacionalidad::</td>
+                            <td>Nacionalidad:</td>
                             <td>{{$franquicia->nacionalidad}}</td>
                         </tr>
                         <tr>
@@ -244,36 +244,36 @@
                     <br/>
                     <div class="row panel panel-info">
                         <div class="panel-heading" style="background:#333">
-                            <h4>Formulario de contacto</h4>
+                            <h4 class="atext">Formulario de contacto</h4>
                         </div>
                         <div class="panel-body">
-                            <form class="form-group fcontacto" novalidate="novalidate">
+                            <form class="form-group fcontacto" id="formulario_contacto">
                                 <header>
                                     <p>Rellene los campos si quiere ponerse en contacto con el franquiciador </p>
                                 </header>
 
                                 <fieldset>
                                     <section>
-                                        <input type="text" name="username" placeholder="Nombre" class="form-control">
+                                        <input type="text" name="nombre" placeholder="Nombre" class="form-control" required>
                                     </section>
                                     <section>
-                                        <input type="text" name="username" placeholder="Apellidos" class="form-control">
+                                        <input type="text" name="apellidos" placeholder="Apellidos" class="form-control">
                                     </section>
                                     <section>
-                                        <input type="text" name="username" placeholder="Email" class="form-control">
+                                        <input type="text" name="email" placeholder="Email" class="form-control" required>
                                     </section>
                                     <section>
-                                        <input type="text" name="username" placeholder="Telefono" class="form-control">
+                                        <input type="text" name="telefono" placeholder="Telefono" class="form-control">
                                     </section>
                                     <section>
-                                        <input type="text" name="username" placeholder="Código Postal" class="form-control">
+                                        <input type="text" name="cp" placeholder="Código Postal" class="form-control">
                                     </section>
                                     <section>
-                                        <input type="text" name="username" placeholder="País" class="form-control">
+                                        <input type="text" name="pais" placeholder="País" class="form-control">
                                     </section>
                                     <section>
-                                        <select class="form-control">
-                                            <option class="selected" value="">¿Dónde abrirá su negocio?</option>
+                                        <select class="form-control" name="provincia">
+                                            <option class="selected" value="No contesta">¿Dónde abrirá su negocio?</option>
                                             <option value="Albacete">Albacete</option>
                                             <option value=" Alicante/Alacant"> Alicante/Alacant</option>
                                             <option value=" Almería"> Almería</option>
@@ -329,15 +329,15 @@
                                         </select>
                                     </section>
                                     <section>
-                                        <select class="form-control">
-                                            <option class="selected" value="">¿Dispone de local?</option>
+                                        <select class="form-control" name = "local">
+                                            <option class="selected"  value="No contesta">¿Dispone de local?</option>
                                             <option value="si">Sí</option>
                                             <option value="si">No</option>
                                         </select>
                                     </section>
                                     <section>
-                                        <select class="form-control">
-                                            <option class="selected" value="">Provincia de residencia actual</option>
+                                        <select class="form-control" name="residencia_actual">
+                                            <option class="selected" value="No contesta">Provincia de residencia actual</option>
                                             <option value="Albacete">Albacete</option>
                                             <option value=" Alicante/Alacant"> Alicante/Alacant</option>
                                             <option value=" Almería"> Almería</option>
@@ -395,24 +395,24 @@
                                     <section>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox"> Deseo recibir información sobre esta franquicia
+                                                <input type="checkbox" name="informacion_deso"> Deseo recibir información sobre esta franquicia
                                             </label>
                                         </div>
                                     </section>
                                     <section>
-                                        <textarea class="form-control areaform" rows="7" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control areaform" rows="7" name= "observaciones" placeholder="Observaciones"></textarea>
                                     </section>
                                     <section>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox">Deseo que me informen de modificaciones en la condiciones de esta franquicia así como de otras que tengan relación con este sector, o actividad.
+                                                <input type="checkbox" name="info_modificaciones">Deseo que me informen de modificaciones en la condiciones de esta franquicia así como de otras que tengan relación con este sector, o actividad.
                                             </label>
                                         </div>
                                     </section>
                                     <section>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" required> *Estoy de acuerdo con los Términos de Uso y la Política de Privacidad de multifranquicias.com
+                                                <input type="checkbox" required name="privacidad"> *Estoy de acuerdo con los Términos de Uso y la Política de Privacidad de multifranquicias.com
                                             </label>
                                         </div>
                                     </section>
@@ -426,21 +426,26 @@
                                         </div>
                                         <br>
                                         <br>
+                                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                        <input type="hidden" name="email_franquicia" value="{{ $franquicia->email_contacto }}">
+                                        <input type="hidden" name="nombre_franquicia" value="{{ $franquicia->nombre_comercial }}">
+
+
                                         <table class="table-responsive">
                                             <tr>
                                                 @foreach( $similares as $similar)
                                                     <td>
                                                         <label class="checkbox-inline" style="margin-right: 20px">
-                                                            <input class="similares" type="checkbox" id="{{$similar->nombre_comercial}}" value="{{$similar->nombre_comercial}}" checked> {{$similar->nombre_comercial}}
+                                                            <input class="similares" type="checkbox" name="similares[]" value="{{$similar->email_contacto.'%'.$similar->nombre_comercial}}" checked> {{$similar->nombre_comercial}}
                                                         </label>
                                                     </td>
+
+
                                                 @endforeach
                                             </tr>
                                         </table>
                                     </section>
-                                    <section>
-                                        <p>Enviando estos datos usted acepta la política de privacidad.</p>
-                                    </section>
+
                                 </fieldset>
 
                                 <footer>
@@ -526,3 +531,34 @@
 
     </script>
 @stop
+
+
+@section('ready')
+
+
+    var intputElements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < intputElements.length; i++) {
+    intputElements[i].oninvalid = function (e) {
+    e.target.setCustomValidity("");
+    if (!e.target.validity.valid) {
+    if (e.target.name == "privacidad") {
+    e.target.setCustomValidity("Debe de aceptar la política de privacidad para poder enviar el formulario");
+    }}};}
+
+    $('#formulario_contacto').submit(function(e){
+
+    e.preventDefault();
+
+
+    $.ajax({
+
+    type: "POST",
+    url: "{{ URL::route('contacto_franquicias') }}",
+    data: $('#formulario_contacto').serialize(),
+    dataType: "html"
+
+    });
+
+    });
+
+@endsection
