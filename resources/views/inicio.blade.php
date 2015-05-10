@@ -221,18 +221,26 @@
                                     </div>
                                 </div>
 
+
+
+
                                 @for($i=0; $i<5; $i++)
                                     <div class="row" id="noticia1">
                                         <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                            <img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" alt="Responsive image">
+                                            <img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" width='110' height="110">
                                         </div>
-                                        <h3 id="tituloNotica"><a href="{{ URL::to('noticias/'.$publicaciones[$i]->titulo.'/id'.$publicaciones[$i]->id)}}">{{$publicaciones[$i]->titulo}}</a></h3>
-                                        <p id="textoNoticia"> {{substr(strip_tags($publicaciones[$i]->contenido), 0, 400).' ...'}}
-                                            <a href="#">seguir leyendo</a>
-                                        </p>
-                                        @if($i < 4)
-                                            <hr class="separador_post">
-                                        @endif
+                                        <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
+                                            <h3 id="tituloNotica"><a href="{{ URL::to('noticias/'.$publicaciones[$i]->titulo.'/id'.$publicaciones[$i]->id)}}">{{$publicaciones[$i]->titulo}}</a></h3>
+                                            <p id="textoNoticia"> {{substr(strip_tags($publicaciones[$i]->contenido), 0, 400).' ...'}}
+                                                <a href="#">seguir leyendo</a>
+                                            </p>
+                                            <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
+                                        </div>
+                                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            @if($i < 4)
+                                                <hr class="separador_post">
+                                            @endif
+                                        </div>
                                     </div>
                                 @endfor
 
