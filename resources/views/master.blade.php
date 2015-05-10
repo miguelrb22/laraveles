@@ -128,10 +128,10 @@
             </div>
         </div>
         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3 caja-redes" id="footer3">
-            <a href="#" class="icon-button youtube" style="margin-right:-1%"><i class="fa fa-youtube fa-smile-o icon-youtube"></i><span></span></a>
-            <a href="#" class="icon-button twitter" style="margin-right:-1%"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
-            <a href="#" class="icon-button facebook" style="margin-right:-1%"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
-            <a href="#" class="icon-button google-plus"><i class="fa fa-google-plus icon-google-plus"   ></i><span></span></a>
+            <a href="https://www.youtube.com/channel/UCRh_w3XQzc9fE7CELuq0hXA" class="icon-button youtube" style="margin-right:-1%"><i class="fa fa-youtube fa-smile-o icon-youtube"></i><span></span></a>
+            <a href="https://twitter.com/multifranquicia" class="icon-button twitter" style="margin-right:-1%"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
+            <a href="https://www.facebook.com/pages/MultiFranquiciascom/1504669119817051" class="icon-button facebook" style="margin-right:-1%"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
+            <a href="https://plus.google.com/u/0/103455979226239102770/posts" class="icon-button google-plus"><i class="fa fa-google-plus icon-google-plus"   ></i><span></span></a>
         </div>
     </section>
 </div>
