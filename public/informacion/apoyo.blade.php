@@ -1,4 +1,3 @@
-<div class="well"></div>
 <div>
     <h2><a href="#">Apoyo a la búsqueda y seleccion de la franquicia</a></h2>
 </div>

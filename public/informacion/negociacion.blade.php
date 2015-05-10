@@ -1,4 +1,4 @@
-<div class="well"></div>
+
 <div>
     <h2><a href="#">Base de la negociación y planificación de la franquicia</a></h2>
 </div>

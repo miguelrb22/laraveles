@@ -1,4 +1,4 @@
-<div class="well"></div>
+
 <div>
     <h2><a href="#">Tipos de franquicias</a></h2>
 </div>

@@ -1,4 +1,3 @@
-<div class="well"></div>
 <div>
     <h2><a href="#">Formación</a></h2>
 </div>

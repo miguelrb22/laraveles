@@ -1,4 +1,4 @@
-<div class="well"></div>
+
 <div>
     <h2><a href="#">Franquicia: qué debemos saber</a></h2>
 </div>

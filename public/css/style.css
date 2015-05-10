@@ -715,3 +715,17 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     }
 
 }
+
+@media(max-width: 400px) and (min-width: 250px)
+{
+    .letra{
+        font-size: 11px;
+    }
+
+}
+
+.elegante{
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 1px 6px -2px black;
+}

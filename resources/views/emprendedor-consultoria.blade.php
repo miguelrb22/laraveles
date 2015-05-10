@@ -50,7 +50,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7 col-lg-offset-1 dinamico">
                     <!-- Dinamic content here -->
-                    <div class="well"></div>
                     <div>
                         <h2><a href="#">Servicios Franquiciados</a></h2>
                     </div>

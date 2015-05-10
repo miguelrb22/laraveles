@@ -1,4 +1,3 @@
-<div class="well"></div>
 <div>
     <h2><a href="#">Análisis financiero y patrimonial</a></h2>
 </div>

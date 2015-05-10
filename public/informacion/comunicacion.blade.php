@@ -1,4 +1,3 @@
-<div class="well"></div>
 <div>
     <h2><a href="#">Comunicación e imagen corporativa</a></h2>
 </div>

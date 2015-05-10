@@ -17,14 +17,15 @@
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                        <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
-                    </div>
-                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                        <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
+                    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @for($i=0; $i < 2; $i++)
+                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
+                            </div>
+                        @endfor
                     </div>
                 </section>
-                <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 elegante">
                     <div class="well">
                         <label>Resultados de busqueda: <span class="badge badge-info"> {{count($franquicias)}} </span> franquicias  </label>
                     </div>
@@ -34,7 +35,8 @@
                          {{"Franquicias de éxito"}}
                         @else
                           {{"franquicias ".str_replace('-',' ',$tipo)}}
-                         @endif</h2>
+                         @endif
+                    </h2>
 
                     <hr id="separador">
                     @foreach($franquicias as $franquicia)
@@ -43,7 +45,7 @@
                                 <img class="img-rounded img-responsive" src="{{ asset($franquicia->logo_url) }}">
 
                             </div>
-                            <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
+                            <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                 <p>
                                     <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".$franquicia->nombre_comercial)))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
@@ -52,7 +54,6 @@
                                 </p>
                             </div>
                         </div>
-
                     @endforeach
                 </section>
             </div>

@@ -78,7 +78,7 @@ Route::get('privacidad', ['as' => 'privacidad', 'uses' => 'WebController@privaci
 Route::get('aviso-legal', ['as' => 'aviso', 'uses' => 'WebController@aviso']);
 
 //emprendor consultoria
-Route::get('comnsultoria/emprendedores', ['as' => 'emprendedor', 'uses' => 'WebController@emprendedor']);
+Route::get('consultoria/emprendedores', ['as' => 'emprendedor', 'uses' => 'WebController@emprendedor']);
 
 Route::get('consultoria/franquiciadores', ['as' => 'franquiciadores', 'uses' => 'WebController@franquiciadores']);
 

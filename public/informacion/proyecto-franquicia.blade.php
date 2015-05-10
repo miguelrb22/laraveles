@@ -1,4 +1,4 @@
-<div class="well"></div>
+
 <div>
     <h2><a href="#">Proyecto de Franquicia</a></h2>
 </div>

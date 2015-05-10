@@ -1,4 +1,3 @@
-<div class="well"></div>
 <div>
     <h2><a href="#">Expansión internacional</a></h2>
 </div>

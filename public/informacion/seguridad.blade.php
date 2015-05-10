@@ -1,4 +1,4 @@
-<div class="well"></div>
+
 <div>
     <h2><a href="#">Seguridad patrimonial</a></h2>
 </div>

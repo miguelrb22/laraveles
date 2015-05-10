@@ -1,4 +1,4 @@
-<div class="well"></div>
+
 <div>
     <h2><a href="#">Valores de locales candidatos</a></h2>
 </div>

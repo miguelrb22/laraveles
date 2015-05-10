@@ -19,11 +19,12 @@
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                        <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
-                    </div>
-                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                        <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
+                    <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        @for($i=0; $i < 2; $i++)
+                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
+                            </div>
+                        @endfor
                     </div>
                 </section>
                 <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">

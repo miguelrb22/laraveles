@@ -1,4 +1,3 @@
-<div class="well"></div>
 <div>
     <h2><a href="#">Financiación</a></h2>
 </div>
