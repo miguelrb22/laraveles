@@ -48,15 +48,15 @@
                                     <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
                                         <div class="row panel panel-info">
                                             <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                                <span><a href="{{URL::to('busqueda-'.$subcategorias[$i]->nombre)}}" class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
+                                                <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i]->nombre)))}}" class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
                                             </div>
                                             <div class="panel-body" style="margin-bottom: -16px;">
                                                 <div class="row">
                                                     <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
-                                                        <a href="{{URL::to('franquicias-de-'.$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)}}"><img class="img-responsive img-rounded thumbnail" src="{{ asset($fran_categ[0]->logo_url) }}" alt="prueba" style="width: 250px"></a>
+                                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"><img class="img-responsive img-rounded thumbnail" src="{{ asset($fran_categ[0]->logo_url) }}" alt="prueba" style="width: 250px"></a>
                                                     </div>
                                                     <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
-                                                        <a href="{{URL::to('franquicias-de-'.$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)}}"><h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
+                                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"><h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                     </div>
                                                     <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ[0]->descripcion}}</p>
                                                     <div>
@@ -103,15 +103,15 @@
                                     <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
                                         <div class="row panel panel-info">
                                             <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                                <span><a href="{{URL::to('busqueda-'.$subcategorias[$i]->nombre)}}"  class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
+                                                <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i]->nombre)))}}"  class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
                                             </div>
                                             <div class="panel-body" style="margin-bottom: -16px;">
                                                 <div class="row">
                                                     <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
-                                                        <a href="{{URL::to('franquicias-de-'.$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)}}"><img class="img-responsive img-rounded thumbnail" src="{{asset($fran_categ[0]->logo_url)}} " alt="prueba" style="width: 250px"></a>
+                                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"><img class="img-responsive img-rounded thumbnail" src="{{asset($fran_categ[0]->logo_url)}} " alt="prueba" style="width: 250px"></a>
                                                     </div>
                                                     <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
-                                                       <a href="{{URL::to('franquicias-de-'.$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)}}"> <h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
+                                                       <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"> <h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                     </div>
                                                     <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ[0]->descripcion}}</p>
                                                     <div>
@@ -125,7 +125,7 @@
                                                                 <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
                                                                     <ul class="list-unstyled">
                                                                         <li>
-                                                                            <a href="{{URL::to('franquicias-de-'.$fran_categ[$j]->nombre."/".$fran_categ[$j]->nombre_comercial)}}">{{$fran_categ[$j]->nombre_comercial}}</a>
+                                                                            <a href="{{URL::to(strtolower(str_replace(' ','-','franquicias-de-'.$fran_categ[$j]->nombre."/".$fran_categ[$j]->nombre_comercial)))}}">{{$fran_categ[$j]->nombre_comercial}}</a>
                                                                         </li>
                                                                         <!--<li>
                                                                             <a href="#">Tasca joselito</a>

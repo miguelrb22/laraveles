@@ -142,7 +142,7 @@ class WebController extends Controller {
 
                         }
                     });
-
+                    //Segundo filtro para que no devuelva todas las franquicias con un id que no es de la subcategoria buscada
                     $query = $query->where(function ($query) use ($subcategorias) {
 
                         foreach ($subcategorias as $subcategoria) {
