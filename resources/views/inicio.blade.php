@@ -78,7 +78,7 @@
                             <hr/>
                             <h4 class="text-center">
                                 <strong>
-                                    <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_rentables[$a2]->nombre."/".$franquicias_rentables[$a2]->nombre_comercial)))}}" title="perfil">{{$franquicias_rentables[$a2]->nombre_comercial}}</a>
+                                    <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_rentables[$a2]->nombre."/".$franquicias_rentables[$a2]->nombre_comercial)))}}" title="perfil">{{$franquicias_rentables[$a2]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
                             <img class="img-responsive" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
@@ -236,7 +236,7 @@
                                         <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
                                             <img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" alt="Responsive image">
                                         </div>
-                                        <h3 id="tituloNotica">{{$publicaciones[$i]->titulo}}</h3>
+                                        <h3 id="tituloNotica"><a href="{{ URL::to('noticias/'.$publicaciones[$i]->titulo.'/id'.$publicaciones[$i]->id)}}">{{$publicaciones[$i]->titulo}}</a></h3>
                                         <p id="textoNoticia"> {{substr(strip_tags($publicaciones[$i]->contenido), 0, 400).' ...'}}
                                             <a href="#">seguir leyendo</a>
                                         </p>

@@ -16,5 +16,12 @@ class Publicaciones extends Model{
     protected $table = 'publicacion';
 
     protected $fillable = ['id','franquicia_id','titulo','contenido','url_imagen','tipo','fecha','pertenencia'];
+
+    public function getRouteKey(){
+
+        $hashids = new \Hashids\Hashids('MySecretSalt');
+
+        return $hashids->encode($this->getKey());
+    }
 }
 //comentario para commit

@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Miguel Ruiz
+ * User: Juanca
  * Date: 27/03/2015
  * Time: 9:16
  */
@@ -19,7 +19,6 @@ use App\Model\Subcategoria;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
-use app\Http\Controllers\email as Mail;
 
 class WebController extends Controller {
 
@@ -456,74 +455,13 @@ class WebController extends Controller {
     }
 
 
-    public function showpublicacion($id)
+    public function showpublicacion($titulo,$id)
     {
 
-        $articulo = Publicaciones::where('titulo','=',$id)->get();
+
+        $articulo = Publicaciones::where('titulo','=',$titulo)->get();
 
         return view('publicacion',compact('articulo'));
-    }
-
-    public function enviarformulariofranquicia(Request $request){
-
-        $data = array
-        (
-            'nombre' => $request::input('nombre'),
-            'apellidos' => $request::input('apellidos'),
-            'email' => $request::input('email'),
-            'telefono' => $request::input('telefono'),
-            'cp' => $request::input('cp'),
-            'pais' => $request::input('pais'),
-            'abrir' => $request::input('provincia'),
-            'local' => $request::input('local'),
-            'residencia' => $request::input('residencia_actual'),
-            'informacion' => $request::input('observaciones'),
-
-        );
-
-        $similares = $request::input('similares');
-        $toEmail = $request::input('email_franquicia');
-        $toName = $request::input('nombre_franquicia');
-        $fromEmail = 'info@multifranquicias.com';
-        $fromName = 'Multifranquicias';
-
-
-        try {
-
-            \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
-                $message->to($toEmail, $toName);
-                $message->from($fromEmail, $fromName);
-                $message->subject('Una persona está interesada en su franquicia');
-            });
-
-        }catch (Exception $e){ return false;}
-
-
-        if($similares) {
-
-            foreach ($similares as $similar) {
-
-
-                $destinatario = explode('%', $similar);
-                $toEmail = $destinatario[0];
-                $toName = $destinatario[1];
-
-                try {
-
-                    \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
-                        $message->to($toEmail, $toName);
-                        $message->from($fromEmail, $fromName);
-                        $message->subject('Una persona está interesada en su franquicia');
-                    });
-
-                }catch (Exception $e){ return false;}
-
-
-            }
-        }
-
-        return 1;
-
     }
 }
 

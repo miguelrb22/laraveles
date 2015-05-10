@@ -31,19 +31,16 @@
                 <hr id="separador">
             </div>
             <div class="row noticias">
-
-
                 <div class="row" >
 
                     <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                         <div class="row">
-
                             <div class="col col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                                 <h1 style="font-size: 3em" id="tituloNotica"> {{ $articulo[0]->titulo }}</h1>
                                 <br>
                                 <div id="share" class="jssocials"><div class="jssocials-shares"><div class="jssocials-share jssocials-share-twitter"><a class="jssocials-share-link" href="https://twitter.com/share?url=http%3A%2F%2Flocalhost%2Flara%2Fpublic%2Ffranquicias-de-hola%2520que%2520tal%2FHuerta%2520de%2520Casillas%2520e%2520Hija&amp;text=Multifranquicias" target="_blank"><i class="fa fa-twitter jssocials-share-logo"></i><span class="jssocials-share-label">Tweet</span></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-facebook"><a class="jssocials-share-link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2Flara%2Fpublic%2Ffranquicias-de-hola%2520que%2520tal%2FHuerta%2520de%2520Casillas%2520e%2520Hija" target="_blank"><i class="fa fa-facebook jssocials-share-logo"></i><span class="jssocials-share-label">Like</span></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-googleplus"><a class="jssocials-share-link" href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%2Flara%2Fpublic%2Ffranquicias-de-hola%2520que%2520tal%2FHuerta%2520de%2520Casillas%2520e%2520Hija" target="_blank"><i class="fa fa-google-plus jssocials-share-logo"></i><span class="jssocials-share-label">+1</span></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-linkedin"><a class="jssocials-share-link" href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%2Flara%2Fpublic%2Ffranquicias-de-hola%2520que%2520tal%2FHuerta%2520de%2520Casillas%2520e%2520Hija" target="_blank"><i class="fa fa-linkedin jssocials-share-logo"></i><span class="jssocials-share-label">Share</span></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-pinterest"><a class="jssocials-share-link" href="https://pinterest.com/pin/create/bookmarklet/?&amp;url=http%3A%2F%2Flocalhost%2Flara%2Fpublic%2Ffranquicias-de-hola%2520que%2520tal%2FHuerta%2520de%2520Casillas%2520e%2520Hija&amp;description=Multifranquicias" target="_blank"><i class="fa fa-pinterest jssocials-share-logo"></i><span class="jssocials-share-label">Pin it</span></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div></div></div>
-<br>
+                            <br>
                             </div>
 
                         </div>
