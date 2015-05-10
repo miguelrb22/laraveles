@@ -683,8 +683,11 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     border-radius: 10px !important;
 }
 
-.anuncio{
-    width: 48%;
-    margin-left: 1.5%;
+@media (max-width: 992px ) {
+    .anuncio {
+        width: 48%;
+        margin-left: 1.5%;
+
+    }
 
 }
