@@ -706,10 +706,9 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     .letra{
         font-size: 13px;
     }
-
 }
 
-@media(max-width: 1280px) and (min-width: 992px)
+@media(max-width: 1200px) and (min-width: 992px)
 {
     .letra{
         font-size: 13px;
