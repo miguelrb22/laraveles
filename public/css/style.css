@@ -682,3 +682,9 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 .img_destacados{
     border-radius: 10px !important;
 }
+
+.anuncio{
+    width: 48%;
+    margin-left: 1.5%;
+
+}

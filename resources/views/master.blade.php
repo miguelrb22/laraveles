@@ -95,7 +95,7 @@
             @yield('buscador')
             @yield('contenido')
         </section>
-        <section class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <section class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
             @yield('der')
         </section>
     </div>

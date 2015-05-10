@@ -24,7 +24,7 @@
             <!--Seccion franquicias especiales -->
             <br>
             <div class="row">
-                <section class="col col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right:0">
+                <section class="col col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     @if(!$franquicias_exito->isEmpty())
                         <?php
                             $a1 = mt_rand(0,count($franquicias_exito)-1);
@@ -189,21 +189,11 @@
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row">
                         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well"id="izq-1">
-                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
-                            </div>
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-2">
-                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-                            </div>
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-3" style="display:none">
-                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba">
-                            </div>
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-4" style="display:none">
-                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-                            </div>
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well" id="izq-5" style="display:none">
-                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-                            </div>
+                            @for($i=0; $i < 2; $i++)
+                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                    <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
+                                </div>
+                            @endfor
                         </div>
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
@@ -281,15 +271,15 @@
 
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
-                    <div class="panel-heading textoblanco" id="panelDes" style="background:#333">
+                    <div class="panel-heading textoblanco" style="background:#333">
                         <i class="glyphicon glyphicon-thumbs-up textoblanco"></i> <span class="textoblanco">Destacados</span>
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
-                            <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12 text-center">
+                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 text-center">
                                 <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}">{{$fraquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
                                 <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" >
                             </div>
-                            <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
+                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                 <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}">{{$fraquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
                                 <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba">
                             </div>
