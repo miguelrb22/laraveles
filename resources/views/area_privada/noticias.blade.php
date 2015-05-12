@@ -6,6 +6,8 @@
 
 @endsection
 
+
+
 @section('main')
 
 
@@ -85,11 +87,26 @@
 
     <script src="{{ asset('area_privada/summernote\lang\summernote-es-ES.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/dist/summernote.min.js') }}"></script>
+    <script src="{{ asset('area_privada/summernote/plugin/summernote-ext-video.js') }}"></script>
 
     <script type="text/javascript">
         $(function() {
             $('.summernote').summernote({
-                height: 450
+                height: 450,
+                toolbar: [
+                    //[groupname, [button list]]
+
+                    ['Misc',['undo','redo','fullscreen','codeview']],
+                    ['magic',['style']],
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert',['table','link','hr','picture','video']]
+
+                ]
 
             });
         });

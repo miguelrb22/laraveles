@@ -52,6 +52,10 @@ return [
             'driver' => 'local',
             'root'   => public_path().'/images/publicaciones',
         ],
+        'articulos' => [
+            'driver' => 'local',
+            'root'   => public_path().'/articulos',
+        ],
 
 		's3' => [
 			'driver' => 's3',

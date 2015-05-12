@@ -29,7 +29,20 @@ class publicacionController extends Controller
 
     public function store(Request $request) {
 
+
+        $uuid1 = Uuid::uuid4();
+        $contenido = $request->input('contenido');
+        $nombre = $uuid1->toString() . ".txt";
+        $url = public_path().'/articulos/'.$nombre;
+
+        \File::put($url, $contenido);
+
+        $resumen =  substr(strip_tags(\File::get($url)), 0, 400);
+
+        $request->merge(array('contenido' =>  $url, 'resumen' =>  $resumen));
+
         $publicacion = new Publicaciones($request->all());
+
 
         if($publicacion->franquicia_id=='-1'){$publicacion->franquicia_id=null;}
 

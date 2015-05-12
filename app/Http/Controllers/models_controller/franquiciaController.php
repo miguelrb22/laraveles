@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session as Session;
 use League\Flysystem\Exception;
+use Ramsey\Uuid\Uuid;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class franquiciaController extends Controller
@@ -28,6 +30,34 @@ class franquiciaController extends Controller
     public function store(Request $request)
     {
         $franquicia = new Franquicia($request->all());
+
+        if($file = $request->file('perfil')) {
+
+
+            //Generar un id Unico
+            $uuid1 = Uuid::uuid4();
+
+            //Extension del archivo
+            $extension = $file->getClientOriginalExtension();
+
+            //obtenemos el nombre del archivo
+            $nombre = $uuid1->toString() . "." . $extension;
+
+            //indicamos que queremos guardar una nueva imagen de perfil
+            \Storage::disk('perfiles')->put($nombre, \File::get($file));
+
+            $url = '/images/perfiles/' . $nombre;
+
+            $franquicia->logo_url = $url;
+
+
+            //img resize
+            $location = public_path().$url;
+            $image = Image::make($location);
+            $image->resize(200,200);
+            $image->save($location);
+
+        }
         $franquicia->save();
     }
 

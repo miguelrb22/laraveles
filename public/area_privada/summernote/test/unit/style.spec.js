@@ -5,9 +5,9 @@
  */
 define([
   'jquery',
-  '../..//core/dom',
-  '../..//core/range',
-  '../..//editing/Style'
+  'summernote/core/dom',
+  'summernote/core/range',
+  'summernote/editing/Style'
 ], function ($, dom, range, Style) {
   return function () {
     var style = new Style();
