@@ -48,15 +48,17 @@ return [
 			'root'   => storage_path().'/app',
 		],
 
+        //Images cabecera de imagenes
         'publicaciones' => [
             'driver' => 'local',
             'root'   => public_path().'/images/publicaciones',
         ],
+        //Articulos en formato texto
         'articulos' => [
             'driver' => 'local',
-            'root'   => public_path().'/images/articulos',
+            'root'   => public_path().'/articulos',
         ],
-
+        //Imagenes de perfil de las franquicias
         'perfiles' => [
             'driver' => 'local',
             'root'   => public_path().'/images/perfiles',
