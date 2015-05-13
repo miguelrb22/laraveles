@@ -9,6 +9,16 @@
     @include('extras.anuncio')
 @endsection
 
+<style>
+
+    img {
+        margin-right: 1%;
+        margin-left: 1%;
+
+
+    }
+</style>
+
 @section('buscador')
     @include('extras.buscador')
 @endsection
@@ -89,6 +99,8 @@
     showLabel:true,
     showCount:true
     });
+
+    $("img").addClass('img-responsive');
 
 
     @endsection

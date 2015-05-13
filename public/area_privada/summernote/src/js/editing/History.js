@@ -1,4 +1,4 @@
-define(['../../..//core/range'], function (range) {
+define(['summernote/core/range'], function (range) {
   /**
    * @class editing.History
    *
@@ -11,7 +11,7 @@ define(['../../..//core/range'], function (range) {
 
     var makeSnapshot = function () {
       var rng = range.create();
-      var emptyBookmark = {s: {path: [0], offset: 0}, e: {path: [0], offset: 0}};
+      var emptyBookmark = {s: {path: [], offset: 0}, e: {path: [], offset: 0}};
 
       return {
         contents: $editable.html(),

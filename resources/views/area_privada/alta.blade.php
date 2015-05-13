@@ -129,7 +129,7 @@
                                     <div class="widget-body no-padding">
                                         <!-- comienzo form -->
                                         <!--<form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12" novalidate="novalidate">-->
-                                        {!! Form::open (['action' => 'models_controller\franquiciaController@store' , 'method' =>'POST', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
+                                        {!! Form::open (['method' =>'POST', 'accept-charset' =>'UTF-8', 'enctype' =>'multipart/form-data', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
                                             <div class="row" style="margin:0">
                                                 <h3 class="text-center"><span> Datos Públicos</span></h3>
 

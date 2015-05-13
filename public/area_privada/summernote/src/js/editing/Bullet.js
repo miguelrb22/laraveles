@@ -1,8 +1,8 @@
 define([
-  '../../..//core/list',
-  '../../..//core/func',
-  '../../..//core/dom',
-  '../../..//core/range'
+  'summernote/core/list',
+  'summernote/core/func',
+  'summernote/core/dom',
+  'summernote/core/range'
 ], function (list, func, dom, range) {
 
   /**
@@ -187,12 +187,16 @@ define([
         var lastList = headList.childNodes.length > 1 ? dom.splitTree(headList, {
           node: last.parentNode,
           offset: dom.position(last) + 1
-        }, true) : null;
+        }, {
+          isSkipPaddingBlankHTML: true
+        }) : null;
 
         var middleList = dom.splitTree(headList, {
           node: head.parentNode,
           offset: dom.position(head)
-        }, true);
+        }, {
+          isSkipPaddingBlankHTML: true
+        });
 
         paras = isEscapseToBody ? dom.listDescendant(middleList, dom.isLi) :
                                   list.from(middleList.childNodes).filter(dom.isLi);

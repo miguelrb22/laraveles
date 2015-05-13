@@ -1,7 +1,7 @@
 define([
-  '../../..//core/func',
-  '../../..//core/list',
-  '../../..//module/Button'
+  'summernote/core/func',
+  'summernote/core/list',
+  'summernote/module/Button'
 ], function (func, list, Button) {
   /**
    * @class module.Popover
@@ -64,7 +64,13 @@ define([
       if (styleInfo.anchor) {
         var $anchor = $linkPopover.find('a');
         var href = $(styleInfo.anchor).attr('href');
+        var target = $(styleInfo.anchor).attr('target');
         $anchor.attr('href', href).html(href);
+        if (!target) {
+          $anchor.removeAttr('target');
+        } else {
+          $anchor.attr('target', '_blank');
+        }
         showPopover($linkPopover, posFromPlaceholder(styleInfo.anchor, isAirMode));
       } else {
         $linkPopover.hide();

@@ -1,8 +1,8 @@
 define([
-  '../../..//core/agent',
-  '../../..//core/func',
-  '../../..//core/list',
-  '../../..//core/dom'
+  'summernote/core/agent',
+  'summernote/core/func',
+  'summernote/core/list',
+  'summernote/core/dom'
 ], function (agent, func, list, dom) {
   /**
    * @class editing.Style
@@ -14,6 +14,7 @@ define([
     /**
      * @method jQueryCSS
      *
+     * [workaround] for old jQuery
      * passing an array of style properties to .css()
      * will result in an object of property-value pairs.
      * (compability with version < 1.9)

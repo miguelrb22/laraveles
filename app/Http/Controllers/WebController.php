@@ -461,6 +461,9 @@ class WebController extends Controller {
 
         $articulo = Publicaciones::where('titulo','=',$titulo)->get();
 
+        $url = $articulo[0]->contenido;
+        $articulo[0]->contenido =  \File::get($url);
+
         return view('publicacion',compact('articulo'));
     }
 }
