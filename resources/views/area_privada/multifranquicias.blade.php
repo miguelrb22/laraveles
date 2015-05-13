@@ -375,7 +375,9 @@
         <script src="{{ asset('area_privada/js/plugin/datatables/dataTables.tableTools.min.js') }}"></script>
         <script src="{{ asset('area_privada/js/plugin/datatables/dataTables.bootstrap.min.js') }}"></script>
         <script src="{{ asset('area_privada/js/plugin/datatable-responsive/datatables.responsive.min.js') }}"></script>
-        <script src="{{ URL::asset('lolibox/dist/js/lobibox.min.js') }}"></script>
+    <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
+
+    <script src="{{ URL::asset('lolibox/dist/js/lobibox.min.js') }}"></script>
         <script src="{{ URL::asset('js/blockUI.js') }}"></script>
 
         @yield('js')
@@ -554,55 +556,6 @@
             /******************************************************************************/
 
 
-            $('#form-alta').submit(function(e){
-
-                e.preventDefault();
-
-                $.blockUI({
-
-                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
-                    css: {
-                        border: 'none',
-                        padding: '15px',
-                        backgroundColor: 'transparent'}
-
-                });
-
-                $.ajax({
-
-                    type: "POST",
-                    url: "{{ URL::route('guardar') }}",
-                    data: $('#form-alta').serialize(),
-                    dataType: "html",
-                    error: function () {
-
-                        Lobibox.notify('error', {
-                            title: 'No se ha podido crear la franquicia',
-                            showClass: 'flipInX',
-                            delay: 3000,
-                            delayIndicator: false,
-
-                            position: 'bottom left',
-                            msg: 'Compruebe la conexión a internet'
-                        });
-                    },
-                    success: function (data) {
-
-                        Lobibox.notify('success', {
-                            title: 'Franquicia creada con éxito',
-                            showClass: 'flipInX',
-                            delay: 3000,
-                            delayIndicator: false,
-
-                            position: 'bottom left',
-                            msg: 'Mas franquicias, mas dinero!'
-                        });
-                    }
-                });
-
-
-            });
-
             /** PESTAÑA CATEGORIAS **·/
              *
              */
@@ -704,6 +657,371 @@
 
 
             });
+
+            $('#form-alta').bootstrapValidator({
+                feedbackIcons : {
+                    valid : 'glyphicon glyphicon-ok',
+                    invalid : 'glyphicon glyphicon-remove',
+                    validating : 'glyphicon glyphicon-refresh'
+                },
+                fields : {
+                    nombre_comercial : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    ciudad : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    direccion : {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    cp : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            },
+                            stringLength : {
+                                max : 5,
+                                min : 5,
+                                message : 'La longitud del campo debe ser de 5 dígitos'
+                            }
+                        }
+                    },
+                    web : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    descripcion : {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            stringLength : {
+                                min : 30,
+                                message : 'La Descripción demasiado corta'
+                            }
+                        }
+                    },
+                    logo_url : {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    inversion : {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    presencia_int : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    royalty : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    canon_entrada : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    canon_publicitario : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    duracion_contrato : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    amortizacion : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    requisitos_local : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    locales_propios : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        }
+                    },
+                    dimensiones_local : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        }
+                    },
+                    locales_franquiciados : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        }
+                    },
+                    poblacion_minima: {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        }
+                    },
+                    superficie_minima : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        }
+                    },
+                    zona_exclusividad : {
+                        group : '.col-lg-4',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    perfil_franquiciado : {
+                        group : '.col-lg-8',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    zonas_preferentes : {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    anyo_creacion : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            },
+                            stringLength : {
+                                max : 4,
+                                min : 4,
+                                message : 'La longitud del campo debe ser de 4 dígitos'
+                            }
+                        }
+                    },
+                    inicio_expansion : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            },
+                            stringLength : {
+                                max : 4,
+                                min : 4,
+                                message : 'La longitud del campo debe ser de 4 dígitos'
+                            }
+                        }
+                    },
+                    red_spain: {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    n_paises : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        }
+                    },
+                    nacionalidad : {
+                        group : '.col-lg-6',
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    red_extranjero : {
+                        validators : {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    nombre_franquicia : {
+                        validators : {
+                            group : '.col-lg-6',
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    cif : {
+                        validators : {
+                            group : '.col-lg-6',
+                            stringLength : {
+                                max : 9,
+                                min : 9,
+                                message : 'La longitud del campo debe ser de 9'
+                            }
+                        }
+                    },
+                    razon_social : {
+                        validators: {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    },
+                    categoria : {
+                        validators: {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function(e) {
+
+                var formData = new FormData($('#form-alta')[0]);
+                console.log(formData);
+
+                // Prevent form submission
+                e.preventDefault();
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('guardar') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido crear la franquicia',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Franquicia creada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Mas franquicias, mas dinero!'
+                        });
+                    }
+                });
+            });
+
 
 
 

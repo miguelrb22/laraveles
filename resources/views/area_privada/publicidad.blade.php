@@ -1190,13 +1190,6 @@
     checkout.hide();
     }).data('datepicker');
 
-
-
-
-
-
-
-
 @endsection
 
 <script>

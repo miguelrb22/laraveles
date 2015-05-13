@@ -54,7 +54,12 @@ return [
         ],
         'articulos' => [
             'driver' => 'local',
-            'root'   => public_path().'/articulos',
+            'root'   => public_path().'/images/articulos',
+        ],
+
+        'perfiles' => [
+            'driver' => 'local',
+            'root'   => public_path().'/images/perfiles',
         ],
 
 		's3' => [

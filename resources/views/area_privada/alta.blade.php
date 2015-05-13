@@ -128,8 +128,9 @@
                                     <!-- widget content -->
                                     <div class="widget-body no-padding">
                                         <!-- comienzo form -->
-                                        <!--<form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12" novalidate="novalidate">-->
-                                        {!! Form::open (['method' =>'POST', 'accept-charset' =>'UTF-8', 'enctype' =>'multipart/form-data', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
+                                        <form id="form-alta"  accept-charset="UTF-8" enctype="multipart/form-data" class="smart-form col-xs-12 col-md-12 col-sm-12">
+
+                                            {!! Form::token() !!}
                                             <div class="row" style="margin:0">
                                                 <h3 class="text-center"><span> Datos Públicos</span></h3>
 
@@ -197,9 +198,10 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label class="label">Logo:</label>
-                                                                        <div class="input input-file">
-                                                                            <span class="button"><input type="file" id="file" name="logo_url" onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input type="text" readonly="">
-                                                                        </div>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-file-image-o"></i></span>
+                                                                        <input type="file" name="perfil" id="url_imagen_publicacion" accept="image/x-png, image/jpeg" class="form-control input-sm" placeholder="Título...">
+                                                                    </div>
                                                                 </section>
                                                             </div>
                                                         </div>
@@ -489,12 +491,11 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Categoría especial:</label>
-                                                                    <select class="form-control" name="especial">
-                                                                        <option value="">Selecciona categoria Especial</option>
-                                                                        <option value="exito">Franquicias de éxito</option>
-                                                                        <option value="rentables">Franquicias rentables</option>
-                                                                        <option value="baratas">Franquicias baratas</option>
-                                                                        <option value="low-cost">Franquicias low-cost</option>
+                                                                    <select multiple style="width:100%" class="select2"  name="especial">
+                                                                            <option value="1">Exito</option>
+                                                                            <option value="2">Rentable</option>
+                                                                            <option value="3">Barata</option>
+                                                                            <option value="4">LowCost</option>
                                                                     </select>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -510,65 +511,18 @@
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12">
                                                                     <label>Categoria:</label>
                                                                     <select multiple style="width:100%" class="select2" id="categoria" name="categoria">
-                                                                        <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                                            <option value="AK">Alaska</option>
-                                                                            <option value="HI">Hawaii</option>
-                                                                        </optgroup>
-                                                                        <optgroup label="Pacific Time Zone">
-                                                                            <option value="CA">California</option>
-                                                                            <option value="NV">Nevada</option>
-                                                                            <option value="OR">Oregon</option>
-                                                                            <option value="WA">Washington</option>
-                                                                        </optgroup>
-                                                                        <optgroup label="Mountain Time Zone">
-                                                                            <option value="AZ">Arizona</option>
-                                                                            <option value="CO">Colorado</option>
-                                                                            <option value="ID">Idaho</option>
-                                                                            <option value="MT">Montana</option><option value="NE">Nebraska</option>
-                                                                            <option value="NM">New Mexico</option>
-                                                                            <option value="ND">North Dakota</option>
-                                                                            <option value="UT">Utah</option>
-                                                                            <option value="WY">Wyoming</option>
-                                                                        </optgroup>
-                                                                        <optgroup label="Central Time Zone">
-                                                                            <option value="AL">Alabama</option>
-                                                                            <option value="AR">Arkansas</option>
-                                                                            <option value="IL">Illinois</option>
-                                                                            <option value="IA">Iowa</option>
-                                                                            <option value="KS">Kansas</option>
-                                                                            <option value="KY">Kentucky</option>
-                                                                            <option value="LA">Louisiana</option>
-                                                                            <option value="MN">Minnesota</option>
-                                                                            <option value="MS">Mississippi</option>
-                                                                            <option value="MO">Missouri</option>
-                                                                            <option value="OK">Oklahoma</option>
-                                                                            <option value="SD">South Dakota</option>
-                                                                            <option value="TX">Texas</option>
-                                                                            <option value="TN">Tennessee</option>
-                                                                            <option value="WI">Wisconsin</option>
-                                                                        </optgroup>
-                                                                        <optgroup label="Eastern Time Zone">
-                                                                            <option value="CT">Connecticut</option>
-                                                                            <option value="DE">Delaware</option>
-                                                                            <option value="FL">Florida</option>
-                                                                            <option value="GA">Georgia</option>
-                                                                            <option value="IN">Indiana</option>
-                                                                            <option value="ME">Maine</option>
-                                                                            <option value="MD">Maryland</option>
-                                                                            <option value="MA">Massachusetts</option>
-                                                                            <option value="MI">Michigan</option>
-                                                                            <option value="NH">New Hampshire</option>
-                                                                            <option value="NJ">New Jersey</option>
-                                                                            <option value="NY">New York</option>
-                                                                            <option value="NC">North Carolina</option>
-                                                                            <option value="OH">Ohio</option>
-                                                                            <option value="PA">Pennsylvania</option>
-                                                                            <option value="RI">Rhode Island</option>
-                                                                            <option value="SC">South Carolina</option>
-                                                                            <option value="VT">Vermont</option>
-                                                                            <option value="VA">Virginia</option>
-                                                                            <option value="WV">West Virginia</option>
-                                                                        </optgroup>
+
+
+                                                                        @foreach($categorias as $cat)
+
+                                                                            <optgroup label="{{$cat->nombre}}">
+                                                                                @foreach($subcategorias as $subcat)
+                                                                                    @if($subcat->categoria_id==$cat->id)
+                                                                                        <option value="{{$subcat->id}}">{{$subcat->nombre}}</option>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </optgroup>
+                                                                        @endforeach
                                                                     </select>
                                                                 </section>
                                                             </div>
@@ -676,52 +630,9 @@
                                                     Guardar Ficha
                                                 </button>
                                             </footer>
-                                        {!! Form::close() !!}
+                                        </form>
                                         <!--</form>-->
                                         <!-- fin form -->
-                                        <div class="row col col-xs-12 col-md-12 col-sm-12" style="margin:0px">
-                                            <h3 class="text-center"><span>Imagenes:</span></h3>
-                                            <hr/>
-                                            <div class="jarviswidget jarviswidget-color-blueLight jarviswidget-sortable"
-                                                 id="wid-id-0" data-widget-editbutton="false" role="widget">
-                                                <!-- widget options:
-                                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-                                                data-widget-colorbutton="false"
-                                                data-widget-editbutton="false"
-                                                data-widget-togglebutton="false"
-                                                data-widget-deletebutton="false"
-                                                data-widget-fullscreenbutton="false"
-                                                data-widget-custombutton="false"
-                                                data-widget-collapsed="true"
-                                                data-widget-sortable="false"
-                                                -->
-                                                <header role="heading"><div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);" aria-expanded="false"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
-                                                    <span class="widget-icon"> <i class="fa fa-cloud"></i> </span>
-                                                    <h2>My Dropzone! </h2>
-
-                                                    <span class="jarviswidget-loader" style="display: none;"><i class="fa fa-refresh fa-spin"></i></span></header>
-
-                                                <!-- widget div-->
-                                                <div role="content">
-
-
-
-
-                                                    <!-- widget content -->
-                                                    {!!Form::open([
-                                                    'url' => 'images/subirImagen',
-                                                    'files' => true,
-                                                    'class' => 'dropzone',
-                                                    'id' => 'my-dropzone',
-                                                    'method' => 'POST',
-                                                    ])!!}
-
-                                                    {!!Form::close()!!}
-                                                    <!-- end widget content -->
-                                                </div>
-                                                <!-- end widget div -->
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -736,7 +647,6 @@
 @section('js')
     <!-- PAGE RELATED PLUGIN(S) -->
     <script src="{{ asset('area_privada/js/plugin/jquery-form/jquery-form.min.js') }}"></script>
-    <script src="{{ asset('area_privada/js/dropzone/dropzone.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
@@ -776,13 +686,6 @@
     //prueba
 
 
-    Dropzone.autoDiscover = true;
-    Dropzone.options.mydropzone = {
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha aquí)</h4></span>',
-                           addRemoveLinks: true
-    }
 
 
     $('#dashboard').removeClass("active")
@@ -792,6 +695,7 @@
     $("#categoria").select2({
         maximumSelectionSize: 4
     });
+
 
 
     $('#finicio .datepicker')
@@ -811,320 +715,5 @@
             // Revalidate the date field
             $('#form-alta').formValidation('revalidateField', 'fin');
         });
-
-
-
-    $('#form-alta').bootstrapValidator({
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok',
-						invalid : 'glyphicon glyphicon-remove',
-						validating : 'glyphicon glyphicon-refresh'
-					},
-					fields : {
-						nombre_comercial : {
-                            group : '.col-lg-6',
-							validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								}
-							}
-						},
-                        ciudad : {
-                            group : '.col-lg-6',
-                            validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								}
-							}
-                        },
-                        direccion : {
-                            validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								}
-							}
-                        },
-                        cp : {
-                            group : '.col-lg-6',
-                            validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								},
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                                stringLength : {
-									max : 5,
-                                    min : 5,
-									message : 'La longitud del campo debe ser de 5 dígitos'
-								}
-							}
-                        },
-                        web : {
-                            group : '.col-lg-6',
-                            validators : {
-								notEmpty : {
-									message : 'Este campo es requerido'
-								}
-							}
-                        },
-                        descripcion : {
-                           validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                stringLength : {
-									min : 30,
-									message : 'La Descripción demasiado corta'
-								}
-                            }
-                        },
-                        logo_url : {
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        inversion : {
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        presencia_int : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        royalty : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        canon_entrada : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        canon_publicitario : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        duracion_contrato : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        amortizacion : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        requisitos_local : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        locales_propios : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                            }
-                        },
-                        dimensiones_local : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                            }
-                        },
-                        locales_franquiciados : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                            }
-                        },
-                        poblacion_minima: {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                            }
-                        },
-                        superficie_minima : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                            }
-                        },
-                        zona_exclusividad : {
-                            group : '.col-lg-4',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        perfil_franquiciado : {
-                            group : '.col-lg-8',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        zonas_preferentes : {
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        anyo_creacion : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                                stringLength : {
-									max : 4,
-                                    min : 4,
-                                    message : 'La longitud del campo debe ser de 4 dígitos'
-                                }
-                            }
-                        },
-                        inicio_expansion : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                                stringLength : {
-									max : 4,
-                                    min : 4,
-                                    message : 'La longitud del campo debe ser de 4 dígitos'
-                                }
-                            }
-                        },
-                        red_spain: {
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        n_paises : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                },
-                                numeric : {
-                                    message : 'Este campo debe ser numérico'
-                                },
-                            }
-                        },
-                        nacionalidad : {
-                            group : '.col-lg-6',
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        red_extranjero : {
-                            validators : {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        nombre_franquicia : {
-                            validators : {
-                            group : '.col-lg-6',
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        cif : {
-                            validators : {
-                                group : '.col-lg-6',
-                                stringLength : {
-									max : 9,
-                                    min : 9,
-                                    message : 'La longitud del campo debe ser de 9'
-                                }
-                            }
-                        },
-                        razon_social : {
-                            validators: {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        },
-                        categoria : {
-                            validators: {
-                                notEmpty : {
-                                    message : 'Este campo es requerido'
-                                }
-                            }
-                        }
-					}
-				});
 
 @endsection

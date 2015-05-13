@@ -4,7 +4,9 @@ use App\Http\Controllers\Controller;
 use App\Model\Categoria;
 use App\model\Franquicia as Franquicia;
 use App\Model\PaquetesActivos;
+use App\Model\subcategoria;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB AS DB;
 
 
 class AreaPrivadaController extends Controller {
@@ -26,7 +28,10 @@ class AreaPrivadaController extends Controller {
 
     public function alta()
     {
-        return view('area_privada.alta');
+
+        $categorias = Categoria::all(array('id','nombre'));
+        $subcategorias = subcategoria::all(array('id','nombre','categoria_id') );
+        return view('area_privada.alta',compact('subcategorias','categorias'));
     }
 
     public function publicidad()

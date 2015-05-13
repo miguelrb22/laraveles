@@ -32,17 +32,12 @@ class franquiciaController extends Controller
         $franquicia = new Franquicia($request->all());
 
         if($file = $request->file('perfil')) {
-
-
             //Generar un id Unico
             $uuid1 = Uuid::uuid4();
-
             //Extension del archivo
             $extension = $file->getClientOriginalExtension();
-
             //obtenemos el nombre del archivo
             $nombre = $uuid1->toString() . "." . $extension;
-
             //indicamos que queremos guardar una nueva imagen de perfil
             \Storage::disk('perfiles')->put($nombre, \File::get($file));
 
@@ -51,7 +46,7 @@ class franquiciaController extends Controller
             $franquicia->logo_url = $url;
 
 
-            //img resize
+            //img resizes
             $location = public_path().$url;
             $image = Image::make($location);
             $image->resize(200,200);
