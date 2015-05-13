@@ -146,9 +146,9 @@
             dictResponseError: "Server responded with {{statusCode}} code.",
             dictCancelUpload: "Cancel upload",
             dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",
-            dictRemoveFile: "Remove file",
+            dictRemoveFile: "Borrar archivo",
             dictRemoveFileConfirmation: null,
-            dictMaxFilesExceeded: "You can not upload any more files.",
+            dictMaxFilesExceeded: "No puedes subir más imagenes",
             accept: function(file, done) {
                 return done();
             },

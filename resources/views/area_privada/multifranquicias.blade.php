@@ -74,7 +74,7 @@
     |  01. #CSS Links                |  all CSS links and file paths  |
     |  02. #FAVICONS                 |  Favicon links and file paths  |
     |  03. #GOOGLE FONT              |  Google font link              |
-    |  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+    |  04. #APP SCREEN / ICONS       |  app icons, screen backs   |
     |  05. #BODY                     |  body tag                      |
     |  06. #HEADER                   |  header tag                    |
     |  07. #PROJECTS                 |  project lists                 |

@@ -3,6 +3,11 @@
 ?>
 @extends('area_privada.multifranquicias')
 
+@section('css')
+    <link rel="stylesheet" href="{{ URL::asset('area_privada/js/dropzone/dropzone.css') }}">
+
+@endsection
+
 @section('main')
     <div class="row col col-xs-12 col-md-12 col-sm-12" style="margin:0px">
         <h3 class="text-center"><span>Imagenes de: {{$id->nombre_comercial}}</span></h3>
@@ -36,12 +41,11 @@
                     'files' => true,
                     'class' => 'dropzone',
                     'id' => 'mydropzone',
-                    'mio' => '2015',
                     'method' => 'POST',
                 ])!!}
 
                 {!!Form::close()!!}
-
+            <br>
                 <!-- end widget content -->
             </div>
             <!-- end widget div -->
@@ -78,6 +82,7 @@
                         //incrementar la variable maxfiles o no.
                         thisDropzone.options.addedfile.call(thisDropzone, imagen);
                         thisDropzone.options.thumbnail.call(thisDropzone, imagen, "{{ URL::asset('imgfranquicias/') }}"+'/'+value.nombre);
+
                         thisDropzone.options.maxFiles = thisDropzone.options.maxFiles - 1;
                         //console.log("rellenar => "+thisDropzone.options.maxFiles);
 
@@ -108,6 +113,8 @@
                         formData.append('id',id);
                 });
 
+
+
                 thisDropzone.on("success",function(){
                     //Poner mensaje que queramos para notificar final de la subida
                 });
@@ -118,9 +125,9 @@
         maxFiles: 5,
         maxFilesize: 2, // MB
         dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha aquí)</h4></span>',
-        addRemoveLinks: true
+        addRemoveLinks: true,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif"
     }
-
 
 
         setTimeout(function() {
@@ -131,7 +138,6 @@
                 imagenes[i].setAttribute('width',120);
                 imagenes[i].setAttribute('height',120);
             }
-
 
         }, 1000);
 
