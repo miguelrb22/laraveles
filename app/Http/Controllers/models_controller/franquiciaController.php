@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Session as Session;
 use League\Flysystem\Exception;
 use Ramsey\Uuid\Uuid;
 use Intervention\Image\ImageManagerStatic as Image;
+use App\Model\FranquiciaHasEspecial as FHE;
+use Illuminate\Support\Facades\DB AS DB;
+use App\Model\FranquiciaSubcategoria as FS;
 
 
 class franquiciaController extends Controller
@@ -30,6 +33,7 @@ class franquiciaController extends Controller
     public function store(Request $request)
     {
         $franquicia = new Franquicia($request->all());
+
 
         if($file = $request->file('perfil')) {
             //Generar un id Unico
@@ -53,7 +57,42 @@ class franquiciaController extends Controller
             $image->save($location);
 
         }
-        $franquicia->save();
+
+        $id = DB::table('franquicia')->insertGetId($franquicia->attributesToArray());
+        $categorias_especiales = $request->input('especial');
+        $categorias = $request->input('categoria');
+
+
+        if(!empty($categorias_especiales)){
+
+
+            foreach($categorias_especiales as $ce){
+
+                $fhe = New FHE();
+                $fhe->franquicia_idfranquicia = "$id";
+                $fhe->idcategoria_especial= $ce;
+                $fhe->save();
+
+
+            }
+
+        }
+
+        if(!empty($categorias)){
+
+
+            foreach($categorias as $ca){
+
+                $fs = New FS();
+                $fs->franquicia_id = "$id";
+                $fs->subcategoria_id= $ca;
+                $fs->save();
+
+
+            }
+
+        }
+
     }
 
 
