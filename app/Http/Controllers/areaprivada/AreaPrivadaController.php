@@ -54,4 +54,10 @@ class AreaPrivadaController extends Controller {
         return view('area_privada.update');
     }
 
+
+    public function imagenes()
+    {
+        return view('area_privada.imagenes');
+    }
+
 }

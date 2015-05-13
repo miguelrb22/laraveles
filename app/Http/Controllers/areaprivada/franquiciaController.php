@@ -3,11 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use App\Model\Franquicia;
 use App\Model\Publicaciones;
+use App\Model\files;
 class franquiciaController extends Controller {
     /**
      * Este método devuelve los datos de una franquicia según en nombre pasado por parámetro desde el routes
@@ -29,8 +29,11 @@ class franquiciaController extends Controller {
         //obtenemos las noticias de esta franquicia para pasarlas también a la información del perfil
         $publicaciones = Publicaciones::where('franquicia_id','=', $franquicia->id)->get();
 
+        //Obtenemos las imagenes de la tabla 1:N de imagenes_franquicia
+        $imagenes = files::where('franquicia_id','=',$franquicia->id)->get();
+
         //Devolvemos la vista con los parámetros. (la franquicia, la lista de franquicias de la misma categoria y las publicaciones)
-        return view('perfil', compact('franquicia','similares','publicaciones'));
+        return view('perfil', compact('franquicia','similares','publicaciones','imagenes'));
     }
 
 

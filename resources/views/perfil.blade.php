@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/fancyprueba.css') }}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials-theme-classic.css')}}">
 @endsection
@@ -21,7 +21,7 @@
     <div class="row">
         <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <img class="img-rounded img-responsive" src="{{ URL::asset($franquicia->logo_url) }}">
+                <img class="img-rounded img-responsive" src="">
                 <br>
                 <table class="table-responsive">
                     <tr>
@@ -40,33 +40,35 @@
                 <hr>
                 <h5>Galería de imágenes</h5>
 
-                <table class="table-responsive">
-                    <tr>
-                        <td>
-                            <a class="fancybox" rel="group" href="1.png" title="imagen 1">
-                                <img class="img-responsive" src="{{ URL::asset('images/kcopas1.jpg') }}">
-                            </a>
-                        </td>
-                        <td>
-                            <a class="fancybox" rel="group" href="2.jpg" title="imagen 2">
-                                <img class="img-responsive" src="{{ URL::asset('images/kcopas.jpg') }}">
-                            </a>
-                        </td>
-                        <td>
-                            <a class="fancybox" rel="group" href="3.jpg" title="imagen 3">
-                                <img class="img-responsive" src="{{ URL::asset('images/kcopas1.jpg') }}">
-                            </a>
-                        </td>
-                        <td>
-                            <a class="fancybox" rel="group" href="1.png" title="imagen 4">
-                                <img class="img-responsive" src="{{ URL::asset('images/kcopas.jpg') }}">
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-            </div>
+                @if(!$imagenes->isEmpty())
+                    <table class="table-responsive">
+                        <?php
+                            for($i=0, $j=0; $i < count($imagenes); $i++,$j++)
+                            {
+                                if($j==0){
 
+                                    echo "<tr>";
+                                }
+
+
+                                echo  "<td>";
+                                echo    "<a class='fancybox' rel='fancybox-button' href='".URL::asset("./imgfranquicias/".$imagenes[$i]->nombre)."' title='cold forest (picturesbywalther)'>";
+                                echo        "<img class='img-responsive' src='".URL::asset("./imgfranquicias/".$imagenes[$i]->nombre)."' alt='' />";
+                                echo    "</a>";
+                                echo  "</td>";
+
+
+                                if($j==3){ echo "</tr>";
+                                    $j= -1;
+                                }
+                            }
+
+                        ?>
+                    </table>
+                @endif
+
+            <hr>
+    </div>
             <div class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                 <div class="row panel panel-info text-center">
                     <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
@@ -439,8 +441,6 @@
                                                             <input class="similares" type="checkbox" name="similares[]" value="{{$similar->email_contacto.'%'.$similar->nombre_comercial}}" checked> {{$similar->nombre_comercial}}
                                                         </label>
                                                     </td>
-
-
                                                 @endforeach
                                             </tr>
                                         </table>
@@ -468,7 +468,7 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript" src="{{ URL::asset('js/fancybox/source/jquery.fancybox.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/fancybox/source/fancyprueba.js')}}"></script>
     <!-- Add mousewheel plugin (this is optional) -->
 
     <script type="text/javascript" src="{{ URL::asset('js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js') }}"></script>
@@ -488,44 +488,6 @@
     <script type="text/javascript" src="{{ URL::asset('js/jssocials.min.js') }}"></script>
 
     <script type="text/javascript">
-
-        $(".desmarcar").on('click',function(){
-
-            var string = $(".desmarcar").text()
-
-            if(string.substring(0,1) === 'D'){
-                $(".similares").prop('checked', false);
-                $(".desmarcar").html('Marcar todas las franquicias');
-            }else{
-                $(".similares").prop('checked', true);
-                $(".desmarcar").html('Desmarcar todas las franquicias');
-            }
-
-        });
-
-
-        $(".fancybox").fancybox({
-            //config 1
-            //openEffect	: 'none',
-            //closeEffect	: 'none'
-
-            //Config 2
-            prevEffect		: 'none',
-            nextEffect		: 'none',
-            closeBtn		: false,
-            helpers		: {
-                title	: { type : 'inside' },
-                buttons	: {}
-            }
-        });
-
-        $("#share").jsSocials({
-            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"],
-            url: "{{Request::url()}}",
-            showLabel:true,
-            showCount:true
-        });
-
 
 
 
@@ -560,5 +522,39 @@
     });
 
     });
+
+    $(".desmarcar").on('click',function(){
+
+    var string = $(".desmarcar").text()
+
+    if(string.substring(0,1) === 'D'){
+    $(".similares").prop('checked', false);
+    $(".desmarcar").html('Marcar todas las franquicias');
+    }else{
+    $(".similares").prop('checked', true);
+    $(".desmarcar").html('Desmarcar todas las franquicias');
+    }
+
+    });
+
+    
+        $(document).ready(function() {
+            $('.fancybox').fancybox({
+                padding : 0,
+                openEffect  : 'elastic'
+            });
+        });
+
+
+
+    $("#share").jsSocials({
+    shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"],
+    url: "{{Request::url()}}",
+    showLabel:true,
+    showCount:true
+    });
+
+
+
 
 @endsection

@@ -73,4 +73,9 @@ class franquiciaController extends Controller
 
     }
 
+    public function guardarImagen()
+    {
+
+    }
+
 }

@@ -106,6 +106,7 @@
       <exported-key name="fk_franquicia_has_categoria_especial_franquicia1" table="franquicia_has_categoria_especial" schema="" catalog="bdeavisos2" columns="franquicia_idfranquicia"/>
       <exported-key name="fk_franquicia_has_paquete_franquicia" table="franquicia_has_paquete" schema="" catalog="bdeavisos2" columns="franquicia_id"/>
       <exported-key name="fk_franquicia_has_subcategoria_franquicia1" table="franquicia_subcategoria" schema="" catalog="bdeavisos2" columns="franquicia_id"/>
+      <exported-key name="fk_imagenes_franquicia_franquicia1" table="imagenes_franquicia" schema="" catalog="bdeavisos2" columns="franquicia_id"/>
       <exported-key name="fk_imagenes_perfil_franquicia1" table="imagenes_perfil" schema="" catalog="bdeavisos2" columns="id"/>
       <exported-key name="fk_paquetes_activos_franquicia1" table="paquetes_activos" schema="" catalog="bdeavisos2" columns="id"/>
       <exported-key name="fk_publicacion_franquicia1" table="publicacion" schema="" catalog="bdeavisos2" columns="franquicia_id"/>
@@ -176,6 +177,20 @@
       <index name="fk_franquicia_has_subcategoria_franquicia1_idx" unique="false" columns="franquicia_id"/>
       <index name="fk_franquicia_has_subcategoria_subcategoria1_idx" unique="false" columns="subcategoria_id"/>
     </table>
+    <table name="imagenes_franquicia" schema="" catalog="bdeavisos2" type="TABLE">
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ruta" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tipo" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tamaño" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="nombreOriginal" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_imagenes_franquicia_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_imagenes_franquicia_franquicia1_idx" unique="false" columns="franquicia_id"/>
+    </table>
     <table name="imagenes_perfil" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="url1" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -192,6 +207,10 @@
       <column name="inversion_desde" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="inversion_hasta" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="migrations" schema="" catalog="bdeavisos2" type="TABLE">
+      <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="batch" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
     </table>
     <table name="paquete" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -216,6 +235,13 @@
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_paquetes_activos_franquicia1" columns="id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_paquetes_activos_franquicia1_idx" unique="false" columns="id"/>
+    </table>
+    <table name="password_resets" schema="" catalog="bdeavisos2" type="TABLE">
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <index name="password_resets_email_index" unique="false" columns="email"/>
+      <index name="password_resets_token_index" unique="false" columns="token"/>
     </table>
     <table name="publicacion" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -274,6 +300,20 @@
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_colapublicidad_tipo_publicidad1" table="colapublicidad" schema="" catalog="bdeavisos2" columns="idtipo_publicidad"/>
       <exported-key name="fk_publicidad_tipo_publicidad1" table="publicidad" schema="" catalog="bdeavisos2" columns="idtipo_publicidad"/>
+    </table>
+    <table name="users" schema="" catalog="bdeavisos2" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="users_email_unique" unique="true" columns="email"/>
+      <index name="users_username_unique" unique="true" columns="username"/>
     </table>
   </data-source>
 </component>

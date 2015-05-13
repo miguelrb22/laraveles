@@ -268,6 +268,9 @@
                         <li id="publi">
                             <a class="needlog" href="{{ URL::route('publicidad') }}">Gestión Publicidad</a>
                         </li>
+                        <li id="asignar">
+                            <a class="needlog" href="{{ URL::route('imagenes') }}">Asignar Imagenes</a>
+                        </li>
                     </ul>
                 </li>
                 <li id="categorias">

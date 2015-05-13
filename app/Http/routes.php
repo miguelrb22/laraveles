@@ -39,9 +39,11 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
     Route::get('alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
     Route::get('modificar', ['as' => 'modificar_franquicia', 'uses' => 'AreaPrivadaController@modificar']);
 
+
     Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
     Route::get('categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
     Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
+    Route::get('imagenes', ['as' => 'imagenes', 'uses' => 'AreaPrivadaController@imagenes']);
 });
 
     //Cerrar sesion
@@ -200,3 +202,13 @@ Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'mode
 Route::get('noticias/{titulo}/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion']);
 
 Route::post('contacto-franquicias' ,  ['as' => 'contacto_franquicias', 'uses' => 'WebController@enviarformulariofranquicia']);
+
+//Route::post('images', ['as' => 'images', 'uses' => 'ImagesController@subirImagen']);
+
+Route::get('cargarImagenes' ,  ['as' => 'cargarImagenes', 'uses' => 'ImagesController@extraer']);
+
+Route::get('borrarImg' ,  ['as' => 'borrarImg', 'uses' => 'ImagesController@borrarImagen']);
+
+Route::get('ultimaInsertada' ,  ['as' => 'ultimaInsertada', 'uses' => 'ImagesController@getId']);
+
+Route::controller('images','ImagesController');

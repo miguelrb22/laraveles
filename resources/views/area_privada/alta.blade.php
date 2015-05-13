@@ -2,7 +2,6 @@
 
 @section('main')
 
-
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
@@ -705,17 +704,19 @@
                                                 <!-- widget div-->
                                                 <div role="content">
 
-                                                    <!-- widget edit box -->
-                                                    <div class="jarviswidget-editbox">
-                                                        <!-- This area used as dropdown edit box -->
 
-                                                    </div>
-                                                    <!-- end widget edit box -->
+
 
                                                     <!-- widget content -->
-                                                    <form action="../private/file-upload" class="dropzone dz-clickable"
-                                                          id="mydropzone">
-                                                    </form>
+                                                    {!!Form::open([
+                                                    'url' => 'images/subirImagen',
+                                                    'files' => true,
+                                                    'class' => 'dropzone',
+                                                    'id' => 'my-dropzone',
+                                                    'method' => 'POST',
+                                                    ])!!}
+
+                                                    {!!Form::close()!!}
                                                     <!-- end widget content -->
                                                 </div>
                                                 <!-- end widget div -->
@@ -735,7 +736,7 @@
 @section('js')
     <!-- PAGE RELATED PLUGIN(S) -->
     <script src="{{ asset('area_privada/js/plugin/jquery-form/jquery-form.min.js') }}"></script>
-    <script src="{{ asset('area_privada/js/plugin/dropzone/dropzone.min.js') }}"></script>
+    <script src="{{ asset('area_privada/js/dropzone/dropzone.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
@@ -743,6 +744,8 @@
 @endsection
 
 @section('ready')
+
+
 
     //prueba
 
