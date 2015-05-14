@@ -65,8 +65,21 @@
 
     {!! Form::Close() !!}
     <!--</form>-->
-    <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
-        <img id="patrocinado" class="img-responsive img-rounded" src="{{ asset('images/anunci.jpg') }}"  alt="prueba" style="width: auto">
-    </div>
+
+    @if(!$patrocinadas->isEmpty())
+        <?php
+            //Numero aleatorio para sacar imagenes patrocinadas aleatorias de las existentes
+            $a1 = mt_rand(0,count($patrocinadas)-1);
+        ?>
+        <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$patrocinadas[$a1]->nombre."/".$patrocinadas[$a1]->nombre_comercial)))}}">
+                <img id="patrocinado" class="img-responsive img-rounded" src="{{ asset($patrocinadas[$a1]->logo_url) }}"  alt="prueba" style="width: auto">
+            </a>
+        </div>
+    @else
+        <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <img id="patrocinado" class="img-responsive img-rounded" src="{{ asset('images/seform.gif') }}"  alt="prueba" style="width: auto">
+        </div>
+    @endif
 </div>
 <!-- FIN BUSCADOR -->

@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Controllers\areaprivada\AreaPrivadaController;
+use App\Http\Controllers\areaprivada\categoriaController;
 use App\Model\Categoria;
 use App\Model\Franquicia;
 use App\Model\franquicia_nom_subcategoria;
@@ -20,17 +22,67 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
+use App\Model\PaquetesActivos;
+use App\Model\files;
+use Illuminate\Support\Facades\View;
 
 class WebController extends Controller {
 
 
     private $categorias_deplegables = null;
-
+    private $patrocinadasB = null;
+    private $franquiciasSupDer = null;
+    private $franquiciasIzq = null;
+    private $banner = null;
     /**
      *
      */
     public function __construct(){
         $this->categorias_deplegables = Categoria::all();
+
+        //Obtenemos las franquicias que están en patrocinadas del buscador
+            $this->patrocinadasB = new Collection();
+
+            $pbuscadorIds = PaquetesActivos::where('patrocinado_b', '=', 1)->get(); //Esto devuelve el id
+
+            foreach($pbuscadorIds as $id)
+            {
+                $franquicia = franquicia_especial_subcategoria::find($id->id);
+                $this->patrocinadasB->push($franquicia);
+            }
+
+            View::share('patrocinadas',$this->patrocinadasB);
+        //////
+
+        //Obtenemos las franquicias que están en la parte superior derecha
+            $this->franquiciasSupDer = new Collection();
+
+            $supDerIds = PaquetesActivos::where('sup_derecha', '=', 1)->get();
+
+            foreach($supDerIds as $id)
+            {
+                $franquicia = franquicia_especial_subcategoria::find($id->id);
+                $this->franquiciasSupDer->push($franquicia);
+            }
+
+            View::share('franSupDer',$this->franquiciasSupDer);
+        ////
+
+        //Obtenemos las franquicias que están en la parte inferior izquierda
+        $this->franquiciasIzq = new Collection();
+
+
+        $supDerIds = PaquetesActivos::where('izquierda', '=', 1)->get();
+
+        foreach($supDerIds as $id)
+        {
+            $franquicia = franquicia_especial_subcategoria::find($id->id);
+            $this->franquiciasIzq->push($franquicia);
+        }
+
+        View::share('franInIzq',$this->franquiciasIzq);
+        ////
+
     }
     /*
     |--------------------------------------------------------------------------
@@ -53,19 +105,22 @@ class WebController extends Controller {
     public function index()
     {
         //Obtenemos todos los datos de la base de datos que hay que pasar a la página principal como
-        //las franquicias de éxito, rentables, destacadas, los articulos.
+        //las franquicias de éxito, rentables, destacadas, los articulos. carousel, patrocinadas
         $franquicias_exito = franquicia_especial_subcategoria::where('especial','=', 'exito')->groupBy('id')->get();
         $franquicias_baratas = franquicia_especial_subcategoria::where('especial','=', 'baratas')->groupBy('id')->get();
         $franquicias_rentables = franquicia_especial_subcategoria::where('especial','=', 'rentables')->groupBy('id')->get();
         $franquicias_lowcost = franquicia_especial_subcategoria::where('especial','=', 'lowcost')->groupBy('id')->get();
         $fraquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
 
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
+
         //Obtenemos las últimas 5 publicaciones para pasarlas a la vista principal
         $publicaciones = Publicaciones::take(10)->orderBy('id','DES')->get();
 
-            //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
+        //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
         $categorias = Categoria::all();
-        return view('inicio',compact('categorias','franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'fraquicias_destacadas','publicaciones'));
+        return view('inicio',compact('categorias','franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'fraquicias_destacadas','publicaciones','patrocinadas'));
     }
 
     /*
@@ -95,6 +150,9 @@ class WebController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function select(Request $request){
+
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
 
         ///Obtenemos los parámetros del post///
         $categoria=$request::Input('categoria');
@@ -137,6 +195,7 @@ class WebController extends Controller {
 
                 //Comprobamos si de ids no está vacia para hacer la igualacion, si está vacía devolvemos la vista si nada y no continuamos
                 //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
+
                 if(!empty($listaIdsFranquicias)) { //Falta comprobar
                     //Hacemos esta igualacion porque listaIds es un array con un collect dentro.
                     $listaIdsFranquicias = $listaIdsFranquicias[0];
@@ -186,11 +245,11 @@ class WebController extends Controller {
                 //Obtenemos todas las subcategorias devueltas por la query
                 $subcategorias = $query2->distinct()->get(array('nombre'));
 
-                return view('resultados', compact('franquicias', 'resultados', 'categorias','subcategorias'));
+                return view('resultados', compact('franquicias', 'resultados', 'categorias','subcategorias','patrocinadas'));
 
             }else{
 
-                return view ('resultados_lista', compact('franquicias','resultados', 'categorias'));
+                return view ('resultados_lista', compact('franquicias','resultados', 'categorias','patrocinadas'));
             }
         }
         else{
@@ -202,6 +261,9 @@ class WebController extends Controller {
      * @param $tipo es si pertenece a franquicias baratas, rentables, low cost o éxito
      */
     public function especiales($tipo){
+
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
 
         //Obtenemos las categorias del desplegable
         $categorias = $this->categorias_deplegables;
@@ -239,10 +301,10 @@ class WebController extends Controller {
         $franquicias = franquicia_especial_subcategoria::where('especial', 'like', $tipo )->groupBy('id')->get();
         if(!$franquicias->isEmpty())
         {
-            return view('especiales',compact('franquicias','tipo','categorias'));
+            return view('especiales',compact('franquicias','tipo','categorias','patrocinadas'));
         }else{
-            //Que hacemos?
-            dd("no hay franquicias de este tipo");
+
+            return view('especiales',compact('franquicias','tipo','categorias','patrocinadas'));
         }
     }
 
@@ -257,6 +319,9 @@ class WebController extends Controller {
     }
 
     public function franquicias(){
+
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
 
         //Declaramos variables de asignacion.
         $lista = array();
@@ -279,7 +344,7 @@ class WebController extends Controller {
         }
 
         $categorias = $this->categorias_deplegables;
-        return view ('franquicias',compact('categorias','lista'));
+        return view ('franquicias',compact('categorias','lista','patrocinadas'));
     }
 
     public function franquiciadores(){
@@ -358,9 +423,12 @@ class WebController extends Controller {
 
     public function servicios()
     {
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
+
         //obtenemos las categorias del desplegable
         $categorias = $this->categorias_deplegables;
-        return view('servicios_garantias',compact('categorias'));
+        return view('servicios_garantias',compact('categorias','patrocinadas'));
     }
 
     /**
@@ -369,6 +437,9 @@ class WebController extends Controller {
      * @return \Illuminate\View\View
      */
     public function subcategoria($tipo){
+
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
 
         $lista_franquicias = \Illuminate\Support\Facades\Session::get('franquicias');
         $franquicias =  new \Illuminate\Database\Eloquent\Collection();
@@ -382,14 +453,7 @@ class WebController extends Controller {
 
         $resultado = count($franquicias);
 
-        return view('resultados_subcategorias', compact('tipo','resultado','franquicias'));
-    }
-
-
-    private function Categorias(){
-
-        $this->categorias_deplegables = Categoria::all();
-        return $this->categorias_deplegables;
+        return view('resultados_subcategorias', compact('tipo','resultado','franquicias','patrocinadas'));
     }
 
     /**
@@ -400,6 +464,9 @@ class WebController extends Controller {
      */
     public function franquiciasTipo($tipo)
     {
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
+
         //Parseamos el nombre de la categoria pasado por parámetro tipo por si tiene caracteres - y en la vista
         $tipo = str_replace('-',' ',$tipo);
         //Obtenemos el id de la subcategoria o categoria por el nombre pasado en la url
@@ -439,13 +506,13 @@ class WebController extends Controller {
                     $franquicias = franquicia_nom_subcategoria::where("subcategoria_id", '=',$idSubcategoria[0]->id)->get();
                     $resultados = count($franquicias);
 
-                    return view("dinamica",compact('franquicias','resultados','categoria'));
+                    return view("dinamica",compact('franquicias','resultados','categoria','patrocinadas'));
                 }else {
 
                     //delegamos en un controlador que me devuelve la vista con los parametros asociados en este caso
                     //la lista de franquicias
                     $controller = app::make(\App\Http\Controllers\areaprivada\categoriaController::class);
-                    return $controller->callAction('index', array('tipo' => $categoria));
+                    return $controller->callAction('index', array('tipo' => $categoria, 'patrocinadas' => $patrocinadas ));
                 }
                 //sino sera subcategoria directamente
             }else{
@@ -457,7 +524,7 @@ class WebController extends Controller {
                 //Obtenemos las franquicias que son de esta subcategoria.
                 $franquicias = franquicia_nom_subcategoria::where("subcategoria_id", '=',$idSubcategoria[0]->id)->get();
                 $resultados = count($franquicias);
-                return view("dinamica",compact('franquicias','resultados','categoria'));
+                return view("dinamica",compact('franquicias','resultados','categoria','patrocinadas'));
             }
 
         }
@@ -467,17 +534,89 @@ class WebController extends Controller {
         }
     }
 
-
+    /**
+     * Para mostrar las publicaciones
+     * @param $titulo pasado por la url que se refiere al titulo del articulo
+     * @param $id pasado por url que se refiere al id de el articulo en cuestión en la BD
+     * @return \Illuminate\View\View la vista de visualización del articulo con los datos necesarios
+     */
     public function showpublicacion($titulo,$id)
     {
+
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
 
         $articulo = Publicaciones::where('id','=',$id)->get();
 
         $url = $articulo[0]->contenido;
         $articulo[0]->contenido =  \File::get($url);
 
-        return view('publicacion',compact('articulo'));
+        return view('publicacion',compact('articulo','patrocinadas'));
     }
+
+    /**
+     * Este método obtiene todos los datos de perfil de una franquicia seleccionada y los devuelve
+     * a la vista perfil
+     * @param $nombre de la franquicia
+     * @param $tipo de la franquicia
+     * @return \Illuminate\View\View la vista perfil con los parametros necesarios
+     */
+    public function perfil($nombre, $tipo)
+    {
+        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
+        $patrocinadas = $this->patrocinadasB;
+
+        //Obtenemos la franquicia por el nombre pasado desde el routes.
+        $franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
+
+        //Obtenemos franquicias de la misma categoria.
+        //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
+        //$controller = app::make(categoriaController::class);
+        //$similares = $controller->callAction('franquiciasTipo', array('tipo' => $tipo, 'idFranquicia' => $franquicia->id));
+        $similares = $this->franquiciasMismoTipo($tipo,$franquicia->id);
+
+        //obtenemos las noticias de esta franquicia para pasarlas también a la información del perfil
+        $publicaciones = Publicaciones::where('franquicia_id','=', $franquicia->id)->get();
+
+        //Obtenemos las imagenes de la tabla 1:N de imagenes_franquicia
+        $imagenes = files::where('franquicia_id','=',$franquicia->id)->get();
+
+        //Devolvemos la vista con los parámetros. (la franquicia, la lista de franquicias de la misma categoria y las publicaciones)
+        return view('perfil', compact('franquicia','similares','publicaciones','imagenes','patrocinadas'));
+    }
+
+    /**
+     * Este método devuelve una lista de las franquicias de mismo tipo a la actual de la vista.
+     * @param $tipo de categoria o subcategoria
+     * @param $id de la franquicia que queremos que exluya de la lista por ser la que está viendose en la vista actual
+     * @return array
+     */
+    public function franquiciasMismoTipo($tipo,$id){
+
+        //Buscamos todos las franquicias de este tipo en las subcategorias puesto que un nombre de categoria se crea también en subcategoria
+        //obtenemos primero los id de la subcategoria en las tablas intermedias n:m
+        $idSubcategoria = subcategoria::where('nombre', '=', $tipo)->get();
+        //$idCategoria = Categoria::where('nombre', '=', $tipo)->get();
+
+        //Definimos variables de asignacion
+        $lista_franquicias = array();
+
+        if(!$idSubcategoria->isEmpty()){
+            //Obtenemos los ids de las franquicias del mismo tipo de la tabla n:m excepto la que se está visualizando
+            //para una categoria
+            $idsFranquiciasSub = franquicia_subcategoria::where('subcategoria_id', '=', $idSubcategoria[0]->id )
+                ->where('franquicia_id', '<>', $id)->get();
+
+            foreach($idsFranquiciasSub as $franquicia)
+            {
+                $franquicia = Franquicia::where('id' , '=', $franquicia->franquicia_id)->firstOrFail();
+                array_push($lista_franquicias,$franquicia);
+            }
+        }
+
+        return $lista_franquicias;
+    }
+
 }
 
 
