@@ -524,6 +524,10 @@ p{ text-align: justify; }
     padding-bottom: 21px;
 }
 
+#navpersonal>div{
+    background-color: #606;
+}
+
 #separador{ border-top-width: 5px; }
 
 #tperfil td { width: 50%; }
