@@ -336,6 +336,11 @@ hr.separador_fran:after {
     color: #606;
 }
 
+#footer1
+{
+    text-align: center !important;
+}
+
 #footer2,#footer3{
     font-family: prociono !important;
     font-size: 16px;

@@ -112,8 +112,8 @@
         <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
     </section>
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 dfooter">
-        <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
-            <p>Copyright © 2014 Multifranquicias.com | Todos los derechos reservados. </p>
+        <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5" id="footer1">
+            Copyright © 2014 Multifranquicias.com | Todos los derechos reservados.
         </div>
         <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" id="footer2">
             <div class="row">
