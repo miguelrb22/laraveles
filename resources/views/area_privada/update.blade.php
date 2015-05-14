@@ -198,8 +198,9 @@
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label class="label">Logo:</label>
-                                                                <div class="input input-file">
-                                                                    <span class="button"><input type="file" id="file" name="logo_url" onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input type="text" readonly="">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-file-image-o"></i></span>
+                                                                    <input type="file" name="perfil" value="{{$ses->descripcion}}" id="url_imagen_publicacion" accept="image/x-png, image/jpeg" class="form-control input-sm" placeholder="Título...">
                                                                 </div>
                                                             </section>
                                                         </div>
