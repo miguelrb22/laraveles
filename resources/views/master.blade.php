@@ -43,8 +43,9 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
             <li class="dropdown lipersonal">
-                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
+                <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas las franquicias</a></li>
                     <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}"  class="atext">Franquicias rentables</a></li>
@@ -63,8 +64,9 @@
                 </ul>
             </li>
             <li class="dropdown lipersonal">
-                <a href="{{ URL::route('servicios_garantias') }}" class="dropdown-toggle atext" ><i class="fa fa-check"></i> Servicios y garantías<b class="caret"></b></a>
+                <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-check"></i> Servicios y garantías<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{ URL::route('servicios_garantias') }}" class="atext">Nuestros Servicios y garantías</a></li>
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('franquiciadores') }}" class="atext">Franquiciadores</a></li>
