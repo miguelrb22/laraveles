@@ -130,10 +130,11 @@
                                     <div class="widget-body no-padding">
                                         <!-- comienzo form -->
                                         <!--<form id="form-alta" class="smart-form col-xs-12 col-md-12 col-sm-12" novalidate="novalidate">-->
-                                        {!! Form::open (['action' => 'models_controller\franquiciaController@update' , 'method' =>'POST', 'class' => 'smart-form col-xs-12 col-md-12 col-sm-12' , 'id' => 'form-alta']) !!}
+                                        <form id="form-update" method="post" action = '{{ URL::route('actualizar') }}' accept-charset="UTF-8" enctype="multipart/form-data" class="smart-form col-xs-12 col-md-12 col-sm-12">
+                                            {!! Form::token() !!}
                                         <div class="row" style="margin:0">
                                             <h3 class="text-center"><span> Datos Públicos</span></h3>
-
+                                            <input type="hidden" value="{{$ses->id}}" name="id">
                                             <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6">
                                                 <hr/>
                                                 <fieldset>
@@ -215,7 +216,7 @@
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label>Inversión:</label>
                                                                 <label class="input">
-                                                                    <input id="inversion" type="text" name="inversion" class="form-control" placeholder="Inversión">
+                                                                    <input id="inversion" type="text" name="inversion" value="{{$ses->inversion}}" class="form-control" placeholder="Inversión">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -225,13 +226,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Presencia Internacional:</label>
                                                                 <label class="input">
-                                                                    <input id="presencia" type="text" name="presencia_int" class="form-control" placeholder="Presencia Internacional">
+                                                                    <input id="presencia" type="text" name="presencia_int" value="{{$ses->presencia_int}}" class="form-control" placeholder="Presencia Internacional">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Royalti:</label>
                                                                 <label class="input">
-                                                                    <input id="royalti" type="text" name="royalty" class="form-control" placeholder="Royalti">
+                                                                    <input id="royalti" type="text" name="royalty" value="{{$ses->royalty}}" class="form-control" placeholder="Royalti">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -241,13 +242,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Canon Entrada:</label>
                                                                 <label class="input">
-                                                                    <input id="entrada" type="text" name="canon_entrada" class="form-control" placeholder="Canon Entrada">
+                                                                    <input id="entrada" type="text" name="canon_entrada" value="{{$ses->canon_entrada}}" class="form-control" placeholder="Canon Entrada">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Canon Publicitario:</label>
                                                                 <label class="input">
-                                                                    <input id="cpublicitario" type="text" name="canon_publicitario" class="form-control" placeholder="Canon Publicitario">
+                                                                    <input id="cpublicitario" type="text" name="canon_publicitario" value ="{{$ses->canon_publicitario}}" class="form-control" placeholder="Canon Publicitario">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -257,13 +258,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Duración Contrato:</label>
                                                                 <label class="input">
-                                                                    <input id="contrato" type="text" name="duracion_contrato" class="form-control" placeholder="Duración Contrato">
+                                                                    <input id="contrato" type="text" name="duracion_contrato" value = "{{$ses->duracion_contraro}}" class="form-control" placeholder="Duración Contrato">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Amortización:</label>
                                                                 <label class="input">
-                                                                    <input id="amortizacion" type="text" name="amortizacion" class="form-control" placeholder="Amortización">
+                                                                    <input id="amortizacion" type="text" name="amortizacion" value = "{{$ses->amortizacion}}" class="form-control" placeholder="Amortización">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -280,13 +281,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Requisítos del Local:</label>
                                                                 <label class="input">
-                                                                    <input id="requisitos" type="text" name="requisitos_local" class="form-control" placeholder="Requisítos del Local">
+                                                                    <input id="requisitos" type="text" name="requisitos_local" value = "{{$ses->requisito_local}}" class="form-control" placeholder="Requisítos del Local">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Locales Propios:</label>
                                                                 <label class="input">
-                                                                    <input id="localesp" type="text" name="locales_propios" class="form-control" placeholder="Locales Propios">
+                                                                    <input id="localesp" type="text" name="locales_propios" value ="{{$ses->locales_propios}}" class="form-control" placeholder="Locales Propios">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -296,13 +297,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Locales Franquiciados:</label>
                                                                 <label class="input">
-                                                                    <input id="localesf" type="text" name="locales_franquiciados" class="form-control" placeholder="Locales Franquiciados">
+                                                                    <input id="localesf" type="text" name="locales_franquiciados" value ="{{$ses->locales_franquiciados}}" class="form-control" placeholder="Locales Franquiciados">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Dimensiones del Local:</label>
                                                                 <label class="input">
-                                                                    <input id="dimesion" type="text" name="dimensiones_local" class="form-control" placeholder="Dimensiones del Local">
+                                                                    <input id="dimesion" type="text" name="dimensiones_local" value ="{{$ses->dimensiones_local}}" class="form-control" placeholder="Dimensiones del Local">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -312,13 +313,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Población Mínima:</label>
                                                                 <label class="input">
-                                                                    <input id="poblacion" type="text" name="poblacion_minima" class="form-control" placeholder="Poblacion Mínima">
+                                                                    <input id="poblacion" type="text" name="poblacion_minima" value ="{{$ses->poblacion_minima}}" class="form-control" placeholder="Poblacion Mínima">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Superficie Mínima del Local:</label>
                                                                 <label class="input">
-                                                                    <input id="dimesion" type="text" name="superficie_minima" class="form-control" placeholder="Superficie Mínima">
+                                                                    <input id="dimesion" type="text" name="superficie_minima" value ="{{$ses->superficie_minima}}" class="form-control" placeholder="Superficie Mínima">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -330,17 +331,27 @@
 
                                                                 <div class="inline-group" style="margin-top:5px">
                                                                     <label class="radio">
-                                                                        <input id="sexo_h" class="form-control" type="radio" name="zona_exclusividad" value="1">
+                                                                        @if($ses->zona_exclisividad == 1)
+                                                                            <input class="form-control" type="radio" name="zona_exclusividad" value="1" checked>
+                                                                        @else
+                                                                            <input class="form-control" type="radio" name="zona_exclusividad" value="1">
+
+                                                                        @endif
                                                                         <i></i>Si</label>
                                                                     <label class="radio">
-                                                                        <input id="sexo_m" class="form-control" type="radio" name="zona_exclusividad" value="0">
+                                                                        @if($ses->zona_exclisividad == 0)
+                                                                        <input  class="form-control" type="radio" name="zona_exclusividad" value="0" checked>
+                                                                        @else
+                                                                            <input  class="form-control" type="radio" name="zona_exclusividad" value="0">
+
+                                                                        @endif
                                                                         <i></i>No</label>
                                                                 </div>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-8 col-sm-8 col-lg-8">
                                                                 <label>Perfil del Franquiciado:</label>
                                                                 <label class="input">
-                                                                    <input id="perfil" type="text" name="perfil_franquiciado" class="form-control" placeholder="Perfil del Franquiciado">
+                                                                    <input id="perfil" type="text" name="perfil_franquiciado" value ="{{$ses->perfil_franquiciadp}}" class="form-control" placeholder="Perfil del Franquiciado">
                                                                 </label>
                                                             </section>
                                                         </div></div>
@@ -349,7 +360,7 @@
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label>Zonas Preferentes:</label>
                                                                 <label class="input">
-                                                                    <input id="perfil" type="text" name="zonas_preferentes" class="form-control" placeholder="Zonas Preferentes">
+                                                                    <input id="perfil" type="text" name="zonas_preferentes" value ="{{$ses->zonas_preferentes}}" class="form-control" placeholder="Zonas Preferentes">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -363,13 +374,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Año de Creación:</label>
                                                                 <label class="input">
-                                                                    <input type="text" name="anyo_creacion" placeholder="Año de Creación" data-mask="2099" class="form-control">
+                                                                    <input type="text" name="anyo_creacion" value ="{{$ses->anyo_creacion}}" placeholder="Año de Creación" data-mask="2099" class="form-control">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Inicio de Expansión:</label>
                                                                 <label class="input">
-                                                                    <input id="expasion" type="text" name="inicio_expansion" class="form-control" splaceholder="Incio de Expansión">
+                                                                    <input id="expasion" type="text" name="inicio_expansion" value ="{{$ses->inicio_expansion}}" class="form-control" splaceholder="Incio de Expansión">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -379,7 +390,7 @@
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label>Red de España:</label>
                                                                 <label class="input"> <i class="icon-prepend fa fa-question-circle"></i>
-                                                                    <input type="text" class="form-control" name="red_spain" id="red_spain" placeholder="Propios y Franquiciados">
+                                                                    <input type="text" class="form-control" name="red_spain" value ="{{$ses->red_spain}}" id="red_spain" placeholder="Propios y Franquiciados">
                                                                     <b class="tooltip tooltip-top-left">
                                                                         <i class="fa fa-warning txt-color-teal"></i>
                                                                         Nº de establecimientos propios y fraquiciados.
@@ -393,13 +404,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Nº de Países:</label>
                                                                 <label class="input">
-                                                                    <input id="paises" type="text" name="n_paises" class="form-control" placeholder="Nº de Paises">
+                                                                    <input id="paises" type="text" name="n_paises" value ="{{$ses->n_paises}}" class="form-control" placeholder="Nº de Paises">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Nacionalidad:</label>
                                                                 <label class="input">
-                                                                    <input id="nacionalidad" type="text" name="nacionalidad" class="form-control" placeholder="Nacionalidad">
+                                                                    <input id="nacionalidad" type="text" name="nacionalidad" value ="{{$ses->nacionalidad}}" class="form-control" placeholder="Nacionalidad">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -411,12 +422,20 @@
 
                                                                 <div class="inline-group" style="margin-top:5px">
                                                                     <label class="radio">
-                                                                        <input id="extranjero_s" class="form-control"
-                                                                               type="radio" name="red_extranjero" value="1">
-                                                                        <i></i>Si</label>
+                                                                        @if($ses->red_extranjero == 1)
+                                                                        <input id="extranjero_s" class="form-control" type="radio" name="red_extranjero" value="1" checked>
+                                                                        @else
+                                                                            <input id="extranjero_s" class="form-control" type="radio" name="red_extranjero" value="1" checked>
+                                                                        @endif
+                                                                            <i></i>Si</label>
                                                                     <label class="radio">
-                                                                        <input id="extranjero_n" class="form-control"
-                                                                               type="radio" name="red_extranjero" value="0">
+
+                                                                        @if($ses->red_extranjero == 0)
+                                                                        <input id="extranjero_n" class="form-control"  type="radio" name="red_extranjero" value="0" checked>
+                                                                        @else
+                                                                            <input id="extranjero_n" class="form-control"  type="radio" name="red_extranjero" value="0">
+
+                                                                        @endif
                                                                         <i></i>No</label>
                                                                 </div>
                                                             </section>
@@ -438,13 +457,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Nombre:</label>
                                                                 <label class="input">
-                                                                    <input id="nombre" type="text" name="nombre_franquicia" class="form-control" placeholder="Nombre">
+                                                                    <input id="nombre" type="text" name="nombre_franquicia" value ="{{$ses->nombre_franquicia}}" class="form-control" placeholder="Nombre">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>CIF:</label>
                                                                 <label class="input">
-                                                                    <input type="text" name="cif" id="cif" placeholder="CIF" class="form-control">
+                                                                    <input type="text" name="cif" id="cif" placeholder="CIF" value ="{{$ses->cif}}" class="form-control">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -455,14 +474,14 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" id="fechaI">
                                                                 <label class="input">Fecha Alta Ficha:</label>
                                                                 <label class="input" ><i class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" class="span2" value="" id="dpd1" name="fecha_alta_ficha" data-date-format="dd/mm/yyyy"  id="finicio">
+                                                                    <input type="text" class="span2"  name="fecha_alta_ficha" value ="{{$ses->fecha_alta_ficha}}" data-date-format="dd/mm/yyyy"  id="finicio">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Fecha Vencimiento Ficha:</label>
                                                                 <label class="input" id="ffin"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" class="span2" value="" id="dpd2" name="fecha_vencimiento_ficha" data-date-format="dd/mm/yyyy">
+                                                                    <input type="text" class="span2"  id="dpd2" value ="{{$ses->fecha_vencimiento_ficha}}" name="fecha_vencimiento_ficha" data-date-format="dd/mm/yyyy">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -472,7 +491,7 @@
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label>Razón Social:</label>
                                                                 <label class="input">
-                                                                    <input type="text" name="razon_social" id="razon_social" class="form-control" placeholder="Razón social">
+                                                                    <input type="text" name="razon_social" value ="{{$ses->razon_social}}" id="razon_social" class="form-control" placeholder="Razón social">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -481,12 +500,27 @@
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Categoría especial:</label>
-                                                                <select class="form-control" name="especial">
-                                                                    <option value="">Selecciona categoria Especial</option>
-                                                                    <option value="exito">Franquicias de éxito</option>
-                                                                    <option value="rentables">Franquicias rentables</option>
-                                                                    <option value="baratas">Franquicias baratas</option>
-                                                                    <option value="low-cost">Franquicias low-cost</option>
+                                                                <select multiple style="width:100%" class="select2"  name="especial[]">
+
+                                                                    <option value="1"
+                                                                            @if($paquetes->especial_ex == 1) selected @endif
+                                                                            >Exito</option>
+                                                                    <option value="2"
+                                                                    @if($paquetes->especial_re == 1) selected @endif
+
+                                                                            >Rentable</option>
+                                                                    <option value="3"
+                                                                    @if($paquetes->especial_ba == 1) selected @endif
+
+                                                                            >Barata</option>
+                                                                    <option value="4"
+                                                                    @if($paquetes->especial_lc == 1) selected @endif
+
+                                                                            >LowCost</option>
+                                                                    <option value="5"
+                                                                    @if($paquetes->destacado_categoria == 1) selected @endif
+
+                                                                            >Destacada</option>
                                                                 </select>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -501,66 +535,16 @@
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-12 col-sm-12">
                                                                 <label>Categoria:</label>
-                                                                <select multiple style="width:100%" class="select2" id="categoria" name="categoria">
-                                                                    <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                                        <option value="AK">Alaska</option>
-                                                                        <option value="HI">Hawaii</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Pacific Time Zone">
-                                                                        <option value="CA">California</option>
-                                                                        <option value="NV">Nevada</option>
-                                                                        <option value="OR">Oregon</option>
-                                                                        <option value="WA">Washington</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Mountain Time Zone">
-                                                                        <option value="AZ">Arizona</option>
-                                                                        <option value="CO">Colorado</option>
-                                                                        <option value="ID">Idaho</option>
-                                                                        <option value="MT">Montana</option><option value="NE">Nebraska</option>
-                                                                        <option value="NM">New Mexico</option>
-                                                                        <option value="ND">North Dakota</option>
-                                                                        <option value="UT">Utah</option>
-                                                                        <option value="WY">Wyoming</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Central Time Zone">
-                                                                        <option value="AL">Alabama</option>
-                                                                        <option value="AR">Arkansas</option>
-                                                                        <option value="IL">Illinois</option>
-                                                                        <option value="IA">Iowa</option>
-                                                                        <option value="KS">Kansas</option>
-                                                                        <option value="KY">Kentucky</option>
-                                                                        <option value="LA">Louisiana</option>
-                                                                        <option value="MN">Minnesota</option>
-                                                                        <option value="MS">Mississippi</option>
-                                                                        <option value="MO">Missouri</option>
-                                                                        <option value="OK">Oklahoma</option>
-                                                                        <option value="SD">South Dakota</option>
-                                                                        <option value="TX">Texas</option>
-                                                                        <option value="TN">Tennessee</option>
-                                                                        <option value="WI">Wisconsin</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Eastern Time Zone">
-                                                                        <option value="CT">Connecticut</option>
-                                                                        <option value="DE">Delaware</option>
-                                                                        <option value="FL">Florida</option>
-                                                                        <option value="GA">Georgia</option>
-                                                                        <option value="IN">Indiana</option>
-                                                                        <option value="ME">Maine</option>
-                                                                        <option value="MD">Maryland</option>
-                                                                        <option value="MA">Massachusetts</option>
-                                                                        <option value="MI">Michigan</option>
-                                                                        <option value="NH">New Hampshire</option>
-                                                                        <option value="NJ">New Jersey</option>
-                                                                        <option value="NY">New York</option>
-                                                                        <option value="NC">North Carolina</option>
-                                                                        <option value="OH">Ohio</option>
-                                                                        <option value="PA">Pennsylvania</option>
-                                                                        <option value="RI">Rhode Island</option>
-                                                                        <option value="SC">South Carolina</option>
-                                                                        <option value="VT">Vermont</option>
-                                                                        <option value="VA">Virginia</option>
-                                                                        <option value="WV">West Virginia</option>
-                                                                    </optgroup>
+                                                                <select multiple="multiple" style="width:100%" class="select2" id="categoria" name="categoria[]">
+                                                                    @foreach($categorias as $cat)
+                                                                        <optgroup label="{{$cat->nombre}}">
+                                                                            @foreach($subcategorias as $subcat)
+                                                                                @if($subcat->categoria_id==$cat->id)
+                                                                                    <option value="{{$subcat->id}}">{{$subcat->nombre}}</option>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </optgroup>
+                                                                    @endforeach
                                                                 </select>
                                                             </section>
                                                         </div>
@@ -671,47 +655,6 @@
                                         {!! Form::close() !!}
                                         <!--</form>-->
                                         <!-- fin form -->
-                                        <div class="row col col-xs-12 col-md-12 col-sm-12" style="margin:0px">
-                                            <h3 class="text-center"><span>Imagenes:</span></h3>
-                                            <hr/>
-                                            <div class="jarviswidget jarviswidget-color-blueLight jarviswidget-sortable"
-                                                 id="wid-id-0" data-widget-editbutton="false" role="widget">
-                                                <!-- widget options:
-                                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-                                                data-widget-colorbutton="false"
-                                                data-widget-editbutton="false"
-                                                data-widget-togglebutton="false"
-                                                data-widget-deletebutton="false"
-                                                data-widget-fullscreenbutton="false"
-                                                data-widget-custombutton="false"
-                                                data-widget-collapsed="true"
-                                                data-widget-sortable="false"
-                                                -->
-                                                <header role="heading"><div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);" aria-expanded="false"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
-                                                    <span class="widget-icon"> <i class="fa fa-cloud"></i> </span>
-                                                    <h2>My Dropzone! </h2>
-
-                                                    <span class="jarviswidget-loader" style="display: none;"><i class="fa fa-refresh fa-spin"></i></span></header>
-
-                                                <!-- widget div-->
-                                                <div role="content">
-
-                                                    <!-- widget edit box -->
-                                                    <div class="jarviswidget-editbox">
-                                                        <!-- This area used as dropdown edit box -->
-
-                                                    </div>
-                                                    <!-- end widget edit box -->
-
-                                                    <!-- widget content -->
-                                                    <form action="../private/file-upload" class="dropzone dz-clickable"
-                                                          id="mydropzone">
-                                                    </form>
-                                                    <!-- end widget content -->
-                                                </div>
-                                                <!-- end widget div -->
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -726,7 +669,6 @@
 @section('js')
     <!-- PAGE RELATED PLUGIN(S) -->
     <script src="{{ asset('area_privada/js/plugin/jquery-form/jquery-form.min.js') }}"></script>
-    <script src="{{ asset('area_privada/js/plugin/dropzone/dropzone.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
@@ -762,15 +704,6 @@
     }).data('datepicker');
 
     //prueba
-
-
-    Dropzone.autoDiscover = true;
-    Dropzone.options.mydropzone = {
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha aquí)</h4></span>',
-                           addRemoveLinks: true
-    }
 
 
     $('#dashboard').removeClass("active")

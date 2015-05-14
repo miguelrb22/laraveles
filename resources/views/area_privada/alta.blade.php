@@ -496,6 +496,8 @@
                                                                             <option value="2">Rentable</option>
                                                                             <option value="3">Barata</option>
                                                                             <option value="4">LowCost</option>
+                                                                            <option value="5">Destacada</option>
+
                                                                     </select>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">

@@ -15,7 +15,7 @@ class Franquicia extends Model {
 
     protected $table = 'franquicia';
 
-    protected $fillable = [ 'nombre_comercial' , 'ciudad', 'direccion', 'cp' , 'web', 'logo_url', 'inversion', 'presencia_int', 'royalty',
+    protected $fillable = [ 'id','nombre_comercial' , 'ciudad', 'direccion', 'cp' , 'web', 'logo_url', 'inversion', 'presencia_int', 'royalty',
                             'canon_entrada', 'canon_publicitario', 'duracion_contrato', 'amortizacion', 'requisitos_local', 'locales_propios',
                             'locales_franquiciados', 'dimensiones_local', 'poblacion_minima', 'superficie_minima', 'zona_exclusividad',
                             'perfil_franquiciado', 'zonas_preferentes', 'anyo_creacion', 'inicio_expansion', 'red_spain', 'n_paises', 'nacionalidad',
