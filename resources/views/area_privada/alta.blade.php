@@ -491,7 +491,7 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Categoría especial:</label>
-                                                                    <select multiple style="width:100%" class="select2"  name="especial">
+                                                                    <select multiple style="width:100%" class="select2"  name="especial[]">
                                                                             <option value="1">Exito</option>
                                                                             <option value="2">Rentable</option>
                                                                             <option value="3">Barata</option>
@@ -510,11 +510,10 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12">
                                                                     <label>Categoria:</label>
-                                                                    <select multiple style="width:100%" class="select2" id="categoria" name="categoria">
+                                                                    <select multiple="multiple" style="width:100%" class="select2" id="categoria" name="categoria[]">
 
 
                                                                         @foreach($categorias as $cat)
-
                                                                             <optgroup label="{{$cat->nombre}}">
                                                                                 @foreach($subcategorias as $subcat)
                                                                                     @if($subcat->categoria_id==$cat->id)
