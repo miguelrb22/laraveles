@@ -42,8 +42,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
-            <li class="dropdown">
-                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
+            <li class="dropdown lipersonal">
+                <a href="{{ URL::route('franquicias') }}" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
@@ -54,15 +54,15 @@
                     <li><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}"  class="atext">Franquicias low cost</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a  class="dropdown-toggle atext" data-toggle=""><i class="fa fa-newspaper-o"></i> Actualidad<b class="caret"></b></a>
+            <li class="dropdown lipersonal">
+                <a  class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-newspaper-o"></i> Actualidad<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ URL::route('reportajes_web') }}" class="atext">Reportajes</a></li>
+                    <li><a href="{{ URL::route('reportajes_web') }}" class="atext">Reportajes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('noticias_web') }}" class="atext">Noticias</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown lipersonal">
                 <a href="{{ URL::route('servicios_garantias') }}" class="dropdown-toggle atext" ><i class="fa fa-check"></i> Servicios y garantías<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>

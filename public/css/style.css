@@ -79,6 +79,12 @@ li:hover{
     border-bottom: 59px solid #e3e3e3;
 }
 
+
+.lipersonal:hover
+{
+    background-color: #320033 !important;
+}
+
 .atext{
 
     color: white !important;
