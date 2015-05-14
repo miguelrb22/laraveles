@@ -24,7 +24,7 @@
                             <img class="img-responsive" src="{{ asset('images/seform.gif') }}"  alt="prueba" >
                         </div>
                     </section>
-                    <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 elegante">
+                    <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
                         <div class="well">
                             <label>Resultados de busqueda: <span class="badge badge-info"> {{ $resultados }} </span> franquicias  </label>
                         </div>

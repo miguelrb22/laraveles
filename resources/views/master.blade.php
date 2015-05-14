@@ -57,7 +57,7 @@
             <li class="dropdown lipersonal">
                 <a  class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-newspaper-o"></i> Actualidad<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ URL::route('reportajes_web') }}" class="atext">Reportajes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                    <li><a href="{{ URL::route('reportajes_web') }}" class="atext">Reportajes</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('noticias_web') }}" class="atext">Noticias</a></li>
                 </ul>
