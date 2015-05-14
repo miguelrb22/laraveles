@@ -30,20 +30,23 @@ class ImagesController extends Controller
             //$cifrado = Hash::make($_FILES['file']['name']);
             $cifrado = Uuid::uuid4()->toString();
 
-            $fileName=$path.''.$cifrado;
+
 
             $id = $r::Input('id');
 
             $fileType = $_FILES["file"]["type"];
 
-            $fileSize=($_FILES["file"]["size"]/1024);
+            $fileSize=($_FILES["file"]["size"]/2056);
 
             $idFranquicia = Session::get('franquicia')->id;
 
             $file = new files();
 
+            //Obtenemos la extension de filetype que tiene el formato image/pgn
+            $extension = explode("/",$fileType);
+
             $file->id = $id;
-            $file->nombre = $cifrado;
+            $file->nombre = $cifrado.'.'.$extension[1];
             $file->ruta = $path;
             $file->tamaño = $fileSize;
             $file->tipo = $fileType;
@@ -51,14 +54,62 @@ class ImagesController extends Controller
             $file->nombreOriginal = $_FILES['file']['name'];
 
 
+            //Parte de redimension.
+            /*switch(strtolower($_FILES['file']['type']))
+            {
+                case 'image/jpeg':
+                    $image = imagecreatefromjpeg($_FILES['file']['tmp_name']);
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($_FILES['file']['tmp_name']);
+                    break;
+                case 'image/gif':
+                    $image = imagecreatefromgif($_FILES['file']['tmp_name']);
+                    break;
+                default:
+                    exit('Unsupported type: '.$_FILES['file']['type']);
+            }
+
+
+            // Target dimensions
+            $max_width = 50;
+            $max_height = 50;
+
+            // Get current dimensions
+            $old_width  = imagesx($image);
+            $old_height = imagesy($image);
+
+            // Calculate the scaling we need to do to fit the image inside our frame
+            $scale = min($max_width/$old_width, $max_height/$old_height);
+
+            // Get the new dimensions
+            $new_width  = ceil($scale*$old_width);
+            $new_height = ceil($scale*$old_height);
+
+            // Create new empty image
+            $new = imagecreatetruecolor($new_width, $new_height);
+
+            // Resize old image into new
+            imagecopyresampled($new, $image,
+                0, 0, 0, 0,
+                $new_width, $new_height, $old_width, $old_height);
+
+            // Catch the imagedata
+            ob_start();
+            imagejpeg($new, NULL, 90);
+            $data = ob_get_clean();
+
+            // Destroy resources
+            imagedestroy($image);
+            imagedestroy($new);*/
+
+            //la ruta de la imagen para añadirla al nombre completo
             $dir = public_path().'/imgfranquicias/';
 
-            if(move_uploaded_file($temporalFile,$dir.$cifrado))
+            if(move_uploaded_file($temporalFile,$dir.$cifrado.'.'.$extension[1]))
             {
-                //Session::forget('imgID');
-                $id = DB::table('imagenes_franquicia')->insertGetId($file->attributesToArray());
-                Session::put('imgID',$id); //le sumamos uno porque va 1 atrasado
-                dd(Session::get('imgID',$id));
+                //Guardamos en la BD los datos de la imagen
+                $file->save();
             }
 
         }

@@ -34,11 +34,11 @@
 
                                 <div class="row" >
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <img src = "{{ URL::asset($articulo->url_imagen)}} " alt="Responsive image" width='110' height="110">
+                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$articulo->titulo.'/'.$articulo->id)))}}"><img src ="{{ URL::asset($articulo->url_imagen)}} " alt="Responsive image" width='110' height="110">
                                     </div>
                                     <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
-                                        <h3 id="tituloNotica"><a href="{{ URL::route('publicacion_individual', array($articulo->titulo)) }}"> {{ $articulo->titulo }}</a></h3>
-                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->contenido),0,400)."... " }}<a>seguir leyendo</a></p>
+                                        <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$articulo->titulo.'/'.$articulo->id)))}}"> {{ $articulo->titulo }}</a></h3>
+                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->resumen),0,400)."... " }}<a>seguir leyendo</a></p>
                                         <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                                     </div>
                                 </div>

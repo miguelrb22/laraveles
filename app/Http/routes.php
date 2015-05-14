@@ -141,7 +141,6 @@ Route::group(['namespace' =>  'categorias'],function() {
 });
 
 //Rutas Web
-//Route::get('busqueda', ['as' => 'busqueda', 'uses' => 'WebController@buscar']);
 
 Route::get('quienes-somos', ['as' => 'quien-soy', 'uses' => 'WebController@quiensoy']);
 

@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/fancyprueba.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials-theme-classic.css')}}">
 @endsection
@@ -52,8 +52,8 @@
 
 
                                 echo  "<td>";
-                                echo    "<a class='fancybox' rel='fancybox-button' href='".URL::asset("./imgfranquicias/".$imagenes[$i]->nombre)."' title='cold forest (picturesbywalther)'>";
-                                echo        "<img class='img-responsive' src='".URL::asset("./imgfranquicias/".$imagenes[$i]->nombre)."' alt='' />";
+                                echo    "<a class='fancybox-thumb' rel='fancybox-button' href='".url('/')."/imgfranquicias/".$imagenes[$i]->nombre."' title='".$imagenes[$i]->nombreOriginal."' >";
+                                echo        "<img class='img-responsive' src='".url('/')."/imgfranquicias/".$imagenes[$i]->nombre."' alt='' width='100' heigth='100' />";
                                 echo    "</a>";
                                 echo  "</td>";
 
@@ -78,7 +78,7 @@
                         <ul class="list-unstyled pull-left text-justify">
                             @if((!$publicaciones->isEmpty()))
                                 @foreach($publicaciones as $publicacion)
-                                    <li><a href="#">{{$publicacion->titulo}}</a></li>
+                                    <li><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicacion->titulo.'/'.$publicacion->id)))}}">{{$publicacion->titulo}}</a></li>
                                 @endforeach
                             @else
                                 <div><strong>No hay noticias de esta franquicia</strong></div>
@@ -468,7 +468,9 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript" src="{{ URL::asset('js/fancybox/source/fancyprueba.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ URL::asset('js/fancybox/source/jquery.fancybox.pack.js')}}"></script>
     <!-- Add mousewheel plugin (this is optional) -->
 
     <script type="text/javascript" src="{{ URL::asset('js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js') }}"></script>
@@ -537,13 +539,20 @@
 
     });
 
-    
-        $(document).ready(function() {
-            $('.fancybox').fancybox({
-                padding : 0,
-                openEffect  : 'elastic'
-            });
-        });
+
+    $(".fancybox-thumb").fancybox({
+    prevEffect	: 'none',
+    nextEffect	: 'none',
+    helpers	: {
+    title	: {
+    type: 'outside'
+    },
+    thumbs	: {
+    width	: 50,
+    height	: 50
+    }
+    }
+    });
 
 
 
@@ -553,8 +562,5 @@
     showLabel:true,
     showCount:true
     });
-
-
-
 
 @endsection

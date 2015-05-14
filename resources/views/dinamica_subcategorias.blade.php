@@ -39,7 +39,7 @@
                                         <img class="img-rounded img-responsive" src="{{ asset($franquicias[$i][$j]->logo_url) }}">
 
                                     </div>
-                                    <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
+                                    <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8 elegante">
                                         <p>
                                             <label class="pull-right badge badge-success">Inversión: {{$franquicias[$i][$j]->inversion}}</label>
                                             <a href="{{URL::to('franquicias-de-'.$franquicias[$i][$j]->nombre."/".$franquicias[$i][$j]->nombre_comercial)}}"><h3>{{$franquicias[$i][$j]->nombre_comercial}}</h3></a>

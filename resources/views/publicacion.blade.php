@@ -3,7 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials-theme-classic.css')}}">
-    @endsection
+@endsection
 
 @section('anuncio')
     @include('extras.anuncio')
@@ -73,9 +73,8 @@
                 </div>
                 <hr>
 
-
             </div>
-            <div class="paginacion"></div>
+
         </section>
 
     </div>
@@ -91,6 +90,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/jssocials.min.js') }}"></script>
 
 @endsection
+
 @section('ready')
 
     $("#share").jsSocials({
@@ -100,7 +100,5 @@
     showCount:true
     });
 
-    $("img").addClass('img-responsive');
 
-
-    @endsection
+@endsection

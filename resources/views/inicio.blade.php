@@ -222,23 +222,25 @@
                                 </div>
 
 
+                                <?php
 
+                                ?>
 
                                 @if(!$publicaciones->isEmpty())
                                     @for($i=0; $i< count($publicaciones); $i++)
                                         <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                                <img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" width='110' height="110">
+                                                <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" width='110' height="110"></a>
                                             </div>
                                             <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
-                                                <h3 id="tituloNotica"><a href="{{ URL::to('noticias/'.$publicaciones[$i]->titulo.'/id'.$publicaciones[$i]->id)}}">{{$publicaciones[$i]->titulo}}</a></h3>
+                                                <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}">{{$publicaciones[$i]->titulo}}</a></h3>
                                                 <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
-                                                    <a href="#">seguir leyendo</a>
+                                                    <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
                                                 </p>
                                                 <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                @if($i < 4)
+                                                @if($i+1 < count($publicaciones))
                                                     <hr class="separador_post">
                                                 @endif
                                             </div>

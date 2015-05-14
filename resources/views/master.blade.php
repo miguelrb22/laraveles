@@ -16,7 +16,6 @@
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('js/fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen" />
     @yield('css')
 
     @yield('include')
@@ -108,7 +107,7 @@
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="subir-icon">
         <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
     </section>
-    <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 4%">
+    <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 dfooter">
         <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
             <p>Copyright © 2014 Multifranquicias.com | Todos los derechos reservados. </p>
         </div>

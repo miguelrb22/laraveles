@@ -338,6 +338,7 @@ hr.separador_fran:after {
 
 #subir
 {
+    margin-top: 4%;
     margin-bottom: -5%;
     border-top: 5px solid #DDD !important;
 }
@@ -347,11 +348,13 @@ hr.separador_fran:after {
     cursor: pointer;
 }
 
+.dfooter{
+    margin-top: 2%;
+}
+
 #subir-icon
 {
     margin-top: -2.3%;
-
-
 }
 
 @media (min-width: 310px ) and (max-width:399px)
@@ -626,7 +629,6 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 
 .nav{
     padding-left: 2%;
-    margin-top: 5px;
 }
 
 .nav > li a:hover{

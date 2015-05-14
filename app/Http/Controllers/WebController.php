@@ -16,6 +16,7 @@ use App\Model\franquicia_subcategoria;
 use App\Model\franquicia_especial_subcategoria;
 use App\Model\Publicaciones;
 use App\Model\Subcategoria;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
@@ -100,6 +101,8 @@ class WebController extends Controller {
         $inversion = $request::Input('inversion');
         $nombre = $request::Input('nombre');
         $categorias = $this->categorias_deplegables; //para rellenar el desplegable
+        $flag = false; //para saber si ha entrado en algun filtro.
+        $franquicias = new Collection(); //inicializamos array vacio
         ///-------------------------------///
 
         ///Deficinicion de variables///
@@ -117,6 +120,9 @@ class WebController extends Controller {
                 $valores = explode('-',$inversion);
 
                 $query = $query->where('inversion', '>=', $valores[0])->where('inversion' , '<=' ,$valores[1]);
+
+                $flag = true;
+
             }
             if ($categoria != -1) {
 
@@ -129,9 +135,11 @@ class WebController extends Controller {
                     array_push($listaIdsFranquicias,$ids);
                 }
 
-                $listaIdsFranquicias = $listaIdsFranquicias[0];
+                //Comprobamos si de ids no está vacia para hacer la igualacion, si está vacía devolvemos la vista si nada y no continuamos
                 //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
-                if(!$listaIdsFranquicias->isEmpty()) { //Falta comprobar
+                if(!empty($listaIdsFranquicias)) { //Falta comprobar
+                    //Hacemos esta igualacion porque listaIds es un array con un collect dentro.
+                    $listaIdsFranquicias = $listaIdsFranquicias[0];
 
                     $query = $query->where(function ($query) use ($listaIdsFranquicias) {
 
@@ -149,20 +157,26 @@ class WebController extends Controller {
                             $query = $query->orWhere('subcategoria_id', '=', $subcategoria->id);
                         }
                     });
+                    $flag = true;
                 }
-
             }
 
             if($nombre != '')
             {
                 $query = $query->where('nombre_comercial' ,'like', '%'.$nombre.'%');
+                $flag = true;
             }
 
             //Query para obtener las distintas categorias haciendo
             $query2 = clone $query;
 
-            $franquicias = $query->get();
+            //Comprobamos si el flag está a true porque ha entrada en alfun filtro
+            if($flag) {
+                $franquicias = $query->get();
+            }
+
             $resultados = count($franquicias);
+
 
             //Obtenemos si para la categoria pasada hay más de una subcategorias para llamar a una vista u otra
             $totalFranquicias = subcategoria::where('categoria_id', '=', $categoria )->count();
@@ -176,7 +190,6 @@ class WebController extends Controller {
 
             }else{
 
-                //return redirect()->route('categoria', ['tipo' => str_replace(' ', '-', $categoria)]);
                 return view ('resultados_lista', compact('franquicias','resultados', 'categorias'));
             }
         }
@@ -458,8 +471,7 @@ class WebController extends Controller {
     public function showpublicacion($titulo,$id)
     {
 
-
-        $articulo = Publicaciones::where('titulo','=',$titulo)->get();
+        $articulo = Publicaciones::where('id','=',$id)->get();
 
         $url = $articulo[0]->contenido;
         $articulo[0]->contenido =  \File::get($url);
