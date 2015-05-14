@@ -74,7 +74,7 @@
                     <li><a href="{{ URL::route('franquiciadores') }}" class="atext">Franquiciadores</a></li>
                 </ul>
             </li>
-            <li><a href="{{ URL::route('contacto') }}" class="atext"><i class="fa fa-envelope"></i> Contacto</a></li>
+            <li class="lipersonal"><a href="{{ URL::route('contacto') }}" class="atext"><i class="fa fa-envelope"></i> Contacto</a></li>
 
         </ul>
 

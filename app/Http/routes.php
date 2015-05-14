@@ -130,8 +130,8 @@ Route::group(['namespace' =>  'categorias'],function() {
 
         if(!$idFran_Subcat->isEmpty())
         {
-            $controller = App::make(\App\Http\Controllers\areaprivada\franquiciaController::class);
-            return $controller->callAction('index', array('nombre' => $nombre, 'tipo' => $tipo));
+            $controller = App::make(\App\Http\Controllers\WebController::class);
+            return $controller->callAction('perfil', array('nombre' => $nombre, 'tipo' => $tipo));
         } else{
 
             return redirect('/');

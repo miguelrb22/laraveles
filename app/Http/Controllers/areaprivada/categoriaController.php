@@ -20,27 +20,47 @@ class categoriaController extends Controller {
      * @param $tipo es el parametro del nombre de la categoria
      * @return $this
      */
-    public function index($tipo)
+    public function index($tipo,$patrocinadas)
     {
+        //Contador de franquicias que devuelve a la vista como paramtro cuando se busca en
+        //franquicias en la global por ejemplo si de Alimentación si pinchamos en Alimentacion devuelve de fruterias,congelados, etc..
+        $resultados = 0;
+
+        //Array de collect subcategorias con franquicias en cada una de ellas
+        $franquiciasSub = array();
+
+        //Lista final de franquicias para pasar a la vista.
+        $franquicias = array();
 
         $idCategoria = Categoria::where('nombre', 'like', $tipo)->get();
         //extraemos las id de las subcategorias para la categoria dada
         $idSubcategorias = subcategoria::where('categoria_id', '=', $idCategoria[0]->id )->get();
 
-        $franquicias = array();
-
-        //Vamos añadiendo franquicias a un nuevo array creado para pasarlo a la vista posteriormente
+        //Vamos añadiendo objectos subcategorias con franquicias dentro a un nuevo array creado para pasarlo a la vista posteriormente
         foreach($idSubcategorias as $subcategoria)
         {
             $franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
-            array_push($franquicias,$franquicia);
+            array_push($franquiciasSub,$franquicia);
+            //Cada vez que añadimos una vamos incrementado el resultado;
         }
 
-        $resultados = count($franquicias);
+        //Obtenemos todas las franquicias de todas las subcategorias
+
+        for($i=0; $i< count($franquiciasSub); $i++){
+
+            if(!$franquiciasSub[$i]->isEmpty()){
+
+                for($j=0 ; $j< count($franquiciasSub[$i]); $j++){
+
+                    array_push($franquicias,$franquiciasSub[$i][$j]);
+                    $resultados+=1;
+                }
+            }
+        }
 
         //Igualamos la categoria a la devuelta por la select por si tiene acentos y la formateamos para pasarla a la vista.
         $categoria =  strtolower((str_replace('-',' ',$idCategoria[0]->nombre)));
-        return view ('dinamica_subcategorias',compact('franquicias','resultados','categoria'));
+        return view ('dinamica_subcategorias',compact('franquicias','resultados','categoria','patrocinadas'));
     }
 
     /**
@@ -48,7 +68,7 @@ class categoriaController extends Controller {
      * @param $tipo es el parametro del nombre de la categoria
      * @return $this
      */
-    public function getFranquiciasSubcategoria($tipo){
+    /*public function getFranquiciasSubcategoria($tipo){
 
         //Obtenemos el id para el nombre dado por parametro es decir la última parte de la url franquicias-de-ejemplo, en
         //este caso sería franquicias de la subcategoria ejemplo.
@@ -68,7 +88,7 @@ class categoriaController extends Controller {
 
         //Devolvemos la vista con el array de franquicias.
         return view('dinamica')->with(array("franquicias" => $lista_franquicias, 'categoria' => $tipo , 'resultados' => count($lista_franquicias)));
-    }
+    }*/
 
     /**
      * Este método devuelve una lista de las franquicias de mismo tipo a la actual de la vista.
@@ -78,6 +98,7 @@ class categoriaController extends Controller {
      */
     public function franquiciasTipo($tipo,$id){
 
+        dd("entra");
         //Buscamos todos las franquicias de este tipo en las subcategorias puesto que un nombre de categoria se crea también en subcategoria
         //obtenemos primero los id de la subcategoria en las tablas intermedias n:m
         $idSubcategoria = subcategoria::where('nombre', '=', $tipo)->get();
