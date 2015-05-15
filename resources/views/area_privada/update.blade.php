@@ -474,7 +474,7 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" id="fechaI">
                                                                 <label class="input">Fecha Alta Ficha:</label>
                                                                 <label class="input" ><i class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" class="span2"  name="fecha_alta_ficha" value ="{{$ses->fecha_alta_ficha}}" data-date-format="dd/mm/yyyy"  id="finicio">
+                                                                    <input type="text" class="span2"   id="dpd1" name="fecha_alta_ficha" value ="{{$ses->fecha_alta_ficha}}" data-date-format="dd/mm/yyyy">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -540,11 +540,15 @@
                                                                         <optgroup label="{{$cat->nombre}}">
                                                                             @foreach($subcategorias as $subcat)
                                                                                 @if($subcat->categoria_id==$cat->id)
-                                                                                    <option value="{{$subcat->id}}">{{$subcat->nombre}}</option>
+                                                                                    <option value="{{$subcat->id}}"
+
+                                                                                            @if(in_array($subcat->id,$subcategorias_en_franquicia)) selected @endif
+                                                                                            >{{$subcat->nombre}}</option>
                                                                                 @endif
                                                                             @endforeach
                                                                         </optgroup>
                                                                     @endforeach
+
                                                                 </select>
                                                             </section>
                                                         </div>
@@ -652,7 +656,7 @@
                                                 Actualizar
                                             </button>
                                         </footer>
-                                        {!! Form::close() !!}
+                                        </form>
                                         <!--</form>-->
                                         <!-- fin form -->
                                     </div>
@@ -683,6 +687,8 @@
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
     var checkin = $('#dpd1').datepicker({
+
+    format: 'yyyy-mm-dd',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -696,6 +702,7 @@
     $('#dpd2')[0].focus();
     }).data('datepicker');
     var checkout = $('#dpd2').datepicker({
+    format: 'yyyy-mm-dd',
     onRender: function(date) {
     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
     }
@@ -713,26 +720,6 @@
     $("#categoria").select2({
         maximumSelectionSize: 4
     });
-
-
-    $('#finicio .datepicker')
-        .datepicker({
-            format: 'dd/mm/yyyy'
-        })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#form-alta').formValidation('revalidateField', 'inicio');
-        });
-
-    $('#ffin .datepicker')
-            .datepicker({
-            format: 'dd/mm/yyyy'
-        })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#form-alta').formValidation('revalidateField', 'fin');
-        });
-
 
 
     $('#form-alta').bootstrapValidator({
