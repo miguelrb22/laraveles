@@ -348,8 +348,6 @@
         <!-- JQUERY VALIDATE -->
         <script src="{{ asset('area_privada/js/plugin/jquery-validate/jquery.validate.min.js') }}"></script>
 
-        <!-- JQUERY UI + Bootstrap Slider -->
-        <script src="{{ asset('carousel') }}"></script>
 
         <!-- browser msie issue fix -->
         <script src="{{ asset('area_privada/js/plugin/msie-fix/jquery.mb.browser.min.js') }}"></script>
