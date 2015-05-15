@@ -324,4 +324,341 @@
       <index name="users_username_unique" unique="true" columns="username"/>
     </table>
   </data-source>
+  <data-source name="MySQL - multifranquicias@localhost" uuid="03bf39ff-fb78-4156-9a11-73474ba3ee1f">
+    <database-info product="MySQL" version="5.5.42" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="multifranquicias"/>
+    <table name="categoria" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_subcategoria_categoria1" table="subcategoria" schema="" catalog="multifranquicias" columns="categoria_id"/>
+      <index name="nombre_UNIQUE" unique="true" columns="nombre"/>
+    </table>
+    <table name="categoria_especial" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_franquicia_has_categoria_especial_categoria_especial1" table="franquicia_has_categoria_especial" schema="" catalog="multifranquicias" columns="idcategoria_especial"/>
+    </table>
+    <table name="colapublicidad" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="imagen" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="inicio" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="fin" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="encola" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="dias" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="idtipo_publicidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_colapublicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_colapublicidad_tipo_publicidad1_idx" unique="false" columns="idtipo_publicidad"/>
+    </table>
+    <table name="estadisticas_diarias" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="franquicia" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="tipo" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fecha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="idtipo_estadistica" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_estadisticas_diarias_tipo_estadistica1" columns="idtipo_estadistica" ref-table="tipo_estadistica" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_estadisticas_diarias_tipo_estadistica1_idx" unique="false" columns="idtipo_estadistica"/>
+    </table>
+    <table name="franquicia" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ciudad" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="direccion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="web" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="inversion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="presencia_int" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="royalty" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="canon_entrada" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="canon_publicitario" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="duracion_contrato" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="amortizacion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="requisitos_local" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="locales_propios" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="locales_franquiciados" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="dimensiones_local" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="poblacion_minima" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="superficie_minima" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="zona_exclusividad" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="perfil_franquiciado" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="zonas_preferentes" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="anyo_creacion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="inicio_expansion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="red_spain" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="n_paises" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nacionalidad" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="red_extranjero" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="nombre_franquicia" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cif" sqlType="CHAR" precision="9" scale="0" nullable="true" jdbcType="1"/>
+      <column name="fecha_alta_ficha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="fecha_vencimiento_ficha" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="razon_social" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fax" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="domicilio_facturacion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cp_fac" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="domicio_fiscal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cp_fiscal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="domicilio_postal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cp_postal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nombre_apellidos_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tf_contacto" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cargo_contacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="activo" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="personal" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="claves_negocio" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_franquicia_has_categoria_especial_franquicia1" table="franquicia_has_categoria_especial" schema="" catalog="multifranquicias" columns="franquicia_idfranquicia"/>
+      <exported-key name="fk_franquicia_has_paquete_franquicia" table="franquicia_has_paquete" schema="" catalog="multifranquicias" columns="franquicia_id"/>
+      <exported-key name="fk_franquicia_has_subcategoria_franquicia1" table="franquicia_subcategoria" schema="" catalog="multifranquicias" columns="franquicia_id"/>
+      <exported-key name="fk_imagenes_franquicia_franquicia1" table="imagenes_franquicia" schema="" catalog="multifranquicias" columns="franquicia_id"/>
+      <exported-key name="fk_imagenes_perfil_franquicia1" table="imagenes_perfil" schema="" catalog="multifranquicias" columns="id"/>
+      <exported-key name="fk_paquetes_activos_franquicia1" table="paquetes_activos" schema="" catalog="multifranquicias" columns="id"/>
+      <exported-key name="fk_publicacion_franquicia1" table="publicacion" schema="" catalog="multifranquicias" columns="franquicia_id"/>
+      <exported-key name="fk_publicidad_franquicia1" table="publicidad" schema="" catalog="multifranquicias" columns="franquicia_id"/>
+    </table>
+    <table name="franquicia_especial_subcategoria" schema="" catalog="multifranquicias" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="inversion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idcategoria_especial" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="especial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="franquicia_has_categoria_especial" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="franquicia_idfranquicia" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idcategoria_especial" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="franquicia_idfranquicia,idcategoria_especial"/>
+      <foreign-key name="fk_franquicia_has_categoria_especial_categoria_especial1" columns="idcategoria_especial" ref-table="categoria_especial" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_franquicia_has_categoria_especial_franquicia1" columns="franquicia_idfranquicia" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_franquicia_has_categoria_especial_categoria_especial1_idx" unique="false" columns="idcategoria_especial"/>
+      <index name="fk_franquicia_has_categoria_especial_franquicia1_idx" unique="false" columns="franquicia_idfranquicia"/>
+    </table>
+    <table name="franquicia_has_paquete" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idpaquete" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="actual" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fecha_inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="fecha_fin" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="franquicia_id,idpaquete"/>
+      <foreign-key name="fk_franquicia_has_paquete_franquicia" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_franquicia_has_paquete_paquete1" columns="idpaquete" ref-table="paquete" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_franquicia_has_paquete_franquicia_idx" unique="false" columns="franquicia_id"/>
+      <index name="fk_franquicia_has_paquete_paquete1_idx" unique="false" columns="idpaquete"/>
+    </table>
+    <table name="franquicia_nom_especial" schema="" catalog="multifranquicias" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="idcategoria_especial" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="franquicia_nom_subcategoria" schema="" catalog="multifranquicias" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="inversion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+    <table name="franquicia_subcategoria" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="franquicia_id,subcategoria_id"/>
+      <foreign-key name="fk_franquicia_has_subcategoria_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_franquicia_has_subcategoria_subcategoria1" columns="subcategoria_id" ref-table="subcategoria" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_franquicia_has_subcategoria_franquicia1_idx" unique="false" columns="franquicia_id"/>
+      <index name="fk_franquicia_has_subcategoria_subcategoria1_idx" unique="false" columns="subcategoria_id"/>
+    </table>
+    <table name="imagenes_franquicia" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ruta" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tipo" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tamaño" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombreOriginal" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_imagenes_franquicia_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_imagenes_franquicia_franquicia1_idx" unique="false" columns="franquicia_id"/>
+    </table>
+    <table name="imagenes_perfil" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="url1" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="url2" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="url3" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="url4" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="url5" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_imagenes_perfil_franquicia1" columns="id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_imagenes_perfil_franquicia1_idx" unique="false" columns="id"/>
+    </table>
+    <table name="migrations" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="batch" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="paquete" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tipo" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_franquicia_has_paquete_paquete1" table="franquicia_has_paquete" schema="" catalog="multifranquicias" columns="idpaquete"/>
+    </table>
+    <table name="paquetes_activos" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="carousel" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="banner_sup" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="destacados" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="sup_derecha" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="izquierda" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="especial_lc" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="especial_ex" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="especial_ba" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="especial_re" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="destacado_categoria" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="patrocinado_b" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="noticia_des" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_paquetes_activos_franquicia1" columns="id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_paquetes_activos_franquicia1_idx" unique="false" columns="id"/>
+    </table>
+    <table name="password_resets" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <index name="password_resets_email_index" unique="false" columns="email"/>
+      <index name="password_resets_token_index" unique="false" columns="token"/>
+    </table>
+    <table name="publicacion" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="titulo" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="contenido" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="url_imagen" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tipo" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="created_at" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="destacada" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="fin_destacado" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="pertenencia" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="resumen" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_publicacion_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_publicacion_franquicia1_idx" unique="false" columns="franquicia_id"/>
+    </table>
+    <table name="publicidad" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idtipo_publicidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="url_imagen" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fecha_inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="fecha_fin" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="descripcion_carousel" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="titulo_carousel" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_publicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_publicidad_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_publicidad_franquicia1_idx" unique="false" columns="franquicia_id"/>
+      <index name="fk_publicidad_tipo_publicidad1_idx" unique="false" columns="idtipo_publicidad"/>
+    </table>
+    <table name="resumen_diario_estadistica" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="franquicia" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="dia" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="total" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tipo" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="subcategoria" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="categoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_subcategoria_categoria1" columns="categoria_id" ref-table="categoria" ref-schema="" ref-catalog="multifranquicias" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_franquicia_has_subcategoria_subcategoria1" table="franquicia_subcategoria" schema="" catalog="multifranquicias" columns="subcategoria_id"/>
+      <index name="nombre_UNIQUE" unique="true" columns="nombre"/>
+      <index name="fk_subcategoria_categoria1_idx" unique="false" columns="categoria_id"/>
+    </table>
+    <table name="tipo_estadistica" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_estadisticas_diarias_tipo_estadistica1" table="estadisticas_diarias" schema="" catalog="multifranquicias" columns="idtipo_estadistica"/>
+    </table>
+    <table name="tipo_publicidad" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre_col" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_colapublicidad_tipo_publicidad1" table="colapublicidad" schema="" catalog="multifranquicias" columns="idtipo_publicidad"/>
+      <exported-key name="fk_publicidad_tipo_publicidad1" table="publicidad" schema="" catalog="multifranquicias" columns="idtipo_publicidad"/>
+    </table>
+    <table name="users" schema="" catalog="multifranquicias" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="users_email_unique" unique="true" columns="email"/>
+      <index name="users_username_unique" unique="true" columns="username"/>
+    </table>
+  </data-source>
 </component>

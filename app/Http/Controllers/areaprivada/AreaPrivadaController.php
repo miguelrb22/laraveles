@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Model\Categoria;
 use App\model\Franquicia as Franquicia;
+use App\Model\FranquiciaSubcategoria;
 use App\Model\PaquetesActivos;
 use App\Model\subcategoria;
 use Illuminate\Support\Facades\Session;
@@ -58,14 +59,30 @@ class AreaPrivadaController extends Controller {
 
     public function modificar()
     {
-
         $franquicia = Session::get('franquicia');
         $id = $franquicia->id;
         $aux = PaquetesActivos::where('id','=',$id)->get();
+
+        if($aux->isEmpty()){
+
+            $PA = NEW PaquetesActivos();
+            $PA->id = $id;
+            $PA->save();
+            $aux = PaquetesActivos::where('id','=',$id)->get();
+        }
         $paquetes = $aux[0];
+
+        $franquicia_subcategoria = FranquiciaSubcategoria::where('franquicia_id','=',$id)->get();
+        $subcategorias_en_franquicia = array();
+
+        foreach($franquicia_subcategoria as $fs){
+
+            array_push($subcategorias_en_franquicia,$fs->subcategoria_id);
+        }
+
         $categorias = Categoria::all(array('id','nombre'));
         $subcategorias = subcategoria::all(array('id','nombre','categoria_id') );
-        return view('area_privada.update', compact('paquetes','categorias','subcategorias'));
+        return view('area_privada.update', compact('paquetes','categorias','subcategorias','subcategorias_en_franquicia'));
     }
 
 

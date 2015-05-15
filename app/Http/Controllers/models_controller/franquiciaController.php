@@ -13,6 +13,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\Model\FranquiciaHasEspecial as FHE;
 use Illuminate\Support\Facades\DB AS DB;
 use App\Model\FranquiciaSubcategoria as FS;
+use Illuminate\Support\Facades\Redirect;
 
 
 class franquiciaController extends Controller
@@ -113,10 +114,10 @@ class franquiciaController extends Controller
     {
 
         $franquicia = new Franquicia($request->all());
-        $bdfranquicia = $user = Franquicia::find($request->id);
+        $bdfranquicia  = Franquicia::find($request->id);
 
 
-        if($file = $request->file('perfil')) {
+        if ($file = $request->file('perfil')) {
 
 
             //Generar un id Unico
@@ -133,14 +134,14 @@ class franquiciaController extends Controller
             $franquicia->logo_url = $url;
 
             //img resizes
-            $location = public_path().$url;
+            $location = public_path() . $url;
             $image = Image::make($location);
-            $image->resize(200,200);
+            $image->resize(200, 200);
             $image->save($location);
 
 
-            if(!$bdfranquicia->logo_url == null){
-                \File::delete(public_path().$bdfranquicia->logo_url);
+            if (!$bdfranquicia->logo_url == null) {
+                \File::delete(public_path() . $bdfranquicia->logo_url);
             }
 
         }
@@ -150,48 +151,49 @@ class franquiciaController extends Controller
         $bdfranquicia->update($franquicia->attributesToArray());
 
 
-
         $id = $request->id;
         $categorias_especiales = $request->input('especial');
         $categorias = $request->input('categoria');
 
 
-        if(!empty($categorias_especiales)){
+        //actualizar categorias especiales
 
+        DB::table('paquetes_activos')->where('id', '=', $id)
+            ->update(['especial_lc' => 0, 'especial_ex' => 0, 'especial_ba' => 0, 'especial_re' => 0, 'destacado_categoria' => 0]);
 
-            DB::table('franquicia_has_categoria_especial')->where('franquicia_idfranquicia','=',$id)->delete();
-            //dd('veamos...');
-            foreach($categorias_especiales as $ce){
+        DB::table('franquicia_has_categoria_especial')->where('franquicia_idfranquicia', '=', $id)->delete();
+
+        if (!$categorias_especiales==null){
+            foreach ($categorias_especiales as $ce) {
 
                 $fhe = New FHE();
                 $fhe->franquicia_idfranquicia = "$id";
-                $fhe->idcategoria_especial= $ce;
+                $fhe->idcategoria_especial = $ce;
                 $fhe->save();
 
 
             }
+         }
+        /////////////
 
 
-
-        }
-
-        dd('veamos...');
+        DB::table('franquicia_subcategoria')->where('franquicia_id', '=', $id)->delete();
 
         if(!empty($categorias)){
 
 
             foreach($categorias as $ca){
-
                 $fs = New FS();
                 $fs->franquicia_id = "$id";
                 $fs->subcategoria_id= $ca;
                 $fs->save();
 
-
             }
-
         }
 
+        Session::put('franquicia', Franquicia::find($request->id));
+
+        return Redirect::route('modificar_franquicia');
     }
 
 
