@@ -7,7 +7,8 @@ use App\Model\PaquetesActivos;
 use App\Model\subcategoria;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB AS DB;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\View as v;
 
 class AreaPrivadaController extends Controller {
 
@@ -32,6 +33,7 @@ class AreaPrivadaController extends Controller {
         $categorias = Categoria::all(array('id','nombre'));
         $subcategorias = subcategoria::all(array('id','nombre','categoria_id') );
         return view('area_privada.alta',compact('subcategorias','categorias'));
+
     }
 
     public function publicidad()
@@ -56,7 +58,14 @@ class AreaPrivadaController extends Controller {
 
     public function modificar()
     {
-        return view('area_privada.update');
+
+        $franquicia = Session::get('franquicia');
+        $id = $franquicia->id;
+        $aux = PaquetesActivos::where('id','=',$id)->get();
+        $paquetes = $aux[0];
+        $categorias = Categoria::all(array('id','nombre'));
+        $subcategorias = subcategoria::all(array('id','nombre','categoria_id') );
+        return view('area_privada.update', compact('paquetes','categorias','subcategorias'));
     }
 
 
