@@ -10,37 +10,9 @@
     <div class="form-group">
         <select class="form-control" name="categoria">
             <option value="-1" selected="">- Selecciona categoría -</option>
-            <option value="1">Abogados</option>
-            <option value="2">Administración de Fincas</option>
-            <option value="3">Agencias de Viajes</option>
-            <option value="4">Alimentación</option>
-            <option value="5">Deportes</option>
-            <option value="6">Educación</option>
-            <option value="7">Eficiencia Energética</option>
-            <option value="8">Fotografía</option>
-            <option value="9">Hogar</option>
-            <option value="10">Informática</option>
-            <option value="11">Regalos, Fiestas y Juguetes</option>
-            <option value="12">Inmobiliarias</option>
-            <option value="13">Librerías y Material de oficina</option>
-            <option value="14">Limpieza</option>
-            <option value="15">Mensajería y Transporte</option>
-            <option value="16">Modas</option>
-            <option value="17">Negocios Especializados</option>
-            <option value="18">Ocio</option>
-            <option value="19">Ópticas</option>
-            <option value="20">Publicidad e Impresión</option>
-            <option value="21">Reciclaje Consumibles</option>
-            <option value="22">Reformas y Suministros</option>
-            <option value="23">Restauración</option>
-            <option value="24">Salud y Belleza</option>
-            <option value="25">Seguros</option>
-            <option value="26">Servicios a Pymes</option>
-            <option value="27">Servicios Asistenciales</option>
-            <option value="28">Servicios Financieros</option>
-            <option value="29">Telecomunicaciones</option>
-            <option value="30">Tintorería y Arreglos</option>
-            <option value="31">Vending</option>
+            @for($i=0; $i< count($categorias); $i++)
+                <option value="{{$i}}">{{$categorias[$i]->nombre}}</option>
+            @endfor
         </select>
     </div>
     <div class="form-group">

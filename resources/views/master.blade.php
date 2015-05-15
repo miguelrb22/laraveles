@@ -33,9 +33,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand atext" href="{{ URL::route('home') }}">
+        <h1 id="logo"><a class="navbar-brand atext" href="{{ URL::route('home') }}" title="logotipo de multifranquicias">
            <img src="{{ asset('images/logo_1.png') }}" width="150" height="30" alt="Multifranquicias">
-        </a>
+        </a></h1>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
