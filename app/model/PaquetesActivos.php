@@ -27,7 +27,8 @@ class PaquetesActivos extends Model
         'especial_ba',
         'especial_re',
         'destacado_categoria',
-        'patrocinado_b'
+        'patrocinado_b',
+        'noticia_des'
     ];
 
 }

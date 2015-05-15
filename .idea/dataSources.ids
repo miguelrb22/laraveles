@@ -268,6 +268,8 @@
       <column name="fecha_inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="fecha_fin" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="titulo_carousel" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descripcion_carousel" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_publicidad_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_publicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
