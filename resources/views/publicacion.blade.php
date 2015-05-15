@@ -9,16 +9,6 @@
     @include('extras.anuncio')
 @endsection
 
-<style>
-
-    img {
-        margin-right: 1%;
-        margin-left: 1%;
-
-
-    }
-</style>
-
 @section('buscador')
     @include('extras.buscador')
 @endsection
@@ -26,35 +16,38 @@
 @section('contenido')
     <br>
     <div class="row">
-        @if(!$franInIzq->isEmpty())
-            <?php
+        <section class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
-            $a1 = mt_rand(0, count($franInIzq)-1);
-            $a2 = mt_rand(0, count($franInIzq)-1);
+            @if(!$franInIzq->isEmpty())
+                <?php
 
-            do{
+                $a1 = mt_rand(0, count($franInIzq)-1);
                 $a2 = mt_rand(0, count($franInIzq)-1);
-            }while($a2 == $a1)
-            ?>
-            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a1]->nombre."/".$franInIzq[$a1]->nombre_comercial)))}}">
-                    <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a1]->logo_url) }}"  alt="prueba" style="width: auto">
-                </a>
-            </div>
-            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a2]->nombre."/".$franSupDer[$a2]->nombre_comercial)))}}">
-                    <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a2]->logo_url) }}"  alt="prueba" style="width: auto">
-                </a>
-            </div>
-        @else
-            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
-            </div>
-            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-            </div>
 
-            @endif        </section>
+                do{
+                    $a2 = mt_rand(0, count($franInIzq)-1);
+                }while($a2 == $a1)
+                ?>
+                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                    <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a1]->nombre."/".$franInIzq[$a1]->nombre_comercial)))}}">
+                        <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a1]->logo_url) }}"  alt="prueba" style="width: auto">
+                    </a>
+                </div>
+                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                    <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a2]->nombre."/".$franSupDer[$a2]->nombre_comercial)))}}">
+                        <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a2]->logo_url) }}"  alt="prueba" style="width: auto">
+                    </a>
+                </div>
+            @else
+                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                    <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                </div>
+                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                    <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
+                </div>
+
+            @endif
+        </section>
         <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
 
             <div class="row">

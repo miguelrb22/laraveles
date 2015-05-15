@@ -33,54 +33,108 @@ class WebController extends Controller {
     private $patrocinadasB = null;
     private $franquiciasSupDer = null;
     private $franquiciasIzq = null;
-    private $banner = null;
+    private $carousel = null;
+    private $noticias_des = null;
     /**
      *
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->categorias_deplegables = Categoria::all();
 
         //Obtenemos las franquicias que están en patrocinadas del buscador
-            $this->patrocinadasB = new Collection();
+        $this->patrocinadasB = new Collection();
 
-            $pbuscadorIds = PaquetesActivos::where('patrocinado_b', '=', 1)->get(); //Esto devuelve el id
+        $pbuscadorIds = PaquetesActivos::where('patrocinado_b', '=', 1)->get(array('id')); //Esto devuelve el id
 
-            foreach($pbuscadorIds as $id)
-            {
-                $franquicia = franquicia_especial_subcategoria::find($id->id);
-                $this->patrocinadasB->push($franquicia);
-            }
+        foreach ($pbuscadorIds as $id) {
+            $franquicia = franquicia_especial_subcategoria::find($id->id);
+            $this->patrocinadasB->push($franquicia);
+        }
 
-            View::share('patrocinadas',$this->patrocinadasB);
+        View::share('patrocinadas', $this->patrocinadasB);
         //////
 
         //Obtenemos las franquicias que están en la parte superior derecha
-            $this->franquiciasSupDer = new Collection();
+        $this->franquiciasSupDer = new Collection();
 
-            $supDerIds = PaquetesActivos::where('sup_derecha', '=', 1)->get();
+        $supDerIds = PaquetesActivos::where('sup_derecha', '=', 1)->get(array('id'));
 
-            foreach($supDerIds as $id)
-            {
-                $franquicia = franquicia_especial_subcategoria::find($id->id);
-                $this->franquiciasSupDer->push($franquicia);
-            }
+        foreach ($supDerIds as $id) {
+            $franquicia = franquicia_especial_subcategoria::find($id->id);
+            $this->franquiciasSupDer->push($franquicia);
+        }
 
-            View::share('franSupDer',$this->franquiciasSupDer);
+        View::share('franSupDer', $this->franquiciasSupDer);
         ////
 
         //Obtenemos las franquicias que están en la parte inferior izquierda
         $this->franquiciasIzq = new Collection();
 
 
-        $supDerIds = PaquetesActivos::where('izquierda', '=', 1)->get();
+        $supDerIds = PaquetesActivos::where('izquierda', '=', 1)->get(array('id'));
 
-        foreach($supDerIds as $id)
-        {
+        foreach ($supDerIds as $id) {
             $franquicia = franquicia_especial_subcategoria::find($id->id);
             $this->franquiciasIzq->push($franquicia);
         }
 
-        View::share('franInIzq',$this->franquiciasIzq);
+        View::share('franInIzq', $this->franquiciasIzq);
+        ////
+
+
+        //Obtenemos las franquicias que están en el carousel---
+        $this->carousel = new Collection();
+
+
+        //obtenemos los ids de todasl las franquicias con el carousel activo a 1
+        $carouselIds = PaquetesActivos::where('carousel', '=', 1)->get(array('id'));
+
+        //Creamos un array con los ids y lo desorganizamos
+        $desordenados = array();
+
+        //recorremos los objetos para obtener el id
+        foreach ($carouselIds as $id) {
+            array_push($desordenados, $id->id);
+        }
+
+        //desordenamos el array
+        shuffle($desordenados);
+
+        //recorremos el array de ids de franquicias desordenado y obtemos los datos de la franquicia para
+        //pasarlos a la vista
+        if (count($desordenados) > 5)
+        {
+            for ($i = 0; $i < 5; $i++) //Valor contante para solo obtener 5 en un futuro con un valor constante
+            {
+                $franquicia = franquicia_especial_subcategoria::find($id->id);
+                $this->carousel->push($franquicia);
+
+            }
+        }else{
+
+            for ($i = 0; $i < count($desordenados); $i++) //Valor contante para solo obtener 5 en un futuro con un valor constante
+            {
+                $franquicia = franquicia_especial_subcategoria::find($id->id);
+                $this->carousel->push($franquicia);
+
+            }
+        }
+
+        View::share('carousel',$this->carousel);
+        ////--------
+
+        //Obtenemos las franquicias que están en tienen  noticias destacadas a 1 en paquetes activos
+        $this->noticias_des = new Collection();
+
+        $noticiasDesIds = PaquetesActivos::where('noticia_des', '=', 1)->get(array('id'));
+
+        foreach ($noticiasDesIds as $id) {
+            $franquicia = publicacion::where('franquicia_id','=', $id->id); //falta concatenarle un where donde tipo sea destacado
+            $this->noticias_des->push($franquicia);
+        }
+
+        View::share('noticiaDestacada', $this->noticias_des);
         ////
 
     }

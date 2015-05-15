@@ -232,19 +232,36 @@
                                     </div>
                                     <div class="panel-body" style="margin-bottom: -16px;">
                                         <div class="row">
-                                            <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
-                                                <h4>tilulo noticia</h4>
-                                                <p id="noticiaDes">Sweet Pharma cambia su estrategia redefiniendo las categorías de sus productos pasando a ocho categorías de tratamientos enfocadas según las necesidades del paciente: Ellos, Ellas, Amor, Salud, Emergencias, Dinero, Energía, Días grises. Esas cateogrías engloban todos sus productos y pretenden ser reflejo de todos los aspectos de Sweet Pharma. Sin embargo, sus productos como tal no cambian y ofrecen una amplia variedad de golosinas y chucherías para todos los que quieran endulzarse el día a día. </p>
-                                            </div>
-                                            <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
-                                                <br>
-                                                <br>
-                                                <img class="img-responsive" id="imagen-noticia" src="{{ asset('images/anunci.jpg') }}" alt="prueba" >
-                                            </div>
+
+                                            @if(!$noticiaDestacada->isEmpty())
+                                                <?php
+                                                    $a1 = mt_rand(0,count($noticiaDestacada)-1)
+                                                ?>
+                                                <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                                    <h4>{{ $noticiaDestaca[$a1]->titulo }}</h4>
+                                                    <p id="noticiaDes"> {{ $noticiaDestaca[$a1]->resumen }} </p>
+                                                    <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticiaDestaca->titulo.'/'.$noticiaDestaca->id)))}}">seguir leyendo</a>
+                                                </div>
+                                                <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
+                                                    <br>
+                                                    <br>
+                                                    <img class="img-responsive" id="imagen-noticia" src="{{ asset($publicaciones[$i]->url_imagen)  }}" alt="prueba" >
+                                                </div>
+                                            @else
+                                                <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                                    <a href="#"><h4>Sweet Pharma cambia su estrategia</h4></a>
+                                                    <p id="noticiaDes">Sweet Pharma cambia su estrategia redefiniendo las categorías de sus productos pasando a ocho categorías de tratamientos enfocadas según las necesidades del paciente: Ellos, Ellas, Amor, Salud, Emergencias, Dinero, Energía, Días grises. Esas cateogrías engloban todos sus productos y pretenden ser reflejo de todos los aspectos de Sweet Pharma. Sin embargo, sus productos como tal no cambian y ofrecen una amplia variedad de golosinas y chucherías para todos los que quieran endulzarse el día a día. </p>
+                                                </div>
+                                                <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
+                                                    <br>
+                                                    <br>
+                                                    <a href="#"><img class="img-responsive" id="imagen-noticia" src="{{ asset('images/sweet_pharma.jpg') }}" alt="prueba" ></a>
+                                                </div>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <?php
 
@@ -290,7 +307,7 @@
                                     </h3>
                                     @for($i=5; $i<count($publicaciones); $i++)
                                         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
-                                            <a id="newsEnlace" href="#"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
+                                            <a id="newsEnlace" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
                                         </div>
                                     @endfor
                                 </div>
