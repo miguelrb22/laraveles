@@ -13,85 +13,25 @@
 
                 @if(!$carousel->isEmpty())
                     <div class="item active">
-                      <a href="#"><img src="{{ asset('publicidad/carousel/') }}" alt="Chania" class="imgcarousel img-responsive"></a>
+                      <a href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><img src="{{ asset($carousel[0]->url_imagen)}} " alt="Chania" class="imgcarousel img-responsive"></a>
                       <div class="carousel-caption">
-                          <a class="carosuelref" href="#"><h3></h3></a>
-                          </a><p class="pcarousel"></p>
+                          <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><h3>{{$carousel[0]->titulo_carousel}}</h3></a>
+                          </a><p class="pcarousel">{{$carousel[0]->descripcion_carousel}}</p>
                       </div>
                     </div>
 
-                    <div class="item active">
-                        <a href="#"><img src="{{ asset('publicidad/carousel/') }}" alt="Chania" class="imgcarousel img-responsive"></a>
+                  @for($i = 1; $i < count($carousel); $i++)
+                    <div class="item">
+                        <a href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[$i]->url_contenido) }}"><img src="{{ asset($carousel[$i]->url_imagen)}}" alt="Chania" class="imgcarousel img-responsive"></a>
                         <div class="carousel-caption">
-                            <a class="carosuelref" href="#"><h3></h3></a>
-                            </a><p class="pcarousel"></p>
+                            <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[$i]->url_contenido) }}"><h3>{{$carousel[$i]->titulo_carousel}}</h3></a>
+                            </a><p class="pcarousel">{{$carousel[$i]->descripcion_carousel}}</p>
                         </div>
                     </div>
-
-                    <div class="item active">
-                        <a href="#"><img src="{{ asset('publicidad/carousel/') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                        <div class="carousel-caption">
-                            <a class="carosuelref" href="#"><h3></h3></a>
-                            </a><p class="pcarousel"></p>
-                        </div>
-                    </div>
-
-                    <div class="item active">
-                        <a href="#"><img src="{{ asset('publicidad/carousel/') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                        <div class="carousel-caption">
-                            <a class="carosuelref" href="#"><h3></h3></a>
-                            </a><p class="pcarousel"></p>
-                        </div>
-                    </div>
-
-                    <div class="item active">
-                          <a href="#"><img src="{{ asset('publicidad/carousel/') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                          <div class="carousel-caption">
-                              <a class="carosuelref" href="#"><h3></h3></a>
-                              </a><p class="pcarousel"></p>
-                          </div>
-                    </div>
+                  @endfor
 
                 @else
-                    <div class="item active">
-                      <a href="#"><img src="{{ asset('publicidad/carousel/danone_slider.png') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                      <div class="carousel-caption">
-                        <a class="carosuelref" href="#"><h3>Danone, nueva franquicia de yogur helado en alza</h3></a>
-                        </a><p class="pcarousel">La empresa franco española Danone sigue apostando por el yogur helado como modelo de negocio rentable tal y como demuestran los 22 establecimientos que la firma ha abierto en territorio nacional. Sus previsiones para los años 2015 y 2016 son abrir unos 15 nuevos puntos de venta. Actualmente, la Yogurtería, tiene...</p>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <img src="{{ asset('publicidad/carousel/crear_slider.png') }}" alt="Chania" class="imgcarousel img-responsive">
-                      <div class="carousel-caption">
-                        <h3>Cómo montar una franquicia: una correcta ubicación</h3>
-                        <p class="pcarousel">En el sistema de franquicias hay pocos aspectos que sean tan importantes para la buena marcha del negocio como es la adecuada ubicación del local en el que se va a gestionar y desarrollar la actividad. No se exagera al afirmar que el 80% del éxito de cualquier franquicia depende... </p>
-                      </div>
-                    </div>
-
-                      <div class="item">
-                          <a href="#"><img src="{{ asset('publicidad/carousel/salida_slider.png') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                          <div class="carousel-caption">
-                              <a class="carosuelref" href="#"><h3>¿Es la franquicia una buena salida laboral?</h3></a>
-                              </a><p class="pcarousel">Siempre se ha dicho que cuando una puerta se cierra, otra se abre. Ese debe ser el pensamiento positivo que se debe tener cuando las posibilidades laborales son mínimas o se ven truncadas por cualquier circunstancia. Los datos de desempleo en nuestro país, indican una bajada en el número de ...</p>
-                          </div>
-                      </div>
-
-                      <div class="item">
-                          <a href="#"><img src="{{ asset('publicidad/carousel/spain_slider.png') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                          <div class="carousel-caption">
-                              <a class="carosuelref" href="#"><h3>Con sello Made in Spain</h3></a>
-                              </a><p class="pcarousel"> Las franquicias con denominación de origen España están de enhorabuena, ya que atraviesan un gran momento que les está permitiendo dominar el sector en nuestro país. De las casi 1000 marcas de franquicias presentes en España, el 85% son de origen nacional, confirmando así el espectacular momento que atraviesa el ...</p>
-                          </div>
-                      </div>
-
-                      <div class="item">
-                          <a href="#"><img src="{{ asset('publicidad/carousel/moda_slider.png') }}" alt="Chania" class="imgcarousel img-responsive"></a>
-                          <div class="carousel-caption">
-                              <a class="carosuelref" href="#"><h3>La moda: modelo de franquicia que crea empleo</h3></a>
-                              </a><p class="pcarousel">A pesar de la crisis y la bajada del índice de consumo, muchos emprendedores han decidido subirse al carro de la franquicia a través de la moda, ya que el sector textil español está en auge y goza de muy buena fama en el mundo empresarial. El modelo de negocio que ...</p>
-                          </div>
-                      </div>
+                    <!-- no debe ocurrir nunca será vacio ->
                 @endif
 
 

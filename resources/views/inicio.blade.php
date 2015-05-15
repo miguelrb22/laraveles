@@ -271,12 +271,12 @@
                                     @for($i=0; $i< count($publicaciones); $i++)
                                         <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                                <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" width='110' height="110"></a>
+                                                <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-responsive" width='110' height="110"></a>
                                             </div>
                                             <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
-                                                <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}">{{$publicaciones[$i]->titulo}}</a></h3>
+                                                <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">{{$publicaciones[$i]->titulo}}</a></h3>
                                                 <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
-                                                    <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
+                                                    <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
                                                 </p>
                                                 <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                                             </div>
@@ -342,14 +342,14 @@
                     <div class="panel-body" style="margin-bottom: -16px;">
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 text-center">
                                 <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}">{{$fraquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
-                                <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" >
+                                <a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}"><img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" ></a>
                                 <br>
                             </div>
 
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                 <br/>
                                 <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}">{{$fraquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
-                                <img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba">
+                                <a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}"><img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba"></a>
                             </div>
                     </div>
                 </div>

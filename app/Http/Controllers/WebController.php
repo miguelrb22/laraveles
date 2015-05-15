@@ -9,8 +9,6 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Controllers\areaprivada\AreaPrivadaController;
-use App\Http\Controllers\areaprivada\categoriaController;
 use App\Model\Categoria;
 use App\Model\Franquicia;
 use App\Model\franquicia_nom_subcategoria;
@@ -25,8 +23,13 @@ use Illuminate\Support\Facades\URL;
 use App\Model\PaquetesActivos;
 use App\Model\files;
 use Illuminate\Support\Facades\View;
+use App\Model\publicidad;
+use Illuminate\Support\Facades\DB;
+
 
 class WebController extends Controller {
+
+
 
 
     private $categorias_deplegables = null;
@@ -35,12 +38,15 @@ class WebController extends Controller {
     private $franquiciasIzq = null;
     private $carousel = null;
     private $noticias_des = null;
+    private $tam_carousel = 5;
     /**
      *
      */
     public function __construct()
     {
         $this->categorias_deplegables = Categoria::all();
+
+
 
         //Obtenemos las franquicias que están en patrocinadas del buscador
         $this->patrocinadasB = new Collection();
@@ -55,6 +61,8 @@ class WebController extends Controller {
         View::share('patrocinadas', $this->patrocinadasB);
         //////
 
+
+
         //Obtenemos las franquicias que están en la parte superior derecha
         $this->franquiciasSupDer = new Collection();
 
@@ -67,6 +75,8 @@ class WebController extends Controller {
 
         View::share('franSupDer', $this->franquiciasSupDer);
         ////
+
+
 
         //Obtenemos las franquicias que están en la parte inferior izquierda
         $this->franquiciasIzq = new Collection();
@@ -83,42 +93,75 @@ class WebController extends Controller {
         ////
 
 
+
         //Obtenemos las franquicias que están en el carousel---
         $this->carousel = new Collection();
 
+        //obtenemos los ids de todas las franquicias con el carousel activo a 1 y de forma desordenada quitando la de pega
+        //porque la buscamos explícitamente luego y dame solo cierta cantidad en este caso $this->tam_carousel
+        $carouselIds = PaquetesActivos::where('carousel', '=', 1)
+                                        ->where('id','<>',0)
+                                        ->orderBy(DB::raw('RAND()'))
+                                        ->take($this->tam_carousel)
+                                        ->get(array('id'));
+        //Creamos el array de datos obtenido de la tabla publicidad
+        $arrayDatosCarousel = new Collection();
 
-        //obtenemos los ids de todasl las franquicias con el carousel activo a 1
-        $carouselIds = PaquetesActivos::where('carousel', '=', 1)->get(array('id'));
-
-        //Creamos un array con los ids y lo desorganizamos
-        $desordenados = array();
-
-        //recorremos los objetos para obtener el id
-        foreach ($carouselIds as $id) {
-            array_push($desordenados, $id->id);
-        }
-
-        //desordenamos el array
-        shuffle($desordenados);
-
-        //recorremos el array de ids de franquicias desordenado y obtemos los datos de la franquicia para
-        //pasarlos a la vista
-        if (count($desordenados) > 5)
+        //Comprobamos que hay alguna franquicia aparte de la 0 dentro de los ids del caruoselIds (franquicia 0 es la de pega)
+        if(count($carouselIds) > 0)
         {
-            for ($i = 0; $i < 5; $i++) //Valor contante para solo obtener 5 en un futuro con un valor constante
+            //Si hay alguna franquicia aparte que ha contratado este servicio, pero son menos de 5,
+            // obtenemos su publicidad y el resto rellenamos con la de pega.
+            if(count($carouselIds) < $this->tam_carousel)
             {
-                $franquicia = franquicia_especial_subcategoria::find($id->id);
-                $this->carousel->push($franquicia);
+
+                //sino iremos sacando las que hay más valores de pega
+                //en este primer for
+                foreach($carouselIds as $id)
+                {
+                    $publicidad =  publicidad::where('franquicia_id', '=',$id->id)
+                                             ->where('idTipo_publicidad','=','1')->get();
+                    //array_push($arrayDatosCarousel,$publicidad);
+                    $arrayDatosCarousel->push($publicidad);
+                }
+
+                //Obtenemos las publicidades de la de pega que son la diferencia entre las normales y el tamaño total
+                //5 en este caso
+                $publicidadPega = publicidad::where('franquicia_id', '=',0)
+                                            ->where('idTipo_publicidad','=','1')
+                                            ->orderBy('idTipo_publicidad','DESC')->take($this->tam_carousel - count($carouselIds))->get();
+
+                //Reccorremos el collection devuelto y almacenado en $publicidadPega y guardamos en el nuevo array
+                for($i=0; $i < count($publicidadPega); $i++)
+                {
+                    $publicidad =  $publicidadPega[$i];
+                    $arrayDatosCarousel->push($publicidad);
+
+                }
+
+                $this->carousel = $arrayDatosCarousel;
+
+
+            }else{
+                //sino esque seran 5
+                foreach($carouselIds as $id)
+                {
+                    //metemos las 5 publicaciones aleatorias devueltas en el array.
+                    $publicidad = publicidad::where('franquicia_id', '=',$id->id)
+                                            ->where('idTipo_publicidad','=','1')->get();
+                    $arrayDatosCarousel->push($publicidad);
+                }
+
+                $this->carousel = $arrayDatosCarousel;
 
             }
-        }else{
-
-            for ($i = 0; $i < count($desordenados); $i++) //Valor contante para solo obtener 5 en un futuro con un valor constante
-            {
-                $franquicia = franquicia_especial_subcategoria::find($id->id);
-                $this->carousel->push($franquicia);
-
-            }
+        }else
+        {
+            //Si solo esta la franquicia de pega "0" entra aquí entonces cogemos los ultimos 5 articulos
+            //cuya franquicia es la 0 y cuyo tipo de publicidad es la 1 que es la de carousel.
+            $this->carousel  = publicidad::where('franquicia_id', '=',0)
+                                    ->where('idTipo_publicidad','=','1')
+                                    ->orderBy('id','DESC')->get();
         }
 
         View::share('carousel',$this->carousel);
