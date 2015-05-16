@@ -10,7 +10,6 @@ namespace app\Http\Controllers\email;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Mail\Mailer as Mail;
 
 
 /**

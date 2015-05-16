@@ -3,10 +3,9 @@
 
 namespace App\Http\Controllers\models_controller;
 
-use App\Model\Subcategoria;
+use App\model\Subcategoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use League\Flysystem\Exception;
 
 
 class subcategoriaController extends Controller

@@ -1,15 +1,12 @@
 <?php namespace App\Http\Controllers\areaprivada;
 
-use App\Model\Franquicia;
-use App\Model\Categoria;
+use App\model\Franquicia;
+use App\model\Categoria;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Model\franquicia_nom_subcategoria;
-use App\Model\franquicia_subcategoria;
-use App\Model\subcategoria;
-
-use App\Model\franquicia_categoria;
-use Illuminate\Support\Facades\DB;
+use App\model\franquicia_nom_subcategoria;
+use App\model\franquicia_subcategoria;
+use App\model\subcategoria;
 use Illuminate\Support\Facades\Request;
 
 

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\models_controller;
 
-use App\Model\Franquicia;
-use App\Model\PaquetesActivos;
+use App\model\Franquicia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session as Session;
 use League\Flysystem\Exception;
 use Ramsey\Uuid\Uuid;
 use Intervention\Image\ImageManagerStatic as Image;
-use App\Model\FranquiciaHasEspecial as FHE;
+use App\model\FranquiciaHasEspecial as FHE;
 use Illuminate\Support\Facades\DB AS DB;
-use App\Model\FranquiciaSubcategoria as FS;
+use App\model\FranquiciaSubcategoria as FS;
 use Illuminate\Support\Facades\Redirect;
 
 

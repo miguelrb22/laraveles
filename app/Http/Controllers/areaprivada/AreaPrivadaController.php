@@ -1,14 +1,12 @@
 <?php namespace App\Http\Controllers\areaprivada;
 
 use App\Http\Controllers\Controller;
-use App\Model\Categoria;
+use App\model\Categoria;
 use App\model\Franquicia as Franquicia;
-use App\Model\FranquiciaSubcategoria;
-use App\Model\PaquetesActivos;
-use App\Model\subcategoria;
+use App\model\FranquiciaSubcategoria;
+use App\model\PaquetesActivos;
+use App\model\subcategoria;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\DB AS DB;
-use Illuminate\Support\Facades\View;
 use Illuminate\View as v;
 
 class AreaPrivadaController extends Controller {

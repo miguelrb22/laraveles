@@ -2,12 +2,12 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
-use App\Model\Franquicia;
-use App\Model\Publicaciones;
-use App\Model\files;
+use App\model\Franquicia;
+use App\model\Publicaciones;
+use App\model\files;
+
 class franquiciaController extends Controller {
     /**
      * Este método devuelve los datos de una franquicia según en nombre pasado por parámetro desde el routes

@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\models_controller;
 
-use App\Model\Categoria;
+use App\model\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Flysystem\Exception;

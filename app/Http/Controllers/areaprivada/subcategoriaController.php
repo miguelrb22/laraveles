@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers\areaprivada;
 
-use App\Model\Franquicia;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Request;
-use App\Model\subcategoria;
-use App\Model\Categoria;
+use App\model\subcategoria;
+use App\model\Categoria;
 
 
 class subcategoriaController extends Controller {
