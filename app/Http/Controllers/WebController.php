@@ -9,21 +9,21 @@
 namespace App\Http\Controllers;
 
 
-use App\Model\Categoria;
-use App\Model\Franquicia;
-use App\Model\franquicia_nom_subcategoria;
-use App\Model\franquicia_subcategoria;
-use App\Model\franquicia_especial_subcategoria;
-use App\Model\Publicaciones;
-use App\Model\Subcategoria;
+use App\model\Categoria;
+use App\model\Franquicia;
+use App\model\franquicia_nom_subcategoria;
+use App\model\franquicia_subcategoria;
+use App\model\franquicia_especial_subcategoria;
+use App\model\Publicaciones;
+use App\model\Subcategoria;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
-use App\Model\PaquetesActivos;
-use App\Model\files;
+use App\model\PaquetesActivos;
+use App\model\files;
 use Illuminate\Support\Facades\View;
-use App\Model\publicidad;
+use App\model\publicidad;
 use Illuminate\Support\Facades\DB;
 
 
