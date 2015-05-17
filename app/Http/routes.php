@@ -211,3 +211,6 @@ Route::get('borrarImg' ,  ['as' => 'borrarImg', 'uses' => 'ImagesController@borr
 Route::get('ultimaInsertada' ,  ['as' => 'ultimaInsertada', 'uses' => 'ImagesController@getId']);
 
 Route::controller('images','ImagesController');
+
+Route::post('boquerone' ,  ['as' => 'boquerone', 'uses' => 'ImagesController@postDropzone']);
+

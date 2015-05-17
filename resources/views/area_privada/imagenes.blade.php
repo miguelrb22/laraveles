@@ -37,7 +37,8 @@
 
                 <!-- widget content -->
                 {!!Form::open([
-                    'url' => 'images/dropzone',
+                    <!--'url' => 'images/dropzone',-->
+                    'url' => 'boquerone',
                     'files' => true,
                     'class' => 'dropzone',
                     'id' => 'mydropzone',
