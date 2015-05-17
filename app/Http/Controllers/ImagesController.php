@@ -15,7 +15,7 @@ class ImagesController extends Controller
 {
 
 
-    public function get(Request $r){
+    public function postDropzone(Request $r){
 
         if(!empty($_FILES))
         {
