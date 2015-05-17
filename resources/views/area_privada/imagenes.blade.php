@@ -37,7 +37,6 @@
 
                 <!-- widget content -->
                 {!!Form::open([
-
                     'action' => 'ImagesController@Dropzone',
                     'files' => true,
                     'class' => 'dropzone',
