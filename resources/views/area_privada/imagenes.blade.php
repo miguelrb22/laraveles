@@ -33,11 +33,11 @@
 
             <!-- widget div-->
             <div role="content">
-
+                <!--'url' => 'images/dropzone',-->
 
                 <!-- widget content -->
                 {!!Form::open([
-                    <!--'url' => 'images/dropzone',-->
+
                     'url' => 'boquerone',
                     'files' => true,
                     'class' => 'dropzone',
