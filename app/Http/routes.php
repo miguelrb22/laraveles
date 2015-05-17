@@ -212,5 +212,5 @@ Route::get('ultimaInsertada' ,  ['as' => 'ultimaInsertada', 'uses' => 'ImagesCon
 
 Route::controller('images','ImagesController');
 
-Route::post('boquerone' ,  ['as' => 'boquerone', 'uses' => 'ImagesController@postDropzone']);
+Route::post('boquerone' ,  ['as' => 'boquerone', 'uses' => 'ImagesController@Dropzone']);
 
