@@ -38,11 +38,11 @@
                 <!-- widget content -->
                 {!!Form::open([
 
-                    'url' => 'boquerone',
+                    'action' => 'ImagesController@Dropzone',
                     'files' => true,
                     'class' => 'dropzone',
                     'id' => 'mydropzone',
-                    'method' => 'GET',
+                    'method' => 'POST',
                 ])!!}
 
                 {!!Form::close()!!}
