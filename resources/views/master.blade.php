@@ -41,7 +41,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
+            <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Juanca</a></li>
             <li class="dropdown lipersonal">
                 <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
