@@ -15,11 +15,11 @@ class ImagesController extends Controller
 {
 
 
-    public function postdropzone(Request $r){
+    public function get(Request $r){
 
         if(!empty($_FILES))
         {
-            //
+
             //El nombre temporal del archivo en el cual se almacena el archivo cargado en el servidor.
             $temporalFile = $_FILES['file']['tmp_name'];
 
