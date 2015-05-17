@@ -331,7 +331,6 @@
                     do {
                         $a2 = rand(0,count($fraquicias_destacadas)-1);
                     }while ($a2 === $a1);
-
             ?>
 
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -357,7 +356,7 @@
 
             <?php
                 }
-            ?>`
+            ?>
         @endsection
 
 
