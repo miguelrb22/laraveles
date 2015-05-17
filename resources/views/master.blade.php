@@ -45,7 +45,7 @@
             <li class="dropdown lipersonal">
                 <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas las franquicias</a></li>
+                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas lass franquicias</a></li>
                     <li class="divider"></li>
                     <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
