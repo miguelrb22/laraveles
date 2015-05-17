@@ -42,7 +42,7 @@
                     'files' => true,
                     'class' => 'dropzone',
                     'id' => 'mydropzone',
-                    'method' => 'POST',
+                    'method' => 'GET',
                 ])!!}
 
                 {!!Form::close()!!}
