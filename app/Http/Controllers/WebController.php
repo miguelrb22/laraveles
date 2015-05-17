@@ -15,7 +15,7 @@ use App\model\franquicia_nom_subcategoria;
 use App\model\franquicia_subcategoria;
 use App\model\franquicia_especial_subcategoria;
 use App\model\Publicaciones;
-use App\model\Subcategoria;
+use App\model\subcategoria;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
