@@ -41,11 +41,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Juanca</a></li>
+            <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
             <li class="dropdown lipersonal">
                 <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas lass franquicias</a></li>
+                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas las franquicias</a></li>
                     <li class="divider"></li>
                     <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
                     <li class="divider"></li>
