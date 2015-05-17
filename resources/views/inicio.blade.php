@@ -159,7 +159,7 @@
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_lowcost[$a4]->nombre."/".$franquicias_lowcost[$a4]->nombre_comercial)))}}" title="perfil">{{$franquicias_lowcost[$a4]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->nombre_comercial) }}" alt="prueba" >
+                            <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->logo_url) }}" alt="prueba" >
                         </div>
                     </div>
                     @else
