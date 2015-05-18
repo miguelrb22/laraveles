@@ -140,6 +140,7 @@ class WebController extends Controller {
 
                 }
 
+                dd("no entraaaaa");
                 $this->carousel = $arrayDatosCarousel;
 
 
@@ -165,7 +166,6 @@ class WebController extends Controller {
                                     ->where('idTipo_publicidad','=','1')
                                     ->orderBy('id','DESC')->get();
 
-            dd($this->carousel);
         }
 
         View::share('carousel',$this->carousel);
