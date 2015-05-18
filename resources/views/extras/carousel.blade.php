@@ -21,6 +21,7 @@
                     </div>
 
                   @for($i = 1; $i < count($carousel); $i++)
+                      {{dd("entra")}};
                     <div class="item">
                         <a href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[$i]->url_contenido) }}"><img src="{{ asset($carousel[$i]->url_imagen)}}" alt="Chania" class="imgcarousel img-responsive"></a>
                         <div class="carousel-caption">
