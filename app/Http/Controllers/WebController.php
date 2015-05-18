@@ -161,7 +161,7 @@ class WebController extends Controller {
 
             //Si solo esta la franquicia de pega "0" entra aquí entonces cogemos los ultimos 5 articulos
             //cuya franquicia es la 0 y cuyo tipo de publicidad es la 1 que es la de carousel.
-            $this->carousel  = publicidad::where('franquicia_id', '=',0)
+            $this->carousel  = publicidad::where('franquicia_id', '=',1)
                                     ->where('idTipo_publicidad','=','1')
                                     ->orderBy('id','DESC')->get();
 
