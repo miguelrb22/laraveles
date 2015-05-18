@@ -33,11 +33,11 @@
 
             <!-- widget div-->
             <div role="content">
-                <!--'url' => 'images/dropzone',-->
+
 
                 <!-- widget content -->
                 {!!Form::open([
-                    'action' => 'ImagesController@Dropzone',
+                    'route' => 'files.store',
                     'files' => true,
                     'class' => 'dropzone',
                     'id' => 'mydropzone',
