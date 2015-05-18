@@ -45,7 +45,9 @@
                                         </a>
                                     </strong>
                                 </h4>
-                                <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" width="100" height="100">
+                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                                    <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" width="100" height="100">
+                                </a>
                             </div>
                         </div>
                     @else
@@ -82,7 +84,9 @@
                                     <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_rentables[$a2]->nombre."/".$franquicias_rentables[$a2]->nombre_comercial)))}}" title="perfil">{{$franquicias_rentables[$a2]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <img class="img-responsive" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
+                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                                <img class="img-responsive" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
+                            </a>
                         </div>
                     </div>
                     @else
@@ -106,7 +110,6 @@
                             </div>
                     @endif
 
-
                 </section>
 
                 <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -123,7 +126,9 @@
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_baratas[$a3]->nombre."/".$franquicias_baratas[$a3]->nombre_comercial)))}}" title="perfil">{{$franquicias_baratas[$a3]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <img class="img-responsive" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
+                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                                <img class="img-responsive" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
+                            </a>
                         </div>
                     </div>
                     @else
@@ -160,7 +165,9 @@
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_lowcost[$a4]->nombre."/".$franquicias_lowcost[$a4]->nombre_comercial)))}}" title="perfil">{{$franquicias_lowcost[$a4]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->logo_url) }}" alt="prueba" >
+                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                                <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->logo_url) }}" alt="prueba" >
+                            </a>
                         </div>
                     </div>
                     @else
