@@ -10,10 +10,12 @@
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
-
+                {{dd($carousel)}}
                 @if(!$carousel->isEmpty())
                     <div class="item active">
+                      <a href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><img src="{{ asset($carousel[0]->url_imagen)}} " alt="Chania" class="imgcarousel img-responsive"></a>
                       <div class="carousel-caption">
+                          <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><h3>{{$carousel[0]->titulo_carousel}}</h3></a>
                           </a><p class="pcarousel">{{$carousel[0]->descripcion_carousel}}</p>
                       </div>
                     </div>
