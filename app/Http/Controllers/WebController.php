@@ -101,7 +101,7 @@ class WebController extends Controller {
         //obtenemos los ids de todas las franquicias con el carousel activo a 1 y de forma desordenada quitando la de pega
         //porque la buscamos explícitamente luego y dame solo cierta cantidad en este caso $this->tam_carousel
         $carouselIds = PaquetesActivos::where('carousel', '=', 1)
-                                        ->where('id','<>',0)
+                                        ->where('id','<>',1)
                                         ->orderBy(DB::raw('RAND()'))
                                         ->take($this->tam_carousel)
                                         ->get(array('id'));
@@ -140,7 +140,6 @@ class WebController extends Controller {
 
                 }
 
-                dd("no entraaaaa");
                 $this->carousel = $arrayDatosCarousel;
 
 
