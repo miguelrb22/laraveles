@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
-use App\Model\files;
+use App\model\files;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Request;
 use DB;
