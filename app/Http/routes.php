@@ -11,12 +11,9 @@
 |
 */
 
-use App\Model\Categoria;
-use App\Model\subcategoria;
-use App\Model\Franquicia;
-use App\Model\franquicia_categoria;
-use App\Model\franquicia_subcategoria;
-use App\Model\franquicia_nom_subcategoria;
+use App\model\subcategoria;
+use App\model\Franquicia;
+use App\model\franquicia_subcategoria;
 
 Route::get('/', ['as' => 'home', 'uses' =>  'WebController@index']);
 
