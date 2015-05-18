@@ -99,7 +99,7 @@ class ImagesController extends Controller
         imagedestroy($new);*/
 
         //la ruta de la imagen para añadirla al nombre completo
-        $dir = public_path().'/imgfranquicias/';
+        $dir = public_path().'/images/imgfranquicias/';
 
         if(move_uploaded_file($temporalFile,$dir.$cifrado.'.'.$extension[1]))
         {
@@ -222,7 +222,7 @@ class ImagesController extends Controller
     {
         //Borramos la imagen de la carpeta
         $imagen = files::find($r::Input('id'));
-        $filename = public_path().'/imgfranquicias/'.$imagen->nombre;
+        $filename = public_path().'/images/imgfranquicias/'.$imagen->nombre;
 
         if (File::exists($filename)) {
 

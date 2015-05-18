@@ -81,7 +81,7 @@
                         //uso el campo flag para saber si es una imagen cargada anteriormente o no a la hora de borrar para
                         //incrementar la variable maxfiles o no.
                         thisDropzone.options.addedfile.call(thisDropzone, imagen);
-                        thisDropzone.options.thumbnail.call(thisDropzone, imagen, "{{ URL::asset('imgfranquicias') }}"+'/'+value.nombre);
+                        thisDropzone.options.thumbnail.call(thisDropzone, imagen, "{{ URL::asset('/images/imgfranquicias') }}"+'/'+value.nombre);
 
                         thisDropzone.options.maxFiles = thisDropzone.options.maxFiles - 1;
                         //console.log("rellenar => "+thisDropzone.options.maxFiles);
