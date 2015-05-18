@@ -164,6 +164,8 @@ class WebController extends Controller {
             $this->carousel  = publicidad::where('franquicia_id', '=',0)
                                     ->where('idTipo_publicidad','=','1')
                                     ->orderBy('id','DESC')->get();
+
+            dd($this->carousel);
         }
 
         View::share('carousel',$this->carousel);
