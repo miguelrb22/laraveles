@@ -54,7 +54,7 @@ class franquiciaController extends Controller
             //img resizes
             $location = public_path().$url;
             $image = Image::make($location);
-            $image->resize(200,200);
+            $image->resize(180,70);
             $image->save($location);
 
         }
