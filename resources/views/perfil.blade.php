@@ -54,8 +54,8 @@
                                 }
 
                                 echo  "<td>";
-                                echo    "<a class='fancybox-thumb' rel='fancybox-button' href='".url('/')."/images/imgfranquicias/".$imagenes[$i]->nombre."' title='".$imagenes[$i]->nombreOriginal."' >";
-                                echo        "<img class='img-responsive' src='". URL::asset('/images/imgfranquicias/').$imagenes[$i]->nombre."' alt='' width='100' heigth='100' />";
+                                echo    "<a class='fancybox-thumb' rel='fancybox-button' href='". URL::asset('/images/imgfranquicias')."/".$imagenes[$i]->nombre."' title='".$imagenes[$i]->nombreOriginal."' >";
+                                echo        "<img class='img-responsive' src='". URL::asset('/images/imgfranquicias')."/".$imagenes[$i]->nombre."' alt='' width='100' heigth='100' />";
                                 echo    "</a>";
                                 echo  "</td>";
 
