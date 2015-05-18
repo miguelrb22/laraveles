@@ -25,6 +25,9 @@
                 <br>
                 <table class="table-responsive">
                     <tr>
+                        <td><img class='img-responsive' src={{ url('/').$franquicia->logo_url}} alt='' width='100' heigth='100' style="margin-bottom: 3%"/></td>
+                    </tr>
+                    <tr>
                         <td>{{$franquicia->nombre_comercial}}</td>
                     </tr>
                     <tr>
@@ -50,10 +53,9 @@
                                     echo "<tr>";
                                 }
 
-
                                 echo  "<td>";
-                                echo    "<a class='fancybox-thumb' rel='fancybox-button' href='".url('/')."/imgfranquicias/".$imagenes[$i]->nombre."' title='".$imagenes[$i]->nombreOriginal."' >";
-                                echo        "<img class='img-responsive' src='".url('/')."/imgfranquicias/".$imagenes[$i]->nombre."' alt='' width='100' heigth='100' />";
+                                echo    "<a class='fancybox-thumb' rel='fancybox-button' href='".url('/')."/images/imgfranquicias/".$imagenes[$i]->nombre."' title='".$imagenes[$i]->nombreOriginal."' >";
+                                echo        "<img class='img-responsive' src='".url('/')."/images/imgfranquicias/".$imagenes[$i]->nombre."' alt='' width='100' heigth='100' />";
                                 echo    "</a>";
                                 echo  "</td>";
 

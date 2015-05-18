@@ -171,6 +171,8 @@
     <table name="franquicia_subcategoria" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="franquicia_id,subcategoria_id"/>
       <foreign-key name="fk_franquicia_has_subcategoria_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_franquicia_has_subcategoria_subcategoria1" columns="subcategoria_id" ref-table="subcategoria" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -234,6 +236,8 @@
       <column name="destacado_categoria" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
       <column name="patrocinado_b" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <column name="noticia_des" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_paquetes_activos_franquicia1" columns="id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_paquetes_activos_franquicia1_idx" unique="false" columns="id"/>
