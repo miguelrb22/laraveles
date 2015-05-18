@@ -96,7 +96,7 @@ class WebController extends Controller {
 
 
         //Obtenemos las franquicias que están en el carousel---
-        $this->carousel = new Collection();
+        $this->carousel = new publicidad();
 
         //obtenemos los ids de todas las franquicias con el carousel activo a 1 y de forma desordenada quitando la de pega
         //porque la buscamos explícitamente luego y dame solo cierta cantidad en este caso $this->tam_carousel
