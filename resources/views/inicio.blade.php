@@ -44,7 +44,7 @@
                                         </a>
                                     </strong>
                                 </h4>
-                                <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" >
+                                <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" width="100" height="100">
                             </div>
                         </div>
                     @else
