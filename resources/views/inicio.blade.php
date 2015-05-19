@@ -278,7 +278,7 @@
                                 @if(!$publicaciones->isEmpty())
                                     @for($i=0; $i< 6; $i++)
                                         <div class="row" id="noticia1">
-                                            <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
+                                            <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
                                                 <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-prenoticia" width='' height=""></a>
                                             </div>
                                             <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
