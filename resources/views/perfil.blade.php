@@ -138,7 +138,7 @@
                         <?php
                             for($i = 1; $i<count($valores); $i++)
                             {
-                                echo "<li>" . $valores[$i] . " </li>";
+                                echo "<li> -" . $valores[$i] . " </li>";
                             }
                         ?>
                     </ul>
@@ -268,7 +268,7 @@
 
                             for($i = 0; $i<count($valores); $i++)
                             {
-                                echo "<li>" . $valores[$i] . " </li>";
+                                echo "<li> -" . $valores[$i] . " </li>";
                             }
                         ?>
                     </ul>
