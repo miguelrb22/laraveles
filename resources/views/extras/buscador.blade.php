@@ -11,7 +11,7 @@
         <select class="form-control" name="categoria">
             <option value="-1" selected="">- Selecciona categoría -</option>
             @for($i=0; $i< count($categorias); $i++)
-                <option value="{{$categorias->id}}">{{$categorias[$i]->nombre}}</option>
+                <option value="{{$categorias[$i]->id}}">{{$categorias[$i]->nombre}}</option>
             @endfor
         </select>
     </div>
