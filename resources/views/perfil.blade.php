@@ -129,22 +129,19 @@
                     <h2> {{ $franquicia->nombre_comercial }}</h2>
                     <br>
 
-                    <p>{{$franquicia->descripcion}}</p>
+                    <?php
+                        $valores = explode('-',$franquicia->descripcion);
+                    ?>
+                    <p>{{$valores[0]}}</p>
 
                     <ul class="claves">
                         <?php
-                        $valores = explode('-',$franquicia->descripcion);
-
-
-                        for($i = 1; $i<count($valores); $i++)
-                        {
-                            echo "<li>" . $valores[$i] . " </li>";
-                        }
+                            for($i = 1; $i<count($valores); $i++)
+                            {
+                                echo "<li>" . $valores[$i] . " </li>";
+                            }
                         ?>
                     </ul>
-
-                    <p>{{$franquicia->descripcion}}</p>
-
 
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
