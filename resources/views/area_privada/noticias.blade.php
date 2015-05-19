@@ -25,6 +25,7 @@
                                 <option value="1" selected>Noticia</option>
                                 <option value="2">Reportaje</option>
                                 <option value="3">Carousel</option>
+
                             </select>
                         </div>
 
