@@ -1,5 +1,7 @@
 @extends('master')
 
+
+
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/jssocials-theme-classic.css')}}">
@@ -74,7 +76,7 @@
 
 
 
-                            <div><img style="float: left; margin-right: 1%;" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image" width='200' height="200" style="border-radius:10%"/>  {!! $articulo[0]->contenido !!} </div>
+                            <div><img class="img-noticia" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image" width='200' height="200"/>  {!! $articulo[0]->contenido !!} </div>
                         <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                             </div>
 

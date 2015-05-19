@@ -755,3 +755,9 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 #logo{
     margin: 0;
 }
+
+.img-noticia{
+    float: left;
+    margin-right: 1%;
+    border-radius: 10%;
+}
