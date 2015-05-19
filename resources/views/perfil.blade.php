@@ -138,7 +138,7 @@
                         <?php
                             for($i = 1; $i<count($valores); $i++)
                             {
-                                echo "<li> -" . $valores[$i] . " </li>";
+                                echo "<li> - " . $valores[$i] . " </li>";
                             }
                         ?>
                     </ul>
@@ -264,11 +264,11 @@
                     <lavel><h4>Claves de negocio</h4></lavel>
                     <ul class="listas">
                         <?php
-                            $valores = explode(';',$franquicia->claves_negocio);
+                            $valores = explode('-',$franquicia->claves_negocio);
 
                             for($i = 0; $i<count($valores); $i++)
                             {
-                                echo "<li> -" . $valores[$i] . " </li>";
+                                echo "<li> - " . $valores[$i] . " </li>";
                             }
                         ?>
                     </ul>
