@@ -210,7 +210,7 @@
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label class="label">Claves de Negocio:</label>
                                                                     <label class="textarea textarea-resizable">
-                                                                        <textarea class="custom-scroll" rows="1" id="claves" name="claves"></textarea>
+                                                                        <textarea class="custom-scroll" rows="1" id="claves_negocio" name="claves_negocio"></textarea>
                                                                     </label>
                                                                 </section>
                                                             </div>

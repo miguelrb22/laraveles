@@ -959,7 +959,7 @@
                             }
                         }
                     },
-                    claves: {
+                    claves_negocio: {
                         validators: {
                             notEmpty : {
                                 message : 'Este campo es requerido'
