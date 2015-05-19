@@ -76,7 +76,7 @@
 
 
 
-                            <div><img class="img-noticia" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image" width='200' height="200"/>  {!! $articulo[0]->contenido !!} </div>
+                            <div><img class="img-noticia" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image"/>  {!! $articulo[0]->contenido !!} </div>
                         <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                             </div>
 
