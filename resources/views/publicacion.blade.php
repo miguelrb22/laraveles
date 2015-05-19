@@ -51,7 +51,7 @@
         <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
 
             <div class="row">
-                <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image" style="border-radius:10%">
+                <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
                 <hr id="separador">
             </div>
             <div class="row noticias">
@@ -74,7 +74,7 @@
 
 
 
-                            <div><img style="float: left; margin-right: 1%;" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image" width='200' height="200" />  {!! $articulo[0]->contenido !!} </div>
+                            <div><img style="float: left; margin-right: 1%;" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image" width='200' height="200" style="border-radius:10%"/>  {!! $articulo[0]->contenido !!} </div>
                         <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                             </div>
 
