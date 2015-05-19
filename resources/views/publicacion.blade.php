@@ -51,7 +51,7 @@
         <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
 
             <div class="row">
-                <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
+                <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image" style="border-radius:10%">
                 <hr id="separador">
             </div>
             <div class="row noticias">
