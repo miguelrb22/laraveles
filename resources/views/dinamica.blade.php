@@ -51,7 +51,7 @@
                         <div class="well">
                             <label>Resultados de busqueda: <span class="badge badge-info"> {{ $resultados }} </span> franquicias  </label>
                         </div>
-                        <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
+                        <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive f-logo" alt="Responsive image">
                         <h2>{{ "Franquicias " .str_replace('-',' ',$categoria )}}</h2>
                         <hr id="separador">
                         @foreach($franquicias as $franquicia)
