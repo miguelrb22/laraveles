@@ -46,7 +46,7 @@
                                     </strong>
                                 </h4>
                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
-                                    <img  class="img-responsive" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" width="100" height="100">
+                                    <img  class="img-responsive c_especial" src="{{ asset($franquicias_exito[$a1]->logo_url) }}" alt="prueba" width="100" height="100">
                                 </a>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                         </a>
                                     </strong>
                                 </h4>
-                                <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                                <img class="img-responsive c_especial" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
                             </div>
                         </div>
                     @endif
@@ -85,7 +85,7 @@
                                 </strong>
                             </h4>
                             <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
-                                <img class="img-responsive" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
+                                <img class="img-responsive c_especial" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
                             </a>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                             </a>
                                         </strong>
                                     </h4>
-                                    <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                                    <img class="img-responsive c_especial" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
                                 </div>
                             </div>
                     @endif
@@ -127,7 +127,7 @@
                                 </strong>
                             </h4>
                             <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
-                                <img class="img-responsive" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
+                                <img class="img-responsive c_especial" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
                             </a>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                                         </a>
                                     </strong>
                                 </h4>
-                                <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                                <img class="img-responsive c_especial" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
                             </div>
                         </div>
                     @endif
@@ -166,7 +166,7 @@
                                 </strong>
                             </h4>
                             <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
-                                <img class="img-responsive" src="{{ asset($franquicias_lowcost[$a4]->logo_url) }}" alt="prueba" >
+                                <img class="img-responsive c_especial" src="{{ asset($franquicias_lowcost[$a4]->logo_url) }}" alt="prueba" >
                             </a>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                                         </a>
                                     </strong>
                                 </h4>
-                                <img class="img-responsive" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                                <img class="img-responsive c_especial" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
                             </div>
                         </div>
                     @endif
