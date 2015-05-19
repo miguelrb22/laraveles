@@ -965,7 +965,7 @@
                                 message : 'Este campo es requerido'
                             }
                         }
-                    }
+                    },
                     categoria : {
                         validators: {
                             notEmpty : {
