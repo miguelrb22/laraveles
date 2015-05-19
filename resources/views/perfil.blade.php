@@ -138,7 +138,7 @@
                         </tr>
                         <tr>
                             <td>Inversión inicial:</td>
-                            <td> {{$franquicia->inversion}} €</td>
+                            <td> {{$franquicia->inversion}} </td>
                         </tr>
                         <tr>
                             <td>Canon de entrada:</td>

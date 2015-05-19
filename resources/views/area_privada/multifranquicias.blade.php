@@ -959,6 +959,13 @@
                             }
                         }
                     },
+                    claves: {
+                        validators: {
+                            notEmpty : {
+                                message : 'Este campo es requerido'
+                            }
+                        }
+                    }
                     categoria : {
                         validators: {
                             notEmpty : {

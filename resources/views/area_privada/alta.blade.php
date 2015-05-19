@@ -205,11 +205,21 @@
                                                                 </section>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label class="label">Claves de Negocio:</label>
+                                                                    <label>Descripción:</label>
+                                                                    <label class="textarea textarea-resizable">
+                                                                        <textarea class="custom-scroll" rows="1" id="claves" name="claves"></textarea>
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
                                                         <hr>
                                                         <br>
                                                         <h5>Datos economicos:</h5>
                                                         <br>
-
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
@@ -426,8 +436,6 @@
                                                                     <label class="input">
                                                                         <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal">
                                                                     </label>
-
-
                                                                 </section>
 
                                                             </div>
