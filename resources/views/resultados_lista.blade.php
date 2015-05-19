@@ -67,7 +67,7 @@
                                     <p>
                                         <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
                                         <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".$franquicia->nombre_comercial)))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
-                                        <p>{{ $franquicia->descripcion }}</p>
+                                        <p>{{ substr($franquicia->descripcion,0,250)."..." }}</p>
                                         <label>Actividad : {{$franquicia->nombre}}</label>
                                     </p>
                                 </div>
