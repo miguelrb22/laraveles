@@ -656,7 +656,7 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 }
 
 .pagination a,li{
-    color:#606; /*cambiado*/
+    color:#606 !important;
 }
 
 .fecha_publicacion{
