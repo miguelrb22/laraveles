@@ -134,7 +134,7 @@
                     ?>
                     <p>{{$valores[0]}}</p>
 
-                    <ul class="claves">
+                    <ul class="listas">
                         <?php
                             for($i = 1; $i<count($valores); $i++)
                             {
@@ -262,7 +262,7 @@
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <lavel><h4>Claves de negocio</h4></lavel>
-                    <ul class="claves">
+                    <ul class="listas">
                         <?php
                             $valores = explode(';',$franquicia->claves_negocio);
 
