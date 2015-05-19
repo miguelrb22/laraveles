@@ -63,13 +63,13 @@ class EmailController extends Controller {
             'informacion' => $this->informacion
         );
 
-        $fromEmail = 'miguelruizbas@gmail.com';
-        $fromName = 'Miguel';
+        $fromEmail = 'info@multifranquicias.com';
+        $fromName = 'Multifranquicias';
 
         try {
 
             \Mail::send('emails.informacion', $data, function ($message) use ($fromName, $fromEmail) {
-                $message->to($fromEmail, $fromName);
+                $message->to($this->email, $this->nombre);
                 $message->from($fromEmail, $fromName);
                 $message->subject('Nueva solicitud de informacion');
             });
