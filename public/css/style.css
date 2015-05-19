@@ -764,6 +764,12 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
     height: 10%;
 }
 
+@media (min-width: 510px ) and (max-width: 991px){
+    .img-prenoticia {
+        width: 0%;
+    }
+}
+
 .img-prenoticia{
     border-radius: 100%;
     width: 110%;
