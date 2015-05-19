@@ -289,7 +289,7 @@
                                                 <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                @if($i+1 < count($publicaciones))
+                                                @if($i+1 < 6)
                                                     <hr class="separador_post">
                                                 @endif
                                             </div>
