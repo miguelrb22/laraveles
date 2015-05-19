@@ -209,7 +209,6 @@
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label class="label">Claves de Negocio:</label>
-                                                                    <label>Descripción:</label>
                                                                     <label class="textarea textarea-resizable">
                                                                         <textarea class="custom-scroll" rows="1" id="claves" name="claves"></textarea>
                                                                     </label>
