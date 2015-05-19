@@ -190,7 +190,7 @@
                                                                      style="margin-bottom: 12px">
                                                                 <label>Descripción:</label>
                                                                 <label class="textarea textarea-resizable">
-                                                                    <textarea value="{{$ses->descripcion}}" class="custom-scroll" rows="1" id="descripcion" name="descripcion"></textarea>
+                                                                    <textarea class="custom-scroll" rows="1" id="descripcion" name="descripcion">{{$ses->descripcion}}</textarea>
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -566,14 +566,14 @@
                                                                 <label>Domicilio Facturación:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="domicilio_facturacion" id="facturacion" class="form-control" placeholder="Domicilio Facturación">
+                                                                    <input type="text" value='{{$ses->domicilio_facturacion}}' name="domicilio_facturacion" id="facturacion" class="form-control" placeholder="Domicilio Facturación">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
                                                                 <label>Código Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cp_fac" id="facturacion" class="form-control" placeholder="CP">
+                                                                    <input type="text" value='{{$ses->cp_fac}}' name="cp_fac" id="facturacion" class="form-control" placeholder="CP">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -584,14 +584,14 @@
                                                                 <label>Domicilio Fiscal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="domicio_fiscal" id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
+                                                                    <input type="text" value='{{$ses->domicio_fiscal}}' name="domicio_fiscal" id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
                                                                 <label>Código Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cp_fiscal" class="form-control" id="postalfiscal" placeholder="CP">
+                                                                    <input type="text" value='{{$ses->cp_fiscal}}' name="cp_fiscal" class="form-control" id="postalfiscal" placeholder="CP">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -602,14 +602,14 @@
                                                                 <label>Domicilio Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="domicilio_postal" class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
+                                                                    <input type="text" value='{{$ses->domicilio_facturacion}}' name="domicilio_postal" class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-3 col-sm-3">
                                                                 <label>Código Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="cp_postal" class="form-control" id="postalpostal" placeholder="CP">
+                                                                    <input type="text" value='{{$ses->cp_postal}}' name="cp_postal" class="form-control" id="postalpostal" placeholder="CP">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -620,14 +620,14 @@
                                                                 <label>Nombre y Apellidos de Contacto:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="nombre_apellidos_contacto" class="form-control" id="contanto" placeholder="Nombre y Apellidos">
+                                                                    <input type="text" value='{{$ses->nombre_apellidos_contacto }}' name="nombre_apellidos_contacto" class="form-control" id="contanto" placeholder="Nombre y Apellidos">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Teléfono de Contacto:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="tf_contacto" class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
+                                                                    <input type="text" value='{{$ses->tf_contacto}}' name="tf_contacto" class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -637,13 +637,13 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" style="margin-bottom: 38px;">
                                                                 <label>Email de Contacto:</label>
                                                                 <label class="input"> <i class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="email_contacto" id="emailcontacto" placeholder="Email Contacto">
+                                                                    <input type="text" value='{{$ses->email_contacto}}' name="email_contacto" id="emailcontacto" placeholder="Email Contacto">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Cargo contacto:</label>
                                                                 <label class="input"> <i class="icon-append fa fa-home"></i>
-                                                                    <input type="text" name="cargo_contacto" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
+                                                                    <input type="text" value='{{$ses->cargo_contacto}}' name="cargo_contacto" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
                                                                 </label>
                                                             </section>
                                                         </div>
