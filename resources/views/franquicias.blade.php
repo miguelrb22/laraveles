@@ -69,7 +69,8 @@
                                                 @else
                                                     @if(count($lista[$i+1]) != 0)
                                                         <div class="panel">
-                                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lista[$i])))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
+                                                            <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
+                                                                        'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
                                                         </div>
                                                     @endif
                                                 @endif
