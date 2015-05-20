@@ -223,10 +223,16 @@
 
                                                     <div class="form-group">
                                                         <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                            <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Inversión:</label>
                                                                 <label class="input">
                                                                     <input id="inversion" type="text" name="inversion" value="{{$ses->inversion}}" class="form-control" placeholder="Inversión">
+                                                                </label>
+                                                            </section>
+                                                            <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Inversión Pública:</label>
+                                                                <label class="input">
+                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión pública">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -427,7 +433,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                            <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Red en Extranjero:</label>
 
                                                                 <div class="inline-group" style="margin-top:5px">

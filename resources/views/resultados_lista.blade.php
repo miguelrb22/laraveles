@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <p>
-                                        <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
+                                        <!--<label class="pull-right badge badge-success">Inversión: {!! $franquicia->inversion !!}</label> -->
                                         <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".$franquicia->nombre_comercial)))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
                                         <p>{{ substr($franquicia->descripcion,0,250)."..." }}</p>
                                         <label>Actividad : {{$franquicia->nombre}}</label>
