@@ -210,7 +210,7 @@ class WebController extends Controller {
         $franquicias_baratas = franquicia_especial_subcategoria::where('especial','=', 'baratas')->groupBy('id')->get();
         $franquicias_rentables = franquicia_especial_subcategoria::where('especial','=', 'rentables')->groupBy('id')->get();
         $franquicias_lowcost = franquicia_especial_subcategoria::where('especial','=', 'lowcost')->groupBy('id')->get();
-        $fraquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
+        $franquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
 
         //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
         $patrocinadas = $this->patrocinadasB;
@@ -220,7 +220,7 @@ class WebController extends Controller {
 
         //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
         $categorias = Categoria::all();
-        return view('inicio',compact('franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'fraquicias_destacadas','publicaciones','patrocinadas'));
+        return view('inicio',compact('franquicias_exito', 'franquicias_baratas','franquicias_rentables','franquicias_lowcost', 'franquicias_destacadas','publicaciones','patrocinadas'));
     }
 
     /*

@@ -119,7 +119,7 @@
                     ?>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  ><strong>Fraquicias baratas</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  ><strong>Franquicias baratas</strong></a></h4>
                             <hr/>
                             <h4 class="text-center letra">
                                 <strong>
@@ -158,7 +158,7 @@
                     ?>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" ><strong>Fraquicias low cost</strong></a></h4>
+                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" ><strong>Franquicias low cost</strong></a></h4>
                             <hr/>
                             <h4 class="text-center letra">
                                 <strong>
@@ -331,13 +331,13 @@
 
             <?php
 
-                if(!$fraquicias_destacadas->isEmpty() && count($fraquicias_destacadas) >= 2){
+                if(!$franquicias_destacadas->isEmpty() && count($franquicias_destacadas) >= 2){
 
-                    $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
-                    $a2 = mt_rand(0,count($fraquicias_destacadas)-1);
+                    $a1 = mt_rand(0,count($franquicias_destacadas)-1);
+                    $a2 = mt_rand(0,count($franquicias_destacadas)-1);
 
                     do {
-                        $a2 = rand(0,count($fraquicias_destacadas)-1);
+                        $a2 = rand(0,count($franquicias_destacadas)-1);
                     }while ($a2 === $a1);
             ?>
 
@@ -348,15 +348,15 @@
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 text-center">
-                                <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}">{{$fraquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
-                                <a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a1]->nombre."/".$fraquicias_destacadas[$a1]->nombre_comercial)}}"><img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a1]->logo_url) }}" alt="prueba" ></a>
+                                <h3><a href="{{URL::to('franquicias-de-'.$franquicias_destacadas[$a1]->nombre."/".$franquicias_destacadas[$a1]->nombre_comercial)}}">{{$franquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
+                                <a href="{{URL::to('franquicias-de-'.$franquicias_destacadas[$a1]->nombre."/".$franquicias_destacadas[$a1]->nombre_comercial)}}"><img class="img-responsive img_destacados" src="{{ asset($franquicias_destacadas[$a1]->logo_url) }}" alt="prueba" ></a>
                                 <br>
                             </div>
 
                             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                 <br/>
-                                <h3><a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}">{{$fraquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
-                                <a href="{{URL::to('franquicias-de-'.$fraquicias_destacadas[$a2]->nombre."/".$fraquicias_destacadas[$a2]->nombre_comercial)}}"><img class="img-responsive img_destacados" src="{{ asset($fraquicias_destacadas[$a2]->logo_url) }}" alt="prueba"></a>
+                                <h3><a href="{{URL::to('franquicias-de-'.$franquicias_destacadas[$a2]->nombre."/".$franquicias_destacadas[$a2]->nombre_comercial)}}">{{$franquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
+                                <a href="{{URL::to('franquicias-de-'.$franquicias_destacadas[$a2]->nombre."/".$franquicias_destacadas[$a2]->nombre_comercial)}}"><img class="img-responsive img_destacados" src="{{ asset($franquicias_destacadas[$a2]->logo_url) }}" alt="prueba"></a>
                             </div>
                     </div>
                 </div>
