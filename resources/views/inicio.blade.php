@@ -284,7 +284,7 @@
                                                 <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
                                                     <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
                                                 </p>
-                                                <p class="fecha_publicacion pull-right">{{ $publicaciones[$i]->created_at }}</p>
+                                                <p class="fecha_publicacion pull-right">{{ date('d-m-Y H:i ',strtotime($publicaciones[$i]->created_at)) }}</p>
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 @if($i+1 < 6)
