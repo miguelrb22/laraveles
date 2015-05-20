@@ -217,7 +217,7 @@
         $(".subcategoria").on('click',function(){
 
 
-})
+        })
 
     });
 

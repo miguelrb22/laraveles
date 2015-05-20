@@ -579,7 +579,7 @@
             }
 
         });
-    }
+    });
 
 
 
@@ -591,8 +591,8 @@
     $(".similares").prop('checked', false);
     $(".desmarcar").html('Marcar todas las franquicias');
     }else{
-    $(".similares").prop('checked', true);
-    $(".desmarcar").html('Desmarcar todas las franquicias');
+        $(".similares").prop('checked', true);
+        $(".desmarcar").html('Desmarcar todas las franquicias');
     }
 
     });
