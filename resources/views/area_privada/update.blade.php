@@ -818,9 +818,21 @@
                             }
                         },
                         inversion : {
+                            group : '.col-lg-6',
                             validators : {
                                 notEmpty : {
                                     message : 'Este campo es requerido'
+                                }
+                            },
+                            numeric : {
+                                message : 'Este campo debe ser numérico'
+                            }
+                        },
+                        inversion_p : {
+                            group : '.col-lg-6',
+                                validators : {
+                                    notEmpty : {
+                                        message : 'Este campo es requerido'
                                 }
                             }
                         },
