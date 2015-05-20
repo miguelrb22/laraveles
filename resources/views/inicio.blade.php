@@ -331,7 +331,7 @@
 
             <?php
 
-                if(!$fraquicias_destacadas->isEmpty() && count($franquicias_destacadas) >= 2){
+                if(!$fraquicias_destacadas->isEmpty() && count($fraquicias_destacadas) >= 2){
 
                     $a1 = mt_rand(0,count($fraquicias_destacadas)-1);
                     $a2 = mt_rand(0,count($fraquicias_destacadas)-1);
