@@ -61,7 +61,6 @@
                             </div>
                             <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
                                 <p>
-                                    <label class="pull-right badge badge-success">Inversión: {{$franquicia->inversion}}</label>
                                     <a href="{{Request::url().'/'.$franquicia->nombre_comercial}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
                                     <p>{{ substr($franquicia->descripcion,0,250)."..." }}</p>
                                 </p>
