@@ -6,9 +6,6 @@
 @section('anuncio')
     @include('extras.anuncio')
 @endsection
-@section('carousel')
-    @include('extras.carousel')
-@endsection
 
 @section('buscador')
     @include('extras.buscador')
@@ -72,8 +69,8 @@
                                     </p>
                                 </div>
                             </div>
+                            <br>
                         @endforeach
-                        <br>
                     @else
                         <h3>No hay resultados para esta búsqueda.</h3>
                     @endif
