@@ -219,6 +219,9 @@
 
         });
 
+        //Parseo de fechas de articulos
+        var a = $(".fecha_publicacion");
+        alert(a[0]);
     });
 
 </script>
