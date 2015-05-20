@@ -277,9 +277,17 @@
                     <a href="{{ URL::route('categorias') }}"><i class="fa fa-lg fa-fw fa-reorder"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
                 </li>
                 <li id= "publicaciones">
-                    <a href="{{ URL::route('noticias') }}"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"></b></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+                    <ul style="display: none;">
+                        <li id="alta">
+                            <a href="{{ URL::route('noticias') }}"><i class="fa fa-lg fa fa-list-alt"></i> <span class="menu-item-parent">Nueva publicación</span><b class="collapse-sign"></b></a>
+                        </li>
+                        <li id="publi">
+                            <a href="{{ URL::route('editnoticia') }}"><i class="fa fa-lg fa-fw fa-edit"></i> <span class="menu-item-parent">Editar publicacion</span><b class="collapse-sign"></b></a>
+                        </li>
+                    </ul>
                 </li>
-                <li id="estadisticas" class="disabled">
+                <li id="estadisticas">
                     <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
                 </li>
             </ul>

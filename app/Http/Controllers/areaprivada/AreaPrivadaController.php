@@ -5,6 +5,7 @@ use App\model\Categoria;
 use App\model\Franquicia as Franquicia;
 use App\model\FranquiciaSubcategoria;
 use App\model\PaquetesActivos;
+use App\model\Publicaciones;
 use App\model\subcategoria;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View as v;
@@ -42,7 +43,21 @@ class AreaPrivadaController extends Controller {
         $id = $franquicia->id;
         $paquetes = PaquetesActivos::where('id','=',$id)->get();
         return view('area_privada.publicidad', compact('paquetes'));
+
+
+
+    }public function editnoticia()
+    {
+
+        $franquicia = Session::get('franquicia');
+
+        if(!is_null($franquicia)){
+        $id = $franquicia->id;
+        } else $id = null;
+        $publicaciones = Publicaciones::where('franquicia_id','=',$id)->get();
+        return view('area_privada.listado_articulos', compact('publicaciones'));
     }
+
 
     public function categorias()
     {

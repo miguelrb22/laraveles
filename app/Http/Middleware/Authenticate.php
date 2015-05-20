@@ -33,7 +33,7 @@ class Authenticate implements Middleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
+		if ($this->auth->guest() || $this->auth->user()->rol != 0 )
 		{
 			if ($request->ajax())
 			{

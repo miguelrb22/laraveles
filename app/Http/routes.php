@@ -17,17 +17,13 @@ use App\model\franquicia_subcategoria;
 
 Route::get('/', ['as' => 'home', 'uses' =>  'WebController@index']);
 
-#Route::post('login', 'AuthControllerB@postLogin'); // Verificar datos
-#Route::get('logout', 'AuthControllerB@logOut'); // Finalizar sesión
-
-
 
 
 /*************************************************************************************************************/
 /********************************** AREA PRIVADA ADMINISTRACION **********************************************/
 /*************************************************************************************************************/
 
-// Validamos los datos de inicio de sesión.
+// Validamos los datos de inicio de sesión PARA LA ADMINISTRACION
 Route::post('login',  ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
 
 Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
@@ -40,6 +36,7 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
     Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
     Route::get('categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
     Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
+    Route::get('editar-publicacion', ['as' => 'editnoticia', 'uses' => 'AreaPrivadaController@editnoticia']);
     Route::get('imagenes', ['as' => 'imagenes', 'uses' => 'AreaPrivadaController@imagenes']);
 });
 
