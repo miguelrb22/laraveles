@@ -773,13 +773,10 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 .img-prenoticia{
     border-radius: 100%;
     width: 110%;
-
-
-
 }
 
 .img-prenoticia:hover{
-    width: 120px;
+    width: 120%;
 }
 
 .listas > li{
