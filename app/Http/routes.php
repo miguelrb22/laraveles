@@ -197,7 +197,7 @@ Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'mode
 
 Route::get('noticias/{titulo}/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion']);
 
-Route::post('contacto-franquicias' ,  ['as' => 'contacto_franquicias', 'uses' => 'WebController@enviarformulariofranquicia']);
+Route::post('contacto-franquicias' ,  ['as' => 'contacto-franquicias', 'uses' => 'WebController@enviarformulariofranquicia']);
 
 //Route::post('images', ['as' => 'images', 'uses' => 'ImagesController@subirImagen']);
 
