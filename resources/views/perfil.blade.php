@@ -547,21 +547,41 @@
     e.target.setCustomValidity("Debe de aceptar la política de privacidad para poder enviar el formulario");
     }}};}
 
-    $('#formulario_contacto').submit(function(e){
 
-    e.preventDefault();
+    $('#formulario_contacto').submit(function(e) {
+
+        e.preventDefault();
 
 
-    $.ajax({
+        $.ajax({
 
-    type: "POST",
-    url: "{{ URL::route('contacto_franquicias') }}",
-    data: $('#formulario_contacto').serialize(),
-    dataType: "html"
+            type: "POST",
+            url: "{{ URL::route('contacto-franquicias') }}",
+            data: $('#formulario_contacto').serialize(),
+            dataType: "html",
 
-    });
+            error: function () {
+                alert("Se ha producido un error al intentar mandar su mensaje");
+            },
+            success: function (data) {
 
-    });
+
+                Lobibox.notify('success', {
+                    title: 'Enviado!',
+                    showClass: 'flipInX',
+                    delay: 4000,
+                    delayIndicator: false,
+
+                    position: 'bottom left',
+                    msg: 'Tu mensaje ha sido enviado con éxito. En breve se pondrán en contacto con usted.'
+                });
+
+            }
+
+        });
+    }
+
+
 
     $(".desmarcar").on('click',function(){
 
