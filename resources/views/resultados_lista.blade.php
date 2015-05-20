@@ -76,6 +76,7 @@
                     @else
                         <h3>No hay resultados para esta búsqueda.</h3>
                     @endif
+                    </br>
                 </section>
             </div>
         </div>
