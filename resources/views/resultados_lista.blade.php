@@ -69,7 +69,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <br>
                         @endforeach
                     @else
                         <h3>No hay resultados para esta búsqueda.</h3>
