@@ -503,7 +503,7 @@ class WebController extends Controller {
                 $img =  URL::asset($res->url_imagen);
                 $urln = URL::route('publicacion_individual', array($res->titulo));
                 $titulo = $res->titulo;
-                $contenido = $res->contenido;
+                $contenido = $res->resumen;
 
 
                 echo "<div class='row'>";
