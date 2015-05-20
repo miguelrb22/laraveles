@@ -8,7 +8,7 @@
         }
 
     </style>
-
+        {{dd("entra")}}
         @section('anuncio')
             @include('extras.anuncio')
         @endsection
