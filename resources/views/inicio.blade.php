@@ -84,7 +84,7 @@
                                     <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_rentables[$a2]->nombre."/".$franquicias_rentables[$a2]->nombre_comercial)))}}" title="perfil">{{$franquicias_rentables[$a2]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_rentables[$a2]->nombre."/".$franquicias_rentables[$a2]->nombre_comercial)))}}" title="perfil">
                                 <img class="img-responsive c_especial" src="{{ asset($franquicias_rentables[$a2]->logo_url)}}" alt="prueba" >
                             </a>
                         </div>
@@ -126,7 +126,7 @@
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_baratas[$a3]->nombre."/".$franquicias_baratas[$a3]->nombre_comercial)))}}" title="perfil">{{$franquicias_baratas[$a3]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_baratas[$a3]->nombre."/".$franquicias_baratas[$a3]->nombre_comercial)))}}" title="perfil">
                                 <img class="img-responsive c_especial" src="{{ asset($franquicias_baratas[$a3]->logo_url) }}" alt="prueba" >
                             </a>
                         </div>
@@ -165,7 +165,7 @@
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_lowcost[$a4]->nombre."/".$franquicias_lowcost[$a4]->nombre_comercial)))}}" title="perfil">{{$franquicias_lowcost[$a4]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
-                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_lowcost[$a4]->nombre."/".$franquicias_lowcost[$a4]->nombre_comercial)))}}" title="perfil">
                                 <img class="img-responsive c_especial" src="{{ asset($franquicias_lowcost[$a4]->logo_url) }}" alt="prueba" >
                             </a>
                         </div>
