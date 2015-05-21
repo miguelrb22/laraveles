@@ -13,7 +13,9 @@
             @include('extras.anuncio')
         @endsection
 
-
+        @section('anuncio')
+            @include('extras.carousel')
+        @endsection
 
         @section('buscador')
             @include('extras.buscador')
