@@ -63,7 +63,7 @@
                                     <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
                                         <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$articulo->titulo.'/'.$articulo->id)))}}"> {{ $articulo->titulo }}</a></h3>
                                         <p  id="textoNoticia"> {{ substr(strip_tags($articulo->resumen),0,400)."... " }}<a>seguir leyendo</a></p>
-                                        <p class="fecha_publicacion pull-right">{{ $articulo->created_at }}</p>
+                                        <p class="fecha_publicacion pull-right">{{  date('d-m-Y H:i ',strtotime($articulo->created_at)) }}</p>
                                     </div>
                                 </div>
                                 <hr>
