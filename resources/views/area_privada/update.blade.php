@@ -274,7 +274,7 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Duración Contrato:</label>
                                                                 <label class="input">
-                                                                    <input id="contrato" type="text" name="duracion_contrato" value = "{{$ses->duracion_contraro}}" class="form-control" placeholder="Duración Contrato">
+                                                                    <input id="contrato" type="text" name="duracion_contrato" value = "{{$ses->duracion_contrato}}" class="form-control" placeholder="Duración Contrato">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
