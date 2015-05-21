@@ -144,6 +144,15 @@ class AreaPrivadaController extends Controller
 
     }
 
+    public function editpublicacion(Request $request)
+    {
+
+
+        return view('area_privada.editar_noticia');
+
+
+    }
+
 }
 
 

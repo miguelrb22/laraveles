@@ -53,12 +53,14 @@
                                         <td>{{$publicacion->created_at }}</td>
                                         <td>
                                             <button class="btn btn-xs btn-danger"
-                                                    onclick="deletearticulo({{$publicacion->id }})">Borrar
+                                                    onclick="deletearticulo({{$publicacion->id }})"> <i class="fa fa-trash-o"></i> Borrar
                                             </button>
                                             <span>&nbsp;&nbsp;</span>
-                                            <button class="btn btn-xs btn-warning"
-                                                    onclick="editarticulo({{$publicacion->id }})">Editar
-                                            </button>
+
+
+                                                <input class="hidden" value="{{$publicacion->id }}">
+                                                <button class="btn btn-xs btn-warning"><a style="color:white" href="{{ URL::to('areaprivada/editar-publicacion/'.$publicacion->id ) }}"> <i class="fa fa-pencil-square-o"></i> Editar</a></button>
+
                                         </td>
                                         <td class="hidden">{{$publicacion->id }}</td>
 

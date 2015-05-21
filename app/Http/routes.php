@@ -55,11 +55,19 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
     Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
 
     //editar noticia- articulo - publicacion
-    Route::get('editar-publicacion', ['as' => 'editnoticia', 'uses' => 'AreaPrivadaController@editnoticia']);
+    Route::get('editar-publicacion/{id}', function($id){
+        dd("entra");
+        $controller = App::make(\App\Http\Controllers\AreaPrivadaController::class);
+        return $controller->callAction('editpublicacion', array('id' => $id ));
+
+    });
 
     //borrar noticia
     Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'AreaPrivadaController@deletenoticia']);
 
+
+    //VISTA GENERAL de todas las Publicaciones
+    Route::get('editar-publicaciones', ['as' => 'editnoticia', 'uses' => 'AreaPrivadaController@editnoticia']);
 
     //Asignar imagenes @by Juanka the kid
     Route::get('imagenes', ['as' => 'imagenes', 'uses' => 'AreaPrivadaController@imagenes']);

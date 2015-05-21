@@ -33,7 +33,7 @@ class AreaFranquiciadorController extends Controller {
 
     public function noticias()
     {
-        return view('area_franquiciador.noticias');
+        return view('area_franquiciador.editar_noticia');
     }
 
 }
