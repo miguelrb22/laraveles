@@ -13,7 +13,7 @@
             @include('extras.anuncio')
         @endsection
 
-        @section('anuncio')
+        @section('carousel')
             @include('extras.carousel')
         @endsection
 
