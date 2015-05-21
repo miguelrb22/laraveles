@@ -199,18 +199,19 @@
                         <tr>
                             <td>Personal:</td>
                             <td> @if($franquicia->personal != "-")
-                                    {{$franquicia->personal}} personas</td>
+                                    {{$franquicia->personal}} personas
                                  @else
-                                    <td>{{$franquicia->personal}}</td>
+                                    {{$franquicia->personal}}
                                  @endif
                         </tr>
                         <tr>
-                            <td>Requisitos_local:</td>
+                            <td>Requisitos local:</td>
                             <td>@if($franquicia->requisitos_local === 0)
-                                {{'-'}}</td>
+                                {{'-'}}
                             @else
-                                <td>{{$franquicia->requisitos_local . ' m2'}}</td>
+                                {{$franquicia->requisitos_local . ' m2'}}
                             @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>Perfil del franquiciado:</td>
