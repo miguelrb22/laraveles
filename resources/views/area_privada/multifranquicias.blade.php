@@ -56,7 +56,10 @@
 
         td{
             cursor: pointer;
+            font-size: 13px;
         }
+
+
     </style>
 
     @yield('css')
@@ -513,6 +516,8 @@
             /* Jquery varios */
             $("#titulo-tabla").html("Lista Franquicias");
 
+            /**
+
             $("#dt_basic_inicio tbody").on("dblclick", "tr", function (e) {
                 e.preventDefault();
 
@@ -560,6 +565,7 @@
 
 
             /******************************************************************************/
+
 
 
             /** PESTAÑA CATEGORIAS **·/

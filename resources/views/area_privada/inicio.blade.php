@@ -1,6 +1,22 @@
 
 @extends('area_privada.multifranquicias')
 
+<style>
+
+    body {
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    td{
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+
+</style>
 @section('main')
 
     <section id="widget-grid" class="">
@@ -55,6 +71,8 @@
                                         <th>Telefono</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>email</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> web</th>
+                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i> Cargar </th>
+
                                         <th id="id" class="hidden"></th>
                                     </tr>
                                     </thead>
@@ -69,6 +87,8 @@
                                         <td>{{$franquicia->email_contacto }}</td>
                                         <td>{{$franquicia->web }}</td>
                                         <td class="hidden">{{$franquicia->id }}</td>
+                                        <td><button class="btn btn-info btn-xs" onclick="cargarfranquicia({{$franquicia->id }})"> Cargar</button></td>
+
                                     </tr>
                                         @endforeach
                                     </tbody>
@@ -88,3 +108,53 @@
         </div>
     </section>
 @endsection
+
+
+<script>
+
+
+    function  cargarfranquicia (idd) {
+
+
+        var id = idd;
+        var token = "{{ csrf_token()}}";
+
+        $.blockUI({
+
+            message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: 'transparent'}
+
+        });
+
+        $.ajax({
+
+            type: "POST",
+            url: "{{ URL::route('cargarfranquicia') }}",
+            data: {id: id, _token: token},
+            dataType: "html",
+            error: function () {
+                //$('#loading').show();
+                alert("Error en la petición");
+            },
+            success: function (data) {
+
+                Lobibox.notify('success', {
+                    title: 'Franquicia Carcaga con éxito',
+                    showClass: 'flipInX',
+                    delay: 3000,
+                    delayIndicator: false,
+
+                    position: 'bottom left',
+                    msg: 'Sigue así y ganarás mucho dinero'
+                });
+
+                $("#franquiciacargada").html(data);
+                $("#gestion").css("display", "block");
+
+            }
+        });
+    }
+</script>
