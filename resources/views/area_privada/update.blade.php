@@ -232,7 +232,7 @@
                                                             <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Inversión Pública:</label>
                                                                 <label class="input">
-                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión pública">
+                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión pública" value="{{$ses->inversion_p}}">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -297,7 +297,7 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Requisítos del Local:</label>
                                                                 <label class="input">
-                                                                    <input id="requisitos" type="text" name="requisitos_local" value = "{{$ses->requisito_local}}" class="form-control" placeholder="Requisítos del Local">
+                                                                    <input id="requisitos" type="text" name="requisitos_local" value = "{{$ses->requisitos_local}}" class="form-control" placeholder="Requisítos del Local">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
