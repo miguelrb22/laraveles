@@ -201,14 +201,15 @@
                             <td> @if($franquicia->personal != "-")
                                     {{$franquicia->personal}} personas</td>
                                  @else
-                                    {{$franquicia->personal}}
+                                    <td>{{$franquicia->personal}}</td>
                                  @endif
                         </tr>
                         <tr>
-                            @if($franquicia->requisitos_local === 0)
-                                {{'-'}}
+                            <td>Requisitos_local:</td>
+                            <td>@if($franquicia->requisitos_local === 0)
+                                {{'-'}}</td>
                             @else
-                                {{$franquicia->requisitos_local . ' m2'}}
+                                <td>{{$franquicia->requisitos_local . ' m2'}}</td>
                             @endif
                         </tr>
                         <tr>
