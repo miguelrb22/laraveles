@@ -62,11 +62,11 @@
                             @foreach($articulos as $articulo)
                                 <div class="row" >
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
-                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'. preg_replace("/[^a-zA-Z0-9\s\-]/","", $articulo->titulo.'/'.$articulo->id))))}}"><img src ="{{ URL::asset($articulo->url_imagen)}} " alt="Responsive image" width='110' height="110"></a>
+                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'. preg_replace("/[^a-zA-Z0-9\s\-]/","", $articulo->titulo).'/'.$articulo->id)))}}"><img src ="{{ URL::asset($articulo->url_imagen)}} " alt="Responsive image" width='110' height="110"></a>
                                     </div>
                                     <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
-                                        <h3 id="tituloNotica"><a href="{{  strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","", $articulo->titulo.'/'.$articulo->id))))}}"> {{ $articulo->titulo }}</a></h3>
-                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->resumen),0,400)."... " }}<a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","", $articulo->titulo.'/'.$articulo->id))))}}">seguir leyendo</a></p>
+                                        <h3 id="tituloNotica"><a href="{{  strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","", $articulo->titulo).'/'.$articulo->id)))}}"> {{ $articulo->titulo }}</a></h3>
+                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->resumen),0,400)."... " }}<a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","", $articulo->titulo).'/'.$articulo->id)))}}">seguir leyendo</a></p>
                                         <p class="fecha_publicacion pull-right">
 
                                             <?php
