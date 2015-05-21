@@ -15,7 +15,11 @@
                         <!-- START ROW -->
 
                         <div class="row">
-                            <h3>{{$ses->nombre_comercial}}</h3>
+                            <?php
+                                $ses = Session::get('franquicia');
+                            ?>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"><h3>Franquicia: {{$ses->nombre_comercial}}</h3></div>
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
