@@ -73,12 +73,33 @@
                     <div class="row">
 
                         <div class="col col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-
-
-
                             <div><img class="img-noticia" src="{{ URL::asset($articulo[0]->url_imagen)}}" alt="Responsive image"/>  {!! $articulo[0]->contenido !!} </div>
-                        <p class="fecha_publicacion pull-right">{{ '21-02-2012' }}</p>
-                            </div>
+                            <br>
+                            <p class="fecha_publicacion pull-right">
+                                <?php
+                                    $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                        "Septiembre", "Octube", "Noviembre", "Diciembre");
+
+                                    $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+
+                                    $fecha = $articulo[0]->created_at;
+
+                                    //si los minutos aparecen con un dígito
+                                    $minutos = $fecha->minute;
+
+                                    if(strlen($minutos) < 2)
+                                    {
+                                        $minutos = "0".$minutos;
+                                    }
+
+
+                                    $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
+                                            $fecha->hour . ":" . $minutos;
+
+                                    echo $ffinal;
+                                ?>
+                            </p>
+                        </div>
 
                     </div>
 

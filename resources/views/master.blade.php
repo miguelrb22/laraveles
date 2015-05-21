@@ -219,43 +219,6 @@
 
         });
 
-        //Parseo de fechas de articulos
-        var a = $(".fecha_publicacion");
-
-
-        for(var i = 0; i< a.length; i++){
-
-            var dateString = a[i].textContent,
-                    dateParts = dateString.split(' '),
-                    timeParts = dateParts[1].split(':'),
-                    date;
-
-            dateParts = dateParts[0].split('-');
-
-            date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
-
-
-            var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-                "Septiembre", "Octube", "Noviembre", "Diciembre"];
-
-            var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo"];
-
-
-            if(date.getMinutes().toString().length < 2)
-            {
-                var minutos = "0"+date.getMinutes();
-            }else
-            {
-                var minutos = date.getMinutes();
-            }
-
-            var fecha = dias[date.getDay()-1] + " " + date.getDate() + " de " + meses[date.getMonth()] +
-                    " de " + date.getFullYear() + " " + date.getHours() + ":" + minutos;
-
-
-            a[i].textContent = fecha;
-        }
-
 
 
     });

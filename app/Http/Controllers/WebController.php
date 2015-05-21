@@ -497,23 +497,44 @@ class WebController extends Controller {
                 $result = Publicaciones::where('tipo', '=', '2')->take(5)->skip($numpage * 5)->get();
             }
 
+            $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                "Septiembre", "Octube", "Noviembre", "Diciembre");
+
+            $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+
+
+
+
+
             foreach($result as $res){
+
+                $fecha = $res->created_at;
+
+                //si los minutos aparecen con un dígito
+                $minutos = $fecha->minute;
+
+                if(strlen($minutos) < 2)
+                {
+                    $minutos = "0".$minutos;
+                }
+
 
                 $res->contenido =  substr(strip_tags($res->contenido),0,400);
                 $img =  URL::asset($res->url_imagen);
-                $urln = URL::route('publicacion_individual', array($res->titulo));
+                $url = strtolower(str_replace(" ","-",URL::to('noticias/'.$res->titulo.'/'.$res->id)));
                 $titulo = $res->titulo;
                 $contenido = $res->resumen;
-
+                $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
+                          $fecha->hour . ":" . $minutos;
 
                 echo "<div class='row'>";
                 echo "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";
-                echo "<img src='$img' class='img-rounded' alt='Imagen articulo' width='110' height='110'>";
+                echo "<a href='$url'><img src='$img' class='img-rounded' alt='Imagen articulo' width='110' height='110'></a>";
                 echo "</div>";
                 echo "<div class='col col-xs-7 col-sm-7 col-md-10 col-lg-10'>";
-                echo "<h3 id='tituloNotica'><a href='$urln'> $titulo </a></h3>";
-                echo "<p  id='textoNoticia'> $contenido "."... "." <a>seguir leyendo</a></p>";
-                echo "<p class='fecha_publicacion pull-right'> $res->created_at</p>";
+                echo "<h3 id='tituloNotica'><a href='$url'> $titulo </a></h3>";
+                echo "<p  id='textoNoticia'> $contenido "."... "." <a href='$url'>seguir leyendo</a></p>";
+                echo "<p class='fecha_publicacion pull-right'> $ffinal</p>";
                 echo "</div>";
                 echo "</div>";
                 echo "<hr>";

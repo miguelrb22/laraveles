@@ -34,7 +34,8 @@
                     </div>
 
                     <section class="span6">
-                    <div class="well">
+                        <br>
+                        <div class="well">
                         <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d194313.06624387953!2d-3.6434750000000027!3d40.45000150000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sC%2F+SEVERO+OCHOA+4+-+NAVE+16!5e0!3m2!1ses!2ses!4v1429529823154"></iframe>
                     </div><!--end well -->
                     </section>

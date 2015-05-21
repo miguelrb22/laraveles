@@ -261,7 +261,7 @@
                                                 <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
                                                     <br>
                                                     <br>
-                                                    <a href="#"><img class="img-responsive" id="imagen-noticia" src="{{ asset('images/sweet_pharma.jpg') }}" alt="prueba" ></a>
+                                                    <a href="#"><img class="img-responsive img-rounded" id="imagen-noticia" src="{{ asset('images/sweet_pharma.jpg') }}" alt="prueba" ></a>
                                                 </div>
                                             @endif
 
@@ -274,6 +274,14 @@
                                 ?>
 
                                 @if(!$publicaciones->isEmpty())
+
+                                    <?php
+                                        $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                                        "Septiembre", "Octube", "Noviembre", "Diciembre");
+
+                                        $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+                                    ?>
+
                                     @for($i=0; $i< 6; $i++)
                                         <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
@@ -284,7 +292,27 @@
                                                 <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
                                                     <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
                                                 </p>
-                                                <p class="fecha_publicacion pull-right">{{ date('d-m-Y H:i ',strtotime($publicaciones[$i]->created_at)) }}</p>
+                                                <p class="fecha_publicacion pull-right">
+
+                                                    <?php
+                                                        $fecha = $publicaciones[$i]->created_at;
+
+                                                        //si los minutos aparecen con un dígito
+                                                        $minutos = $fecha->minute;
+
+                                                        if(strlen($minutos) < 2)
+                                                        {
+                                                            $minutos = "0".$minutos;
+                                                        }
+
+
+                                                        $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
+                                                                      $fecha->hour . ":" . $minutos;
+
+                                                        echo $ffinal;
+                                                    ?>
+
+                                                </p>
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 @if($i+1 < 6)

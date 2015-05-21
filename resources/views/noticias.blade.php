@@ -52,18 +52,41 @@
                             </div>
                         <div class="row noticias">
 
+                            <?php
+                                $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                    "Septiembre", "Octube", "Noviembre", "Diciembre");
 
+                                $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+                            ?>
 
                             @foreach($articulos as $articulo)
-
                                 <div class="row" >
                                     <div class="col col-xs-5 col-sm-5 col-md-2 col-lg-2">
                                         <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$articulo->titulo.'/'.$articulo->id)))}}"><img src ="{{ URL::asset($articulo->url_imagen)}} " alt="Responsive image" width='110' height="110"></a>
                                     </div>
                                     <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
                                         <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$articulo->titulo.'/'.$articulo->id)))}}"> {{ $articulo->titulo }}</a></h3>
-                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->resumen),0,400)."... " }}<a>seguir leyendo</a></p>
-                                        <p class="fecha_publicacion pull-right">{{  date('d-m-Y H:i ',strtotime($articulo->created_at)) }}</p>
+                                        <p  id="textoNoticia"> {{ substr(strip_tags($articulo->resumen),0,400)."... " }}<a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$articulo->titulo.'/'.$articulo->id)))}}">seguir leyendo</a></p>
+                                        <p class="fecha_publicacion pull-right">
+
+                                            <?php
+                                                $fecha = $articulo->created_at;
+
+                                                //si los minutos aparecen con un dígito
+                                                $minutos = $fecha->minute;
+
+                                                if(strlen($minutos) < 2)
+                                                {
+                                                    $minutos = "0".$minutos;
+                                                }
+
+                                                $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
+                                                        $fecha->hour . ":" . $minutos;
+
+                                                echo $ffinal;
+                                            ?>
+
+                                        </p>
                                     </div>
                                 </div>
                                 <hr>
