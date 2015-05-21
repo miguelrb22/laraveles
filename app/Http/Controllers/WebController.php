@@ -530,7 +530,7 @@ class WebController extends Controller {
 
                 echo "<div class='row'>";
                 echo "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";
-                echo "<a href='$url'><img src='$img' class='img-rounded' alt='Imagen articulo' width='110' height='110'></a>";
+                echo "<a href='$url'><img src='$img' class='img-responsive img-rounded' alt='Imagen articulo' width='110' height='110'></a>";
                 echo "</div>";
                 echo "<div class='col col-xs-7 col-sm-7 col-md-10 col-lg-10'>";
                 echo "<h3 id='tituloNotica'><a href='$url'> $titulo </a></h3>";
