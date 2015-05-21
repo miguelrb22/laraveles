@@ -528,7 +528,7 @@ class WebController extends Controller {
                 $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
                           $hora . ":" . $minutos;
 
-                echo "<div class='row'>";
+                echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                 echo "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";
                 echo "<a href='$url'><img src='$img' class='img-responsive img-rounded' alt='Imagen articulo' width='110' height='110'></a>";
                 echo "</div>";
@@ -538,7 +538,11 @@ class WebController extends Controller {
                 echo "<p class='fecha_publicacion pull-right'> $ffinal</p>";
                 echo "</div>";
                 echo "</div>";
+                echo "<section class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                 echo "<hr>";
+                echo "</section>";
+
+
             }
         }
     }
