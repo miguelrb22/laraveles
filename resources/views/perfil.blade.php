@@ -198,7 +198,11 @@
                         </tr>
                         <tr>
                             <td>Personal:</td>
-                            <td> {{$franquicia->personal}} personas</td>
+                            <td> @if($franquicia->personal == "")
+                                     {{'-'}}
+                                 @else
+                                    {{$franquicia->personal}} personas</td>
+                                 @endif
                         </tr>
                         <tr>
                             <td>Requisitos del local:</td>
