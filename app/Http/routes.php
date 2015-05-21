@@ -5,9 +5,6 @@
 | Application Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
 |
 */
 
@@ -15,33 +12,58 @@ use App\model\subcategoria;
 use App\model\Franquicia;
 use App\model\franquicia_subcategoria;
 
+
+
 Route::get('/', ['as' => 'home', 'uses' =>  'WebController@index']);
 
-
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
 
 /*************************************************************************************************************/
 /********************************** AREA PRIVADA ADMINISTRACION **********************************************/
 /*************************************************************************************************************/
 
+//@by Miguel el puto amo RB
+//Juanka G A Y
+
 // Validamos los datos de inicio de sesión PARA LA ADMINISTRACION
 Route::post('login',  ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
 
+//Cerrar sesion
+Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+
 Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
 
+    //Mostrar el inicio
     Route::get('dashboard', ['as' => 'private', 'uses' => 'AreaPrivadaController@index']);
+
+    //Alta de una nueva franquicia
     Route::get('alta', ['as' => 'nueva_alta', 'uses' => 'AreaPrivadaController@alta']);
+
+    //Modificar franquicia
     Route::get('modificar', ['as' => 'modificar_franquicia', 'uses' => 'AreaPrivadaController@modificar']);
 
-
+    //Gestion de publicidad
     Route::get('publicidad', ['as' => 'publicidad', 'uses' => 'AreaPrivadaController@publicidad']);
+
+    //Crear categorias y subcategorias
     Route::get('categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
+
+    //Crear articulos
     Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
+
+    //editar noticia- articulo - publicacion
     Route::get('editar-publicacion', ['as' => 'editnoticia', 'uses' => 'AreaPrivadaController@editnoticia']);
+
+    //borrar noticia
+    Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'AreaPrivadaController@deletenoticia']);
+
+
+    //Asignar imagenes @by Juanka the kid
     Route::get('imagenes', ['as' => 'imagenes', 'uses' => 'AreaPrivadaController@imagenes']);
 });
-
-    //Cerrar sesion
-    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 /***************************************************************************************************************/
 /***************************************************************************************************************/
@@ -56,10 +78,7 @@ Route::get('franquiciador/noticias', ['as' => 'Fnoticias', 'uses' => 'areaprivad
 
 
 
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
+
 
 //perfil borrar
 Route::get('perfil/{name}', function ($name) {
