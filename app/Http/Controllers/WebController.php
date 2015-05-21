@@ -525,7 +525,7 @@ class WebController extends Controller {
                 $url =  strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","", $res->titulo).'/'.$res->id)));
                 $titulo = $res->titulo;
                 $contenido = $res->resumen;
-                $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
+                $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
                           $hora . ":" . $minutos;
 
                 echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";

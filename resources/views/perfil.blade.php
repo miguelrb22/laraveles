@@ -198,11 +198,18 @@
                         </tr>
                         <tr>
                             <td>Personal:</td>
-                            <td> {{$franquicia->personal}} personas</td>
+                            <td> @if($franquicia->personal != "-")
+                                    {{$franquicia->personal}} personas</td>
+                                 @else
+                                    {{$franquicia->personal}}
+                                 @endif
                         </tr>
                         <tr>
-                            <td>Requisitos del local:</td>
-                            <td>{{$franquicia->requisitos_local}}</td>
+                            @if($franquicia->requisitos_local === 0)
+                                {{'-'}}
+                            @else
+                                {{$franquicia->requisitos_local . ' m2'}}
+                            @endif
                         </tr>
                         <tr>
                             <td>Perfil del franquiciado:</td>

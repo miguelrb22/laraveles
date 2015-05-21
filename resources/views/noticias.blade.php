@@ -80,7 +80,7 @@
 
                                                     if(strlen($hora) < 2){$hora = "0".$hora;}
 
-                                                    $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
+                                                    $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
                                                             $hora . ":" . $minutos;
 
                                                     echo $ffinal;

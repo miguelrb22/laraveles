@@ -232,7 +232,7 @@
                                                             <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Inversión Pública:</label>
                                                                 <label class="input">
-                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión pública">
+                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión pública" value="{{$ses->inversion_p}}">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -274,7 +274,7 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Duración Contrato:</label>
                                                                 <label class="input">
-                                                                    <input id="contrato" type="text" name="duracion_contrato" value = "{{$ses->duracion_contraro}}" class="form-control" placeholder="Duración Contrato">
+                                                                    <input id="contrato" type="text" name="duracion_contrato" value = "{{$ses->duracion_contrato}}" class="form-control" placeholder="Duración Contrato">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -297,7 +297,7 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Requisítos del Local:</label>
                                                                 <label class="input">
-                                                                    <input id="requisitos" type="text" name="requisitos_local" value = "{{$ses->requisito_local}}" class="form-control" placeholder="Requisítos del Local">
+                                                                    <input id="requisitos" type="text" name="requisitos_local" value = "{{$ses->requisitos_local}}" class="form-control" placeholder="Requisítos del Local">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -459,7 +459,7 @@
                                                             <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Personal:</label>
                                                                 <label class="input">
-                                                                    <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal">
+                                                                    <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal" value="{{$ses->personal}}">
                                                                 </label>
                                                             </section>
                                                         </div>
