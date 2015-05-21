@@ -15,7 +15,7 @@
                         <!-- START ROW -->
 
                         <div class="row">
-                            <h3>{{$franquicia->nombre_comercial}}</h3>
+                            <h3>{{$ses->nombre_comercial}}</h3>
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
