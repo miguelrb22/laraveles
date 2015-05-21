@@ -512,11 +512,12 @@ class WebController extends Controller {
 
                 //si los minutos aparecen con un dígito
                 $minutos = $fecha->minute;
+                //si la hora aparece con un digito
+                $hora = $fecha->hour;
 
-                if(strlen($minutos) < 2)
-                {
-                    $minutos = "0".$minutos;
-                }
+                if(strlen($hora) < 2){$hora = "0".$hora;}
+
+                if(strlen($minutos) < 2) {$minutos = "0".$minutos;}
 
 
                 $res->contenido =  substr(strip_tags($res->contenido),0,400);
@@ -525,7 +526,7 @@ class WebController extends Controller {
                 $titulo = $res->titulo;
                 $contenido = $res->resumen;
                 $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
-                          $fecha->hour . ":" . $minutos;
+                          $hora . ":" . $minutos;
 
                 echo "<div class='row'>";
                 echo "<div class='col col-xs-5 col-sm-5 col-md-2 col-lg-2'>";

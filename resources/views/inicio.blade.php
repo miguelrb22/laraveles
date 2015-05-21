@@ -299,15 +299,15 @@
 
                                                         //si los minutos aparecen con un dígito
                                                         $minutos = $fecha->minute;
+                                                        //si la hora aparece con un dígito
+                                                        $hora = $fecha->hour;
 
-                                                        if(strlen($minutos) < 2)
-                                                        {
-                                                            $minutos = "0".$minutos;
-                                                        }
+                                                        if(strlen($minutos) < 2){$minutos = "0".$minutos;}
+                                                        if(strlen($hora) < 2){$hora = "0".$hora;}
 
 
                                                         $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
-                                                                      $fecha->hour . ":" . $minutos;
+                                                                      $hora . ":" . $minutos;
 
                                                         echo $ffinal;
                                                     ?>
