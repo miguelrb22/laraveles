@@ -205,8 +205,11 @@
                                  @endif
                         </tr>
                         <tr>
-                            <td>Requisitos del local:</td>
-                            <td>{{$franquicia->requisitos_local}}</td>
+                            @if($franquicia->requisitos_local === 0)
+                                {{'-'}}
+                            @else
+                                {{$franquicia->requisitos_local . ' m2'}}
+                            @endif
                         </tr>
                         <tr>
                             <td>Perfil del franquiciado:</td>
