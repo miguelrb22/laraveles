@@ -198,10 +198,10 @@
                         </tr>
                         <tr>
                             <td>Personal:</td>
-                            <td> @if($franquicia->personal == "")
-                                     {{'-'}}
-                                 @else
+                            <td> @if($franquicia->personal != "-")
                                     {{$franquicia->personal}} personas</td>
+                                 @else
+                                    {{$franquicia->personal}}
                                  @endif
                         </tr>
                         <tr>
