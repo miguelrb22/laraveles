@@ -522,7 +522,7 @@ class WebController extends Controller {
 
                 $res->contenido =  substr(strip_tags($res->contenido),0,400);
                 $img =  URL::asset($res->url_imagen);
-                $url =  preg_replace("/[^a-zA-Z0-9\s\-]/","", strtolower(str_replace(" ","-",URL::to('noticias/'.$res->titulo.'/'.$res->id))));
+                $url =  strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","", $res->titulo.'/'.$res->id))));
                 $titulo = $res->titulo;
                 $contenido = $res->resumen;
                 $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " " .
