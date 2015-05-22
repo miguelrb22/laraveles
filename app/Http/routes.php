@@ -34,6 +34,9 @@ Route::post('login',  ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin
 //Cerrar sesion
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
+
+
+
 Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],function() {
 
     //Mostrar el inicio
@@ -56,14 +59,13 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
     //editar noticia- articulo - publicacion
     Route::get('editar-publicacion/{id}', function($id){
-        dd("entra");
-        $controller = App::make(\App\Http\Controllers\AreaPrivadaController::class);
+
+        $controller = App::make(\App\Http\Controllers\areaprivada\AreaPrivadaController::class);
         return $controller->callAction('editpublicacion', array('id' => $id ));
 
     });
 
     //borrar noticia
-    Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'AreaPrivadaController@deletenoticia']);
 
 
     //VISTA GENERAL de todas las Publicaciones
@@ -71,7 +73,15 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
     //Asignar imagenes @by Juanka the kid
     Route::get('imagenes', ['as' => 'imagenes', 'uses' => 'AreaPrivadaController@imagenes']);
+
+
 });
+
+
+Route::post('editar-publicacionEdit', ['as' => 'editarpublicacion', 'uses' => 'models_controller\publicacionController@edit']);
+
+Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'models_controller\publicacionController@destroy']);
+
 
 /***************************************************************************************************************/
 /***************************************************************************************************************/

@@ -78,33 +78,95 @@ class publicacionController extends Controller
     }
 
 
-    public function show($id)
-    {
+    //Funcion que edita finalmente la publicacion
+    public function edit(Request $request){
+
+
+        //cargao la publicacion
+        $id = $request->input('id');
+        $publicacion = Publicaciones::find($id);
+
+        //modificlo el titulo
+        $titulo = $request->input('titulo');
+        $publicacion->titulo = $titulo;
+
+        if($file = $request->file('file')) {
+
+
+            $uuid1 = Uuid::uuid4();
+
+            $extension = $file->getClientOriginalExtension();
+            //obtenemos el nombre del archivo
+            $nombre = $uuid1->toString() . "." . $extension;
+
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            \Storage::disk('publicaciones')->put($nombre, \File::get($file));
+
+            $url = '/images/publicaciones/' . $nombre;
+
+
+            //borro la imagen antigua del servidor
+            $imagen_antigua = $publicacion->url_imagen;
+            \File::delete(public_path().$imagen_antigua);
+
+
+            //asigno la nueva imagen
+            $publicacion->url_imagen = $url;
+
+
+            //img resize
+            $location = public_path().$url;
+            $image = Image::make($location);
+            $image->resize(200,200);
+            $image->save($location);
+
+        }
+
+        //actualizo el contenido del archivo
+        \File::put($publicacion->contenido,$request->contenido);
+        //actualizo
+        $publicacion->update($publicacion->attributesToArray());
+
     }
 
 
-    public function edit($id)
-    {
-        //
-    }
 
-
-    public function update($id)
-    {
-        return true;
-    }
-
-
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function cargar(Request $request)
+    public function destroy(Request $request)
     {
 
+        try {
+
+            //id de la publicacion que ha que borrar
+            $id = $request->input('aux');
+
+            //Obtengo la informacion de la publicacion que desean borrar
+            $publicacion = Publicaciones::find($id);
+
+
+            //borramos su imagen
+            if (!$publicacion->url_imagen == null) {
+                \File::delete(public_path() . $publicacion->url_imagen);
+            }
+
+            //borramos su contenido
+            if (!$publicacion->contenido == null) {
+                \File::delete($publicacion->contenido);
+            }
+
+
+            //borrar de la BBDD
+            $publicacion->delete();
+
+        } catch (Exception $e) {
+
+            return false;
+        }
+
+        return 1;
+
 
     }
+
 
 
 }

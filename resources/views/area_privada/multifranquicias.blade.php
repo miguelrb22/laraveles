@@ -1056,69 +1056,6 @@
 
 
 
-            /**** ARTICULOS ****/
-
-            $('#nueva-publicacion').submit(function(e){
-
-                e.preventDefault();
-
-                $.blockUI({
-
-                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
-                    css: {
-                        border: 'none',
-                        padding: '15px',
-                        backgroundColor: 'transparent'}
-
-                });
-
-
-                $.ajax({
-
-                    type: "POST",
-                    url: "{{ URL::route('nueva-publicacion') }}",
-                    data: new FormData($("#nueva-publicacion")[0]),
-                    processData: false,
-                    contentType: false,
-                    dataType: "html",
-                    error: function () {
-
-                        Lobibox.notify('error', {
-                            title: 'No se ha podido publicar el artículo',
-                            showClass: 'flipInX',
-                            delay: 3000,
-                            delayIndicator: false,
-
-                            position: 'bottom left',
-                            msg: 'Compruebe la conexión a internet'
-                        });
-                    },
-                    success: function (data) {
-
-                        Lobibox.notify('success', {
-                            title: 'Artículo creado con éxito',
-                            showClass: 'flipInX',
-                            delay: 3000,
-                            delayIndicator: false,
-
-                            position: 'bottom left',
-                            msg: 'La informacion al poder!'
-                        });
-
-                        $('input[name=titulo]').val('');
-                        $('input[name=file]').val('');
-                        $('input[name=contenido]').val('');
-
-
-
-                    }
-                });
-
-
-            });
-
-
-
 
             @yield('ready')
         });

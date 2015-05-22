@@ -50,6 +50,10 @@ class AreaPrivadaController extends Controller
 
     }
 
+    /**
+     * @return v\View
+     * funcion que devuelve a la vista lista de articulos todos los articulos para una franquicia
+     */
     public function editnoticia()
     {
 
@@ -63,16 +67,29 @@ class AreaPrivadaController extends Controller
     }
 
 
+    /**
+     * @return v\View
+     * vista crear categorias
+     */
     public function categorias()
     {
         $categorias = Categoria::all();
         return view('area_privada.categorias', compact('categorias'));
     }
 
+
+    /**
+     * @return v\View vista crear noticia
+     */
     public function noticias()
     {
         return view('area_privada.noticias');
     }
+
+    /**
+     * @return v\View
+     * Funcion para que llama a la vista de modificar franquicia
+     */
 
     public function modificar()
     {
@@ -80,6 +97,7 @@ class AreaPrivadaController extends Controller
         $id = $franquicia->id;
         $aux = PaquetesActivos::where('id', '=', $id)->get();
 
+        //si no tiene la fila en paquetes activos se crea
         if ($aux->isEmpty()) {
 
             $PA = NEW PaquetesActivos();
@@ -87,6 +105,7 @@ class AreaPrivadaController extends Controller
             $PA->save();
             $aux = PaquetesActivos::where('id', '=', $id)->get();
         }
+
         $paquetes = $aux[0];
 
         $franquicia_subcategoria = FranquiciaSubcategoria::where('franquicia_id', '=', $id)->get();
@@ -103,55 +122,54 @@ class AreaPrivadaController extends Controller
     }
 
 
+    /**
+     * @return v\View
+     * Dropzone para asignar imagenes a las franquicias
+     */
     public function imagenes()
     {
         return view('area_privada.imagenes');
     }
 
 
-    public function deletenoticia(Request $request)
+
+    /**
+     * @param $id
+     * @return v\View
+     * Funcion que devuelve la vista donde se podrá editar un artículo
+     */
+    public function editpublicacion($id)
     {
+
 
         try {
 
-            //id de la publicacion que ha que borrar
-            $id = $request->input('aux');
-
-            //Obtengo la informacion de la publicacion que desean borrar
+            //publicacion a editar
             $publicacion = Publicaciones::find($id);
 
+            //titulo del artículo
+            $titulo = $publicacion->titulo;
 
-            //borramos su imagen
-            if (!$publicacion->url_imagen == null) {
-                \File::delete(public_path() . $publicacion->url_imagen);
-            }
+            //url hacia el contenido del articulo
+            $urlfile = $publicacion->contenido;
 
-            //borramos su contenido
-            if (!$publicacion->contenido == null) {
-                \File::delete($publicacion->contenido);
-            }
+            //si existe guardo su contenido
+            if (\File::exists($urlfile)) {
+                $contenido = \File::get($urlfile);
+            } else $contenido = "";
 
+            //devuelvo la vista y le paso las variables que me van a hacer falta
+            return view('area_privada.editar_noticia', compact('titulo', 'contenido','id'));
 
-            //borrar de la BBDD
-            $publicacion->delete();
+        }catch (exception $e){
 
-        } catch (Exception $e) {
+            return view('errors.404');
 
-            return false;
         }
 
-        return 1;
 
     }
 
-    public function editpublicacion(Request $request)
-    {
-
-
-        return view('area_privada.editar_noticia');
-
-
-    }
 
 }
 

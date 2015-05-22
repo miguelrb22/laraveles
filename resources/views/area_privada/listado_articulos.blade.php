@@ -147,7 +147,7 @@
 
                 } else if (type === 'no') {
                     Lobibox.notify('info', {
-                        msg: 'Te has salvado por los pelos'
+                        msg: 'Una vez borrado no se puede recuperar, lleve cuidado'
                     });
                 }
             }
