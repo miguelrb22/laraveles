@@ -206,11 +206,8 @@
                         </tr>
                         <tr>
                             <td>Requisitos local:</td>
-                            <td>@if($franquicia->requisitos_local === 0)
-                                {{'-'}}
-                            @else
-                                {{$franquicia->requisitos_local . ' m2'}}
-                            @endif
+                            <td>
+                                {{$franquicia->requisitos_local}}
                             </td>
                         </tr>
                         <tr>
