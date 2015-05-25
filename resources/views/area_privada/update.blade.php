@@ -367,7 +367,7 @@
                                                             <section class="col col-xs-12 col-md-8 col-sm-8 col-lg-8">
                                                                 <label>Perfil del Franquiciado:</label>
                                                                 <label class="input">
-                                                                    <input id="perfil" type="text" name="perfil_franquiciado" value ="{{$ses->perfil_franquiciadp}}" class="form-control" placeholder="Perfil del Franquiciado">
+                                                                    <input id="perfil" type="text" name="perfil_franquiciado" value ="{{$ses->perfil_franquiciado}}" class="form-control" placeholder="Perfil del Franquiciado">
                                                                 </label>
                                                             </section>
                                                         </div></div>
