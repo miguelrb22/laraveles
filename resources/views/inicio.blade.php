@@ -14,7 +14,7 @@
         @endsection
 
         @section('carousel')
-            @include('carousel')
+            @include('extras.carousel')
         @endsection
 
         @section('buscador')
