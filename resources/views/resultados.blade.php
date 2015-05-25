@@ -83,7 +83,7 @@
                                                             <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"><h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                             </div>
-                                                            <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ[0]->direccion}}</p>
+                                                            <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{'holaaaaa'.$fran_categ[0]->direccion}}</p>
                                                             <div>
 
 
