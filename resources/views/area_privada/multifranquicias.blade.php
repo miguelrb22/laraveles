@@ -1003,7 +1003,6 @@
             }).on('success.form.bv', function(e) {
 
                 var formData = new FormData($('#form-alta')[0]);
-                console.log(formData);
 
                 // Prevent form submission
                 e.preventDefault();
@@ -1055,6 +1054,65 @@
 
 
 
+
+
+            $('.actualizar_paquete').submit(function(e){
+
+                alert("entra");
+                e.preventDefault();
+
+                //Peticion ajax par actualizar paquetes.
+                var formData = new FormData($('.actualizar_paquete')[0]);
+
+                $.ajax({
+
+                    type: "POST",
+                    url
+                            :
+                            "{{ URL::route('actualizarPaquete') }}",
+                    data
+                            :
+                            formData,
+                    processData
+                            :
+                            false,
+                    contentType
+                            :
+                            false,
+                    dataType
+                            :
+                            "html",
+                    error
+                            :
+                            function () {
+
+                                Lobibox.notify('error', {
+                                    title: 'No se ha podido crear la franquicia',
+                                    showClass: 'flipInX',
+                                    delay: 3000,
+                                    delayIndicator: false,
+
+                                    position: 'bottom left',
+                                    msg: 'Compruebe la conexión a internet'
+                                });
+                            }
+
+                    ,
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Franquicia creada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Mas franquicias, mas dinero!'
+                        });
+                    }
+                });
+
+            });
 
 
             @yield('ready')

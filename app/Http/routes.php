@@ -78,9 +78,14 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 });
 
 
+Route::post('actualizarPaquete', ['as' => 'actualizarPaquete', 'uses' => 'models_controller\paquetes_controller@updateEspecial']);
+
+
+
 Route::post('editar-publicacionEdit', ['as' => 'editarpublicacion', 'uses' => 'models_controller\publicacionController@edit']);
 
 Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'models_controller\publicacionController@destroy']);
+
 
 
 /***************************************************************************************************************/
