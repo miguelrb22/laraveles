@@ -271,13 +271,14 @@
                         <?php
                             $valores = explode('-',$franquicia->claves_negocio);
 
-                            if(count($valores) > 1)
+                            if(count($valores) > 1){
 
                             echo '<label><h4>Claves de negocio</h4></label>';
 
-                            for($i = 0; $i<count($valores); $i++)
-                            {
-                                echo "<li> - " . $valores[$i] . " </li>";
+                                for($i = 0; $i<count($valores); $i++)
+                                {
+                                    echo "<li> - " . $valores[$i] . " </li>";
+                                }
                             }
                         ?>
                     </ul>
