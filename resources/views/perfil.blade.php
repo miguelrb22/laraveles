@@ -267,21 +267,22 @@
                     </table>
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <ul class="listas">
-                        <?php
-                            $valores = explode('#',$franquicia->claves_negocio);
+                    <?php
+                        $valores = explode('#',$franquicia->claves_negocio);
 
-                            if(count($valores) > 1){
+                        if(count($valores) > 1){
 
-                            echo '<h4>Claves de negocio</h4>';
+                        echo '<h4>Claves de negocio</h4>';
 
-                                for($i = 0; $i<count($valores); $i++)
-                                {
-                                    echo "<li> - " . $valores[$i] . " </li>";
-                                }
+                            echo '<ul class="listas">';
+
+                            for($i = 0; $i<count($valores); $i++)
+                            {
+                                echo "<li> - " . $valores[$i] . " </li>";
                             }
-                        ?>
-                    </ul>
+                            echo '</ul>';
+                        }
+                    ?>
                 </div>
 
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
