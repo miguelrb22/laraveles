@@ -130,28 +130,23 @@
                     <br>
 
                     <?php
-                        $lista = explode('#',$franquicia->descripcion);
-                        $descripcion = explode('*',$franquicia->descripcion)
+                        //$lista = explode('#',$franquicia->descripcion);
+                        $descripcion = explode('#',$franquicia->descripcion)
                     ?>
+                    <p>{{$descripcion[0]}}</p>
+
 
                     <?php
-
-                        for($i = 0; $i<count($descripcion); $i++)
-                        {
-                            echo "<p>" . $descripcion[$i] . " </p>";
-                        }
-                    ?>
-
-                    <?php
-                        if(count($lista)>1){
+                        if(count($descripcion)>1){
                             echo '<ul class="listas">';
-                            for($i = 0; $i<count($lista); $i++)
+                            for($i = 1; $i<count($descripcion); $i++)
                             {
-                                echo "<li> - " . $lista[$i] . " </li>";
+                                echo "<li> - " . $descripcion[$i] . " </li>";
                             }
                             echo '</ul>';
                         }
                     ?>
+
 
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
