@@ -273,7 +273,7 @@
 
                             if(count($valores) > 1){
 
-                            echo '<label><h4>Claves de negocio</h4></label>';
+                            echo '<h4>Claves de negocio</h4>';
 
                                 for($i = 0; $i<count($valores); $i++)
                                 {
