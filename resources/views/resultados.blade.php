@@ -89,7 +89,7 @@
 
                                                                 @if(count($fran_categ)>1)
                                                                     <div class="text-center"><label>Más de esta categoría</label></div>
-                                                                    <hr>
+                                                                    <div><hr></div>
                                                                 @endif
 
                                                                 @for($j = 1; $j<count($fran_categ); $j++)
