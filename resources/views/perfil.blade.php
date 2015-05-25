@@ -275,7 +275,7 @@
                         <?php
                             $valores = explode('-',$franquicia->claves_negocio);
 
-                            if(count($valores)>0)
+                            if(count($valores) > 1)
                             for($i = 0; $i<count($valores); $i++)
                             {
                                 echo "<li> - " . $valores[$i] . " </li>";
