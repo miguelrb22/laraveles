@@ -130,7 +130,7 @@
                     <br>
 
                     <?php
-                        $valores = explode('-',$franquicia->descripcion);
+                        $valores = explode('#',$franquicia->descripcion);
                     ?>
                     <p>{{$valores[0]}}</p>
 
@@ -269,7 +269,7 @@
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul class="listas">
                         <?php
-                            $valores = explode('-',$franquicia->claves_negocio);
+                            $valores = explode('#',$franquicia->claves_negocio);
 
                             if(count($valores) > 1){
 
