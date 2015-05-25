@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\models_controller;
 
-use App\model\Subcategoria;
+use App\model\subcategoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
