@@ -206,11 +206,8 @@
                         </tr>
                         <tr>
                             <td>Requisitos local:</td>
-                            <td>@if($franquicia->requisitos_local === 0)
-                                {{'-'}}
-                            @else
-                                {{$franquicia->requisitos_local . ' m2'}}
-                            @endif
+                            <td>
+                                {{$franquicia->requisitos_local}}
                             </td>
                         </tr>
                         <tr>
@@ -270,10 +267,13 @@
                     </table>
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <lavel><h4>Claves de negocio</h4></lavel>
                     <ul class="listas">
                         <?php
                             $valores = explode('-',$franquicia->claves_negocio);
+
+                            if(count($valores) > 1)
+
+                            echo '<label><h4>Claves de negocio</h4></label>';
 
                             for($i = 0; $i<count($valores); $i++)
                             {
