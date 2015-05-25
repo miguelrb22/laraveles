@@ -123,7 +123,7 @@
 
         autoProcessQueue: true,
         maxFiles: 5,
-        maxFilesize: 2, // MB
+        maxFilesize: 5, // MB
         dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Arrastra imágenes <span class="font-xs">para subir</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (O picha aquí)</h4></span>',
         addRemoveLinks: true,
         acceptedFiles: ".jpeg,.jpg,.png,.gif"
