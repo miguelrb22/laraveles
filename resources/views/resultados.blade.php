@@ -84,7 +84,7 @@
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"><h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                             </div>
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr($fran_categ[0]->descripcion,0,70).'...'}}</p>
-                                                            <div>
+                                                            <div class="row col-xs-12 col-sd-12 col-md-12 col-lg-12">
 
 
                                                                 @if(count($fran_categ)>1)
