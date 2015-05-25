@@ -3,6 +3,7 @@
 @section('css')
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/summernote/dist/summernote.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/datepickersandbox/css/bootstrap-datepicker3.min.css') }}">
 
 @endsection
 
@@ -20,14 +21,14 @@
                     {!! Form::token() !!}
                     <div class="input-group">
 
-                             <label >Tipo de publicación</label>
-                            <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
-                                <option value="1" selected>Noticia</option>
-                                <option value="2">Reportaje</option>
-                                <option value="3">Carousel</option>
+                        <label >Tipo de publicación</label>
+                        <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
+                            <option value="1" selected>Noticia</option>
+                            <option value="2">Reportaje</option>
+                            <option value="3">Carousel</option>
 
-                            </select>
-                        </div>
+                        </select>
+                    </div>
 
                     <br>
 
@@ -37,10 +38,10 @@
                         <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
                             <option value="1" selected>General</option>
                             <?php $ses = Session::get('franquicia') ;
-                             if(isset($ses)){
+                            if(isset($ses)){
 
-                                 echo "<option value='2'>$ses->nombre_comercial</option>";
-                             }
+                                echo "<option value='2'>$ses->nombre_comercial</option>";
+                            }
                             ?>
 
                         </select>
@@ -61,6 +62,13 @@
                         <input type="text" name="titulo" id="titulopublicacion" class="form-control" placeholder="Título..." required>
                     </div>
                     <br>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" name="fecha_publicacion" class="form-control fecha_publi" placeholder="Fecha de publicacion..." required>
+                    </div>
+                    <br>
+
 
                     <div class="input-group">
                         <span><strong>Selecciona una imagen para la publicación:</strong></span>
@@ -90,6 +98,9 @@
     <script src="{{ asset('area_privada/summernote\lang\summernote-es-ES.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/dist/summernote.min.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/plugin/summernote-ext-video.js') }}"></script>
+    <script src="{{ asset('area_privada/datepickersandbox/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('area_privada/datepickersandbox/locales/bootstrap-datepicker.es.min.js') }}"></script>
+
 
     <script type="text/javascript">
         $(function() {
@@ -112,6 +123,19 @@
 
             });
         });
+
+
+
+
+        $('.fecha_publi').datepicker({
+
+            format: "yyyy-mm-dd",
+            language: "es",
+            multidate: false,
+            autoclose: true,
+            todayHighlight: true
+        });
+
     </script>
 
 @endsection
@@ -122,66 +146,5 @@
     $('#publicaciones').addClass("active");
 
 
-
-    /**** ARTICULOS ****/
-
-    $('#nueva-publicacion').submit(function(e){
-
-    e.preventDefault();
-
-    $.blockUI({
-
-    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
-    css: {
-    border: 'none',
-    padding: '15px',
-    backgroundColor: 'transparent'}
-
-    });
-
-
-    $.ajax({
-
-    type: "POST",
-    url: "{{ URL::route('nueva-publicacion') }}",
-    data: new FormData($("#nueva-publicacion")[0]),
-    processData: false,
-    contentType: false,
-    dataType: "html",
-    error: function () {
-
-    Lobibox.notify('error', {
-    title: 'No se ha podido publicar el artículo',
-    showClass: 'flipInX',
-    delay: 3000,
-    delayIndicator: false,
-
-    position: 'bottom left',
-    msg: 'Compruebe la conexión a internet'
-    });
-    },
-    success: function (data) {
-
-    Lobibox.notify('success', {
-    title: 'Artículo creado con éxito',
-    showClass: 'flipInX',
-    delay: 3000,
-    delayIndicator: false,
-
-    position: 'bottom left',
-    msg: 'La informacion al poder!'
-    });
-
-    $('input[name=titulo]').val('');
-    $('input[name=file]').val('');
-    $('input[name=contenido]').val('');
-
-
-
-    }
-    });
-
-
-    });
 
 @endsection
