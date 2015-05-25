@@ -3,6 +3,7 @@
 @section('css')
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/summernote/dist/summernote.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/datepickersandbox/css/bootstrap-datepicker3.min.css') }}">
 
 @endsection
 
@@ -97,7 +98,9 @@
     <script src="{{ asset('area_privada/summernote\lang\summernote-es-ES.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/dist/summernote.min.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/plugin/summernote-ext-video.js') }}"></script>
-    <script src="{{ asset('area_privada/js/plugin/datepicker_mio/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('area_privada/datepickersandbox/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('area_privada/datepickersandbox/locales/bootstrap-datepicker.es.min.js') }}"></script>
+
 
     <script type="text/javascript">
         $(function() {
@@ -124,7 +127,14 @@
 
 
 
-        $('.fecha_publi').datepicker();
+        $('.fecha_publi').datepicker({
+
+            format: "yyyy-mm-dd",
+            language: "es",
+            multidate: false,
+            autoclose: true,
+            todayHighlight: true
+        });
 
     </script>
 
