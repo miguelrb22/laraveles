@@ -1136,7 +1136,7 @@
                 $.ajax({
 
                     type: "POST",
-                    url: "{{ URL::route('editar-publicacion') }}",
+                    url: "{{ URL::route('editarpublicacion') }}",
                     data: new FormData($("#editar-publicacion")[0]),
                     processData: false,
                     contentType: false,
