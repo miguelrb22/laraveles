@@ -1024,7 +1024,7 @@
                     data: formData,
                     processData: false,
                     contentType: false,
-                    timeout:8000,
+                    timeout:20000,
                     dataType: 'html',
                     error: function (XMLHttpRequest,cadena) {
 
