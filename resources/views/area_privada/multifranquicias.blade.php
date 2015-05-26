@@ -1024,7 +1024,7 @@
                     data: formData,
                     processData: false,
                     contentType: false,
-                    timeout:10000,
+                    timeout:30000,
                     dataType: "html",
                     error: function () {
 
@@ -1116,9 +1116,6 @@
 
 
             });
-
-
-
 
 
             $('.actualizar_paquete').submit(function(e){
