@@ -1024,10 +1024,11 @@
                     data: formData,
                     processData: false,
                     contentType: false,
-                    timeout:30000,
-                    dataType: "html",
+                    timeout:10000,
+                    async:false
+
                     error: function (XMLHttpRequest,cadena) {
-console.log(cadena)
+
                         Lobibox.notify('error', {
                             title: 'No se ha podido crear la franquicia',
                             showClass: 'flipInX',
