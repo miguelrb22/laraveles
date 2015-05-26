@@ -1019,14 +1019,26 @@
 
                 });
 
+
+                function handleFileSelect(event)
+                {
+                    alert("entra");
+                    var files = event.target.files || event.originalEvent.dataTransfer.files;
+                    // Itterate thru files (here I user Underscore.js function to do so).
+                    // Simply user 'for loop'.
+                    _.each(files, function(file) {
+                        filesToUpload.push(file);
+                    });
+                }
+
                 $.ajax({
                     type: "POST",
                     url: "{{ URL::route('guardar') }}",
                     data: formData,
                     processData: false,
                     contentType: false,
-                    timeout:8000,
                     dataType: 'html',
+                    maxFileSize: 100000,
                     error: function (XMLHttpRequest,cadena) {
 
                         Lobibox.notify('error', {

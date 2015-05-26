@@ -138,8 +138,7 @@
 
                                     <!-- widget content -->
                                     <div class="widget-body no-padding">
-                                        <form id="checkout-form" class="smart-form col-xs-12 col-md-12 col-sm-12"
-                                              novalidate="novalidate">
+                                        <form id="checkout-form" class="smart-form col-xs-12 col-md-12 col-sm-12" novalidate="novalidate">
                                             <div class="row" style="margin:0px">
                                                 <h3 class="text-center"><span> Datos Públicos</span></h3>
 
