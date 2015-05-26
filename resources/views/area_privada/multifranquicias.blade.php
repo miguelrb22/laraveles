@@ -670,6 +670,7 @@
 
             });
 
+            //-------------ALTA Y MODIFICACION FRANQUICIA------- //
             $('#form-alta').bootstrapValidator({
                 feedbackIcons : {
                     valid : 'glyphicon glyphicon-ok',
