@@ -64,7 +64,7 @@
                                         <p>
                                             <label class="pull-right badge badge-success">Inversión: {{$franquicias[$i]->inversion}}</label>
                                             <a href="{{URL::to('franquicias-de-'.$franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial)}}"><h3>{{$franquicias[$i]->nombre_comercial}}</h3></a>
-                                            <p>{{ $franquicias[$i]->descripcion }}</p>
+                                            <p>{{ substr($franquicias[$i]->descripcion,0,255) }}</p>
                                             <labe> Actividad : {{$franquicias[$i]->nombre}}</labe>
                                         </p>
                                     </div>
