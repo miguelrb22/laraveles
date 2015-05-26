@@ -37,7 +37,7 @@
 
                                     if($ses){
                                            echo $ses->nombre_comercial;
-                                        } else echo "Ninguna franquicia cargada";?>
+                                    } else echo "Ninguna franquicia cargada";?>
 
                             </h4>
                         </div>
