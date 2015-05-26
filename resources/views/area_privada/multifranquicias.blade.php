@@ -1024,9 +1024,8 @@
                     data: formData,
                     processData: false,
                     contentType: false,
-                    timeout:100000,
-                    async:false
-
+                    timeout:8000,
+                    dataType: 'html'
                     error: function (XMLHttpRequest,cadena) {
 
                         Lobibox.notify('error', {
