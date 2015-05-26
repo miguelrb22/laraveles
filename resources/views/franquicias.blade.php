@@ -52,6 +52,7 @@
 
                                         <div class="panel-group" id="accordion">
                                             @for($i=0 ; $i < count($lista); $i+=2)
+
                                                 @if(count($lista[$i+1])>1)
                                                     <div class="panel">
                                                         <a class="list-group-item" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}"><span class="glyphicon glyphicon-plus"></span>
@@ -61,13 +62,13 @@
 
                                                             <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
                                                                         'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item small"> {{$lista[$i]}} </a>
-                                                            @for($j=0 ; $j < count($lista[$i+1]); $j++)
+                                                            @for($j=1 ; $j < count($lista[$i+1]); $j++)
                                                                 <a href="{{URL::to('franquicias-de-'.$lista[$i+1][$j])}}" class="list-group-item small"> {{$lista[$i+1][$j]}} </a>
                                                             @endfor
                                                         </div>
                                                     </div>
                                                 @else
-                                                    @if(count($lista[$i+1]) != 0)
+                                                    @if(count($lista[$i+1]) == 1)
                                                         <div class="panel">
                                                             <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
                                                                         'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
@@ -107,13 +108,8 @@
             if($(this).attr("data-target"))
             {
                 if($(this).hasClass("collapse")){
-                    alert("entra");
+
                 }
-                /*$(this).on('shown.bs.collapse', function(){
-                    $(this).removeClass("glyphicon-plus").addClass("glyphicon-minus");
-                }).on('hidden.bs.collapse', function(){
-                    $(this).removeClass("glyphicon-minus").addClass("glyphicon-plus");
-                });*/
             }
         });
     });
