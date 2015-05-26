@@ -68,10 +68,9 @@
                                         <th data-class="expand">Nombre Comercial</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> CIF </th>
                                         <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Direccion</th>
-                                        <th>Telefono</th>
-                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>email</th>
+                                        <th data-hide="pc">Telefono</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> web</th>
-                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i> Cargar </th>
+                                        <th data-class="expand"><i class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i> Cargar </th>
 
                                         <th id="id" class="hidden"></th>
                                     </tr>
@@ -84,7 +83,6 @@
                                         <td>{{$franquicia->cif }}</td>
                                         <td>{{$franquicia->direccion }}</td>
                                         <td>{{$franquicia->tf_contacto }}</td>
-                                        <td>{{$franquicia->email_contacto }}</td>
                                         <td>{{$franquicia->web }}</td>
                                         <td class="hidden">{{$franquicia->id }}</td>
                                         <td><button class="btn btn-info btn-xs" onclick="cargarfranquicia({{$franquicia->id }})"> Cargar</button></td>
