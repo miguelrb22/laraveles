@@ -68,10 +68,10 @@
                                         <th data-class="expand">Nombre Comercial</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> CIF </th>
                                         <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Direccion</th>
-                                        <th>Telefono</th>
-                                        <th data-class="responsive" data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>email</th>
+                                        <th data-hide="phone">Telefono</th>
+                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>email</th>
                                         <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> web</th>
-                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i> Cargar </th>
+                                        <th data-class="expand"><i class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i> Cargar </th>
 
                                         <th id="id" class="hidden"></th>
                                     </tr>
