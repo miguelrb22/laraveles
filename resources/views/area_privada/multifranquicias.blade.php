@@ -1026,8 +1026,8 @@
                     contentType: false,
                     timeout:30000,
                     dataType: "html",
-                    error: function () {
-
+                    error: function (XMLHttpRequest,cadena) {
+console.log(cadena)
                         Lobibox.notify('error', {
                             title: 'No se ha podido crear la franquicia',
                             showClass: 'flipInX',
