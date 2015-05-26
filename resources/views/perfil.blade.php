@@ -31,10 +31,14 @@
                         <td>{{$franquicia->nombre_comercial}}</td>
                     </tr>
                     <tr>
-                        <td>{{$franquicia->direccion}}</td>
+                        @if($franquicia->direccion != '-')
+                            <td>{{$franquicia->direccion}}</td>
+                        @endif
                     </tr>
                     <tr>
-                        <td>{{$franquicia->cp. ' ' . $franquicia->ciudad}}</td>
+                        @if($franquicia->cp != 0)
+                            <td>{{$franquicia->cp. ' ' . $franquicia->ciudad}}</td>
+                        @endif
                     </tr>
                     <td>{{$franquicia->web}}</td>
                     </td>
