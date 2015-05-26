@@ -54,7 +54,7 @@
                         @foreach($franquicias as $franquicia)
                         <div class="row">
                             <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".$franquicia->nombre_comercial)))}}"><img class="img-rounded img-responsive" src="{{ asset($franquicia->logo_url) }}"></a>
+                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".$franquicia->nombre_comercial)))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicia->logo_url) }}"></a>
                             </div>
                             <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
                                 <p>
