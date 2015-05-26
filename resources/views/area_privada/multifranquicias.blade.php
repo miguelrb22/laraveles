@@ -1018,12 +1018,12 @@
                 });
 
                 $.ajax({
-
                     type: "POST",
                     url: "{{ URL::route('guardar') }}",
                     data: formData,
                     processData: false,
                     contentType: false,
+                    timeout:10000,
                     dataType: "html",
                     error: function () {
 
