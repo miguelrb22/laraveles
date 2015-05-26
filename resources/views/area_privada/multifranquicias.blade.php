@@ -1004,6 +1004,7 @@
             }).on('success.form.bv', function(e) {
 
                 var formData = new FormData($('#form-alta')[0]);
+                formData.append('descripcion',$('#descripcion').val());
 
                 // Prevent form submission
                 e.preventDefault();

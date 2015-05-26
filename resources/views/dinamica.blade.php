@@ -59,7 +59,7 @@
                             <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8">
                                 <p>
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".$franquicia->nombre_comercial)))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
-                                    <p>{{ substr($franquicia->descripcion,0,250)."..." }}</p>
+                                    <p>{{ substr(strip_tags($franquicia->descripcion),0,250)."..." }}</p>
                                 </p>
                             </div>
                         </div>

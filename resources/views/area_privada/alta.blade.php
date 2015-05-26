@@ -1,5 +1,9 @@
 @extends('area_privada.multifranquicias')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/summernote/dist/summernote.css') }}">
+
+@endsection
 @section('main')
 
     <section id="widget-grid" class="">
@@ -188,9 +192,8 @@
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12"
                                                                          style="margin-bottom: 12px">
                                                                     <label>Descripción:</label>
-                                                                    <label class="textarea textarea-resizable">
-                                                                        <textarea class="custom-scroll" rows="1" id="descripcion" name="descripcion"></textarea>
-                                                                    </label>
+                                                                        <textarea class="custom-scroll ta-descripcion" rows="1" id="descripcion" name="descripcion"></textarea>
+
                                                                 </section>
                                                             </div>
                                                         </div>
@@ -665,6 +668,35 @@
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/datepicker_mio/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('area_privada/summernote\lang\summernote-es-ES.js') }}"></script>
+    <script src="{{ asset('area_privada/summernote/dist/summernote.min.js') }}"></script>
+    <script src="{{ asset('area_privada/summernote/plugin/summernote-ext-video.js') }}"></script>
+
+   <script type="text/javascript">
+
+       $(function() {
+           $('.ta-descripcion').summernote({
+               height: 250,
+               toolbar: [
+                   //[groupname, [button list]]
+
+                   ['Misc',['undo','redo','fullscreen','codeview']],
+                   ['magic',['style']],
+                   ['style', ['bold', 'italic', 'underline', 'clear']],
+                   ['font', ['strikethrough', 'superscript', 'subscript']],
+                   ['fontsize', ['fontsize']],
+                   ['color', ['color']],
+                   ['para', ['ul', 'ol', 'paragraph']],
+                   ['height', ['height']],
+                   ['insert',['table','link','hr','picture','video']]
+
+               ]
+
+           });
+       });
+
+   </script>
+
 @endsection
 
 @section('ready')

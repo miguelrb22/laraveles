@@ -133,7 +133,7 @@
                         //$lista = explode('#',$franquicia->descripcion);
                         $descripcion = explode('#',$franquicia->descripcion)
                     ?>
-                    <p>{{$descripcion[0]}}</p>
+                    <p>{!! $descripcion[0]!!}</p>
 
 
                     <?php
