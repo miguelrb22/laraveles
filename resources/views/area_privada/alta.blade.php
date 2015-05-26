@@ -2,7 +2,6 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/summernote/dist/summernote.css') }}">
-
 @endsection
 @section('main')
 
@@ -184,16 +183,6 @@
                                                                     <label class="input"><i class="icon-prepend fa fa-user"></i>
                                                                         <input id="web" type="text" name="web" class="form-control"  placeholder="Página Web">
                                                                     </label>
-                                                                </section>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12"
-                                                                         style="margin-bottom: 12px">
-                                                                    <label>Descripción:</label>
-                                                                        <textarea class="custom-scroll ta-descripcion" rows="1" id="descripcion" name="descripcion"></textarea>
-
                                                                 </section>
                                                             </div>
                                                         </div>
@@ -642,12 +631,23 @@
                                                     </fieldset>
                                                 </div>
                                             </div>
+
+                                                <div class="row">
+                                                    <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12"
+                                                             style="margin-bottom: 15px">
+                                                        <textarea name ='descripcion' class="ta-descripcion" placeholder="Descripcion de la franquicia..."></textarea>
+
+                                                    </section>
+                                                </div>
+
                                             <footer>
                                                 <button id="actualizar" type="submit" class="btn btn-primary">
                                                     Guardar Ficha
                                                 </button>
                                             </footer>
                                         </form>
+
+
                                         <!--</form>-->
                                         <!-- fin form -->
                                     </div>
@@ -668,7 +668,7 @@
     <script src="{{ asset('area_privada/js/plugin/select2/select2.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/bootstrapvalidator/bootstrapValidator.min.js')}}"></script>
     <script src="{{ asset('area_privada/js/plugin/datepicker_mio/js/bootstrap-datepicker.js')}}"></script>
-    <script src="{{ asset('area_privada/summernote\lang\summernote-es-ES.js') }}"></script>
+
     <script src="{{ asset('area_privada/summernote/dist/summernote.min.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/plugin/summernote-ext-video.js') }}"></script>
 

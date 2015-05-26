@@ -725,17 +725,6 @@
                             }
                         }
                     },
-                    descripcion : {
-                        validators : {
-                            notEmpty : {
-                                message : 'Este campo es requerido'
-                            },
-                            stringLength : {
-                                min : 30,
-                                message : 'La Descripción demasiado corta'
-                            }
-                        }
-                    },
                     logo_url : {
                         validators : {
                             notEmpty : {
@@ -1004,7 +993,6 @@
             }).on('success.form.bv', function(e) {
 
                 var formData = new FormData($('#form-alta')[0]);
-                formData.append('descripcion',$('#descripcion').val());
 
                 // Prevent form submission
                 e.preventDefault();
