@@ -793,7 +793,6 @@ class WebController extends Controller {
                 try {
 
                     $toEmail = $destinatario[0];
-
                     $toName = $destinatario[1];
 
                     \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
