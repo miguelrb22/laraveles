@@ -199,7 +199,11 @@
                         </tr>
                         <tr>
                             <td>Población mínima:</td>
-                            <td>{{$franquicia->poblacion_minima}} hab</td>
+                            @if($franquicia->poblacion_minima == 0)
+                                <td>{{$franquicia->poblacion_minima}} hab</td>
+                            @else
+                                <td>{{'-'}} hab</td>
+                            @endif
                         </tr>
                         <tr>
                             <td>Superficie mínima:</td>
