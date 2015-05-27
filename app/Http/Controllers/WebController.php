@@ -568,7 +568,7 @@ class WebController extends Controller {
         $patrocinadas = $this->patrocinadasB;
 
         //Parseamos el tipo porque su valor desde donde se pasa tiene frutos-secos-y-dulces por ejemplo
-        $tipo = strtolower(str_replace('-',' ',$tipo));
+        $tipo = (str_replace('-',' ',$tipo));
 
         echo $tipo;
 
