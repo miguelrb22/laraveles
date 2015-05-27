@@ -783,6 +783,7 @@ class WebController extends Controller {
 
         if($similares) {
 
+            dd('entra');
             foreach ($similares as $similar) {
 
 
