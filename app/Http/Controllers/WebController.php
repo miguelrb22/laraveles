@@ -778,9 +778,11 @@ class WebController extends Controller {
             });
 
         }catch (Exception $e){}
+         catch(\Swift_RfcComplianceException $e){}
 
 
         if($similares) {
+
 
             foreach ($similares as $similar) {
 
@@ -799,7 +801,8 @@ class WebController extends Controller {
                         $message->subject('Una persona está interesada en su franquicia');
                     });
 
-                }catch (Exception $e){}
+                }catch (Exception $e){ dd($e->getMessage());}
+                catch(\Swift_RfcComplianceException $e){ dd($e->getMessage());}
 
 
             }
