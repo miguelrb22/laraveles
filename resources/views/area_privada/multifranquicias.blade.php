@@ -706,14 +706,6 @@
                         validators : {
                             notEmpty : {
                                 message : 'Este campo es requerido'
-                            },
-                            numeric : {
-                                message : 'Este campo debe ser numérico'
-                            },
-                            stringLength : {
-                                max : 5,
-                                min : 5,
-                                message : 'La longitud del campo debe ser de 5 dígitos'
                             }
                         }
                     },
