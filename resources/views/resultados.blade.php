@@ -145,7 +145,7 @@
                                                             <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
                                                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".$fran_categ[0]->nombre_comercial)))}}"> <h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                             </div>
-                                                            <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ[0]->descripcion}}</p>
+                                                            <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ[0]->descripcion),0,70)}}</p>
                                                             <div>
 
                                                                 @if(count($fran_categ)>1)
@@ -184,7 +184,7 @@
                                                             <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
                                                                 <a href="{{URL::to('franquicias-de-'.$fran_categ1[0]->nombre."/".$fran_categ1[0]->nombre_comercial)}}" ><h3 class="text-center">{{$fran_categ1[0]->nombre_comercial}}</h3></a>
                                                             </div>
-                                                            <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{$fran_categ1[0]->descripcion}}</p>
+                                                            <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ1[0]->descripcion),0,70)}}</p>
                                                             <div>
                                                                 @if(count($fran_categ1)>1)
                                                                     <div class="text-center"><label>Más de esta categoría</label></div>
