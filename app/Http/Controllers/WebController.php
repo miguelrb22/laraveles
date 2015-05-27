@@ -568,6 +568,7 @@ class WebController extends Controller {
         $patrocinadas = $this->patrocinadasB;
 
         $tipo = strtolower(str_replace('-',' ',$tipo));
+        dd('tipo = '. $tipo);
 
         $lista_franquicias = \Illuminate\Support\Facades\Session::get('franquicias');
         $franquicias =  new \Illuminate\Database\Eloquent\Collection();
