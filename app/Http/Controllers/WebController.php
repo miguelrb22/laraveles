@@ -574,6 +574,8 @@ class WebController extends Controller {
         $franquicias =  new \Illuminate\Database\Eloquent\Collection();
 
 
+        dd($lista_franquicias);
+
         foreach ($lista_franquicias as $franquicia)
         {
             if($franquicia->nombre === $tipo)
