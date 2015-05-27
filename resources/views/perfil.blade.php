@@ -199,7 +199,11 @@
                         </tr>
                         <tr>
                             <td>Población mínima:</td>
-                            <td>{{$franquicia->poblacion_minima}} hab</td>
+                            @if($franquicia->poblacion_minima == '0')
+                                <td>{{'-'}} hab</td>
+                            @else
+                                <td>{{$franquicia->poblacion_minima}} hab</td>
+                            @endif
                         </tr>
                         <tr>
                             <td>Superficie mínima:</td>
@@ -241,11 +245,19 @@
                         </tr>
                         <tr>
                             <td>Creación de empresa:</td>
-                            <td>{{$franquicia->anyo_creacion}}</td>
+                            @if($franquicia->anyo_creacion != 0000)
+                                <td>{{$franquicia->anyo_creacion}}</td>
+                            @else
+                                <td>{{'-'}}</td>
+                            @endif
                         </tr>
                         <tr>
                             <td>Inicio de expansión:</td>
-                            <td>{{$franquicia->inicio_expansion}}</td>
+                            @if($franquicia->inicio_expansion != 0000)
+                                <td>{{$franquicia->inicio_expansion}}</td>
+                            @else
+                                <td>{{'-'}}</td>
+                            @endif
                         </tr>
                         <tr>
                             <td>Red de España:</td>

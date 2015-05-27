@@ -139,7 +139,7 @@
                                         <strong>Franquicias Baratas</strong>
                                     </a>
                                 </h4>
-                                <hr/>
+                                <hr style="border-top-color: black"/>
                                 <h4 class="text-center letra">
                                     <strong>
                                         <a href="" title="perfil">
