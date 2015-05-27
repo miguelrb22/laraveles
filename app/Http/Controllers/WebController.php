@@ -778,6 +778,7 @@ class WebController extends Controller {
             });
 
         }catch (Exception $e){}
+         catch(\Swift_RfcComplianceException $e){}
 
 
         if($similares) {
@@ -800,6 +801,7 @@ class WebController extends Controller {
                     });
 
                 }catch (Exception $e){}
+                catch(\Swift_RfcComplianceException $e){}
 
 
             }
