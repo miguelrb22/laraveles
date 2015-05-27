@@ -73,7 +73,7 @@
                                             <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
                                                 <div class="row panel panel-info">
                                                     <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                                        <span><a href="{{URL::to('busqueda-'.$subcategorias[$i]->nombre)}}" class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
+                                                        <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i]->nombre)))}}" class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
                                                     </div>
                                                     <div class="panel-body" style="margin-bottom: -16px;">
                                                         <div class="row">
@@ -135,7 +135,7 @@
                                             <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
                                                 <div class="row panel panel-info">
                                                     <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                                        <span><a href="{{URL::to('busqueda-'.$subcategorias[$i]->nombre)}}"  class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
+                                                        <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i]->nombre)))}}"  class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
                                                     </div>
                                                     <div class="panel-body" style="margin-bottom: -16px;">
                                                         <div class="row">
@@ -174,7 +174,7 @@
                                             <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                                 <div class="row panel panel-info">
                                                     <div class="panel-heading text-center" id="" style="background:{{ '#'.$color = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
-                                                        <span><a href="{{URL::to('busqueda-'.$subcategorias[$i+1]->nombre)}}" class="textoblanco subcategoria">{{$subcategorias[$i+1]->nombre}}</a></span>
+                                                        <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i+1]->nombre)))}}" class="textoblanco subcategoria">{{$subcategorias[$i+1]->nombre}}</a></span>
                                                     </div>
                                                     <div class="panel-body" style="margin-bottom: -16px;">
                                                         <div class="row">
