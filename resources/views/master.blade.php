@@ -154,32 +154,53 @@
 
 <script type="text/javascript">
 
+    function GetCookie(name) {
+        var arg=name+"=";
+        var alen=arg.length;
+        var clen=document.cookie.length;
+        var i=0;
+
+        while (i<clen) {
+            var j=i+alen;
+
+            if (document.cookie.substring(i,j)==arg)
+                return "1";
+            i=document.cookie.indexOf(" ",i)+1;
+            if (i==0)
+                break;
+        }
+
+        return null;
+    }
+
     function setcookie(){
 
-        COOKIES.createCookie("politica","2",3);
+        var expire=new Date();
+        expire=new Date(expire.getTime()+3600000);
+        document.cookie="cookies_surestao=aceptada; expires="+expire;
 
-        $(".coockie_banner").hide(800);
+        var visit=GetCookie("cookies_surestao");
+
+        if (visit==1){
+            $(".coockie_banner").hide(800);
+
+        }
 
 
     }
 
     function salir_aplicacion(){
 
-        <?php setcookie("politica", "", time() - 3600); ?>
-
         window.location = "http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29";
 
     }
-    function Comprobar_Cookie(){
 
-       if (COOKIES.readCookie("politica") == 2){
-           $(".coockie_banner").hide();
+    $(function() {
 
-       }
 
-    }
-
-    Comprobar_Cookie();
+        var visit=GetCookie("cookies_surestao");
+        if (visit==1){$(".coockie_banner").hide(); }
+    });
 
 
 </script>
