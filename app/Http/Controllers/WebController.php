@@ -568,7 +568,7 @@ class WebController extends Controller {
         $patrocinadas = $this->patrocinadasB;
 
         //Parseamos el tipo porque su valor desde donde se pasa tiene frutos-secos-y-dulces por ejemplo
-        $tipo = (str_replace('-',' ',$tipo));
+        $tipo = strtolower(str_replace('-',' ',$tipo));
 
         echo $tipo;
 
@@ -578,7 +578,7 @@ class WebController extends Controller {
 
         foreach ($lista_franquicias as $franquicia)
         {
-            if($franquicia->nombre == $tipo)
+            if(strcasecmp($franquicia->nombre , $tipo) == 0)
                 $franquicias->add($franquicia);
         }
 
