@@ -812,3 +812,7 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 .perfilDesc >ul> li{
     color: rgb(82, 82, 83) !important;
 }
+
+.separador_inicio{
+    border-top: 1px solid #B3B0B0 !important;
+}
