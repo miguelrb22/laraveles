@@ -783,7 +783,7 @@ class WebController extends Controller {
 
         if($similares) {
 
-            dd('entra');
+
             foreach ($similares as $similar) {
 
 
@@ -793,6 +793,8 @@ class WebController extends Controller {
                 try {
 
                     $toEmail = $destinatario[0];
+
+                    dd($toEmail);
                     $toName = $destinatario[1];
 
                     \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
