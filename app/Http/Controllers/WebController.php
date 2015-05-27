@@ -567,7 +567,7 @@ class WebController extends Controller {
         //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
         $patrocinadas = $this->patrocinadasB;
 
-        $tipo = strtolower(str_replace('-',' ',$tipo));
+        $tipo = str_replace('-',' ',$tipo);
         //dd('tipo = '. $tipo);
 
         $lista_franquicias = \Illuminate\Support\Facades\Session::get('franquicias');
