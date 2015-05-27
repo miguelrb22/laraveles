@@ -794,7 +794,6 @@ class WebController extends Controller {
 
                     $toEmail = $destinatario[0];
 
-                    dd($toEmail);
                     $toName = $destinatario[1];
 
                     \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
@@ -803,8 +802,8 @@ class WebController extends Controller {
                         $message->subject('Una persona está interesada en su franquicia');
                     });
 
-                }catch (Exception $e){}
-                catch(\Swift_RfcComplianceException $e){}
+                }catch (Exception $e){ dd($e->getMessage());}
+                catch(\Swift_RfcComplianceException $e){ dd($e->getMessage());}
 
 
             }
