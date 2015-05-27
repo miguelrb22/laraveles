@@ -761,13 +761,15 @@ class WebController extends Controller {
         );
 
         $similares = $request::input('similares');
-        $toEmail = $request::input('email_franquicia');
-        $toName = $request::input('nombre_franquicia');
+
         $fromEmail = 'info@multifranquicias.com';
         $fromName = 'Multifranquicias';
 
 
         try {
+
+            $toEmail = $request::input('email_franquicia');
+            $toName = $request::input('nombre_franquicia');
 
             \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
                 $message->to($toEmail, $toName);
