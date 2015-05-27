@@ -173,10 +173,9 @@
     function Comprobar_Cookie(){
 
        if (COOKIES.readCookie("politica") == 2){
-           $(".coockie_banner").hide();
+           $(".coockie_banner").css("display",'none');
 
        }
-
     }
 
     Comprobar_Cookie();
