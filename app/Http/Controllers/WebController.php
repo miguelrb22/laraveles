@@ -775,7 +775,7 @@ class WebController extends Controller {
                 $message->subject('Una persona está interesada en su franquicia');
             });
 
-        }catch (Exception $e){ return false;}
+        }catch (Exception $e){}
 
 
         if($similares) {
@@ -784,10 +784,12 @@ class WebController extends Controller {
 
 
                 $destinatario = explode('%', $similar);
-                $toEmail = $destinatario[0];
-                $toName = $destinatario[1];
+
 
                 try {
+
+                    $toEmail = $destinatario[0];
+                    $toName = $destinatario[1];
 
                     \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
                         $message->to($toEmail, $toName);
@@ -795,7 +797,7 @@ class WebController extends Controller {
                         $message->subject('Una persona está interesada en su franquicia');
                     });
 
-                }catch (Exception $e){ return false;}
+                }catch (Exception $e){}
 
 
             }
