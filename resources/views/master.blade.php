@@ -141,11 +141,48 @@
 </div>
 <!-- FIN FOOTER -->
 
+<div class="coockie_banner" style="left: 0; text-align: center; position: fixed;bottom: 0; background:rgba(0, 0, 0, 0.8); color:#7b057e; width:100% !important; padding-top:10px; padding-bottom:10px;">
+    <p style="padding:4px; text-align: center; color:white">Las cookies nos permiten ofrecer nuestros servicios. Al utilizar nuestros servicios, aceptas el uso que hacemos de las cookies <button class="btn btn-success btn-xs" style="margin-top:-0.3%" onclick="setcookie()">Aceptar</button> <button class="btn btn-danger btn-xs" style="margin-top:-0.3%" onclick="salir_aplicacion()">Cancelar</button></div>
+
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ URL::asset('js/jquery-2.1.1.min.js') }}"></script>
 <script src="{{ URL::asset('js/boostrap.min.js') }}"></script>
 <script src="{{ URL::asset('lolibox/dist/js/lobibox.min.js') }}"></script>
 <script src="{{ URL::asset('js/blockUI.js') }}"></script>
+<script src="{{ URL::asset('js/jcook.js') }}"></script>
+
+
+<script type="text/javascript">
+
+    function setcookie(){
+
+        COOKIES.createCookie("politica","2",3);
+
+        $(".coockie_banner").hide(800);
+
+
+    }
+
+    function salir_aplicacion(){
+
+        <?php setcookie("politica", "", time() - 3600); ?>
+
+        window.location = "http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29";
+
+    }
+    function Comprobar_Cookie(){
+
+       if (COOKIES.readCookie("politica") == 2){
+           $(".coockie_banner").hide();
+
+       }
+
+    }
+
+    Comprobar_Cookie();
+
+
+</script>
 
 
 @yield('javascript')
