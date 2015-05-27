@@ -241,11 +241,19 @@
                         </tr>
                         <tr>
                             <td>Creación de empresa:</td>
-                            <td>{{$franquicia->anyo_creacion}}</td>
+                            @if($franquicia->anyo_creacion != 0000)
+                                <td>{{$franquicia->anyo_creacion}}</td>
+                            @else
+                                <td>{{'-'}}</td>
+                            @endif
                         </tr>
                         <tr>
                             <td>Inicio de expansión:</td>
-                            <td>{{$franquicia->inicio_expansion}}</td>
+                            @if($franquicia->inicio_expansion != 0000)
+                                <td>{{$franquicia->inicio_expansion}}</td>
+                            @else
+                                <td>{{'-'}}</td>
+                            @endif
                         </tr>
                         <tr>
                             <td>Red de España:</td>
