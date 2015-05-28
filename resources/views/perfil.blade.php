@@ -217,7 +217,7 @@
                         <tr>
                             <td>Personal:</td>
                             <td> @if($franquicia->personal != "-")
-                                    {{$franquicia->personal}} personas
+                                    {{$franquicia->personal}}
                                  @else
                                     {{$franquicia->personal}}
                                  @endif
