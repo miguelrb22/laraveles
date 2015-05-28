@@ -57,11 +57,11 @@
                             @for($i=0 ; $i< count($franquicias); $i++)
                                 <div class="row">
                                     <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_encode($franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicias[$i]->logo_url) }}"></a>
+                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias[$i]->nombre."/".strtr(utf8_decode($franquicias[$i]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicias[$i]->logo_url) }}"></a>
                                     </div>
                                     <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8 f-desc">
                                         <p>
-                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_encode($franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$franquicias[$i]->nombre_comercial}}</h3></a>
+                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias[$i]->nombre."/".strtr(utf8_decode($franquicias[$i]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$franquicias[$i]->nombre_comercial}}</h3></a>
                                             <p>{{ substr(strip_tags($franquicias[$i]->descripcion),0,255)."..." }}</p>
                                             <label> Actividad : {{$franquicias[$i]->nombre}}</label>
                                         </p>
