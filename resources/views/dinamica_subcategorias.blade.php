@@ -61,9 +61,9 @@
                                     </div>
                                     <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8 f-desc">
                                         <p>
-                                            <a href="{{URL::to('franquicias-de-'.$franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial)}}"><h3>{{$franquicias[$i]->nombre_comercial}}</h3></a>
+                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial)))}}"><h3>{{$franquicias[$i]->nombre_comercial}}</h3></a>
                                             <p>{{ substr(strip_tags($franquicias[$i]->descripcion),0,255)."..." }}</p>
-                                            <labe> Actividad : {{$franquicias[$i]->nombre}}</labe>
+                                            <label> Actividad : {{$franquicias[$i]->nombre}}</label>
                                         </p>
                                     </div>
                                 </div>
