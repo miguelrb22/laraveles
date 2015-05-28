@@ -56,11 +56,11 @@
 
                             <div class="row">
                                 <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <img class="img-rounded img-responsive f-logo" src="{{ asset($franquicia->logo_url) }}">
+                                    <a href="{{strtolower(str_replace(" ","-",URL::to('franquicias-de-'.$tipo."/".strtr(utf8_decode($franquicia->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicia->logo_url) }}"></a>
                                 </div>
                                 <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8 f-desc">
                                     <p>
-                                        <a href="{{strtolower(str_replace(" ","-",URL::to('franquicias-de-'.$tipo."/".$franquicia->nombre_comercial)))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
+                                        <a href="{{strtolower(str_replace(" ","-",URL::to('franquicias-de-'.$tipo."/".strtr(utf8_decode($franquicia->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
                                         <p>{{ substr(strip_tags($franquicia->descripcion),0,250).'... ' }}</p>
                                     <label>Actividad : {{$franquicia->nombre}}</label>
                                     </p>
