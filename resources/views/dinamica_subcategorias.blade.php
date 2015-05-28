@@ -57,7 +57,7 @@
                             @for($i=0 ; $i< count($franquicias); $i++)
                                 <div class="row">
                                     <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <img class="img-rounded img-responsive f-logo" src="{{ asset($franquicias[$i]->logo_url) }}">
+                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial)))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicias[$i]->logo_url) }}"></a>
                                     </div>
                                     <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8 f-desc">
                                         <p>
