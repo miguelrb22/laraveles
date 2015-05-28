@@ -96,7 +96,7 @@
                                                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
                                                                         <ul class="list-unstyled">
                                                                             <li>
-                                                                                <a href="{{URL::to('franquicias-de-'.$fran_categ[$j]->nombre."/".$fran_categ[$j]->nombre_comercial)}}">{{$fran_categ[$j]->nombre_comercial}}</a>
+                                                                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[$j]->nombre."/".$fran_categ[$j]->nombre_comercial)))}}">{{$fran_categ[$j]->nombre_comercial}}</a>
                                                                             </li>
                                                                             <!--<li>
                                                                                 <a href="#">Tasca joselito</a>
