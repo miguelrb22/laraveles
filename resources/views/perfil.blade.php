@@ -275,7 +275,7 @@
                             <td>Red en extranjero:</td>
                             <td>
                                 @if($franquicia->red_extranjero)
-                                    {{ 'Si' }}
+                                    {{ 'Sí' }}
                                 @else
                                     {{ 'No' }}
                                 @endif
