@@ -24,7 +24,7 @@
             <option value="60001-80000">60.001 - 80.000</option>
             <option value="80001-100000">80.001 - 100.000</option>
             <option value="100001-150000">100.001 - 150.000</option>
-            <option value="150001-500000">+ de 150.000</option>
+            <option value="150001-5000000">+ de 150.000</option>
         </select>
     </div>
     <div class="form-group">
