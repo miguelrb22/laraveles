@@ -285,7 +285,6 @@ class WebController extends Controller {
             if ($categoria != -1) {
 
                 $listaIdsFranquicias = array(); //Lista con los ids de las franquicias que cumplen que la subcategoria es igual a la categoria pasada
-
                 //Vamos extrayendo franquicias que cumplan la condicion de anterior y esta
                 foreach($subcategorias as $id)
                 {
