@@ -36,6 +36,7 @@
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
+    <link rel="publisher" href="https://plus.google.com/u/0/103455979226239102770/posts" />
     @yield('css')
 
     @yield('include')
