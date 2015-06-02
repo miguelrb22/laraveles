@@ -54,6 +54,9 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
     //Crear categorias y subcategorias
     Route::get('categorias', ['as' => 'categorias', 'uses' => 'AreaPrivadaController@categorias']);
 
+    Route::get('usuarios', ['as' => 'usuarios', 'uses' => 'AreaPrivadaController@usuarios']);
+
+
     //Crear articulos
     Route::get('noticias', ['as' => 'noticias', 'uses' => 'AreaPrivadaController@noticias']);
 
@@ -233,6 +236,10 @@ Route::post('cargarfranquicia' ,  ['as' => 'cargarfranquicia', 'uses' => 'models
 Route::post('nuevacategoria' ,  ['as' => 'nuevacategoria', 'uses' => 'models_controller\categoriaController@store']);
 Route::post('nuevasubcategoria' ,  ['as' => 'nuevasubcategoria', 'uses' => 'models_controller\subcategoriaController@store']);
 Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
+
+
+Route::post('nuevousuario' ,  ['as' => 'nuevousuario', 'uses' => 'models_controller\userController@nuevo']);
+
 
 Route::get('noticias/{titulo}/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion']);
 

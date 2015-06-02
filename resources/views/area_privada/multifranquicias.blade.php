@@ -292,6 +292,9 @@
                 <li id="estadisticas">
                     <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
                 </li>
+                <li id="usuarios">
+                    <a href="{{ URL::route('usuarios') }}"><i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent">Usuarios</span><b class="collapse-sign"></b></a>
+                </li>
             </ul>
         </nav><!--END NAGIVATION -->
         <span class="minifyme" data-action="minifyMenu">
@@ -613,6 +616,56 @@
 
                             position: 'bottom left',
                             msg: 'Mas categorías, mas dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
+
+            $('#nuevo-usuario').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('nuevousuario') }}",
+                    data: $('#nuevo-usuario').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido crear el usuario',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet o si el usuario ya existe'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Usuario creado con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Uno más para trabajar'
                         });
                     }
                 });
