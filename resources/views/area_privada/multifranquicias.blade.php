@@ -1142,7 +1142,7 @@
                             function () {
 
                                 Lobibox.notify('error', {
-                                    title: 'No se ha podido crear la franquicia',
+                                    title: 'No se ha podido actualizar el paquete   ',
                                     showClass: 'flipInX',
                                     delay: 3000,
                                     delayIndicator: false,
@@ -1156,7 +1156,7 @@
                     success: function (data) {
 
                         Lobibox.notify('success', {
-                            title: 'Franquicia creada con éxito',
+                            title: 'Paquete actualizado  con éxito',
                             showClass: 'flipInX',
                             delay: 3000,
                             delayIndicator: false,

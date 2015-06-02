@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE HTML>
+<html lang="es" xml:lang="es">
 
 <head>
 

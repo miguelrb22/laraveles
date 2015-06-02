@@ -38,7 +38,6 @@
                                     if($ses){
                                            echo $ses->nombre_comercial;
                                     } else echo "Ninguna franquicia cargada";?>
-
                             </h4>
                         </div>
                         </div>
@@ -51,7 +50,6 @@
 
                         <!-- widget div-->
                         <div>
-
                             <!-- widget edit box -->
                             <div class="jarviswidget-editbox">
                                 <!-- This area used as dropdown edit box -->
@@ -91,18 +89,14 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                             <!-- end widget content -->
-
                         </div>
                         <!-- end widget div -->
-
                     </div>
                     <!-- end widget -->
-
                 </article>
-                <!-- WIDGET END -->
+            <!-- WIDGET END -->
         </div>
     </section>
 @endsection

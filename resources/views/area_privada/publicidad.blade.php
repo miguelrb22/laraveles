@@ -78,9 +78,9 @@
                                                             <label class="toggle">
 
                                                                 @if ($paquetes[0]->carousel == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' value="0">
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' value="1">
                                                                 @endif
 
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
@@ -294,8 +294,7 @@
                                                                 @if ($paquetes[0]->destacados == 0)
                                                                     <input type='checkbox' name='check' value="0">
                                                                 @else
-                                                                    <input type='checkbox' name='check'
-                                                                           checked="checked" value="1">
+                                                                    <input type='checkbox' name='check' value="1">
                                                                 @endif
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
                                                         </section>
@@ -328,7 +327,7 @@
                                                         </section>
 
 
-                                                            <input type="text" value="destacados" name="nombre_paquete" hidden>
+                                                        <input type="text" value="destacados" name="nombre_paquete" hidden>
 
                                                     </div>
 
