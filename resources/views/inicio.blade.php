@@ -1,3 +1,12 @@
+@section('keywords') franquicias, franquicias rentables, franquicias baratas, franquiciaslow cost, franquicias destacadas @endsection
+@section('description')En multifranquicias.com encontrarás toda la información de las franquicias más rentables y destacadas en españa, para hacer de su inversión un buen negocio @endsection
+@section('title') Franquicias rentables y destacadas en España @endsection
+@section('og:title') Franquicias rentables y destacadas en España @endsection
+@section('og:description')En multifranquicias.com encontrarás toda la información de las franquicias más rentables y destacadas en españa, para hacer de su inversión un buen negocio @endsection
+@section('og:url') http://www.multifranquicias.com @endsection
+@section('dc:title') Franquicias rentables y destacadas en España @endsection
+
+
 @extends('master')
 
     <style>

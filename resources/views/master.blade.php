@@ -6,16 +6,37 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Multifranquicias.com">
+    <meta name="keywords" content="@yield('keywords')">
+    <meta name="description" content="@yield('description')">
+    <title>@yield('title')</title>
+
+    <meta property="og:title" content="@yield('og:title')">
+    <meta property="og:description" content="@yield('og:description')">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@yield('og:url')">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="multifranquicias.com">
+    <meta name="DC.language" content="ES">
+    <meta name="DC.source" content="http://www.multifranquicias.com">
+    <meta name="DC.title" content="@yield('dc:title')">
+    <meta name="DC.description" content="En multifranquicias.com encontrarás toda la información de las franquicias más rentables y destacadas en españa, para hacer de su inversión un buen negocio">
+    <meta name="DC.creator" content="multifranquicias.com">
+    <meta name="DC.publisher" content="multifranquicias.com">
+    <meta name="twitter:card" content="@multifranquicia">
+    <meta name="twitter:site" content="http://www.multifranquicias.com/">
+    <meta name="twitter:title" content="Franquicias rentables y baratas en España">
+    <meta name="twitter:description" content="En multifranquicias.com encontrarás toda la información de las franquicias más rentables y destacadas en españa, para hacer de su inversión un buen negocio">
+    <meta name="twitter:url" content="http://www.multifranquicias.com/">
 
     <title>Multifranquicias</title>
     <link href='http://fonts.googleapis.com/css?family=Prociono' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome-animated.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome-animated.min.css') }}"/>
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('lolibox/dist/css/LobiBox.min.css') }}">
+    <link rel="publisher" href="https://plus.google.com/u/0/103455979226239102770/posts" />
     @yield('css')
 
     @yield('include')
@@ -33,9 +54,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <h1 id="logo"><a class="navbar-brand atext" href="{{ URL::route('home') }}" title="logotipo de multifranquicias">
-           <img src="{{ asset('images/logo_1.png') }}" width="150" height="30" alt="Multifranquicias">
-        </a></h1>
+        <h1 id="logo"><a class="navbar-brand atext" href="{{ URL::route('home') }}"
+                         title="logotipo de multifranquicias">
+                <img src="{{ asset('images/logo_1.png') }}" width="150" height="30" alt="Multifranquicias">
+            </a></h1>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,21 +65,28 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="{{ URL::route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
             <li class="dropdown lipersonal">
-                <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i> Franquicias<b class="caret"></b></a>
+                <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-building"></i>
+                    Franquicias<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas las franquicias</a></li>
+                    <li class="box"><a href="{{ URL::route('franquicias') }}" class="atext">Todas las franquicias</a>
+                    </li>
                     <li class="divider"></li>
-                    <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias de éxito</a></li>
+                    <li class="box"><a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" class="atext">Franquicias
+                            de éxito</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}"  class="atext">Franquicias rentables</a></li>
+                    <li><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" class="atext">Franquicias
+                            rentables</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  class="atext">Franquicias baratas</a></li>
+                    <li><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}" class="atext">Franquicias
+                            baratas</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}"  class="atext">Franquicias low cost</a></li>
+                    <li><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" class="atext">Franquicias
+                            low cost</a></li>
                 </ul>
             </li>
             <li class="dropdown lipersonal">
-                <a  class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-newspaper-o"></i> Actualidad<b class="caret"></b></a>
+                <a class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-newspaper-o"></i> Actualidad<b
+                            class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ URL::route('reportajes_web') }}" class="atext">Reportajes</a></li>
                     <li class="divider"></li>
@@ -65,21 +94,25 @@
                 </ul>
             </li>
             <li class="dropdown lipersonal">
-                <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-check"></i> Servicios y garantías<b class="caret"></b></a>
+                <a href="" class="dropdown-toggle atext" data-toggle="dropdown"><i class="fa fa-check"></i> Servicios y
+                    garantías<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ URL::route('servicios_garantias') }}" class="atext">Nuestros Servicios y garantías</a></li>
+                    <li><a href="{{ URL::route('servicios_garantias') }}" class="atext">Nuestros Servicios y
+                            garantías</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('emprendedor') }}" class="atext">Franquiciados</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ URL::route('franquiciadores') }}" class="atext">Franquiciadores</a></li>
                 </ul>
             </li>
-            <li class="lipersonal"><a href="{{ URL::route('contacto') }}" class="atext"><i class="fa fa-envelope"></i> Contacto</a></li>
+            <li class="lipersonal"><a href="{{ URL::route('contacto') }}" class="atext"><i class="fa fa-envelope"></i>
+                    Contacto</a></li>
 
         </ul>
 
-        <button class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal" style="margin-top: 0.5%; margin-bottom: 5px;"> Area privada</button>
-
+        <button class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"
+                style="margin-top: 0.5%; margin-bottom: 5px;"> Area privada
+        </button>
 
 
     </div>
@@ -88,7 +121,7 @@
 </nav>
 
 <div class="container-fluid" id="main">
-    <div class="row" >
+    <div class="row">
         <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             @yield('completa')
         </section>
@@ -103,13 +136,14 @@
             @yield('der')
         </section>
     </div>
-</div> <!-- Contenido dinámico
+</div>
+<!-- Contenido dinámico
 
 <!-- INICIO FOOTER -->
 <hr id="subir">
 <div class="row myfooter" style="background: #F0F0F0;margin-top: 5%">
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="subir-icon">
-        <img src="{{ asset('images/go-to-top.png') }}"  id="subir-click">
+        <img src="{{ asset('images/go-to-top.png') }}" id="subir-click">
     </section>
     <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 dfooter">
         <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5" id="footer1">
@@ -126,23 +160,32 @@
                 </ul>
                 <ul class="col col-xs-12 col-sm-12 col-md-6 col-lg-6 list-unstyled lista-footer">
                     <label>Consultas</label>
-                            <li><a href="{{ URL::route('dudas-generales') }}"> Dudas generales</a></li>
-                            <li><a href="{{ URL::route('dudas-franquicias') }}"> Dudas franquiciados y franquiciadores</a></li>
+                    <li><a href="{{ URL::route('dudas-generales') }}"> Dudas generales</a></li>
+                    <li><a href="{{ URL::route('dudas-franquicias') }}"> Dudas franquiciados y franquiciadores</a></li>
                 </ul>
             </div>
         </div>
         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3 caja-redes" id="footer3">
-            <a href="https://www.youtube.com/channel/UCRh_w3XQzc9fE7CELuq0hXA" class="icon-button youtube" style="margin-right:-1%"><i class="fa fa-youtube fa-smile-o icon-youtube"></i><span></span></a>
-            <a href="https://twitter.com/multifranquicia" class="icon-button twitter" style="margin-right:-1%"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
-            <a href="https://www.facebook.com/pages/MultiFranquiciascom/1504669119817051" class="icon-button facebook" style="margin-right:-1%"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
-            <a href="https://plus.google.com/u/0/103455979226239102770/posts" class="icon-button google-plus"><i class="fa fa-google-plus icon-google-plus"   ></i><span></span></a>
+            <a href="https://www.youtube.com/channel/UCRh_w3XQzc9fE7CELuq0hXA" class="icon-button youtube"
+               style="margin-right:-1%"><i class="fa fa-youtube fa-smile-o icon-youtube"></i><span></span></a>
+            <a href="https://twitter.com/multifranquicia" class="icon-button twitter" style="margin-right:-1%"><i
+                        class="fa fa-twitter icon-twitter"></i><span></span></a>
+            <a href="https://www.facebook.com/pages/MultiFranquiciascom/1504669119817051" class="icon-button facebook"
+               style="margin-right:-1%"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
+            <a href="https://plus.google.com/u/0/103455979226239102770/posts" class="icon-button google-plus"><i
+                        class="fa fa-google-plus icon-google-plus"></i><span></span></a>
         </div>
     </section>
 </div>
 <!-- FIN FOOTER -->
 
-<div class="coockie_banner" style="left: 0; text-align: center; position: fixed;bottom: 0; background:rgba(0, 0, 0, 0.8); color:#7b057e; width:100% !important; padding-top:10px; padding-bottom:10px;">
-    <p style="padding:4px; text-align: center; color:white">Las cookies nos permiten ofrecer nuestros servicios. Al utilizar nuestros servicios, aceptas el uso que hacemos de las cookies <button class="btn btn-success btn-xs" style="margin-top:-0.3%" onclick="setcookie()">Aceptar</button> <button class="btn btn-danger btn-xs" style="margin-top:-0.3%" onclick="salir_aplicacion()">Cancelar</button></div>
+<div class="coockie_banner"
+     style="left: 0; text-align: center; position: fixed;bottom: 0; background:rgba(0, 0, 0, 0.8); color:#7b057e; width:100% !important; padding-top:10px; padding-bottom:10px;">
+    <p style="padding:4px; text-align: center; color:white">Las cookies nos permiten ofrecer nuestros servicios. Al
+        utilizar nuestros servicios, aceptas el uso que hacemos de las cookies
+        <button class="btn btn-success btn-xs" style="margin-top:-0.3%" onclick="setcookie()">Aceptar</button>
+        <button class="btn btn-danger btn-xs" style="margin-top:-0.3%" onclick="salir_aplicacion()">Cancelar</button>
+</div>
 
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ URL::asset('js/jquery-2.1.1.min.js') }}"></script>
@@ -155,51 +198,51 @@
 <script type="text/javascript">
 
     function GetCookie(name) {
-        var arg=name+"=";
-        var alen=arg.length;
-        var clen=document.cookie.length;
-        var i=0;
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        var i = 0;
 
-        while (i<clen) {
-            var j=i+alen;
+        while (i < clen) {
+            var j = i + alen;
 
-            if (document.cookie.substring(i,j)==arg)
+            if (document.cookie.substring(i, j) == arg)
                 return "1";
-            i=document.cookie.indexOf(" ",i)+1;
-            if (i==0)
+            i = document.cookie.indexOf(" ", i) + 1;
+            if (i == 0)
                 break;
         }
 
         return null;
     }
 
-    function setcookie(){
+    function setcookie() {
 
-        var expire=new Date();
-        expire=new Date(expire.getTime()+3600000);
-        document.cookie="cookies_surestao=aceptada; expires="+expire;
+        var expire = new Date();
+        expire = new Date(expire.getTime() + 3600000);
+        document.cookie = "cookies_surestao=aceptada; expires=" + expire;
 
-        var visit=GetCookie("cookies_surestao");
+        var visit = GetCookie("cookies_surestao");
 
-        if (visit==1){
+        if (visit == 1) {
             $(".coockie_banner").hide(800);
 
         }
-
-
     }
 
-    function salir_aplicacion(){
+    function salir_aplicacion() {
 
         window.location = "http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29";
 
     }
 
-    $(function() {
+    $(function () {
 
 
-        var visit=GetCookie("cookies_surestao");
-        if (visit==1){$(".coockie_banner").hide(); }
+        var visit = GetCookie("cookies_surestao");
+        if (visit == 1) {
+            $(".coockie_banner").hide();
+        }
     });
 
 
@@ -215,28 +258,28 @@
 
     $(document).ajaxStop($.unblockUI);
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
 
         @yield('ready')
 
-        $(window).on("load resize", function() {
+        $(window).on("load resize", function () {
 
             if ($(window).width() >= 768) {
 
-                $('.dropdown').hover(function() {
+                $('.dropdown').hover(function () {
 
                     $(this).find('.dropdown-menu').slideDown(500);
 
 
-                }, function() {
+                }, function () {
 
                     $(this).find('.dropdown-menu').finish().hide();
 
                 });
             }
 
-            else{
+            else {
 
                 $('.dropdown').find('.dropdown-menu').unbind("hover");
 
@@ -244,15 +287,14 @@
         });
 
         //EVENTOS
-        $("#subir-click").on("click",function()
-        {
-            $("body").animate({ scrollTop: 0 }, "slow");
+        $("#subir-click").on("click", function () {
+            $("body").animate({scrollTop: 0}, "slow");
             return false;
 
         });
 
         //para formulario de contacto que se desplega
-        $(".desplegar").on("click", function() {
+        $(".desplegar").on("click", function () {
             $(".f-contacto").show("slow");
             $(".desplegar")[0].setAttribute("style", "display:none");
             $(".ocultar")[0].setAttribute("style", "display:block");
@@ -262,21 +304,19 @@
 
         });
 
-        $(".ocultar").on("click", function() {
+        $(".ocultar").on("click", function () {
             $(".f-contacto").hide("slow");
             //un pequeño delay para que la flecha no aparezca antes de que termine de ocultarse el form
-            setTimeout(function()
-            {
+            setTimeout(function () {
                 $(".desplegar")[0].setAttribute("style", "display:block");
-            },600);
+            }, 600);
             $(".ocultar")[0].setAttribute("style", "display:none");
         });
 
-        $(".subcategoria").on('click',function(){
+        $(".subcategoria").on('click', function () {
 
 
         });
-
 
 
     });
