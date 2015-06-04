@@ -69,7 +69,8 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" novalidate="novalidate">
+
 
                                                 <fieldset>
 
@@ -78,9 +79,9 @@
                                                             <label class="toggle">
 
                                                                 @if ($paquetes[0]->carousel == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle' value="0">
+                                                                    <input type='checkbox' name='checkbox-toggle' value="0" disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle' value="1">
+                                                                    <input type='checkbox' name='checkbox-toggle' value="1" disabled>
                                                                 @endif
 
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
@@ -89,33 +90,29 @@
 
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio1" id="inicio1"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio1" placeholder="Fecha Alta Ficha" required>
                                                             </label>
                                                         </section>
 
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final1"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final1" placeholder="Fecha Fin Ficha" required>
                                                             </label>
                                                         </section>
-
-
 
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
                                                                 <span class="button"><input type="file" id="file"
-                                                                                            name="file"
+                                                                                            name="url_imagen"
                                                                                             onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
+                                                                        type="text" placeholder="Seleciona una imagen" readonly="">
                                                             </div>
                                                         </section>
+
+                                                        <input type="text" value="1" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="Carousel" name="nombre_paquete" hidden>
                                                     </div>
 
                                                 </fieldset>
@@ -127,7 +124,7 @@
 
 
                                                     <button type="submit" class="btn btn-primary">
-                                                        Actualizar
+                                                        Activar
                                                     </button>
                                                 </footer>
                                             </form>
@@ -140,6 +137,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -187,8 +185,9 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
-                                            {!! Form::Token() !!}
+                                            <form class="smart-form actualizar_paquete">
+
+                                                {!! Form::Token() !!}
                                                 <fieldset>
 
                                                     <div class="row">
@@ -204,18 +203,14 @@
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio2"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio2" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final2"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final2" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
 
@@ -223,12 +218,16 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
                                                                 <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
+                                                                                            name="url_imagen"
+                                                                                            onchange="this.parentNode.nextSibling.value = this.value" required>Subir</span><input
                                                                         type="text" placeholder="Seleciona una imagen"
                                                                         readonly="">
                                                             </div>
                                                         </section>
+
+                                                        <input type="text" value="2" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="banner_sup" name="nombre_paquete" hidden>
+
                                                     </div>
 
                                                 </fieldset>
@@ -239,7 +238,9 @@
                                                     <label>fecha</label>
 
 
-                                                    <input type="submit" value="Actualizar" class="btn btn-primary actualizarPaquete">
+                                                    <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                        Activar
+                                                    </button>
                                                 </footer>
                                             </form>
 
@@ -251,6 +252,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
                                 <div class="jarviswidget jarviswidget-sortable" id="wid-id-1"
                                      data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
@@ -339,7 +341,8 @@
                                                     <label>fecha</label>
 
 
-                                                    <button type="submit" id="actualizarPaquete" value="Actualizar" class="btn btn-primary actualizarPaquete">
+
+                                                    <button id="2" type="submit" class="btn btn-primary actualizar">
                                                         Actualizar
                                                     </button>
 
@@ -354,6 +357,7 @@
 
                                 </div>
                             </article>
+
                         </div>
                         <div class="row">
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
@@ -469,6 +473,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -524,10 +529,9 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->izquierda == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
                                                         </section>
@@ -582,6 +586,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -1407,6 +1412,7 @@
 
 
     var checkin1 = $('#inicio1').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1420,6 +1426,7 @@
     $('#final1')[0].focus();
     }).data('datepicker');
     var checkout1 = $('#final1').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin1.date.valueOf() ? 'disabled' : '';
     }
@@ -1430,6 +1437,7 @@
 
 
     var checkin = $('#inicio2').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1443,6 +1451,7 @@
     $('#final2')[0].focus();
     }).data('datepicker');
     var checkout = $('#final2').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
     }
@@ -1675,8 +1684,4 @@
 
 @endsection
 
-<script>
-
-
-</script>
 

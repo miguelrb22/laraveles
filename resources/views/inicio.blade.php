@@ -22,9 +22,9 @@
             @include('extras.anuncio')
         @endsection
 
-       @section('carousel')
-           @include('extras.carousel')
-       @endsection
+        @section('carousel')
+            @include('extras.carousel')
+        @endsection
 
         @section('buscador')
             @include('extras.buscador')
@@ -49,7 +49,7 @@
                                 <hr/>
                                 <h4 class="text-center letra">
                                     <strong>
-                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial)))}}" title="perfil">
+                                        <a href="{{URL::to('franquicias-de-'.(strtolower(str_replace(' ','-',strtr(utf8_decode($franquicias_exito[$a1]->nombre."/".$franquicias_exito[$a1]->nombre_comercial),,utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY')))))}}" title="perfil">
                                             {{$franquicias_exito[$a1]->nombre_comercial}}
                                         </a>
                                     </strong>
