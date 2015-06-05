@@ -5,6 +5,8 @@
 
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     <title> Dashboard multifranquicias </title>
     <meta name="description" content="">
@@ -1153,27 +1155,42 @@
                         $('input[name=titulo]').val('');
                         $('input[name=file]').val('');
                         $('input[name=contenido]').val('');
-
-
-
                     }
                 });
-
 
             });
 
 
+            //PETICION AJAX PARA ACTUALIZAR PAQUETES
+
+            //Obtenemos el id del boton actualizar para saber que form se quiere enviar
+            var idPaquete = null;
+
+            $('.actualizar').on('click',function(){
+
+
+               idPaquete = this.getAttribute('id');
+
+            });
+
             $('.actualizar_paquete').submit(function(e){
 
-                alert("entra");
                 e.preventDefault();
 
-                //Peticion ajax par actualizar paquetes.
-                var formData = new FormData($('.actualizar_paquete')[0]);
+                var formData = new FormData($(this)[0]);
+
+
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
                 $.ajax({
 
                     type: "POST",
+
                     url
                             :
                             "{{ URL::route('actualizarPaquete') }}",
@@ -1206,7 +1223,6 @@
 
                     ,
                     success: function (data) {
-
                         Lobibox.notify('success', {
                             title: 'Paquete actualizado  con éxito',
                             showClass: 'flipInX',

@@ -268,12 +268,15 @@
     <table name="publicidad" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="idtipo_publicidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="url_imagen" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="fecha_inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="fecha_fin" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="url_imagen" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="final" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="franquicia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="titulo_carousel" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="descripcion_carousel" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="url_contenido" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_publicidad_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_publicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>

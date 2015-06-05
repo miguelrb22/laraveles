@@ -39,6 +39,7 @@ class WebController extends Controller {
     private $franquiciasIzq = null;
     private $carousel = null;
     private $noticias_des = null;
+    private $banner_superior = null;
     private $tam_carousel = 5;
     /**
      *
@@ -59,7 +60,7 @@ class WebController extends Controller {
             $franquicia = franquicia_especial_subcategoria::find($id->id);
             $this->patrocinadasB->push($franquicia);
         }
-
+        //Compartimos el array con todas las vistas
         View::share('patrocinadas', $this->patrocinadasB);
         //////
 
@@ -74,11 +75,9 @@ class WebController extends Controller {
             $franquicia = franquicia_especial_subcategoria::find($id->id);
             $this->franquiciasSupDer->push($franquicia);
         }
-
+        //Compartimos el array con todas las vistas
         View::share('franSupDer', $this->franquiciasSupDer);
         ////
-
-
 
         //Obtenemos las franquicias que están en la parte inferior izquierda
         $this->franquiciasIzq = new Collection();
@@ -90,13 +89,13 @@ class WebController extends Controller {
             $franquicia = franquicia_especial_subcategoria::find($id->id);
             $this->franquiciasIzq->push($franquicia);
         }
-
+        //Compartimos el array con todas las vistas
         View::share('franInIzq', $this->franquiciasIzq);
         ////
 
 
 
-        //Obtenemos las franquicias que están en el carousel---
+        //-----Obtenemos las franquicias que están en el carousel---
         //$this->carousel = new publicidad();
 
         //obtenemos los ids de todas las franquicias con el carousel activo a 1 y de forma desordenada quitando la de pega
@@ -167,11 +166,11 @@ class WebController extends Controller {
                                     ->orderBy('id','DESC')->get();
 
         }
-
+        //Compartimos el array con todas las vistas
         View::share('carousel',$this->carousel);
         ////--------
 
-        //Obtenemos las franquicias que están en tienen  noticias destacadas a 1 en paquetes activos
+        //Obtenemos las franquicias  que tienen  noticias destacadas a 1 en paquetes activos
         $this->noticias_des = new Collection();
 
         $noticiasDesIds = PaquetesActivos::where('noticia_des', '=', 1)->get(array('id'));
@@ -181,9 +180,36 @@ class WebController extends Controller {
             $this->noticias_des->push($franquicia);
         }
 
+        //Compartimos el array con todas las vistas
         View::share('noticiaDestacada', $this->noticias_des);
         ////
 
+
+
+        //Obtenemos las franquicias que tienen banner_superior a 1 en paquetes activos
+        $this->banner_superior = new Collection();
+
+        $bannerSupIds = PaquetesActivos::where('banner_sup','=', 1)->get(array('id')); //falta poner limit
+
+
+        foreach ($bannerSupIds as $id) {
+            //Obtenemos de franquicia_nom_subcategoria el nombre comercial y el nombre de la subcategoria la primera
+            // coincidencia por si tiene más de una categoria
+            $franquiciaA = franquicia_nom_subcategoria::where('id','=', $id->id)->get(array('nombre_comercial','nombre'))->take(1); //falta concatenarle un where donde tipo sea banner_sup
+            //Obtenemos de publicidad la url de la imagen que queremos que se muestre en el bannerSuperior.
+            $franquiciaB = publicidad::where('franquicia_id','=',$id->id)
+                                       ->where('idtipo_publicidad','=',2)->get(array('url_imagen'));
+
+            //Le añadimos el atributo url_imagen a los atributos de la franquicia A para devolver el objeto con tod
+            $url = $franquiciaB[0]->url_imagen;
+            $franquiciaA[0]->setAttribute('url_imagen',$url);
+
+            $this->banner_superior->push($franquiciaA[0]);
+        }
+
+        //Compartimos el array con todas las vistas
+        View::share('bannerSup', $this->banner_superior);
+        ////
     }
     /*
     |--------------------------------------------------------------------------

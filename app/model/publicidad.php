@@ -18,12 +18,13 @@ class publicidad extends Model{
     protected $fillable =   ['id',
                             'idtipo_publicidad',
                             'url_imagen',
-                            'fecha_inicio',
-                            'fecha_fin',
+                            'inicio',
+                            'final',
                             'franquicia_id',
                             'titulo_carousel',
                             'descripcion_carousel',
                             'url_contenido',
                             'created_at',
                             'updated_at'];
+
 }
