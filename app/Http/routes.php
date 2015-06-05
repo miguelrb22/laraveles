@@ -238,7 +238,7 @@ Route::post('nuevasubcategoria' ,  ['as' => 'nuevasubcategoria', 'uses' => 'mode
 Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
 
 
-Route::post('nuevousuario' ,  ['as' => 'nuevousuario', 'uses' => 'models_controller\userController@nuevo']);
+Route::post('nuevousuario' ,  ['as' => 'nuevousuario', 'uses' => 'models_controller\userController@nuevoAdmin']);
 
 
 Route::get('noticias/{titulo}/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion']);

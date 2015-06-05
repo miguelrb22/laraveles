@@ -513,7 +513,7 @@
                                                 @foreach( $similares as $similar)
                                                     <td>
                                                         <label class="checkbox-inline" style="margin-right: 20px">
-                                                            <input class="similares" type="checkbox" name="similares[]" value="{{$similar->email_contacto.'%'.$similar->nombre_comercial}}" checked> {{$similar->nombre_comercial}}
+                                                            <input class="similares" type="checkbox" name="similares[]" value="{{$similar->email_contacto.'%'.$similar->nombre_comercial.'%'.$similar->id}}" checked> {{$similar->nombre_comercial}}
                                                         </label>
                                                     </td>
                                                 @endforeach
@@ -587,8 +587,19 @@
 
     $('#formulario_contacto').submit(function(e) {
 
+    $( ".btn" ).prop( "disabled", true );
+
         e.preventDefault();
 
+    Lobibox.notify('success', {
+    title: 'Enviado!',
+    showClass: 'flipInX',
+    delay: 4000,
+    delayIndicator: false,
+
+    position: 'bottom left',
+    msg: 'Tu mensaje ha sido enviado con éxito. En breve se pondrán en contacto con usted.'
+    });
 
         $.ajax({
 
@@ -600,20 +611,6 @@
             error: function () {
                 alert("Se ha producido un error al intentar mandar su mensaje");
             },
-            success: function (data) {
-
-
-                Lobibox.notify('success', {
-                    title: 'Enviado!',
-                    showClass: 'flipInX',
-                    delay: 4000,
-                    delayIndicator: false,
-
-                    position: 'bottom left',
-                    msg: 'Tu mensaje ha sido enviado con éxito. En breve se pondrán en contacto con usted.'
-                });
-
-            }
 
         });
     });

@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\model\Categoria;
+use App\model\EstadisticasDiarias;
 use App\model\Franquicia;
 use App\model\franquicia_nom_subcategoria;
 use App\model\franquicia_subcategoria;
@@ -784,6 +785,16 @@ class WebController extends Controller {
 
         }catch (Exception $e){}
          catch(\Swift_RfcComplianceException $e){}
+        finally{
+
+            $franquicia = Franquicia::where('email_contacto','=',$toEmail)->get(['id']);
+
+            $estadistica = new EstadisticasDiarias();
+            $estadistica->franquicia = $franquicia[0]->id;
+            $estadistica->idtipo_estadistica = '21';
+            $estadistica->save();
+
+        }
 
 
         if($similares) {
@@ -799,6 +810,7 @@ class WebController extends Controller {
 
                     $toEmail = $destinatario[0];
                     $toName = $destinatario[1];
+                    $id = $destinatario[2];
 
                     \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
                         $message->to($toEmail, $toName);
@@ -808,6 +820,12 @@ class WebController extends Controller {
 
                 }catch (Exception $e){ dd($e->getMessage());}
                 catch(\Swift_RfcComplianceException $e){ dd($e->getMessage());}
+                finally{
+
+                    $estadistica = new EstadisticasDiarias(['franquicia' => $id, 'idtipo_estadistica' =>'22']);
+                    $estadistica->save();
+
+                }
 
 
             }

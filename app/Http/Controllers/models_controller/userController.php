@@ -20,14 +20,16 @@ class userController extends Controller
     }
 
 
-    public function nuevo(Request $request)
+    public function nuevoAdmin(Request $request)
 
     {
 
         User::create([
 
             'username'   => $request->input('user'),
-            'password'   =>  Hash::make($request->input('pass'))
+            'password'   =>  Hash::make($request->input('pass')),
+            'rol'   =>  0
+
         ]);
 
 
