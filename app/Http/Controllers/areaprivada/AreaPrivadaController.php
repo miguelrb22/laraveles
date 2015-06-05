@@ -92,6 +92,13 @@ class AreaPrivadaController extends Controller
         return view('area_privada.gestion_usuarios');
     }
 
+    public function pgeneral()
+    {
+
+
+        return view('area_privada.publicidad-general');
+    }
+
     /**
      * @return v\View
      * Funcion para que llama a la vista de modificar franquicia

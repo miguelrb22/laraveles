@@ -77,6 +77,9 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
     //Asignar imagenes @by Juanka the kid
     Route::get('imagenes', ['as' => 'imagenes', 'uses' => 'AreaPrivadaController@imagenes']);
 
+    Route::get('publicidad-general', ['as' => 'publicidad-general', 'uses' => 'AreaPrivadaController@pgeneral']);
+
+
 
 });
 

@@ -280,6 +280,9 @@
                 <li id="categorias">
                     <a href="{{ URL::route('categorias') }}"><i class="fa fa-lg fa-fw fa-reorder"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
                 </li>
+                <li id="usuarios">
+                    <a href="{{ URL::route('publicidad-general') }}"><i class="fa fa-lg fa-fw fa-rss"></i> <span class="menu-item-parent">Publicidad General</span><b class="collapse-sign"></b></a>
+                </li>
                 <li id= "publicaciones">
                     <a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
                     <ul style="display: none;">
