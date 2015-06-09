@@ -76,7 +76,8 @@ class AreaPrivadaController extends Controller
     public function categorias()
     {
         $categorias = Categoria::all();
-        return view('area_privada.categorias', compact('categorias'));
+        $subcategorias = \DB::table('subcategoria')->orderBy('nombre', 'asc')->get();
+        return view('area_privada.categorias', compact('categorias','subcategorias'));
     }
 
 

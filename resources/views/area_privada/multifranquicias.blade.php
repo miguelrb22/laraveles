@@ -628,6 +628,55 @@
 
             });
 
+            $('#eliminar-categoria').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('eliminarcategoria') }}",
+                    data: $('#eliminar-categoria').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido eliminar la categoria',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Categoría eliminada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Menos categorías, menos dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
 
             $('#nuevo-usuario').submit(function(e){
 
@@ -1263,25 +1312,25 @@
                     error: function () {
 
                         Lobibox.notify('error', {
-                            title: 'No se ha podido crear la categoria',
+                            title: 'No se ha podido tramitar la petición',
                             showClass: 'flipInX',
                             delay: 3000,
                             delayIndicator: false,
 
                             position: 'bottom left',
-                            msg: 'Compruebe la conexión a internet o si la categoría ya existe'
+                            msg: 'Compruebe la conexión a internet'
                         });
                     },
                     success: function (data) {
 
                         Lobibox.notify('success', {
-                            title: 'Categoría creada con éxito',
+                            title: 'Recuadros cambiados con éxito',
                             showClass: 'flipInX',
                             delay: 3000,
                             delayIndicator: false,
 
                             position: 'bottom left',
-                            msg: 'Mas categorías, mas dinero!'
+                            msg: 'Mas recuadros, mas dinero!'
                         });
                     }
                 });

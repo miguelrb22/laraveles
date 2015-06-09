@@ -50,9 +50,10 @@ class categoriaController extends Controller
     }
 
 
-    public function destroy($id)
+    public function delete(Request $request)
     {
-        //
+
+        Categoria::destroy($request->input('categoria_id'));
     }
 
     public function cargar(Request $request)
