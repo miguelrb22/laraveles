@@ -816,3 +816,9 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 .separador_inicio{
     border-top: 1px solid #B3B0B0 !important;
 }
+
+#publicidad{
+
+    width: 1920px;
+    height: 90px;
+}

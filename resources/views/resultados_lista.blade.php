@@ -29,12 +29,12 @@
                         ?>
                         <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                             <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a1]->nombre."/".$franInIzq[$a1]->nombre_comercial)))}}">
-                                <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a1]->logo_url) }}"  alt="prueba" style="width: auto">
+                                <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a1]->url_imagen) }}"  alt="prueba" style="width: auto">
                             </a>
                         </div>
                         <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                            <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a2]->nombre."/".$franSupDer[$a2]->nombre_comercial)))}}">
-                                <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a2]->logo_url) }}"  alt="prueba" style="width: auto">
+                            <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a2]->nombre."/".$franInIzq[$a2]->nombre_comercial)))}}">
+                                <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a2]->url_imagen) }}"  alt="prueba" style="width: auto">
                             </a>
                         </div>
                     @else

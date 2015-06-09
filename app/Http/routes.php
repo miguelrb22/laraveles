@@ -85,7 +85,7 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
 
 Route::post('actualizarPaquete', ['as' => 'actualizarPaquete', 'uses' => 'models_controller\paquetes_controller@updateEspecial']);
-
+Route::post('fechasDisponibles' ,  ['as' => 'fechasDisponibles', 'uses' => 'models_controller\paquetes_controller@fechas']);
 
 
 Route::post('editar-publicacionEdit', ['as' => 'editarpublicacion', 'uses' => 'models_controller\publicacionController@edit']);
@@ -219,6 +219,7 @@ Route::get('servicios-garantias', ['as' => 'servicios_garantias', 'uses' => 'Web
 //para areaprivada, guardar una franquicia
 Route::post('guardar' ,  ['as' => 'guardar', 'uses' => 'models_controller\franquiciaController@store']);
 Route::post('actualizar' ,  ['as' => 'actualizar', 'uses' => 'models_controller\franquiciaController@update']);
+
 
     //Route::get('peticion',['as' => 'peticion' , 'uses' => 'FanquiciasController@registros']);
 

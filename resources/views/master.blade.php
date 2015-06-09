@@ -122,10 +122,6 @@
 
 <div class="container-fluid" id="main">
     <div class="row">
-        <section class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            @yield('completa')
-        </section>
-
         <section class="col col-xs-12 col-sm-12 col-md-10 col-lg-10">
             @yield('anuncio')
             @yield('carousel')

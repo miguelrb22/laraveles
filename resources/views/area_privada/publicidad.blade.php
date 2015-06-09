@@ -1,8 +1,6 @@
 @extends('area_privada.multifranquicias')
 
 @section('main')
-
-
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
@@ -84,7 +82,7 @@
                                                                     <input type='checkbox' name='checkbox-toggle' value="1" disabled>
                                                                 @endif
 
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
 
                                                         </section>
 
@@ -185,7 +183,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form class="smart-form actualizar_paquete">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 {!! Form::Token() !!}
                                                 <fieldset>
@@ -194,12 +192,11 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->banner_sup == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
@@ -217,11 +214,7 @@
 
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="url_imagen"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value" required>Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
+                                                                <input type="file" id="file" name="url_imagen" required>
                                                             </div>
                                                         </section>
 
@@ -233,14 +226,21 @@
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button id="1" type="submit" class="btn btn-primary actualizar">
-                                                        Activar
-                                                    </button>
+                                                <footer class="banner_sup_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num">fecha</label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -360,6 +360,7 @@
 
                         </div>
                         <div class="row">
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -407,7 +408,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 <fieldset>
 
@@ -415,53 +416,54 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->sup_derecha == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio4" id="inicio4" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio4" id="inicio4" class="calendar" placeholder="Fecha Alta Ficha" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final4" id="final4" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                                <input type="text" name="final4" id="final4" class="calendar" placeholder="Fecha Fin Ficha" required>
                                                             </label>
                                                         </section>
 
 
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
+                                                                <input type="file" id="file" name="url_imagen" required>
                                                             </div>
                                                         </section>
+
+                                                        <input type="text" value="3" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="sup_derecha" name="nombre_paquete" hidden>
+
                                                     </div>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="sup_derecha_footer">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                        <label><strong>1º en expirar:</strong></label>
+                                                        <label class="fecha">fecha</label>
+                                                        <br>
+                                                        <label><strong>Nº franquicias:</strong></label>
+                                                        <label class="num">fecha</label>
+                                                    </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                        <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                            Activar
+                                                        </button>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -521,7 +523,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 <fieldset>
 
@@ -555,26 +557,30 @@
 
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
+                                                                <input type="file" id="file" name="url_imagen" required>
                                                             </div>
                                                         </section>
                                                     </div>
 
+                                                    <input type="text" value="4" name="idtipo_publicidad" hidden>
+                                                    <input type="text" value="izquierda" name="nombre_paquete" hidden>
+
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button id="actualizarPaquete" type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="izquierda_footer">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                        <label><strong>1º en expirar:</strong></label>
+                                                        <label class="fecha">fecha</label>
+                                                        <br>
+                                                        <label><strong>Nº franquicias:</strong></label>
+                                                        <label class="num">fecha</label>
+                                                    </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                        <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                            Activar
+                                                        </button>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -700,6 +706,7 @@
 
                                 </div>
                             </article>
+
                         </div>
                         <div class="row">
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
@@ -785,8 +792,7 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
                                                                 <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
+                                                                                            name="file">Subir</span><input
                                                                         type="text" placeholder="Seleciona una imagen"
                                                                         readonly="">
                                                             </div>
@@ -815,6 +821,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -928,6 +935,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -1043,6 +1051,7 @@
                             </article>
                         </div>
                         <div class="row">
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -1156,6 +1165,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -1203,14 +1213,14 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 <fieldset>
 
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->destacado_categoria == 0)
+                                                                @if ($paquetes[0]->patrocinado_b == 0)
                                                                     <input type='checkbox' name='checkbox-toggle'>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle'
@@ -1222,42 +1232,46 @@
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio11" id="inicio11" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                                <input type="text" name="inicio11" id="inicio11" class="calendar" placeholder="Fecha Alta Ficha" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final11" id="final11" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final11" id="final11" class="calendar" placeholder="Fecha Fin Ficha" required>
                                                             </label>
                                                         </section>
 
 
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
+                                                                <input type="file" id="file" name="url_imagen" required>
                                                             </div>
                                                         </section>
+
+                                                        <input type="text" value="6" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="patrocinado_b" name="nombre_paquete" hidden>
+
                                                     </div>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="patrocinado_b_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num">fecha</label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -1269,6 +1283,7 @@
 
                                 </div>
                             </article>
+
                             <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
 
                                 <!-- Widget ID (each widget will need unique ID)-->
@@ -1401,6 +1416,53 @@
 @endsection
 
 @section('ready')
+
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "{{ URL::route('fechasDisponibles') }}",
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        error: function (XMLHttpRequest,cadena) {
+
+            Lobibox.notify('error', {
+                title: 'No se ha podido crear la franquicia',
+                showClass: 'flipInX',
+                delay: 3000,
+                delayIndicator: false,
+
+                position: 'bottom left',
+                msg: 'Compruebe la conexión a internet'
+            });
+        },
+        success: function (data){
+
+
+            for(var i = 0; i < data.length ; i++)
+            {
+                    console.log(data[i][0]+"_footer");
+                    $("."+data[i][0]+"_footer").find('.fecha').html(data[i][1]);
+                    $("."+data[i][0]+"_footer").find('.num').html(data[i][2]);
+            }
+
+            Lobibox.notify('success', {
+                title: 'Franquicia creada con éxito',
+                showClass: 'flipInX',
+                delay: 3000,
+                delayIndicator: false,
+
+                position: 'bottom left',
+                msg: 'Mas franquicias, mas dinero!'
+            });
+        }
+
+    });
 
     $('#dashboard').removeClass("active")
     $('#publi').addClass("active");
@@ -1680,6 +1742,10 @@
     }).data('datepicker');
 
 
+
+    function fileSelect(id, e){
+        console.log(e.target.files[0].name);
+    }
 
 
 @endsection

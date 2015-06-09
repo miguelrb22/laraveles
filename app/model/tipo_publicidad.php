@@ -15,4 +15,5 @@ class tipo_publicidad extends Model{
 
     protected $table = 'tipo_publicidad';
 
+    protected $fillable = ['descripcion','nombre_col','recuadros'];
 }

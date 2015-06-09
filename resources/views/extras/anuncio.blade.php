@@ -1,5 +1,22 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <img  id="publicidad" src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
+@if(!$bannerSup->isEmpty())
+    <?php
+      //obtenemos un numero aleatorio de entre todas las publicidades que estan en BannerSup
+      $a = mt_rand(0,count($bannerSup)-1)
+    ?>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($bannerSup[$a]->nombre."/".$bannerSup[$a]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" title="perfil">
+                <img  id="publicidad" src="{{ asset($bannerSup[$a]->url_imagen) }}" class="img-responsive" alt="Responsive image">
+            </a>
+        </div>
     </div>
-</div>
+
+@else
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <img  id="publicidad" src="{{ asset('images/publicidad.gif') }}" class="img-responsive" alt="Responsive image">
+        </div>
+    </div>
+
+@endif

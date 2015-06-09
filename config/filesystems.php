@@ -64,6 +64,30 @@ return [
             'root'   => public_path().'/images/perfiles',
         ],
 
+        //Imagenes del banner superior de las franquicias
+        'banner_sup' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/banner_sup',
+        ],
+
+        //Imagenes en la parte superior de las franquicias
+        'sup_derecha' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/sup_derecha',
+        ],
+
+        //Imagenes en la parte izquierda de las franquicias
+        'izquierda' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/izquierda',
+        ],
+
+        //Imagenes en la parte patrocinado buscador
+        'patrocinado_b' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/patrocinado_b',
+        ],
+
 		's3' => [
 			'driver' => 's3',
 			'key'    => 'your-key',

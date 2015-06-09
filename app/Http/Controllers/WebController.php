@@ -26,6 +26,8 @@ use App\model\files;
 use Illuminate\Support\Facades\View;
 use App\model\publicidad;
 use Illuminate\Support\Facades\DB;
+use App\model\publicidad_franquicias;
+use App\model\tipo_publicidad;
 
 
 class WebController extends Controller {
@@ -41,58 +43,25 @@ class WebController extends Controller {
     private $noticias_des = null;
     private $banner_superior = null;
     private $tam_carousel = 5;
+    private $numeroPublicidades = null;
     /**
      *
      */
     public function __construct()
     {
-        //Compartimos todas las categorias
-        $this->categorias_deplegables = Categoria::all();
+        //Obtenemos la fecha del servidor para usarla en la selects
+        $time = time();
+        $time = date("Y-m-d", $time);
 
+
+        //Compartimos con las vistas todas las categorias
+        $this->categorias_deplegables = Categoria::all();
         View::share('categorias', $this->categorias_deplegables);
 
-        //Obtenemos las franquicias que están en patrocinadas del buscador
-        $this->patrocinadasB = new Collection();
 
-        $pbuscadorIds = PaquetesActivos::where('patrocinado_b', '=', 1)->get(array('id')); //Esto devuelve el id
-
-        foreach ($pbuscadorIds as $id) {
-            $franquicia = franquicia_especial_subcategoria::find($id->id);
-            $this->patrocinadasB->push($franquicia);
-        }
-        //Compartimos el array con todas las vistas
-        View::share('patrocinadas', $this->patrocinadasB);
-        //////
-
-
-
-        //Obtenemos las franquicias que están en la parte superior derecha
-        $this->franquiciasSupDer = new Collection();
-
-        $supDerIds = PaquetesActivos::where('sup_derecha', '=', 1)->get(array('id'));
-
-        foreach ($supDerIds as $id) {
-            $franquicia = franquicia_especial_subcategoria::find($id->id);
-            $this->franquiciasSupDer->push($franquicia);
-        }
-        //Compartimos el array con todas las vistas
-        View::share('franSupDer', $this->franquiciasSupDer);
-        ////
-
-        //Obtenemos las franquicias que están en la parte inferior izquierda
-        $this->franquiciasIzq = new Collection();
-
-
-        $supDerIds = PaquetesActivos::where('izquierda', '=', 1)->get(array('id'));
-
-        foreach ($supDerIds as $id) {
-            $franquicia = franquicia_especial_subcategoria::find($id->id);
-            $this->franquiciasIzq->push($franquicia);
-        }
-        //Compartimos el array con todas las vistas
-        View::share('franInIzq', $this->franquiciasIzq);
-        ////
-
+        //Obtenemos la cantidad de publicidades que va a haber en la página y la pasamos a las vistas.
+        $this->numeroPublicidades = tipo_publicidad::all();
+        View::share('numPublicaciones', $this->numeroPublicidades);
 
 
         //-----Obtenemos las franquicias que están en el carousel---
@@ -189,27 +158,55 @@ class WebController extends Controller {
         //Obtenemos las franquicias que tienen banner_superior a 1 en paquetes activos
         $this->banner_superior = new Collection();
 
-        $bannerSupIds = PaquetesActivos::where('banner_sup','=', 1)->get(array('id')); //falta poner limit
-
-
-        foreach ($bannerSupIds as $id) {
-            //Obtenemos de franquicia_nom_subcategoria el nombre comercial y el nombre de la subcategoria la primera
-            // coincidencia por si tiene más de una categoria
-            $franquiciaA = franquicia_nom_subcategoria::where('id','=', $id->id)->get(array('nombre_comercial','nombre'))->take(1); //falta concatenarle un where donde tipo sea banner_sup
-            //Obtenemos de publicidad la url de la imagen que queremos que se muestre en el bannerSuperior.
-            $franquiciaB = publicidad::where('franquicia_id','=',$id->id)
-                                       ->where('idtipo_publicidad','=',2)->get(array('url_imagen'));
-
-            //Le añadimos el atributo url_imagen a los atributos de la franquicia A para devolver el objeto con tod
-            $url = $franquiciaB[0]->url_imagen;
-            $franquiciaA[0]->setAttribute('url_imagen',$url);
-
-            $this->banner_superior->push($franquiciaA[0]);
-        }
-
+        //Obtenemos las publicidades que están en el banner superior de la vista publicidad_franquicias
+        //para pasarlas a las vista para que se muestren.
+        $this->banner_superior = publicidad_franquicias::where('idtipo_publicidad','=',2)
+                                                ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+        
         //Compartimos el array con todas las vistas
         View::share('bannerSup', $this->banner_superior);
         ////
+
+
+
+        //Obtenemos las franquicias que tienen superior derecha a 1 en paquetes activos
+        $this->franquiciasSupDer = new Collection();
+
+        //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
+        //para pasarlas a las vista para que se muestren.
+        $this->franquiciasSupDer = publicidad_franquicias::where('idtipo_publicidad','=',3)
+                                    ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+
+        //Compartimos el array con todas las vistas
+        View::share('franSupDer', $this->franquiciasSupDer);
+        ////
+
+
+
+        //Obtenemos las franquicias que tienen izquierda a 1 en paquetes activos
+        $this->franquiciasIzq = new Collection();
+
+        //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
+        //para pasarlas a las vista para que se muestren.
+        $this->franquiciasIzq = publicidad_franquicias::where('idtipo_publicidad','=',4)
+                                                        ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+        //Compartimos el array con todas las vistas
+        View::share('franInIzq', $this->franquiciasIzq);
+        ////
+
+
+        //Obtenemos las franquicias que tienen patrocinado_b a 1 en paquetes activos
+        $this->patrocinadasB = new Collection();
+
+        //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
+        //para pasarlas a las vista para que se muestren.
+        $this->patrocinadasB = publicidad_franquicias::where('idtipo_publicidad','=',6)
+                                                       ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+
+        //Compartimos el array con todas las vistas
+        View::share('patrocinadas', $this->patrocinadasB);
+        ////
+
     }
     /*
     |--------------------------------------------------------------------------
@@ -394,36 +391,6 @@ class WebController extends Controller {
         //Obtenemos las categorias del desplegable
         $categorias = $this->categorias_deplegables;
 
-        //Primero calculamos el id del tipo de categoria especial según el tipo pasado por parámetro
-        //$id_categoria_especial = especial::where('nombre', 'like', $tipo)->get();
-
-        //Obtenemos los registros de la tabla intermedia que cumplen que el idcategoria especial es igual
-        //al obtenido anteriormente
-        /*if(!$id_categoria_especial->isEmpty()) {
-            $query = franquicias_especiales::where('idcategoria_especial', '=', $id_categoria_especial[0]->id)->get();
-        }else{
-            //Temporal que hacemos?
-            dd("no existen franquicias de este tipo");
-        }
-
-        if(!$query->isEmpty()) {
-            //Obtenemos las franquicias que estan en $query
-            $franquicias = array();
-
-            foreach ($query as $q) {
-                //dd("franquicia id". $q->franquicia_idfranquicia);
-                $franquicia = Franquicia::where('id', '=', $q->franquicia_idfranquicia)->get();
-                array_push($franquicias, $franquicia);
-            }
-
-            $franquicias = $franquicias[0];
-            return view('especiales',compact('franquicias','tipo','categorias'));
-
-        }else{
-            //Temporal que hacemos?
-            dd("no hay franquicias de este tipo: ".$tipo);
-
-        }*/
         $franquicias = franquicia_especial_subcategoria::where('especial', 'like', $tipo )->groupBy('id')->get();
         if(!$franquicias->isEmpty())
         {
@@ -527,9 +494,6 @@ class WebController extends Controller {
                 "Septiembre", "Octube", "Noviembre", "Diciembre");
 
             $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
-
-
-
 
 
             foreach($result as $res){
@@ -775,6 +739,11 @@ class WebController extends Controller {
         return $lista_franquicias;
     }
 
+    /**
+     * Método para enviar los correos de solicitud de información a las franquicias.
+     * @param Request $request peticion enviada desde el formulario con los datos del formulario
+     * @return int entero que devolvemos para notificar que los envíos han sido exitosos si devuele 1.
+     */
     public function enviarformulariofranquicia(Request $request){
 
         $data = array

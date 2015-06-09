@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: juanca
+ * Date: 21/4/15
+ * Time: 12:34
+ */
+
+namespace App\model;
+
+
+use Illuminate\Database\Eloquent\Model;
+
+class publicidad_franquicias extends Model{
+
+    protected $table = 'publicidad_franquicias';
+
+    protected $fillable = ['idtipo_publicidad',
+                           'url_imagen',
+                           'inicio',
+                           'nombre_comercial',
+                           'id',
+                           'nombre'];
+}
