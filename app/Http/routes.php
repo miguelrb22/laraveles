@@ -266,3 +266,4 @@ Route::resource('files','ImagesController');
 
 Route::post('editar-publicidad-general' ,  ['as' => 'editar-publicidad-general', 'uses' => 'models_controller\publicidad_general@update']);
 Route::post('borrar-publicidad-general' ,  ['as' => 'borrar-publicidad-general', 'uses' => 'models_controller\publicidad_general@del']);
+Route::post('recuadros-publicidad-general' ,  ['as' => 'recuadros-publicidad-general', 'uses' => 'models_controller\publicidad_general@recuadros']);

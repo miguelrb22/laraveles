@@ -107,25 +107,31 @@
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form class="inline-form">
+            <form class="inline-form recuadros">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                 <label>Izquierda: <span> &nbsp;&nbsp;&nbsp;  </span></label>
-                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <input name="izquierda" type="number" width="20" onkeypress="return isNumberKey(event)"/>
                 <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
             </form>
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form class="inline-form">
+            <form class="inline-form recuadros">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                 <label>Derecha:<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span></label>
-                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <input name="derecha" type="number" width="20" onkeypress="return isNumberKey(event)"/>
                 <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
             </form>
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form class="inline-form">
+            <form class="inline-form recuadros">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                 <label>Destacados:</label>
-                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <input name="destacados" type="number" width="20" onkeypress="return isNumberKey(event)"/>
                 <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
             </form>
         </div>

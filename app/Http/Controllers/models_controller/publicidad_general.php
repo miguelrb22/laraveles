@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\models_controller;
 
 use App\model\publicidad;
+use App\model\tipo_publicidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -35,6 +36,27 @@ class publicidad_general extends Controller
       publicidad::find($request->aux)->delete();
 
 
+    }
+
+    public function recuadros(Request $request){
+
+        if($request->input('derecha')){
+            $tp = tipo_publicidad::find(3);
+            $tp->recuadros = $request->input('derecha');
+            $tp->save();
+        }
+
+        if($request->input('izquierda')){
+            $tp = tipo_publicidad::find(4);
+            $tp->recuadros = $request->input('izquierda');
+            $tp->save();
+        }
+
+        if($request->input('destacados')){
+            $tp = tipo_publicidad::find(3);
+            $tp->recuadros = $request->input('destacados');
+            $tp->save();
+        }
     }
 
 
