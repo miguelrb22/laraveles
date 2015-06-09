@@ -259,3 +259,10 @@ Route::get('ultimaInsertada' ,  ['as' => 'ultimaInsertada', 'uses' => 'ImagesCon
 Route::controller('images','ImagesController');
 
 Route::resource('files','ImagesController');
+
+/**
+ * Editar publicidad general
+ */
+
+Route::post('editar-publicidad-general' ,  ['as' => 'editar-publicidad-general', 'uses' => 'models_controller\publicidad_general@update']);
+Route::post('borrar-publicidad-general' ,  ['as' => 'borrar-publicidad-general', 'uses' => 'models_controller\publicidad_general@del']);

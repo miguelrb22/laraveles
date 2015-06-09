@@ -1,6 +1,11 @@
 @extends('area_privada.multifranquicias')
 
+<style>
 
+    .fa-mal{
+        margin-top:30%;
+    }
+</style>
 @section('main')
 
     <section id="widget-grid" class="">
@@ -14,7 +19,7 @@
                 <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
 
                     <header>
-                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <span class="widget-icon"> <i class="fa fa-table fa-mal"></i> </span>
 
                         <h2 id="titulo-tabla">Tus artículos</h2>
                     </header>
@@ -53,29 +58,31 @@
                                     <th data-hide="phone,tablet">Estado</th>
 
                                     <th data-hide="phone,tablet"> Acciones</th>
-                                    <th id="id" class="hidden"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
+                                @foreach($publi as $p)
+                                    <tr id="articulo{{$p->id}}">
 
-                                    <tr id="articulo{{1}}">
+                                        <td>{{ $p->nombre_comercial }}</td>
+                                        <td>{{ $p->descripcion}}</td>
+                                        <td><input  class="date" id="inicio" type="text" value="{{$p->inicio}}" readonly></td>
+                                        <td><input  class="date" id="fin" type="text" value="{{$p->final}}" readonly></td>
+                                        <td>
+                                            {{$p->estado}}
 
-                                        <td>{{1}}</td>
-                                        <td>{{1}}</td>
-                                        <td>{{1}}</td>
-                                        <td>{{1}}</td>
-                                        <td>{{1}}</td>
+                                        </td>
                                         <td>
                                             <button class="btn btn-xs btn-danger"
-                                                    onclick="deletearticulo({{1}})"> <i class="fa fa-trash-o"></i> Borrar
+                                                    onclick="borrar({{$p->id}})"> <i class="fa fa-trash-o"></i> Borrar
                                             </button>
 
                                         </td>
-                                        <td class="hidden">{{1}}</td>
+                                       <input id="id" type="hidden" value="{{$p->id}}" readonly>
 
                                     </tr>
-
+                                 @endforeach
                                 </tbody>
                             </table>
 
@@ -93,9 +100,97 @@
         </div>
     </section>
 
+    <div class="row">
+
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>Recuadros variables</h2>
+        </div>
+
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="inline-form">
+                <label>Izquierda: <span> &nbsp;&nbsp;&nbsp;  </span></label>
+                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+            </form>
+        </div>
+
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="inline-form">
+                <label>Derecha:<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span></label>
+                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+            </form>
+        </div>
+
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="inline-form">
+                <label>Destacados:</label>
+                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+            </form>
+        </div>
+
+
+    </div>
     @endsection
 
+@section('js')
+    <script src="{{ asset('area_privada/datepickersandbox/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('area_privada/datepickersandbox/locales/bootstrap-datepicker.es.min.js') }}"></script>
 
+    <script>
+        function isNumberKey(evt){
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
+    @endsection
+
+<script>
+
+    function borrar(id){
+        var token = "{{ csrf_token()}}";
+
+
+        Lobibox.confirm({
+
+            title: 'Borrar publicidad',
+
+            msg: "¿Estas seguro que deseas eliminar este paquete?",
+            callback: function ($this, type, ev) {
+                if (type === 'yes') {
+
+                    $('#articulo' + id).hide();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ URL::route('borrar-publicidad-general') }}",
+                        data: {aux: id ,_token: token},
+                        dataType: "html",
+                        error: function () {
+                            alert("error petición ajax");
+                        },
+                        success: function (data) {
+
+                            Lobibox.notify('success', {
+                                title: 'Borrado',
+                                msg: 'Borrado correctamente'
+                            });
+
+                        }
+                    });
+
+                } else if (type === 'no') {
+                    Lobibox.notify('info', {
+                        msg: 'Una vez borrado no se puede recuperar, lleve cuidado'
+                    });
+                }
+            }
+        });
+    }
+</script>
 @section('ready')
 
     $('#dt_basic_articulos').dataTable({
@@ -117,5 +212,51 @@
     "drawCallback": function (oSettings) {
     responsiveHelper_dt_basic.respond();
     }
+    });
+
+    $('.date').datepicker({
+
+    format: "yyyy-mm-dd",
+    language: "es",
+    multidate: false,
+    autoclose: true,
+    todayHighlight: true
+    });
+
+    $('.date').change(function(){
+
+    var inicio = $('#inicio').val();
+    var fin = $('#fin').val();
+    var id = $('#id').val();
+    var token = "{{ csrf_token()}}";
+
+
+    $.ajax({
+
+    type: "POST",
+    url: "{{ URL::route('editar-publicidad-general') }}",
+    data: {inicio: inicio, fin: fin, id: id, _token: token},
+    dataType: "html",
+    error: function () {
+
+    Lobibox.notify('error', {
+    title: 'No se ha podido cambiar la fecha',
+    showClass: 'flipInX',
+    delay: 3000,
+    delayIndicator: false,
+
+    position: 'bottom left',
+    msg: 'Compruebe la conexión a internet'
+    });
+    }
+    });
+
+
+
+
+
+
+
+
     });
 @endsection

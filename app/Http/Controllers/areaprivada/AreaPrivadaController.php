@@ -6,6 +6,8 @@ use App\model\Franquicia as Franquicia;
 use App\model\FranquiciaSubcategoria;
 use App\model\PaquetesActivos;
 use App\model\Publicaciones;
+use App\model\publicidad;
+use App\model\PublicidadGeneral;
 use App\model\subcategoria;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View as v;
@@ -92,11 +94,18 @@ class AreaPrivadaController extends Controller
         return view('area_privada.gestion_usuarios');
     }
 
+
+    /**
+     * @return v\View
+     * Panel de publicidad general
+     */
     public function pgeneral()
     {
 
 
-        return view('area_privada.publicidad-general');
+        $publi = PublicidadGeneral::all();
+
+        return view('area_privada.publicidad-general',compact('publi'));
     }
 
     /**
