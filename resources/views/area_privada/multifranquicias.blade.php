@@ -677,6 +677,55 @@
 
             });
 
+            $('#eliminar-subcategoria').submit(function(e){
+
+                e.preventDefault();
+
+                $.blockUI({
+
+                    message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: 'transparent'}
+
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('eliminarsubcategoria') }}",
+                    data: $('#eliminar-subcategoria').serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido eliminar la subcategoria',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'Subcategoría eliminada con éxito',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Menos subcategorías, menos dinero!'
+                        });
+                    }
+                });
+
+
+            });
+
 
             $('#nuevo-usuario').submit(function(e){
 
