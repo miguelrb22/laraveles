@@ -111,6 +111,7 @@
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="personal" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" def="Jy0n"/>
       <column name="claves_negocio" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="propia" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_franquicia_has_categoria_franquicia1" table="franquicia_has_categoria" schema="" catalog="bdeavisos2" columns="franquicia_id"/>
       <exported-key name="fk_franquicia_has_categoria_especial_franquicia1" table="franquicia_has_categoria_especial" schema="" catalog="bdeavisos2" columns="franquicia_idfranquicia"/>
@@ -276,6 +277,7 @@
       <column name="url_contenido" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="estado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_publicidad_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_publicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -290,6 +292,14 @@
       <column name="url_imagen" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="final" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+    </table>
+    <table name="publicidad_general" schema="" catalog="bdeavisos2" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="final" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="estado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="resumen_diario_estadistica" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -321,6 +331,8 @@
       <column name="descripcion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="nombre_col" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="recuadros" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_colapublicidad_tipo_publicidad1" table="colapublicidad" schema="" catalog="bdeavisos2" columns="idtipo_publicidad"/>
       <exported-key name="fk_publicidad_tipo_publicidad1" table="publicidad" schema="" catalog="bdeavisos2" columns="idtipo_publicidad"/>

@@ -88,6 +88,14 @@ return [
             'root'   => public_path().'/publicidad/patrocinado_b',
         ],
 
+
+        //Imagenes en la parte de destacados
+        'destacados' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/destacados',
+        ],
+
+
 		's3' => [
 			'driver' => 's3',
 			'key'    => 'your-key',

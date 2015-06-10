@@ -1,28 +1,30 @@
 @if(!$franSupDer->isEmpty())
-    <?php
+    @for($i = 0; $i < $numPublicaciones[2]->recuadros; $i++)
 
-    $a1 = mt_rand(0, count($franSupDer)-1);
-    $a2 = mt_rand(0, count($franSupDer)-1);
+        @if($i < count($franSupDer))
 
-    while ($a1 == $a2){
-        $a2 = mt_rand(0, count($franSupDer)-1);
-    }
+            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franSupDer[$i]->nombre."/".$franSupDer[$i]->nombre_comercial)))}}">
+                    <img class="img-responsive img-rounded" src="{{ asset($franSupDer[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
+                </a>
+            </div>
 
-    ?>
+        @else
 
-    @for($i = 0; $i<$numPublicaciones[2]->recuadros; $i++)
+            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+            </div>
 
-        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-            <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
-        </div>
+        @endif
 
     @endfor
 @else
-    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-        <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
-    </div>
-    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-        <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-    </div>
+
+    @for($i = 0; $i<$numPublicaciones[2]->recuadros; $i++)
+        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+            <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+        </div>
+    @endfor
 
 @endif
+
