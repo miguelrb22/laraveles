@@ -49,10 +49,12 @@ class subcategoriaController extends Controller
     }
 
 
-    public function destroy($id)
+    public function delete(Request $request)
     {
-        //
+        subcategoria::destroy($request->input('categoria_id'));
     }
+
+
 
     public function cargar(Request $request)
     {

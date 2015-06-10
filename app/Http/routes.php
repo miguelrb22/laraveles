@@ -239,6 +239,8 @@ Route::post('cargarfranquicia' ,  ['as' => 'cargarfranquicia', 'uses' => 'models
 
 Route::post('nuevacategoria' ,  ['as' => 'nuevacategoria', 'uses' => 'models_controller\categoriaController@store']);
 Route::post('nuevasubcategoria' ,  ['as' => 'nuevasubcategoria', 'uses' => 'models_controller\subcategoriaController@store']);
+Route::post('eliminarsubcategoria' ,  ['as' => 'eliminarsubcategoria', 'uses' => 'models_controller\subcategoriaController@delete']);
+Route::post('eliminarcategoria' ,  ['as' => 'eliminarcategoria', 'uses' => 'models_controller\categoriaController@delete']);
 Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
 
 
