@@ -196,7 +196,7 @@
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row">
                         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
-{{dd($numPublicaciones[3]->recuadros)}}
+
                             @if(!$franInIzq->isEmpty())
                                 <!-- numPublicaicones[3] el el numero de recuadros que va a haber en la izquierda-->
                                 @for($i = 0 ;$i < $numPublicaciones[3]->recuadros; $i++)
@@ -213,6 +213,7 @@
                                     @endif
                                 @endfor
                             @else
+                                {{dd("entra")}}
                                 @for($i = 0 ;$i<$numPublicaciones[3]->recuadros ; $i++)
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                                         <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
