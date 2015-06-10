@@ -382,7 +382,7 @@
 
                         @else
                             <!-- provisional hay que añadir franquicias nuestras a la base de datos para rellenar-->
-                            @for($i = 0; $i < count($destacadas)->recuadros; $i++)
+                            @for($i = 0; $i < $numPublicaciones[7]->recuadros; $i++)
                                 <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                                         <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
