@@ -214,7 +214,7 @@
                                 @endfor
                             @else
 
-                                @for($i = 0 ; $i < 6 ; $i++)
+                                @for($i = 0 ; $i < ($numPublicaciones[3]->recuadros) ; $i++)
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                                         <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
                                     </div>
