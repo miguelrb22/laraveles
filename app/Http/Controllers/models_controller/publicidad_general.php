@@ -53,7 +53,7 @@ class publicidad_general extends Controller
         }
 
         if($request->input('destacados')){
-            $tp = tipo_publicidad::find(3);
+            $tp = tipo_publicidad::find(8);
             $tp->recuadros = $request->input('destacados');
             $tp->save();
         }
