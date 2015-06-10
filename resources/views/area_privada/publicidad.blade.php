@@ -230,10 +230,13 @@
                                                     <div row>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <label><strong>1º en expirar:</strong></label>
-                                                            <label class="fecha">fecha</label>
+                                                            <label class="fecha"></label>
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
-                                                            <label class="num">fecha</label>
+                                                            <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="recuadros"></label>
                                                         </div>
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -285,7 +288,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form class="smart-form actualizar_paquete" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 {!! Form::Token() !!}
                                                 <fieldset>
@@ -294,41 +297,34 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->destacados == 0)
-                                                                    <input type='checkbox' name='check' value="0">
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='check' value="1">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio3"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio3" placeholder="Fecha Alta Ficha">
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final3"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final3" placeholder="Fecha Fin Ficha">
                                                             </label>
                                                         </section>
 
 
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
+                                                                <input type="file" id="file" name="url_imagen" required>
                                                             </div>
                                                         </section>
 
 
+                                                        <input type="text" value="8" name="idtipo_publicidad" hidden>
                                                         <input type="text" value="destacados" name="nombre_paquete" hidden>
 
                                                     </div>
@@ -336,16 +332,24 @@
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-
-                                                    <button id="2" type="submit" class="btn btn-primary actualizar">
-                                                        Actualizar
-                                                    </button>
-
+                                                <footer class="destacados_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="recuadros"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -454,10 +458,13 @@
                                                 <footer class="sup_derecha_footer">
                                                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                         <label><strong>1º en expirar:</strong></label>
-                                                        <label class="fecha">fecha</label>
+                                                        <label class="fecha"></label>
                                                         <br>
                                                         <label><strong>Nº franquicias:</strong></label>
-                                                        <label class="num">fecha</label>
+                                                        <label class="num"></label>
+                                                        <br>
+                                                        <label><strong>Nº recuadros:</strong></label>
+                                                        <label class="recuadros"></label>
                                                     </div>
                                                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                         <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -571,10 +578,13 @@
                                                 <footer class="izquierda_footer">
                                                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                         <label><strong>1º en expirar:</strong></label>
-                                                        <label class="fecha">fecha</label>
+                                                        <label class="fecha"></label>
                                                         <br>
                                                         <label><strong>Nº franquicias:</strong></label>
-                                                        <label class="num">fecha</label>
+                                                        <label class="num"></label>
+                                                        <br>
+                                                        <label><strong>Nº recuadros:</strong></label>
+                                                        <label class="recuadros"></label>
                                                     </div>
                                                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                         <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -1265,6 +1275,9 @@
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
                                                             <label class="num">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="recuadros"></label>
                                                         </div>
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -1446,9 +1459,10 @@
 
             for(var i = 0; i < data.length ; i++)
             {
-                    console.log(data[i][0]+"_footer");
+
                     $("."+data[i][0]+"_footer").find('.fecha').html(data[i][1]);
                     $("."+data[i][0]+"_footer").find('.num').html(data[i][2]);
+                    $("."+data[i][0]+"_footer").find('.recuadros').html(data[i][3]);
             }
 
             Lobibox.notify('success', {

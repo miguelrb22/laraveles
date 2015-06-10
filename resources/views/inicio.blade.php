@@ -198,35 +198,29 @@
                         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
                             @if(!$franInIzq->isEmpty())
-                                <?php
-
-                                $a1 = mt_rand(0, count($franInIzq)-1);
-                                $a2 = mt_rand(0, count($franInIzq)-1);
-
-                                while($a2 == $a1){
-                                    $a2 = mt_rand(0, count($franInIzq)-1);
-                                }
-
-                                ?>
-                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                    <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a1]->nombre."/".$franInIzq[$a1]->nombre_comercial)))}}">
-                                        <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a1]->url_imagen) }}"  alt="prueba" style="width: auto">
-                                    </a>
-                                </div>
-                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                    <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a2]->nombre."/".$franInIzq[$a2]->nombre_comercial)))}}">
-                                        <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a2]->url_imagen) }}"  alt="prueba" style="width: auto">
-                                    </a>
-                                </div>
+                                <!-- numPublicaicones[3] el el numero de recuadros que va a haber en la izquierda-->
+                                @for($i = 0 ;$i < $numPublicaciones[3]->recuadros; $i++)
+                                    @if($i < count($franInIzq))
+                                        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                            <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$i]->nombre."/".$franInIzq[$i]->nombre_comercial)))}}">
+                                                <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
+                                            </a>
+                                        </div>
+                                    @else
+                                        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                            <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                                        </div>
+                                    @endif
+                                @endfor
                             @else
-                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                    <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
-                                </div>
-                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                    <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-                                </div>
 
+                                @for($i = 0 ; $i < $numPublicaciones[3]->recuadros ; $i++)
+                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                        <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                                    </div>
+                                @endfor
                             @endif
+
                         </div>
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
@@ -358,17 +352,6 @@
         @section('der')
             @include('extras.derecha')
 
-            <?php
-
-                if(!$franquicias_destacadas->isEmpty() && count($franquicias_destacadas) >= 2){
-
-                    $a1 = mt_rand(0,count($franquicias_destacadas)-1);
-                    $a2 = mt_rand(0,count($franquicias_destacadas)-1);
-
-                    do {
-                        $a2 = rand(0,count($franquicias_destacadas)-1);
-                    }while ($a2 === $a1);
-            ?>
 
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
@@ -376,24 +359,44 @@
                         <i class="glyphicon glyphicon-thumbs-up textoblanco"></i> <span class="textoblanco">Destacados</span>
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 text-center">
-                                <h3><a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$franquicias_destacadas[$a1]->nombre."/".$franquicias_destacadas[$a1]->nombre_comercial)))}}">{{$franquicias_destacadas[$a1]->nombre_comercial}}</a></h3>
-                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$franquicias_destacadas[$a1]->nombre."/".$franquicias_destacadas[$a1]->nombre_comercial)))}}"><img class="img-responsive img_destacados" src="{{ asset($franquicias_destacadas[$a1]->logo_url) }}" alt="prueba" ></a>
-                                <br>
-                            </div>
 
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
-                                <br/>
-                                <h3><a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_destacadas[$a2]->nombre."/".$franquicias_destacadas[$a2]->nombre_comercial)))}}">{{$franquicias_destacadas[$a2]->nombre_comercial}}</a></h3>
-                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicias_destacadas[$a2]->nombre."/".$franquicias_destacadas[$a2]->nombre_comercial)))}}"><img class="img-responsive img_destacados" src="{{ asset($franquicias_destacadas[$a2]->logo_url) }}" alt="prueba"></a>
-                            </div>
+                        @if(!$destacadas->isEmpty())
+
+                            @for($i = 0; $i < $numPublicaciones[7]->recuadros; $i++)
+
+                                @if($i < count($destacadas))
+                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 text-center">
+                                        <h3><a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$destacadas[$i]->nombre."/".$destacadas[$i]->nombre_comercial)))}}">{{$destacadas[$i]->nombre_comercial}}</a></h3>
+                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$destacadas[$i]->nombre."/".$destacadas[$i]->nombre_comercial)))}}"><img class="img-responsive img_destacados" src="{{ asset($destacadas[$i]->url_imagen) }}" alt="prueba" ></a>
+                                        <br>
+                                    </div>
+                                @else
+                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
+                                        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                            <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                                        </div>
+                                    </div>
+                                @endif
+
+                            @endfor
+
+                        @else
+                            <!-- provisional hay que añadir franquicias nuestras a la base de datos para rellenar-->
+                            @for($i = 0; $i < $numPublicaciones[7]->recuadros; $i++)
+                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
+                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                        <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                                    </div>
+                                </div>
+                            @endfor
+
+                        @endif
+
                     </div>
                 </div>
             </div>
 
-            <?php
-                }
-            ?>
+
         @endsection
 
 

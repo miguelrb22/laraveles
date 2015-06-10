@@ -6,24 +6,28 @@ namespace App\Http\Controllers\models_controller;
 use App\model\especial;
 use App\model\PaquetesActivos;
 use App\model\publicidad;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
 use Intervention\Image\ImageManagerStatic as Image;
-use Illuminate\Http\Response;
+use App\model\tipo_publicidad;
 
 
 class paquetes_controller extends Controller
 {
 
+    private $numeroPublicidades = null;
 
     public function __construct()
     {
 
         $this->middleware('auth');
+
+        //Obtener los recuadros de publicidad que hay activos en las web
+        //Obtenemos la cantidad de publicidades que va a haber en la página y la pasamos a las vistas.
+        $this->numeroPublicidades = tipo_publicidad::all();
     }
 
 
@@ -95,40 +99,24 @@ class paquetes_controller extends Controller
         $Actualizar->save();
 
 
-        /*if($request->Input('check') != null){
-
-            $Actualizar->$paquete = '1';
-            $Actualizar->save();
-
-        }else{
-            $Actualizar->$paquete = '0';
-            $Actualizar->save();
-        }*/
-
         //Para actualizar el periodo de vigencia del paquete
         //Vemos si el paquete es de categoria especial (exito,lowcost...) o de otro tipo aunque aparte el form tiene
         //en el input el id del paquete
-        if($paquete === 'exito' || $paquete === 'rentables' || $paquete === 'baratas'
-            || $paquete === 'lowcost' || $paquete === 'destacados')
-        {
+        //if($paquete === 'exito' || $paquete === 'rentables' || $paquete === 'baratas'
+          //  || $paquete === 'lowcost' || $paquete === 'destacados')
+        //{
             //Si es paquete especial obtenemos su id de la tabla categoria_especial
             $tipoEspecial = especial::where('nombre', '=',$paquete)->get(['id']);
 
             //$idEspecial = $tipoEspecial[0]->id;
-        }else
-        {
+        //}else {
             //Guardamos la imagen subida en en la carpeta y toda la información en publicidad y
             //le asignamos el nombredevuelto
             $url = $this->guardarImagen($request->file('url_imagen'),$paquete);
             $publicidad->setAttribute('url_imagen',$url);
             $publicidad->save();
-        }
+        //}
 
-        //dd($request->Input('nombre_paquete'));
-        //Primero actualizamos el paquete especifico poniendolo a 1 o a 0 dependiendo de la
-        //peticion en la tabla paquetes activos para una franquicia determinada.
-
-        //$paquetes = PaquetesActivos::where('id')
     }
 
     /**
@@ -157,8 +145,6 @@ class paquetes_controller extends Controller
             $image = Image::make($location);
             $image->resize(200, 200);
             $image->save($location);
-
-
         }
 
         return $url;
@@ -175,6 +161,8 @@ class paquetes_controller extends Controller
         $resultados = array();
         $datos = array();
 
+
+        //
         //Obtenemos la fecha del servidor para usarla en la select de que paquetes están activo
         $time = time();
         $time = date("Y-m-d", $time);
@@ -195,7 +183,7 @@ class paquetes_controller extends Controller
                                    ->where('idTipo_publicidad' ,'=', 2)->count();
 
         //Insertamos los datos en los arrays
-        array_push($datos,'banner_sup',$fechaBS,$numActuales);
+        array_push($datos,'banner_sup',$fechaBS,$numActuales,intval($this->numeroPublicidades[1]->recuadros));
 
         array_push($resultados,$datos);
 
@@ -222,7 +210,7 @@ class paquetes_controller extends Controller
                                    ->where('idTipo_publicidad' ,'=', 3)->count();
 
         //Insertamos los datos en los arrays
-        array_push($datos,'sup_derecha',$fechaBS,$numActuales);
+        array_push($datos,'sup_derecha',$fechaBS,$numActuales,intval($this->numeroPublicidades[2]->recuadros));
 
         array_push($resultados,$datos);
 
@@ -248,7 +236,7 @@ class paquetes_controller extends Controller
                                    ->where('idTipo_publicidad' ,'=', 4)->count();
 
         //Insertamos los datos en los arrays
-        array_push($datos,'izquierda',$fechaBS,$numActuales);
+        array_push($datos,'izquierda',$fechaBS,$numActuales,intval($this->numeroPublicidades[3]->recuadros));
 
         array_push($resultados,$datos);
 
@@ -274,7 +262,7 @@ class paquetes_controller extends Controller
             ->where('idTipo_publicidad' ,'=', 6)->count();
 
         //Insertamos los datos en los arrays
-        array_push($datos,'patrocinado_b',$fechaBS,$numActuales);
+        array_push($datos,'patrocinado_b',$fechaBS,$numActuales,intval($this->numeroPublicidades[5]->recuadros));
 
         array_push($resultados,$datos);
 

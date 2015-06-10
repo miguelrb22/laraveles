@@ -44,6 +44,7 @@ class WebController extends Controller {
     private $banner_superior = null;
     private $tam_carousel = 5;
     private $numeroPublicidades = null;
+    private $destacadas = null;
     /**
      *
      */
@@ -91,7 +92,6 @@ class WebController extends Controller {
                 {
                     $publicidad =  publicidad::where('franquicia_id', '=',$id->id)
                                              ->where('idTipo_publicidad','=','1')->get();
-                    //array_push($arrayDatosCarousel,$publicidad);
                     $arrayDatosCarousel->push($publicidad);
                 }
 
@@ -139,6 +139,8 @@ class WebController extends Controller {
         View::share('carousel',$this->carousel);
         ////--------
 
+
+
         //Obtenemos las franquicias  que tienen  noticias destacadas a 1 en paquetes activos
         $this->noticias_des = new Collection();
 
@@ -161,7 +163,8 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en el banner superior de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->banner_superior = publicidad_franquicias::where('idtipo_publicidad','=',2)
-                                                ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->get(array('url_imagen','nombre','nombre_comercial'));
         
         //Compartimos el array con todas las vistas
         View::share('bannerSup', $this->banner_superior);
@@ -175,7 +178,8 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->franquiciasSupDer = publicidad_franquicias::where('idtipo_publicidad','=',3)
-                                    ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->get(array('url_imagen','nombre','nombre_comercial'));
 
         //Compartimos el array con todas las vistas
         View::share('franSupDer', $this->franquiciasSupDer);
@@ -189,7 +193,8 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->franquiciasIzq = publicidad_franquicias::where('idtipo_publicidad','=',4)
-                                                        ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->get(array('url_imagen','nombre','nombre_comercial'));
         //Compartimos el array con todas las vistas
         View::share('franInIzq', $this->franquiciasIzq);
         ////
@@ -201,10 +206,25 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->patrocinadasB = publicidad_franquicias::where('idtipo_publicidad','=',6)
-                                                       ->where('inicio','<=',$time)->get(array('url_imagen','nombre','nombre_comercial'));
+                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->get(array('url_imagen','nombre','nombre_comercial'));
 
         //Compartimos el array con todas las vistas
         View::share('patrocinadas', $this->patrocinadasB);
+        ////
+
+
+        //Obtenemos las franquicias que tienen patrocinado_b a 1 en paquetes activos
+        $this->destacadas = new Collection();
+
+        //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
+        //para pasarlas a las vista para que se muestren.
+        $this->destacadas = publicidad_franquicias::where('idtipo_publicidad','=',8)
+                                                    ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                    ->get(array('url_imagen','nombre','nombre_comercial'));
+
+        //Compartimos el array con todas las vistas
+        View::share('destacadas', $this->destacadas);
         ////
 
     }
@@ -234,7 +254,7 @@ class WebController extends Controller {
         $franquicias_baratas = franquicia_especial_subcategoria::where('especial','=', 'baratas')->groupBy('id')->get();
         $franquicias_rentables = franquicia_especial_subcategoria::where('especial','=', 'rentables')->groupBy('id')->get();
         $franquicias_lowcost = franquicia_especial_subcategoria::where('especial','=', 'lowcost')->groupBy('id')->get();
-        $franquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
+        //$franquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
 
         //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
         $patrocinadas = $this->patrocinadasB;
