@@ -161,6 +161,17 @@
                                                             </section>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <label> Provincia:</label>
+                                                                <label class="input"><i class="icon-prepend fa fa-user"></i>
+                                                                    <input id="provincia" type="text" name="provincia" class="form-control" placeholder="provincia" value="{{$ses->provincia}}">
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
@@ -211,10 +222,32 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="row">
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
+                                                                <label>Categoria:</label>
+                                                                <select multiple="multiple" style="width:100%" class="select2" id="categoria" name="categoria[]">
+                                                                    @foreach($categorias as $cat)
+                                                                        <optgroup label="{{$cat->nombre}}">
+                                                                            @foreach($subcategorias as $subcat)
+                                                                                @if($subcat->categoria_id==$cat->id)
+                                                                                    <option value="{{$subcat->id}}"
+
+                                                                                    @if(in_array($subcat->id,$subcategorias_en_franquicia)) selected @endif
+                                                                                            >{{$subcat->nombre}}</option>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </optgroup>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label class="label">Claves de Negocio:</label>
                                                                 <label class="textarea textarea-resizable">
-                                                                    <textarea class="custom-scroll" rows="1" id="claves_negocio" name="claves_negocio">{{$ses->claves_negocio}}</textarea>
+                                                                    <textarea class="custom-scroll" rows="4" id="claves_negocio" name="claves_negocio">{{$ses->claves_negocio}}</textarea>
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -233,9 +266,9 @@
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
-                                                                <label>Inversión Pública:</label>
+                                                                <label>Inversión (para mostrat en el perfil):</label>
                                                                 <label class="input">
-                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión pública" value="{{$ses->inversion_p}}">
+                                                                    <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Ejemplo: 300 + IVA" value="{{$ses->inversion_p}}">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -243,15 +276,15 @@
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                <label>Presencia Internacional:</label>
-                                                                <label class="input">
-                                                                    <input id="presencia" type="text" name="presencia_int" value="{{$ses->presencia_int}}" class="form-control" placeholder="Presencia Internacional">
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Royalti:</label>
                                                                 <label class="input">
                                                                     <input id="royalti" type="text" name="royalty" value="{{$ses->royalty}}" class="form-control" placeholder="Royalti">
+                                                                </label>
+                                                            </section>
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Amortización:</label>
+                                                                <label class="input">
+                                                                    <input id="amortizacion" type="text" name="amortizacion" value = "{{$ses->amortizacion}}" class="form-control" placeholder="Amortización">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -280,12 +313,7 @@
                                                                     <input id="contrato" type="text" name="duracion_contrato" value = "{{$ses->duracion_contrato}}" class="form-control" placeholder="Duración Contrato">
                                                                 </label>
                                                             </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                <label>Amortización:</label>
-                                                                <label class="input">
-                                                                    <input id="amortizacion" type="text" name="amortizacion" value = "{{$ses->amortizacion}}" class="form-control" placeholder="Amortización">
-                                                                </label>
-                                                            </section>
+
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -436,34 +464,47 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="row">
+
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Presencia Internacional:</label>
+                                                                <label class="input">
+                                                                    <input id="presencia" type="text" name="presencia_int" value="{{$ses->presencia_int}}" class="form-control" placeholder="Presencia Internacional">
+                                                                </label>
+                                                            </section>
+                                                            <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Personal:</label>
+                                                                <label class="input">
+                                                                    <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal" value="{{$ses->personal}}">
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+
+
                                                             <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Red en Extranjero:</label>
 
                                                                 <div class="inline-group" style="margin-top:5px">
                                                                     <label class="radio">
                                                                         @if($ses->red_extranjero == 1)
-                                                                        <input id="extranjero_s" class="form-control" type="radio" name="red_extranjero" value="1" checked>
+                                                                            <input id="extranjero_s" class="form-control" type="radio" name="red_extranjero" value="1" checked>
                                                                         @else
                                                                             <input id="extranjero_s" class="form-control" type="radio" name="red_extranjero" value="1" checked>
                                                                         @endif
-                                                                            <i></i>Si</label>
+                                                                        <i></i>Si</label>
                                                                     <label class="radio">
 
                                                                         @if($ses->red_extranjero == 0)
-                                                                        <input id="extranjero_n" class="form-control"  type="radio" name="red_extranjero" value="0" checked>
+                                                                            <input id="extranjero_n" class="form-control"  type="radio" name="red_extranjero" value="0" checked>
                                                                         @else
                                                                             <input id="extranjero_n" class="form-control"  type="radio" name="red_extranjero" value="0">
 
                                                                         @endif
                                                                         <i></i>No</label>
                                                                 </div>
-                                                            </section>
-
-                                                            <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
-                                                                <label>Personal:</label>
-                                                                <label class="input">
-                                                                    <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal" value="{{$ses->personal}}">
-                                                                </label>
                                                             </section>
                                                         </div>
                                                     </div>
@@ -481,9 +522,9 @@
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                <label>Nombre:</label>
+                                                                <label>Empresa:</label>
                                                                 <label class="input">
-                                                                    <input id="nombre" type="text" name="nombre_franquicia" value ="{{$ses->nombre_franquicia}}" class="form-control" placeholder="Nombre">
+                                                                    <input id="nombre" type="text" name="nombre_franquicia" value ="{{$ses->nombre_franquicia}}" class="form-control" placeholder="Nombre de la empresa">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -494,6 +535,8 @@
                                                             </section>
                                                         </div>
                                                     </div>
+
+
 
                                                     <div class="form-group">
                                                         <div class="row" data-date-format="dd/mm/yyyy">
@@ -525,31 +568,6 @@
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                <label>Categoría especial:</label>
-                                                                <select multiple style="width:100%" class="select2"  name="especial[]">
-
-                                                                    <option value="1"
-                                                                            @if($paquetes->especial_ex == 1) selected @endif
-                                                                            >Exito</option>
-                                                                    <option value="2"
-                                                                    @if($paquetes->especial_re == 1) selected @endif
-
-                                                                            >Rentable</option>
-                                                                    <option value="3"
-                                                                    @if($paquetes->especial_ba == 1) selected @endif
-
-                                                                            >Barata</option>
-                                                                    <option value="4"
-                                                                    @if($paquetes->especial_lc == 1) selected @endif
-
-                                                                            >LowCost</option>
-                                                                    <option value="5"
-                                                                    @if($paquetes->destacado_categoria == 1) selected @endif
-
-                                                                            >Destacada</option>
-                                                                </select>
-                                                            </section>
-                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Fax:</label>
                                                                 <label class="input">
                                                                     <input type="text" name="fax" class="form-control" placeholder="Fax">
@@ -557,35 +575,16 @@
                                                             </section>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                <label>Categoria:</label>
-                                                                <select multiple="multiple" style="width:100%" class="select2" id="categoria" name="categoria[]">
-                                                                    @foreach($categorias as $cat)
-                                                                        <optgroup label="{{$cat->nombre}}">
-                                                                            @foreach($subcategorias as $subcat)
-                                                                                @if($subcat->categoria_id==$cat->id)
-                                                                                    <option value="{{$subcat->id}}"
 
-                                                                                            @if(in_array($subcat->id,$subcategorias_en_franquicia)) selected @endif
-                                                                                            >{{$subcat->nombre}}</option>
-                                                                                @endif
-                                                                            @endforeach
-                                                                        </optgroup>
-                                                                    @endforeach
-
-                                                                </select>
-                                                            </section>
-                                                        </div>
-                                                    </div>
                                                 </fieldset>
                                             </div>
+
                                             <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6">
                                                 <hr/>
                                                 <fieldset>
                                                     <h5>Datos de Contacto:</h5>
-                                                    <br>
+
+                                                    <br><h6><strong>Facturación</strong></h6><br>
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
@@ -599,61 +598,119 @@
                                                                 <label>Código Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" value='{{$ses->cp_fac}}' name="cp_fac" id="facturacion" class="form-control" placeholder="CP">
+                                                                    <input type="text"  value='{{$ses->cp_fac}}'  name="cp_fac" id="facturacion" class="form-control" placeholder="CP">
                                                                 </label>
                                                             </section>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Población:</label>
+                                                                <label class="input">
+                                                                    <input id="poblacion_facturacion"  value='{{$ses->poblacion_facturacion}}' type="text" name="poblacion_facturacion" class="form-control" placeholder="Poblacion">
+                                                                </label>
+                                                            </section>
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Provincia:</label>
+                                                                <label class="input">
+                                                                    <input id="provincia_facturacion" type="text" name="provincia_facturacion"  value='{{$ses->provincia_facturacion}}' class="form-control" placeholder="Provincia">
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h6><strong>Fiscal</strong></h6><br>
+
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
                                                                 <label>Domicilio Fiscal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" value='{{$ses->domicio_fiscal}}' name="domicio_fiscal" id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
+                                                                    <input type="text" name="domicio_fiscal"  value='{{$ses->domicio_fiscal}}' id="fiscal" class="form-control" placeholder="Domicilio Fiscal">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-3 col-sm-3 col-lg-3">
                                                                 <label>Código Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" value='{{$ses->cp_fiscal}}' name="cp_fiscal" class="form-control" id="postalfiscal" placeholder="CP">
+                                                                    <input type="text" name="cp_fiscal"  value='{{$ses->cp_fiscal}}' class="form-control" id="postalfiscal" placeholder="CP">
                                                                 </label>
                                                             </section>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Población:</label>
+                                                                <label class="input">
+                                                                    <input id="poblacion_fiscal" type="text" name="poblacion_fiscal"  value='{{$ses->poblacion_fiscal}}' class="form-control" placeholder="Poblacion">
+                                                                </label>
+                                                            </section>
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Provincia:</label>
+                                                                <label class="input">
+                                                                    <input id="provincia_fiscal" type="text" name="provincia_fiscal"  value='{{$ses->provincia_fiscal}}' class="form-control" placeholder="Provincia">
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                    <br><h6><strong>Postal</strong></h6><br>
+
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
                                                                 <label>Domicilio Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" value='{{$ses->domicilio_facturacion}}' name="domicilio_postal" class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
+                                                                    <input type="text" name="domicilio_postal"  value='{{$ses->domicilio_postal}}' class="form-control" id="domiciliopostal" placeholder="Domicilio Fiscal">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-3 col-sm-3">
                                                                 <label>Código Postal:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" value='{{$ses->cp_postal}}' name="cp_postal" class="form-control" id="postalpostal" placeholder="CP">
+                                                                    <input type="text" name="cp_postal"  value='{{$ses->cp_postal}}' class="form-control" id="postalpostal" placeholder="CP">
                                                                 </label>
                                                             </section>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Población:</label>
+                                                                <label class="input">
+                                                                    <input id="poblacion_postal" type="text" name="poblacion_postal"  value='{{$ses->poblacion_postal}}' class="form-control" placeholder="Poblacion">
+                                                                </label>
+                                                            </section>
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                <label>Provincia:</label>
+                                                                <label class="input">
+                                                                    <input id="provincia_postal" type="text" name="provincia_postal"  value='{{$ses->provincia_postal}}' class="form-control" placeholder="Provincia">
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                    <br><h6><strong>Directo</strong></h6><br>
+
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Nombre y Apellidos de Contacto:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-home"></i>
-                                                                    <input type="text" value='{{$ses->nombre_apellidos_contacto }}' name="nombre_apellidos_contacto" class="form-control" id="contanto" placeholder="Nombre y Apellidos">
+                                                                    <input type="text" name="nombre_apellidos_contacto"  value='{{$ses->nombre_apellidos_contacto}}' class="form-control" id="contanto" placeholder="Nombre y Apellidos">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Teléfono de Contacto:</label>
                                                                 <label class="input"> <i
                                                                             class="icon-append fa fa-home"></i>
-                                                                    <input type="text" value='{{$ses->tf_contacto}}' name="tf_contacto" class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
+                                                                    <input type="text" name="tf_contacto"  value='{{$ses->tf_contacto}}' class="form-control" id="telfcontatco" placeholder="Teléfono de Contacto">
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -663,19 +720,31 @@
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" style="margin-bottom: 38px;">
                                                                 <label>Email de Contacto:</label>
                                                                 <label class="input"> <i class="icon-append fa fa-home"></i>
-                                                                    <input type="text" value='{{$ses->email_contacto}}' name="email_contacto" id="emailcontacto" placeholder="Email Contacto">
+                                                                    <input type="text" name="email_directo"  value='{{$ses->email_directo}}' id="email_directo" placeholder="Email de contacto">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                 <label>Cargo contacto:</label>
                                                                 <label class="input"> <i class="icon-append fa fa-home"></i>
-                                                                    <input type="text" value='{{$ses->cargo_contacto}}' name="cargo_contacto" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
+                                                                    <input type="text" name="cargo_contacto"  value='{{$ses->cargo_contacto}}' id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12" style="margin-bottom: 38px;">
+                                                                <label>Email recepcion de informacion:</label>
+                                                                <label class="input"> <i class="icon-append fa fa-home"></i>
+                                                                    <input type="text" name="email_contacto"  value='{{$ses->email_contacto}}' id="emailcontacto" placeholder="Donde le llegarán los avisos de personas interesadas">
                                                                 </label>
                                                             </section>
                                                         </div>
                                                     </div>
                                                 </fieldset>
                                             </div>
+
                                         </div>
                                         <footer>
                                             <button id="actualizar" type="submit" class="btn btn-primary">

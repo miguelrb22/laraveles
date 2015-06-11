@@ -441,8 +441,8 @@ class WebController extends Controller {
         $subcategorias = array();
 
         //Obtenemos las categorias y subcategorias
-        $lista_categorias = Categoria::all();
-        $lista_subcategorias = subcategoria::all();
+        $lista_categorias = Categoria::orderBy('nombre','ASC')->get();
+        $lista_subcategorias = subcategoria::orderBy('nombre','ASC')->get();
 
         foreach($lista_categorias as $categoria) {
             foreach($lista_subcategorias as $subcategoria){
@@ -459,6 +459,8 @@ class WebController extends Controller {
         $categorias = $this->categorias_deplegables;
         return view ('franquicias',compact('lista'));
     }
+
+
 
     public function franquiciadores(){
         return view ('franquicias-consultoria');
