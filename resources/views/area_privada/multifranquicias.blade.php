@@ -265,7 +265,7 @@
                 </li>
                 <li id="gestion" style="display: none">
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Gestión Franquicia</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
-                    <ul style="display: none;">
+                    <ul style="display: none;" id="panel_modificar_franquicia">
                         <li id="alta">
                             <a class="needlog" href="{{ URL::route('modificar_franquicia') }}"><i class="fa fa-pencil-square-o"></i>Modificar Franquicia</a>
                         </li>
@@ -285,7 +285,7 @@
                 </li>
                 <li id= "publicaciones">
                     <a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Publicaciones</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
-                    <ul style="display: none;">
+                    <ul style="display: none;" id="publicaciones_panel">
                         <li id="alta">
                             <a href="{{ URL::route('noticias') }}"><i class="fa fa-lg fa fa-list-alt"></i> <span class="menu-item-parent">Nueva publicación</span><b class="collapse-sign"></b></a>
                         </li>

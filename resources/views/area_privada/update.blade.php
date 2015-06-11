@@ -806,6 +806,9 @@
 
     //prueba
 
+    $('#gestion').addClass('open');
+    $('#panel_modificar_franquicia').css('display','block');
+
     var nowTemp = new Date();
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -1178,3 +1181,5 @@
 				});
 
 @endsection
+
+

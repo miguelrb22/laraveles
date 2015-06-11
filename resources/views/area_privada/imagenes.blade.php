@@ -147,6 +147,8 @@
 
 @section('ready')
 
+    $('#gestion').addClass('open');
+    $('#panel_modificar_franquicia').css('display','block');
 
 
 @endsection
