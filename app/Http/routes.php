@@ -151,7 +151,8 @@ Route::group(['namespace' =>  'categorias'],function() {
 
         //Parseamos de nuevo la cadena para que se busque en bien en la base de datos.
         $tipo = (str_replace('-',' ',$tipo));
-        $nombre = str_replace('-',' ',$nombre);
+        $nombre = str_replace("'","\'",str_replace('-',' ',$nombre));
+
         //Debemos comprobar antes que la franquicia nombre es de la subcategoria tipo
         //para ello btenemos el id de la subcategoria por el tipo pasado en la url y el id de la franquicia
         $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
