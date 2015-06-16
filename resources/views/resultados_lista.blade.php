@@ -54,7 +54,6 @@
 
                     @if(!$franquicias->isEmpty())
                         @foreach($franquicias as $franquicia)
-                            {{dd($franquicia->nombre_comercial)}}
                             <div class="row">
                                 <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                     <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franquicia->nombre."/".strtr(utf8_decode($franquicia->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiiooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicia->logo_url) }}"></a>
