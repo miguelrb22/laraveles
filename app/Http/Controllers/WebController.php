@@ -786,7 +786,7 @@ class WebController extends Controller {
         //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
         //$controller = app::make(categoriaController::class);
         //$similares = $controller->callAction('franquiciasTipo', array('tipo' => $tipo, 'idFranquicia' => $franquicia->id));
-        $similares = $this->franquiciasMismoTipo($tipo,$franquicia->id);
+        $similares = $this->franquiciasMismoTipo($tipo,$franquicia[0]->id);
 
         //obtenemos las noticias de esta franquicia para pasarlas también a la información del perfil
         $publicaciones = Publicaciones::where('franquicia_id','=', $franquicia[0]->id)->get();
