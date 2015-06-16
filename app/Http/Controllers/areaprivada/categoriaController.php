@@ -4,10 +4,9 @@ use App\model\Franquicia;
 use App\model\Categoria;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\model\franquicias_no_destacadas;
+use App\model\franquicia_nom_subcategoria;
 use App\model\franquicia_subcategoria;
 use App\model\subcategoria;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Request;
 
 
@@ -26,11 +25,9 @@ class categoriaController extends Controller {
 
         //Array de collect subcategorias con franquicias en cada una de ellas
         $franquiciasSub = array();
-        //$franquiciasSubDestacadas = new Collection();
-        $franquiciasSubResto = array();
 
         //Lista final de franquicias para pasar a la vista.
-        //$franquicias = array();
+        $franquicias = array();
 
         $idCategoria = Categoria::where('nombre', 'like', $tipo)->get();
         //extraemos las id de las subcategorias para la categoria dada
@@ -39,18 +36,10 @@ class categoriaController extends Controller {
         //Vamos añadiendo objectos subcategorias con franquicias dentro a un nuevo array creado para pasarlo a la vista posteriormente
         foreach($idSubcategorias as $subcategoria)
         {
-            $franquicia = franquicias_no_destacadas::where("subcategoria_id", "=",$subcategoria->id)->get();
-           // dd($franquicias);
-
-            //$franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
+            $franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
             array_push($franquiciasSub,$franquicia);
-
-            //$franquiciasSub->push($franquicias);
             //Cada vez que añadimos una vamos incrementado el resultado;
         }
-        
-
-        //dd($franquiciasSubDestacadas);
 
         //Obtenemos todas las franquicias de todas las subcategorias
 
@@ -69,18 +58,6 @@ class categoriaController extends Controller {
         //Igualamos la categoria a la devuelta por la select por si tiene acentos y la formateamos para pasarla a la vista.
         $categoria =  strtolower((str_replace('-',' ',$idCategoria[0]->nombre)));
         return view ('dinamica_subcategorias',compact('franquicias','resultados','categoria'));
-
-
-        //Obtenemos las franquicias de la vista destacadas_sucategoria;
-        $destacadasCategoria = destacadas_subcategoria::where("subcategoria_id", "=",$idSubcategoria[0]->id)
-            ->orderBy(DB::raw('RAND()'))->get();
-
-        $restoFranquicias = franquicias_destacadas::where("subcategoria_id", "=",$idSubcategoria[0]->id)->get();
-
-
-        $resultados = count($restoFranquicias)+ count($destacadasCategoria);
-
-        return view("dinamica",compact('destacadasCategoria','restoFranquicias','resultados','categoria'));
     }
 
     /**
@@ -131,7 +108,7 @@ class categoriaController extends Controller {
             //Obtenemos los ids de las franquicias del mismo tipo de la tabla n:m excepto la que se está visualizando
             //para una categoria
             $idsFranquiciasSub = franquicia_subcategoria::where('subcategoria_id', '=', $idSubcategoria[0]->id )
-                                                            ->where('franquicia_id', '<>', $id)->get();
+                ->where('franquicia_id', '<>', $id)->get();
 
             foreach($idsFranquiciasSub as $franquicia)
             {
