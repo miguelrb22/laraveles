@@ -156,7 +156,11 @@ Route::group(['namespace' =>  'categorias'],function() {
         //para ello btenemos el id de la subcategoria por el tipo pasado en la url y el id de la franquicia
         $idSubcategoria = subcategoria::where('nombre', '=' , $tipo)->get();
 
-        $idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
+        //$idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
+
+        $idfranquicia = DB::raw("select * where Replace(nombre_comercial, 'ñ', 'n') = ". $nombre)->get();
+
+        dd($idfranquicia);
 
         $idFran_Subcat = new \Illuminate\Database\Eloquent\Collection;
 
