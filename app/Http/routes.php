@@ -160,14 +160,14 @@ Route::group(['namespace' =>  'categorias'],function() {
 
         $idfranquicia =  DB::select(DB::raw("select id from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
 
-        dd(null($idfranquicia[0]));
+        dd(null($idfranquicia));
 
         $idFran_Subcat = new \Illuminate\Database\Eloquent\Collection;
 
 
         //Comprobamos si idSubcategoria no es vacio porque si es vacio significa que no hay id de subcategoria con ese nombre
         //y que haya una franquicia para esa categoria
-        if(!$idSubcategoria->isEmpty() && !$idfranquicia->isEmpty())
+        if(!$idSubcategoria->isEmpty() && $idfranquicia[0] != '')
         {
             //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
             $idFran_Subcat->add(franquicia_subcategoria::where('franquicia_id', '=', $idfranquicia[0]->id)
