@@ -43,9 +43,9 @@ class categoriaController extends Controller {
            // dd($franquicias);
 
             //$franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
-            //array_push($franquiciasSub,$franquicia);
+            array_push($franquiciasSub,$franquicia);
 
-            $franquiciasSub->push($franquicias);
+            //$franquiciasSub->push($franquicias);
             //Cada vez que añadimos una vamos incrementado el resultado;
         }
         
