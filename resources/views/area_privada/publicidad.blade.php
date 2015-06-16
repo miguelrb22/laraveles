@@ -788,7 +788,7 @@
                                                             </label>
                                                         </section>
 
-                                                        <input type="text" value="10" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="9" name="idtipo_publicidad" hidden>
                                                         <input type="text" value="exito" name="nombre_paquete" hidden>
 
                                                     </div>
