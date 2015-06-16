@@ -149,7 +149,6 @@ Route::group(['namespace' =>  'categorias'],function() {
 
         //REVISAR SI PODEMOS HACERLO POR IDS DE TIPO o OPTIMIZALO DE ALGUNA MANERA
 
-        dd("nombre ".$nombre);
         //Parseamos de nuevo la cadena para que se busque en bien en la base de datos.
         $tipo = (str_replace('-',' ',$tipo));
         $nombre = str_replace('-',' ',$nombre);
