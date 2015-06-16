@@ -39,7 +39,7 @@ class categoriaController extends Controller {
         //Vamos añadiendo objectos subcategorias con franquicias dentro a un nuevo array creado para pasarlo a la vista posteriormente
         foreach($idSubcategorias as $subcategoria)
         {
-            $franquicias = franquicias_no_destacadas::where("subcategoria_id", "=",$subcategoria->id)->get();
+            $franquicia = franquicias_no_destacadas::where("subcategoria_id", "=",$subcategoria->id)->get();
            // dd($franquicias);
 
             //$franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
