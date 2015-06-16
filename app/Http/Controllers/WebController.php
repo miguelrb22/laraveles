@@ -781,7 +781,7 @@ class WebController extends Controller {
 
         //Obtenemos la franquicia por el nombre pasado desde el routes.
         //$franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
-        $franquicia =  Franquicia::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"))->get();
+        $franquicia =  Franquicia::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'")->get());
 
 
         dd($franquicia);
