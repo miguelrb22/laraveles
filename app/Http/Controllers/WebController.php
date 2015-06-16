@@ -778,7 +778,9 @@ class WebController extends Controller {
         $patrocinadas = $this->patrocinadasB;
 
         //Obtenemos la franquicia por el nombre pasado desde el routes.
-        $franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
+        //$franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
+        $franquicia =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
+
 
         //Obtenemos franquicias de la misma categoria.
         //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
@@ -787,10 +789,10 @@ class WebController extends Controller {
         $similares = $this->franquiciasMismoTipo($tipo,$franquicia->id);
 
         //obtenemos las noticias de esta franquicia para pasarlas también a la información del perfil
-        $publicaciones = Publicaciones::where('franquicia_id','=', $franquicia->id)->get();
+        $publicaciones = Publicaciones::where('franquicia_id','=', $franquicia[0]->id)->get();
 
         //Obtenemos las imagenes de la tabla 1:N de imagenes_franquicia
-        $imagenes = files::where('franquicia_id','=',$franquicia->id)->get();
+        $imagenes = files::where('franquicia_id','=',$franquicia[0]->id)->get();
 
         //Devolvemos la vista con los parámetros. (la franquicia, la lista de franquicias de la misma categoria y las publicaciones)
         return view('perfil', compact('franquicia','similares','publicaciones','imagenes'));
