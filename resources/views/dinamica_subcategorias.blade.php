@@ -47,24 +47,50 @@
                     <h2>{{ "Franquicias " .str_replace('-',' ',$categoria )}}</h2>
                     <hr id="separador">
 
-                        @if(count($franquicias) > 0)
+                        @if(count($resultados) > 0)
 
-                            @for($i=0 ; $i< count($franquicias); $i++)
+                        @if(!$franquiciasSubDestacadas->isEmpty())
+                            @foreach($franquiciasSubDestacadas as $destacada)
+
                                 <div class="row">
                                     <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicias[$i]->logo_url) }}"></a>
+                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($destacada->nombre."/".$destacada->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($destacada->logo_url) }}"></a>
                                     </div>
                                     <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8 f-desc">
                                         <p>
-                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($franquicias[$i]->nombre."/".$franquicias[$i]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$franquicias[$i]->nombre_comercial}}</h3></a>
-                                            <p>{{ substr(strip_tags($franquicias[$i]->descripcion),0,255)."..." }}</p>
-                                            <label> Actividad : {{$franquicias[$i]->nombre}}</label>
+                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($destacada->nombre."/".$destacada->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h2>{{$destacada->nombre_comercial}}</h2></a>
+                                        <p>{{ substr(strip_tags($destacada->descripcion),0,250)."..." }}</p>
+                                        <label> Actividad : {{$destacada->nombre}}</label>
                                         </p>
                                     </div>
                                 </div>
                                 <br>
-                            @endfor
-                        @else
+
+                            @endforeach
+                        @endif
+
+
+                        @if(!$franquiciasSubResto->isEmpty())
+                            @foreach($franquiciasSubResto as $resto)
+
+                                <div class="row">
+
+                                    <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8 f-desc">
+                                        <p>
+                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($resto->nombre."/".$resto->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$resto->nombre_comercial}}</h3></a>
+                                            <p>{{ substr(strip_tags($resto->descripcion),0,250)."..." }}</p>
+                                            <label> Actividad : {{$resto->nombre}}</label>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <br>
+
+                            @endforeach
+                        @endif
+
+
+                    @else
                             <h3>No hay franquicias de esta categoria.</h3>
                         @endif
 
