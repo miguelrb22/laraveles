@@ -781,7 +781,6 @@ class WebController extends Controller {
         //$franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
         $franquicia =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
 
-        dd($franquicia[0]->id);
 
         //Obtenemos franquicias de la misma categoria.
         //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
@@ -795,6 +794,7 @@ class WebController extends Controller {
         //Obtenemos las imagenes de la tabla 1:N de imagenes_franquicia
         $imagenes = files::where('franquicia_id','=',$franquicia[0]->id)->get();
 
+        dd("devuelve");
         //Devolvemos la vista con los parámetros. (la franquicia, la lista de franquicias de la misma categoria y las publicaciones)
         return view('perfil', compact('franquicia','similares','publicaciones','imagenes'));
     }
