@@ -713,7 +713,8 @@
 
                         </div>
                         <div class="row">
-                            <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
+
+                            <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable"    >
 
                                 <!-- Widget ID (each widget will need unique ID)-->
                                 <div class="jarviswidget jarviswidget-sortable" id="wid-id-1"
@@ -805,7 +806,7 @@
                                                             <label><strong>Nº franquicias:</strong></label>
                                                             <label class="num"></label>
                                                         </div>
-                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">
                                                                 Activar
                                                             </button>
@@ -1042,6 +1043,7 @@
 
                                 </div>
                             </article>
+
                         </div>
                         <div class="row">
 

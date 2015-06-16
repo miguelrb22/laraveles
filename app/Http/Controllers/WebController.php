@@ -723,7 +723,7 @@ class WebController extends Controller {
 
                 //Obtenemos las franquicias de la vista destacadas_sucategoria;
                 $destacadasCategoria = destacadas_subcategoria::where("subcategoria_id", "=",$idSubcategoria[0]->id)
-                    ->orderBy(DB::raw('RAND()'))->get();
+                                                                ->orderBy(DB::raw('RAND()'))->get();
 
                 $restoFranquicias = franquicias_no_destacadas::where("subcategoria_id", "=",$idSubcategoria[0]->id)->get();
 

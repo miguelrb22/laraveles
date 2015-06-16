@@ -25,8 +25,8 @@ class categoriaController extends Controller {
         $resultados = 0;
 
         //Array de collect subcategorias con franquicias en cada una de ellas
-        //$franquiciasSub = array();
-        $franquiciasSubDestacadas = new Collection();
+        $franquiciasSub = array();
+        //$franquiciasSubDestacadas = new Collection();
         $franquiciasSubResto = array();
 
         //Lista final de franquicias para pasar a la vista.
@@ -39,13 +39,13 @@ class categoriaController extends Controller {
         //Vamos añadiendo objectos subcategorias con franquicias dentro a un nuevo array creado para pasarlo a la vista posteriormente
         foreach($idSubcategorias as $subcategoria)
         {
-            $franquicias = franquicias_no_destacadas::where("subcategoria_id", "=",$subcategoria->id)->get();
+            //$franquicias = franquicias_no_destacadas::where("subcategoria_id", "=",$subcategoria->id)->get();
            // dd($franquicias);
 
-            //$franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
+            $franquicia = franquicia_nom_subcategoria::where('subcategoria_id' , '=', $subcategoria->id)->get();
             //array_push($franquiciasSub,$franquicia);
 
-            $franquiciasSubDestacadas->push($franquicias);
+            $franquiciasSub->push($franquicia);
             //Cada vez que añadimos una vamos incrementado el resultado;
         }
         
@@ -54,7 +54,7 @@ class categoriaController extends Controller {
 
         //Obtenemos todas las franquicias de todas las subcategorias
 
-        /*for($i=0; $i< count($franquiciasSub); $i++){
+        for($i=0; $i< count($franquiciasSub); $i++){
 
             if(!$franquiciasSub[$i]->isEmpty()){
 
@@ -64,7 +64,7 @@ class categoriaController extends Controller {
                     $resultados+=1;
                 }
             }
-        }*/
+        }
 
         //Igualamos la categoria a la devuelta por la select por si tiene acentos y la formateamos para pasarla a la vista.
         $categoria =  strtolower((str_replace('-',' ',$idCategoria[0]->nombre)));
