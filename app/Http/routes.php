@@ -158,7 +158,7 @@ Route::group(['namespace' =>  'categorias'],function() {
 
         //$idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
 
-        $idfranquicia = DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". $nombre);
+        $idfranquicia =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". $nombre));
 
         dd($idfranquicia);
 
