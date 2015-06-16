@@ -14,7 +14,11 @@
 
                         <div class="row">
                             <?php
-                                $ses = Session::get('franquicia');
+                            $ses = Session::get('franquicia');
+
+                            //Obtenemos las categorias de la franquicia seleccionada porque se necesita para el paquete 
+                            $categoriasFranquicia =  DB::table(DB::raw('franquicia_nom_subcategoria fns'))->select(DB::raw('fns.nombre,fns.subcategoria_id'))->where('fns.id', '=', $ses->id)->get(array('nombre'));
+
                             ?>
 
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"><h3>Franquicia: {{$ses->nombre_comercial}}</h3></div>
@@ -301,7 +305,7 @@
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
@@ -429,14 +433,14 @@
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio4" id="inicio4" class="calendar" placeholder="Fecha Alta Ficha" required>
+                                                                <input type="text" name="inicio" id="inicio4" class="calendar" placeholder="Fecha Alta Ficha" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final4" id="final4" class="calendar" placeholder="Fecha Fin Ficha" required>
+                                                                <input type="text" name="final" id="final4" class="calendar" placeholder="Fecha Fin Ficha" required>
                                                             </label>
                                                         </section>
 
@@ -542,22 +546,18 @@
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio5" id="inicio5" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio5" class="calendar" placeholder="Fecha Alta Ficha">
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final5" id="final5" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final5" class="calendar" placeholder="Fecha Fin Ficha">
                                                             </label>
                                                         </section>
 
@@ -650,61 +650,55 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 <fieldset>
 
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->especial_lc == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                @if ($paquetes[0]->lowcost == 0)
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio6" id="inicio6" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio6" class="calendar" placeholder="Fecha Alta Ficha" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final6" id="final6" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final6" class="calendar" placeholder="Fecha Fin Ficha" required>
                                                             </label>
                                                         </section>
-
-
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
-                                                            </div>
-                                                        </section>
                                                     </div>
+
+                                                    <input type="text" value="12" name="idtipo_publicidad" hidden>
+                                                    <input type="text" value="lowcost" name="nombre_paquete" hidden>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="lowcost_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -766,60 +760,57 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
+                                                {!! Form::Token() !!}
                                                 <fieldset>
 
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->especial_ex == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                @if ($paquetes[0]->exito == 0)
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio7" id="inicio7" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio7" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final7" id="final7" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final7" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
 
+                                                        <input type="text" value="10" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="exito" name="nombre_paquete" hidden>
 
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
-                                                            </div>
-                                                        </section>
                                                     </div>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="exito_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -879,61 +870,57 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
+                                                {!! Form::Token() !!}
                                                 <fieldset>
 
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->especial_ba == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                @if ($paquetes[0]->baratas == 0)
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio8" id="inicio8" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio8" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final8" id="final8" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final8" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
 
+                                                        <input type="text" value="10" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="baratas" name="nombre_paquete" hidden>
 
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
-                                                            </div>
-                                                        </section>
                                                     </div>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="baratas_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -993,61 +980,57 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
+                                                {!! Form::Token() !!}
                                                 <fieldset>
 
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->especial_re == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                @if ($paquetes[0]->rentables == 0)
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
-                                                            <label class="input"><i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio9" id="inicio9" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio9" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
-                                                            <label class="input"> <i
-                                                                        class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final9" id="final9" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final9" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
 
+                                                        <input type="text" value="11" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="rentables" name="nombre_paquete" hidden>
 
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
-                                                            </div>
-                                                        </section>
                                                     </div>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="rentables_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -1109,7 +1092,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 <fieldset>
 
@@ -1117,12 +1100,11 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->destacado_categoria == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
@@ -1141,29 +1123,41 @@
                                                             </label>
                                                         </section>
 
+                                                        <section class="col col-xs-12 col-md-12 col-sm-12">
+                                                            <select class="form-control" name="subcategoria" required>
+                                                                <option value="" selected="">- ¿Para qué categoria? -</option>
 
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
-                                                            </div>
+                                                                @for($i=0; $i< count($categoriasFranquicia); $i++)
+                                                                    <option value="{{$categoriasFranquicia[$i]->subcategoria_id}}">{{$categoriasFranquicia[$i]->nombre}}</option>
+                                                                @endfor
+
+                                                            </select>
                                                         </section>
+
+                                                        <input type="text" value="5" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="destacado_categoria" name="nombre_paquete" hidden>
+
+
                                                     </div>
 
                                                 </fieldset>
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="destacado_categoria_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -1431,50 +1425,49 @@
 @section('ready')
 
     $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
     });
 
     $.ajax({
-        type: "POST",
-        url: "{{ URL::route('fechasDisponibles') }}",
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        error: function (XMLHttpRequest,cadena) {
+    type: "POST",
+    url: "{{ URL::route('fechasDisponibles') }}",
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    error: function (XMLHttpRequest,cadena) {
 
-            Lobibox.notify('error', {
-                title: 'No se ha podido crear la franquicia',
-                showClass: 'flipInX',
-                delay: 3000,
-                delayIndicator: false,
+    /*Lobibox.notify('error', {
+    title: 'No se ha podido crear la franquicia',
+    showClass: 'flipInX',
+    delay: 3000,
+    delayIndicator: false,
 
-                position: 'bottom left',
-                msg: 'Compruebe la conexión a internet'
-            });
-        },
-        success: function (data){
+    position: 'bottom left',
+    msg: 'Compruebe la conexión a internet'
+    });*/
+    },
+    success: function (data){
 
 
-            for(var i = 0; i < data.length ; i++)
-            {
+    for(var i = 0; i < data.length ; i++)
+    {
+    $("."+data[i][0]+"_footer").find('.fecha').html(data[i][1]);
+    $("."+data[i][0]+"_footer").find('.num').html(data[i][2]);
+    $("."+data[i][0]+"_footer").find('.recuadros').html(data[i][3]);
+    }
 
-                    $("."+data[i][0]+"_footer").find('.fecha').html(data[i][1]);
-                    $("."+data[i][0]+"_footer").find('.num').html(data[i][2]);
-                    $("."+data[i][0]+"_footer").find('.recuadros').html(data[i][3]);
-            }
+    /*Lobibox.notify('success', {
+    title: 'Franquicia creada con éxito',
+    showClass: 'flipInX',
+    delay: 3000,
+    delayIndicator: false,
 
-            Lobibox.notify('success', {
-                title: 'Franquicia creada con éxito',
-                showClass: 'flipInX',
-                delay: 3000,
-                delayIndicator: false,
-
-                position: 'bottom left',
-                msg: 'Mas franquicias, mas dinero!'
-            });
-        }
+    position: 'bottom left',
+    msg: 'Mas franquicias, mas dinero!'
+    });*/
+    }
 
     });
 
@@ -1758,7 +1751,7 @@
 
 
     function fileSelect(id, e){
-        console.log(e.target.files[0].name);
+    console.log(e.target.files[0].name);
     }
 
 

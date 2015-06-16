@@ -42,10 +42,25 @@
       <foreign-key name="fk_colapublicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_colapublicidad_tipo_publicidad1_idx" unique="false" columns="idtipo_publicidad"/>
     </table>
+    <table name="datos_especial" schema="" catalog="bdeavisos2" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
     <table name="datos_franquicia" schema="" catalog="bdeavisos2" type="VIEW">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="destacadas_subcategoria" schema="" catalog="bdeavisos2" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="estadisticas_diarias" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -189,6 +204,14 @@
       <index name="fk_franquicia_has_subcategoria_franquicia1_idx" unique="false" columns="franquicia_id"/>
       <index name="fk_franquicia_has_subcategoria_subcategoria1_idx" unique="false" columns="subcategoria_id"/>
     </table>
+    <table name="franquicias_no_destacadas" schema="" catalog="bdeavisos2" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="subcategoria_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
     <table name="imagenes_franquicia" schema="" catalog="bdeavisos2" type="TABLE">
       <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="ruta" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -228,10 +251,10 @@
       <column name="destacados" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
       <column name="sup_derecha" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
       <column name="izquierda" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
-      <column name="especial_lc" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
-      <column name="especial_ex" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
-      <column name="especial_ba" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
-      <column name="especial_re" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="lowcost" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="exito" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="baratas" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="rentables" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <column name="destacado_categoria" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
       <column name="patrocinado_b" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <column name="noticia_des" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
@@ -278,11 +301,24 @@
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="estado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre_paquete" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="subcategoria" sqlType="VARCHAR" precision="70" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_publicidad_franquicia1" columns="franquicia_id" ref-table="franquicia" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_publicidad_tipo_publicidad1" columns="idtipo_publicidad" ref-table="tipo_publicidad" ref-schema="" ref-catalog="bdeavisos2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_publicidad_franquicia1_idx" unique="false" columns="franquicia_id"/>
       <index name="fk_publicidad_tipo_publicidad1_idx" unique="false" columns="idtipo_publicidad"/>
+    </table>
+    <table name="publicidad_especial" schema="" catalog="bdeavisos2" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre_comercial" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descripcion" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="idtipo_publicidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="inicio" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="final" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="nombre_paquete" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="publicidad_franquicias" schema="" catalog="bdeavisos2" type="VIEW">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>

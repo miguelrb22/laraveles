@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: juanca
- * Date: 21/4/15
- * Time: 12:34
+ * Date: 17/4/15
+ * Time: 11:54
  */
 
 namespace App\model;
@@ -11,10 +11,10 @@ namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class franquicia_nom_subcategoria extends Model{
+class destacadas_subcategoria extends Model {
 
-    protected $table = 'franquicia_nom_subcategoria';
+    protected $table = 'destacadas_subcategoria';
 
     protected $fillable = [ 'nombre_comercial' , 'logo_url', 'inversion', 'descripcion', 'subcategoria_id', 'nombre'];
+
 }
-//comentario para commit

@@ -1220,7 +1220,6 @@
 
             $('.actualizar').on('click',function(){
 
-
                idPaquete = this.getAttribute('id');
 
             });

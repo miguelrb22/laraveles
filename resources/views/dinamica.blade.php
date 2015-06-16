@@ -14,27 +14,30 @@
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
                     <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
                         @if(!$franInIzq->isEmpty())
-
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a1]->nombre."/".$franInIzq[$a1]->nombre_comercial)))}}">
-                                    <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a1]->url_imagen) }}"  alt="prueba" style="width: auto">
-                                </a>
-                            </div>
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$a2]->nombre."/".$franInIzq[$a2]->nombre_comercial)))}}">
-                                    <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$a2]->url_imagen) }}"  alt="prueba" style="width: auto">
-                                </a>
-                            </div>
+                            <!-- numPublicaicones[3] el el numero de recuadros que va a haber en la izquierda-->
+                            @for($i = 0 ;$i < $numPublicaciones[3]->recuadros; $i++)
+                                @if($i < count($franInIzq))
+                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                        <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$i]->nombre."/".$franInIzq[$i]->nombre_comercial)))}}">
+                                            <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                        <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                                    </div>
+                                @endif
+                            @endfor
                         @else
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
-                            </div>
-                            <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
-                                <img class="img-responsive" src="{{ asset('images/seform.gif') }}" alt="prueba" >
-                            </div>
-
+                            @for($i = 0 ;$i<$numPublicaciones[3]->recuadros ; $i++)
+                                <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
+                                    <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >
+                                </div>
+                            @endfor
                         @endif
+
                     </section>
                     <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
                         <div class="well">
@@ -43,20 +46,44 @@
                         <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive f-logo" alt="Responsive image">
                         <h2>{{ "Franquicias " .str_replace('-',' ',$categoria )}}</h2>
                         <hr id="separador">
-                        @foreach($franquicias as $franquicia)
-                        <div class="row">
-                            <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($franquicia->nombre."/".$franquicia->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($franquicia->logo_url) }}"></a>
-                            </div>
-                            <div class="col col-xs-4 col-sm-4 col-md-8 col-lg-8 f-desc">
-                                <p>
-                                    <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($franquicia->nombre."/".$franquicia->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$franquicia->nombre_comercial}}</h3></a>
-                                    <p>{{ substr(strip_tags($franquicia->descripcion),0,250)."..." }}</p>
-                                </p>
-                            </div>
-                        </div>
+
+                        @if(!$destacadasCategoria->isEmpty())
+                            @foreach($destacadasCategoria as $destacada)
+
+                                <div class="row">
+                                    <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($destacada->nombre."/".$destacada->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($destacada->logo_url) }}"></a>
+                                    </div>
+                                    <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8 f-desc">
+                                        <p>
+                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($destacada->nombre."/".$destacada->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h2>{{$destacada->nombre_comercial}}</h2></a>
+                                            <p>{{ substr(strip_tags($destacada->descripcion),0,250)."..." }}</p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <br>
 
                             @endforeach
+                        @endif
+
+
+                        @if(!$restoFranquicias->isEmpty())
+                            @foreach($restoFranquicias as $resto)
+
+                                <div class="row">
+
+                                    <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8 f-desc">
+                                        <p>
+                                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($resto->nombre."/".$resto->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3>{{$resto->nombre_comercial}}</h3></a>
+                                        <p>{{ substr(strip_tags($resto->descripcion),0,250)."..." }}</p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <br>
+
+                            @endforeach
+                        @endif
+
                     </section>
                 </div>
             </div>

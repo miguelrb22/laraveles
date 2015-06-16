@@ -24,6 +24,8 @@ class publicidad extends Model{
                             'titulo_carousel',
                             'descripcion_carousel',
                             'url_contenido',
+                            'nombre_paquete',
+                            'subcategoria',
                             'created_at',
                             'updated_at'];
 
