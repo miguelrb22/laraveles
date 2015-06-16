@@ -777,13 +777,13 @@ class WebController extends Controller {
 
         //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
         $patrocinadas = $this->patrocinadasB;
-        $franquicia = new Collection();
+
 
         //Obtenemos la franquicia por el nombre pasado desde el routes.
         //$franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
-        $franquiciaaaa =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
+        $franquicia =  Franquicia::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
 
-        $franquicia->push($franquiciaaaa);
+
 
         //Obtenemos franquicias de la misma categoria.
         //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
