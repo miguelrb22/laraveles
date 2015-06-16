@@ -781,10 +781,10 @@ class WebController extends Controller {
 
         //Obtenemos la franquicia por el nombre pasado desde el routes.
         //$franquicia = Franquicia::where('nombre_comercial', '=', $nombre)->firstOrFail();
-        $franquiciaaaa =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
+        $resultado =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
 
-        $franquicia = Franquicia::hydrate($franquiciaaaa);
-        dd($franquicia);
+        $franquicia = Franquicia::hydrate($resultado);
+        $franquicia=$franquicia[0];
 
         //Obtenemos franquicias de la misma categoria.
         //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
