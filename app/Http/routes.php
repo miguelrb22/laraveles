@@ -169,6 +169,7 @@ Route::group(['namespace' =>  'categorias'],function() {
         //y que haya una franquicia para esa categoria
         if(!$idSubcategoria->isEmpty() && !is_null($idfranquicia))
         {
+            dd("entra");
             //Ahora comprobamos que existe un registro en la tabla intermedia para el id franquicia y los idCat
             $idFran_Subcat->add(franquicia_subcategoria::where('franquicia_id', '=', $idfranquicia[0]->id)
                 ->where('subcategoria_id','=',$idSubcategoria[0]->id)->get());
