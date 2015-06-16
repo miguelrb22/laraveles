@@ -14,7 +14,7 @@
                         <form class="col col-lg-12 col-md-12 col-sm-12 col-xs-12" method="POST" id="email">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nombre y apelldos</label>
+                                <label for="exampleInputEmail1">Nombre y apellidos</label>
                                 <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                             </div>
                             <div class="form-group">
@@ -26,7 +26,7 @@
                                 <input type="tel" class="form-control" name="movil" placeholder="Enter email" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Descripcion de la información</label>
+                                <label for="exampleInputPassword1">Descripción de la información</label>
                                 <textarea class="form-control textarea-expandable" name="informacion" rows="4" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-info btn-lg pull-right">Enviar</button>

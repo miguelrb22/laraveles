@@ -159,6 +159,19 @@
                                                                 </section>
                                                             </div>
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                    <label> Provincia:</label>
+                                                                    <label class="input"><i class="icon-prepend fa fa-user"></i>
+                                                                        <input id="provincia" type="text" name="provincia" class="form-control" placeholder="provincia">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
@@ -199,14 +212,36 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12">
+                                                                    <label>Categoria:</label>
+                                                                    <select multiple="multiple" style="width:100%" class="select2" id="categoria" name="categoria[]">
+
+
+                                                                        @foreach($categorias as $cat)
+                                                                            <optgroup label="{{$cat->nombre}}">
+                                                                                @foreach($subcategorias as $subcat)
+                                                                                    @if($subcat->categoria_id==$cat->id)
+                                                                                        <option value="{{$subcat->id}}">{{$subcat->nombre}}</option>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </optgroup>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                     <label class="label">Claves de Negocio:</label>
                                                                     <label class="textarea textarea-resizable">
-                                                                        <textarea class="custom-scroll" rows="1" id="claves_negocio" name="claves_negocio"></textarea>
+                                                                        <textarea class="custom-scroll" rows="4" id="claves_negocio" name="claves_negocio" placeholder="Separe cada clave de negocio con # excepto la primera. Ejemplo: clave1#clave2#clave3"></textarea>
                                                                     </label>
                                                                 </section>
                                                             </div>
                                                         </div>
+
+
                                                         <hr>
                                                         <br>
                                                         <h5>Datos economicos:</h5>
@@ -220,9 +255,9 @@
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Inversión Pública:</label>
+                                                                    <label>Inversión (para mostrar en el perfil)</label>
                                                                     <label class="input">
-                                                                        <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Inversión Pública">
+                                                                        <input id="inversion" type="text" name="inversion_p" class="form-control" placeholder="Ejemplo: 300 + IVA">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -230,15 +265,15 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Presencia Internacional:</label>
-                                                                    <label class="input">
-                                                                        <input id="presencia" type="text" name="presencia_int" class="form-control" placeholder="Presencia Internacional">
-                                                                    </label>
-                                                                </section>
-                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Royalti:</label>
                                                                     <label class="input">
                                                                         <input id="royalti" type="text" name="royalty" class="form-control" placeholder="Royalti">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Amortización:</label>
+                                                                    <label class="input">
+                                                                        <input id="amortizacion" type="text" name="amortizacion" class="form-control" placeholder="Amortización">
                                                                     </label>
                                                                 </section>
                                                             </div>
@@ -267,12 +302,7 @@
                                                                         <input id="contrato" type="text" name="duracion_contrato" class="form-control" placeholder="Duración Contrato">
                                                                     </label>
                                                                 </section>
-                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Amortización:</label>
-                                                                    <label class="input">
-                                                                        <input id="amortizacion" type="text" name="amortizacion" class="form-control" placeholder="Amortización">
-                                                                    </label>
-                                                                </section>
+
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -413,6 +443,26 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="row">
+
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Presencia Internacional:</label>
+                                                                    <label class="input">
+                                                                        <input id="presencia" type="text" name="presencia_int" class="form-control" placeholder="Presencia Internacional">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Personal:</label>
+                                                                    <label class="input">
+                                                                        <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal">
+                                                                    </label>
+                                                                </section>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+
                                                                 <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Red en Extranjero:</label>
 
@@ -427,14 +477,6 @@
                                                                             <i></i>No</label>
                                                                     </div>
                                                                 </section>
-
-                                                                <section class="col col-xs-6 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Personal:</label>
-                                                                    <label class="input">
-                                                                        <input id="personal" type="text" name="personal" class="form-control" placeholder="Personal">
-                                                                    </label>
-                                                                </section>
-
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -451,9 +493,9 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Nombre:</label>
+                                                                    <label>Empresa:</label>
                                                                     <label class="input">
-                                                                        <input id="nombre" type="text" name="nombre_franquicia" class="form-control" placeholder="Nombre">
+                                                                        <input id="nombre" type="text" name="nombre_franquicia" class="form-control" placeholder="Nombre de la empresa">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -495,17 +537,6 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
-                                                                    <label>Categoría especial:</label>
-                                                                    <select multiple style="width:100%" class="select2"  name="especial[]">
-                                                                            <option value="1">Exito</option>
-                                                                            <option value="2">Rentable</option>
-                                                                            <option value="3">Barata</option>
-                                                                            <option value="4">LowCost</option>
-                                                                            <option value="5">Destacada</option>
-
-                                                                    </select>
-                                                                </section>
-                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Fax:</label>
                                                                     <label class="input">
                                                                         <input type="text" name="fax" class="form-control" placeholder="Fax">
@@ -513,33 +544,15 @@
                                                                 </section>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <section class="col col-xs-12 col-md-12 col-sm-12">
-                                                                    <label>Categoria:</label>
-                                                                    <select multiple="multiple" style="width:100%" class="select2" id="categoria" name="categoria[]">
 
-
-                                                                        @foreach($categorias as $cat)
-                                                                            <optgroup label="{{$cat->nombre}}">
-                                                                                @foreach($subcategorias as $subcat)
-                                                                                    @if($subcat->categoria_id==$cat->id)
-                                                                                        <option value="{{$subcat->id}}">{{$subcat->nombre}}</option>
-                                                                                    @endif
-                                                                                @endforeach
-                                                                            </optgroup>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </section>
-                                                            </div>
-                                                        </div>
                                                     </fieldset>
                                                 </div>
                                                 <div id="datos_publicos" class="col-xs-12 col-md-6 col-sm-6">
                                                     <hr/>
                                                     <fieldset>
                                                         <h5>Datos de Contacto:</h5>
-                                                        <br>
+
+                                                        <br><h6><strong>Facturación</strong></h6><br>
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
@@ -558,6 +571,26 @@
                                                                 </section>
                                                             </div>
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Población:</label>
+                                                                    <label class="input">
+                                                                        <input id="poblacion_facturacion" type="text" name="poblacion_facturacion" class="form-control" placeholder="Poblacion">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Provincia:</label>
+                                                                    <label class="input">
+                                                                        <input id="provincia_facturacion" type="text" name="provincia_facturacion" class="form-control" placeholder="Provincia">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+
+                                                        <br><h6><strong>Fiscal</strong></h6><br>
+
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
@@ -576,6 +609,25 @@
                                                                 </section>
                                                             </div>
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Población:</label>
+                                                                    <label class="input">
+                                                                        <input id="poblacion_fiscal" type="text" name="poblacion_fiscal" class="form-control" placeholder="Poblacion">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Provincia:</label>
+                                                                    <label class="input">
+                                                                        <input id="provincia_fiscal" type="text" name="provincia_fiscal" class="form-control" placeholder="Provincia">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <br><h6><strong>Postal</strong></h6><br>
+
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-9 col-sm-9 col-lg-9">
@@ -594,6 +646,25 @@
                                                                 </section>
                                                             </div>
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Población:</label>
+                                                                    <label class="input">
+                                                                        <input id="poblacion_postal" type="text" name="poblacion_postal" class="form-control" placeholder="Poblacion">
+                                                                    </label>
+                                                                </section>
+                                                                <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                                                                    <label>Provincia:</label>
+                                                                    <label class="input">
+                                                                        <input id="provincia_postal" type="text" name="provincia_postal" class="form-control" placeholder="Provincia">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <br><h6><strong>Directo</strong></h6><br>
+
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
@@ -617,13 +688,24 @@
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6" style="margin-bottom: 38px;">
                                                                     <label>Email de Contacto:</label>
                                                                     <label class="input"> <i class="icon-append fa fa-home"></i>
-                                                                        <input type="text" name="email_contacto" id="emailcontacto" placeholder="Email Contacto">
+                                                                        <input type="text" name="email_directo" id="email_directo" placeholder="Email de contacto">
                                                                     </label>
                                                                 </section>
                                                                 <section class="col col-xs-12 col-md-6 col-sm-6 col-lg-6">
                                                                     <label>Cargo contacto:</label>
                                                                     <label class="input"> <i class="icon-append fa fa-home"></i>
                                                                         <input type="text" name="cargo_contacto" id="cargcontacto" class="form-control" placeholder="Cargo de Contacto">
+                                                                    </label>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12" style="margin-bottom: 38px;">
+                                                                    <label>Email recepcion de informacion:</label>
+                                                                    <label class="input"> <i class="icon-append fa fa-home"></i>
+                                                                        <input type="text" name="email_contacto" id="emailcontacto" placeholder="Donde le llegarán los avisos de personas interesadas">
                                                                     </label>
                                                                 </section>
                                                             </div>

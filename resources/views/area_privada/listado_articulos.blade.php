@@ -86,6 +86,13 @@
 
 @section('ready')
 
+    $('#dashboard').removeClass("active")
+    $('#publicaciones').addClass("active");
+
+    $('#publicaciones').addClass('open');
+    $('#publicaciones_panel').css('display','block');
+
+
     $('#dt_basic_articulos').dataTable({
     "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
     "t" +

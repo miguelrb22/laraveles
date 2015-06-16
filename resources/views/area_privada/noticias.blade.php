@@ -145,6 +145,9 @@
     $('#dashboard').removeClass("active")
     $('#publicaciones').addClass("active");
 
+    $('#publicaciones').addClass('open');
+    $('#publicaciones_panel').css('display','block');
+
 
 
 @endsection
