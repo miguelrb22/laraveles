@@ -784,6 +784,7 @@ class WebController extends Controller {
         $franquicia =  Franquicia::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
 
 
+        dd($franquicia);
 
         //Obtenemos franquicias de la misma categoria.
         //Le pasamos el id de esta franquicia para que la exluya en peticion a la BD
