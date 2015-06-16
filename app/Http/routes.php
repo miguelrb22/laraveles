@@ -158,9 +158,9 @@ Route::group(['namespace' =>  'categorias'],function() {
 
         //$idfranquicia = Franquicia::where('nombre_comercial', '=', $nombre)->get();
 
-        $idfranquicia =  DB::select(DB::raw("select * from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
+        $idfranquicia =  DB::select(DB::raw("select id from franquicia where Replace(nombre_comercial, 'ñ', 'n') = ". "'".$nombre."'"));
 
-        dd($idfranquicia[0]);
+        dd($idfranquicia[0][0]);
 
         $idFran_Subcat = new \Illuminate\Database\Eloquent\Collection;
 
