@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\View as v;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Console\Exception;
-
+use Maatwebsite\Excel\Facades\Excel;
 class AreaPrivadaController extends Controller
 {
 
@@ -152,6 +152,50 @@ class AreaPrivadaController extends Controller
     public function imagenes()
     {
         return view('area_privada.imagenes');
+    }
+
+
+    public function estadisticas()
+    {
+        return view('area_privada.estadisticas');
+    }
+
+
+    public function generarestadisticas()
+    {
+
+
+        $data = Franquicia::all();
+
+
+        Excel::create('Filename', function($excel) use($data) {
+
+            $excel->setTitle('Estadisticas');
+
+            // Chain the setters
+            $excel->setCreator('Multifranquicias')
+                ->setCompany('Multifranquicias');
+
+            // Call them separately
+            $excel->setDescription('A demonstration to change the file properties');
+
+
+            $excel->sheet('Sheetname', function($sheet) use($data) {
+
+                $sheet->fromModel($data,null,'A1',false,true);
+
+                $sheet->row(1, function($row) {
+
+                    // call cell manipulation methods
+                    $row->setFontWeight('bold');
+
+
+                });
+
+
+            });
+
+        })->download('xls');
     }
 
 

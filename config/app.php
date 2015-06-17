@@ -136,10 +136,12 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Maatwebsite\Excel\ExcelServiceProvider',
 
-		/*
-		 * Application Service Providers...
-		 */
+
+        /*
+         * Application Service Providers...
+         */
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BusServiceProvider',
 		'App\Providers\ConfigServiceProvider',
@@ -199,6 +201,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
         'Image' => 'Intervention\Image\Facades\Image',
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+
 
         /*
          * Complements providers

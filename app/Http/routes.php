@@ -79,6 +79,9 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
     Route::get('publicidad-general', ['as' => 'publicidad-general', 'uses' => 'AreaPrivadaController@pgeneral']);
 
+    Route::get('estadisticas', ['as' => 'estadisticas', 'uses' => 'AreaPrivadaController@estadisticas']);
+    Route::get('generarestadisticas', ['as' => 'generarestadisticas', 'uses' => 'AreaPrivadaController@generarestadisticas']);
+
 
 
 });
