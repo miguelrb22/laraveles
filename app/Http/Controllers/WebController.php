@@ -77,9 +77,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->carousel = publicidad::where('idtipo_publicidad','=',1)
-                                                    ->where('franquicia_id','<>',1)
-                                                    ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
-                                                    ->get();
+                                        ->where('franquicia_id','<>',1)
+                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                        ->get();
 
         //Si el array carousel no está lleno con las franquicias de pago rellenamos con las de pega.
         if(count($this->carousel) < intval($this->numeroPublicidades[0]->recuadros)){
