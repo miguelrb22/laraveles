@@ -7,7 +7,6 @@
                 <li data-target="#myCarouse2" data-slide-to="1"></li>
 
               </ol>
-            {{dd($carousel)}}
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
                 @if(!$carousel->isEmpty())
