@@ -85,7 +85,7 @@ class WebController extends Controller {
         if(count($this->carousel) < intval($this->numeroPublicidades[0]->recuadros)){
                     $publicidad =  publicidad::where('franquicia_id', '=', 1)
                                                 ->where('idTipo_publicidad','=','1')->get();
-                    $this->carousel->push($publicidad);
+                   $this->carousel = $this->carousel->merge($publicidad);
         }
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);
