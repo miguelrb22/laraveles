@@ -1392,6 +1392,35 @@
 
             });
 
+            $('.date').change(function(){
+
+                var inicio = this.parentElement.parentElement.children[2].children[0].value;
+                var fin = this.parentElement.parentElement.children[3].children[0].value;
+                var id = this.parentElement.parentElement.children[5].children[1].value;
+                var token = "{{ csrf_token()}}";
+
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('editar-publicidad-general') }}",
+                    data: {inicio: inicio, fin: fin, id: id, _token: token},
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido cambiar la fecha',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+
+                            position: 'bottom left',
+                            msg: 'Compruebe la conexión a internet'
+                        });
+                    }
+                });
+            });
+
 
             @yield('ready')
         });

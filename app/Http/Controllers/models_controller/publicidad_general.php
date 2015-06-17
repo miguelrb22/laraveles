@@ -57,6 +57,12 @@ class publicidad_general extends Controller
             $tp->recuadros = $request->input('destacados');
             $tp->save();
         }
+
+        if($request->input('carousel')){
+            $tp = tipo_publicidad::find(1);
+            $tp->recuadros = $request->input('carousel');
+            $tp->save();
+        }
     }
 
 
