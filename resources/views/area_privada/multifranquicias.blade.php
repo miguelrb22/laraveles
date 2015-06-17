@@ -295,7 +295,7 @@
                     </ul>
                 </li>
                 <li id="estadisticas">
-                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
+                    <a href="{{ URL::route('estadisticas') }}"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
                 </li>
                 <li id="usuarios">
                     <a href="{{ URL::route('usuarios') }}"><i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent">Usuarios</span><b class="collapse-sign"></b></a>
