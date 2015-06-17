@@ -45,7 +45,6 @@ class WebController extends Controller {
     private $carousel = null;
     private $noticias_des = null;
     private $banner_superior = null;
-    private $tam_carousel = 5;
     private $numeroPublicidades = null;
     private $destacadas = null;
     private $exito = null;
@@ -66,20 +65,40 @@ class WebController extends Controller {
         View::share('categorias', $this->categorias_deplegables);
 
 
-        //Obtenemos la cantidad de publicidades que va a haber en la página y la pasamos a las vistas.
+        //Obtenemos la cantidad de publicidades (carousel, derecha, izquierda)  que va a haber en la página y la pasamos a las vistas.
         $this->numeroPublicidades = tipo_publicidad::all();
         View::share('numPublicaciones', $this->numeroPublicidades);
 
 
+
+        //Obtenemos las franquicias que tienen superior derecha a 1 en paquetes activos
+        $this->carousel = new Collection();
+
+        //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
+        //para pasarlas a las vista para que se muestren.
+        $this->carousel = publicidad::where('idtipo_publicidad','=',1)
+                                                    ->where('franquicia_id','<>',1)
+                                                    ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                    ->get();
+
+        //Si el array carousel no está lleno con las franquicias de pago rellenamos con las de pega.
+        if(count($this->carousel) < intval($this->numeroPublicidades[0]->recuadros)){
+                    $publicidad =  publicidad::where('franquicia_id', '=', 1)
+                                                ->where('idTipo_publicidad','=','1')->get();
+                    $this->carousel->push($publicidad);
+        }
+        //Compartimos el array con todas las vistas
+        View::share('carousel',  $this->carousel);
+        ////
+
         //-----Obtenemos las franquicias que están en el carousel---
-        //$this->carousel = new publicidad();
 
         //obtenemos los ids de todas las franquicias con el carousel activo a 1 y de forma desordenada quitando la de pega
         //porque la buscamos explícitamente luego y dame solo cierta cantidad en este caso $this->tam_carousel
-        $carouselIds = PaquetesActivos::where('carousel', '=', 1)
+        /*$carouselIds = PaquetesActivos::where('carousel', '=', 1)
                                         ->where('id','<>',1)
                                         ->orderBy(DB::raw('RAND()'))
-                                        ->take($this->tam_carousel)
+                                        ->take(intval($this->numeroPublicidades[0]->recuadros))
                                         ->get(array('id'));
         //Creamos el array de datos obtenido de la tabla publicidad
         $arrayDatosCarousel = new Collection();
@@ -143,7 +162,7 @@ class WebController extends Controller {
         }
         //Compartimos el array con todas las vistas
         View::share('carousel',$this->carousel);
-        ////--------
+        ////--------*/
 
 
 

@@ -1,3 +1,5 @@
+
+
 @extends('area_privada.multifranquicias')
 
 @section('main')
@@ -9,15 +11,23 @@
                 <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
                     <section id="widget-grid" class="">
 
-
                         <!-- START ROW -->
 
                         <div class="row">
                             <?php
                             $ses = Session::get('franquicia');
+                            $flagCarousel = false;
 
-                            //Obtenemos las categorias de la franquicia seleccionada porque se necesita para el paquete 
+                            //Obtenemos las categorias de la franquicia seleccionada porque se necesita para activar paquete  destacados categoria
                             $categoriasFranquicia =  DB::table(DB::raw('franquicia_nom_subcategoria fns'))->select(DB::raw('fns.nombre,fns.subcategoria_id'))->where('fns.id', '=', $ses->id)->get(array('nombre'));
+                            //Para saber cuantos carouseles hay activos, si están justos no se pueda dar de alta ningún carousel más
+                            $tamCarousel = DB::table(DB::raw('tipo_publicidad tp'))->select(DB::raw('tp.recuadros'))->where('tp.id', '=', 1)->get();
+                                //dd(intval($tamCarousel[0]->recuadros));
+                            //Seleccionamos el total de franquicias activas en el carousel (Ojo, franquicias que pagan no de pega)
+                            $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))->where('p.idtipo_publicidad', '=', 1)->get();
+                                //dd(intval($carouselActivas[0]->cantidad));
+                            if(intval($tamCarousel[0]->recuadros) >=  intval($carouselActivas[0]->cantidad))
+                                $flagCarousel = true;
 
                             ?>
 
@@ -71,63 +81,87 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form class="smart-form actualizar_paquete" novalidate="novalidate">
+                                                <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
+                                                    @if($flagCarousel)
+                                                        <fieldset>
+                                                            <div class="row">
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <label class="toggle">
 
-                                                <fieldset>
+                                                                    @if ($paquetes[0]->carousel == 0)
+                                                                        <input type='checkbox' name='checkbox-toggle' value="0" disabled>
+                                                                    @else
+                                                                        <input type='checkbox' name='checkbox-toggle' value="1" disabled>
+                                                                    @endif
 
-                                                    <div class="row">
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <label class="toggle">
+                                                                    <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
 
-                                                                @if ($paquetes[0]->carousel == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle' value="0" disabled>
-                                                                @else
-                                                                    <input type='checkbox' name='checkbox-toggle' value="1" disabled>
-                                                                @endif
+                                                            </section>
 
-                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                                <label class="input">Inicio:</label>
+                                                                <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                    <input type="text" name="inicio" id="inicio1" placeholder="Fecha Alta Ficha" required>
+                                                                </label>
+                                                            </section>
 
-                                                        </section>
+                                                            <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                                <label>Fin</label>
+                                                                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                    <input type="text" name="final" id="final1" placeholder="Fecha Fin Ficha" required>
+                                                                </label>
+                                                            </section>
 
-                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                            <label class="input">Inicio:</label>
-                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio1" placeholder="Fecha Alta Ficha" required>
-                                                            </label>
-                                                        </section>
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <div class="input input-file">
+                                                                    <input type="file" id="file" name="url_imagen" required>
+                                                                </div>
+                                                            </section>
 
-                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
-                                                            <label>Fin</label>
-                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final1" placeholder="Fecha Fin Ficha" required>
-                                                            </label>
-                                                        </section>
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <div class="input input-file">
+                                                                   <input type="text" name="titulo_carousel" placeholder="Titulo carousel">
+                                                                </div>
+                                                            </section>
 
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="url_imagen"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen" readonly="">
-                                                            </div>
-                                                        </section>
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <div class="input input-file">
+                                                                    <input type="text" name="descripcion_carousel" placeholder="Texto carousel">
+                                                                </div>
+                                                            </section>
 
-                                                        <input type="text" value="1" name="idtipo_publicidad" hidden>
-                                                        <input type="text" value="Carousel" name="nombre_paquete" hidden>
-                                                    </div>
+                                                            <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                                <div class="input input-file">
+                                                                    <input type="text" name="url_contenido" placeholder="Enlace a contenido" required>
+                                                                </div>
+                                                            </section>
 
-                                                </fieldset>
+                                                            <input type="text" value="1" name="idtipo_publicidad" hidden>
+                                                            <input type="text" value="carousel" name="nombre_paquete" hidden>
+                                                        </div>
+                                                        </fieldset>
+                                                    @else
+                                                        <h3 class="text-justify">No se puede activar un nuevo carousel hay que añadir otro
+                                                        o esperar a la fecha indicada.</h3>
+                                                    @endif
 
 
                                                 <footer>
                                                     <label><strong>Disponible el:</strong></label>
                                                     <label>fecha</label>
 
+                                                    @if($flagCarousel)
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Activar
+                                                        </button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-primary" disabled>
+                                                            Activar
+                                                        </button>
+                                                    @endif
 
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Activar
-                                                    </button>
+
                                                 </footer>
                                             </form>
 
@@ -692,6 +726,9 @@
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
                                                             <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="">1</label>
                                                         </div>
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -805,6 +842,9 @@
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
                                                             <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="">1</label>
                                                         </div>
                                                           <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -915,6 +955,9 @@
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
                                                             <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="">1</label>
                                                         </div>
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">
@@ -1025,6 +1068,9 @@
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
                                                             <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="">1</label>
                                                         </div>
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <button id="1" type="submit" class="btn btn-primary actualizar">

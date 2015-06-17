@@ -65,6 +65,12 @@ return [
         ],
 
         //Imagenes del banner superior de las franquicias
+        'carousel' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/carousel',
+        ],
+
+        //Imagenes del banner superior de las franquicias
         'banner_sup' => [
             'driver' => 'local',
             'root'   => public_path().'/publicidad/banner_sup',

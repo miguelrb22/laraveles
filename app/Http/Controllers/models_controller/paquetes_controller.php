@@ -89,7 +89,6 @@ class paquetes_controller extends Controller
         $publicidad->setAttribute('inicio',$inicio);
         $publicidad->setAttribute('final',$final);
 
-
         //Hacemos update en paquetes activos para ponerle el paquete como activo para mostrarlo en el sitio
         //que estamos indicando puesto que luego se obtienen la información de esa tabla entre otras.
         $Actualizar = PaquetesActivos::find($idFranquicia);
