@@ -2,8 +2,8 @@
 
 <style>
 
-    .fa-mal{
-        margin-top:30%;
+    .fa-mal {
+        margin-top: 30%;
     }
 </style>
 @section('main')
@@ -69,19 +69,28 @@
                                         <td>{{ $p->nombre_comercial }}</td>
                                         <td>{{ $p->descripcion}}</td>
 
-                                        <td><input  class="date" id="inicio" type="text" value="{{$p->inicio}}" readonly></td>
-                                        <td><input  class="date" id="fin" type="text" value="{{$p->final}}" readonly></td>
+                                        <td>
+
+                                            <span class="hidden">{{$p->inicio}}</span>
+
+                                            <input class="date" id="inicio" type="text" value="{{$p->inicio}}" readonly>
+                                        </td>
+                                        <td>
+                                            <span class="hidden">{{$p->final}}</span>
+
+                                            <input class="date" id="fin" type="text" value="{{$p->final}}" readonly>
+                                        </td>
                                         <td>
 
                                             <?php
 
                                             $hoy = new DateTime("now");
-                                                $inicio = new DateTime($p->inicio);
-                                                $fin = new DateTime($p->final);
+                                            $inicio = new DateTime($p->inicio);
+                                            $fin = new DateTime($p->final);
 
-                                                if($inicio > $hoy) echo "<span>Esperando</span>";
-                                                else if ($fin < $hoy) echo "<span>Caducado</span>";
-                                                else  echo "<span>Activado</span>";
+                                            if ($inicio > $hoy) echo "<span style='color:darkorange; font-weight: bold'>Esperando</span>";
+                                            else if ($fin < $hoy) echo "<span style='color:#ff0000; font-weight: bold''>Caducado</span>";
+                                            else  echo "<span style='color:green; font-weight: bold''>Activado</span>";
 
 
 
@@ -90,7 +99,7 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-xs btn-danger"
-                                                    onclick="borrar({{$p->id}})"> <i class="fa fa-trash-o"></i> Borrar
+                                                    onclick="borrar({{$p->id}})"><i class="fa fa-trash-o"></i> Borrar
                                             </button>
 
                                             <input id="id" type="hidden" value="{{$p->id}}" readonly>
@@ -99,7 +108,7 @@
                                         </td>
 
                                     </tr>
-                                 @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
 
@@ -165,25 +174,25 @@
 
 
     </div>
-    @endsection
+@endsection
 
 @section('js')
     <script src="{{ asset('area_privada/datepickersandbox/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('area_privada/datepickersandbox/locales/bootstrap-datepicker.es.min.js') }}"></script>
 
     <script>
-        function isNumberKey(evt){
+        function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57))
                 return false;
             return true;
         }
     </script>
-    @endsection
+@endsection
 
 <script>
 
-    function borrar(id){
+    function borrar(id) {
         var token = "{{ csrf_token()}}";
 
 
@@ -200,7 +209,7 @@
                     $.ajax({
                         type: "POST",
                         url: "{{ URL::route('borrar-publicidad-general') }}",
-                        data: {aux: id ,_token: token},
+                        data: {aux: id, _token: token},
                         dataType: "html",
                         error: function () {
                             alert("error petición ajax");
