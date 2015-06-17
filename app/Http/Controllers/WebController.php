@@ -84,7 +84,9 @@ class WebController extends Controller {
         //Si el array carousel no está lleno con las franquicias de pago rellenamos con las de pega.
         if(count($this->carousel) < intval($this->numeroPublicidades[0]->recuadros)){
                     $publicidad =  publicidad::where('franquicia_id', '=', 1)
-                                                ->where('idTipo_publicidad','=','1')->get();
+                                                ->where('idTipo_publicidad','=','1')
+                                                ->take(intval($this->numeroPublicidades[0]->recuadros))
+                                                ->get();
                    $this->carousel = $this->carousel->merge($publicidad);
         }
         //Compartimos el array con todas las vistas
