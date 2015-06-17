@@ -85,6 +85,7 @@ class WebController extends Controller {
         if(count($this->carousel) < intval($this->numeroPublicidades[0]->recuadros)){
                     $publicidad =  publicidad::where('franquicia_id', '=', 1)
                                                 ->where('idTipo_publicidad','=','1')
+                                                ->orderBy(DB::raw('RAND()'))
                                                 ->take(intval($this->numeroPublicidades[0]->recuadros))
                                                 ->get();
                    $this->carousel = $this->carousel->merge($publicidad);
