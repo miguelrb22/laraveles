@@ -33,10 +33,9 @@
                                     <a href="{{ URL::route('especiales',array('tipo' => 'exito')) }}" >
                                         <strong>Franquicias de éxito</strong>
                                     </a>
-                                    wtf
                                 </h4>
                             </div>
-                            <div>
+                            <div class="well well_efect">
                                 <h4 class="text-center letra">
                                     <strong>
                                         <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($exito[0]->nombre."/".$exito[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" title="perfil" id="{{$exito[0]->id}}">
