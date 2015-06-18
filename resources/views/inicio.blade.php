@@ -78,7 +78,7 @@
                                 <h4 class="text-center">
                                     <a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}">
                                         <strong>Franquicias rentables</strong>
-                                    </a><
+                                    </a>
                                 </h4>
                             </div>
                             <div class="well well_efect">
