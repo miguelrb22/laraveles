@@ -88,9 +88,10 @@
                                             $inicio = new DateTime($p->inicio);
                                             $fin = new DateTime($p->final);
 
-                                            if ($inicio > $hoy) echo "<span style='color:darkorange; font-weight: bold'>Esperando</span>";
-                                            else if ($fin < $hoy) echo "<span style='color:#ff0000; font-weight: bold''>Caducado</span>";
-                                            else  echo "<span style='color:green; font-weight: bold''>Activado</span>";
+                                            if($inicio > $fin || $fin < $inicio ) echo "<span style='color:#ff0600; font-weight: bold''>Error intervalo</span>";
+                                            else if ($hoy < $inicio) echo "<span style='color:darkorange; font-weight: bold'>Esperando</span>";
+                                            else if ($hoy > $fin) echo "<span style='color:#ff0000; font-weight: bold''>Caducado</span>";
+                                            //else  echo "<span style='color:green; font-weight: bold''>Activado</span>";
 
 
 
