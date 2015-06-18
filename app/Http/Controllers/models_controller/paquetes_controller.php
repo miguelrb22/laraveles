@@ -163,6 +163,36 @@ class paquetes_controller extends Controller
         $time = time();
         $time = date("Y-m-d", $time);
 
+
+        //---------- Para carousel -----------//
+
+        //Obtenemos el número de franquicias que se están mostrando actualmente.
+        //por eso cogemos las publicidades cuya fecha de inicio es < o = que la actual.
+        $numActuales = publicidad::where('inicio' , '<=', $time)
+                                    ->where('idTipo_publicidad' ,'=', 1)->count();
+
+        //Si hay franquicias con este tipo de paquetes pasamos datos a la vista de fecha y nº franquicias sino no.
+        if($numActuales > 0) {
+            $datos = array();
+
+            //Obtenemos las fechas de última disponibilidad para las publicidades tipo carousel
+            //de la tabla publicidad
+            $fechaBS = publicidad::where('idTipo_publicidad', '=', 1)->orderBy('final', 'ASC')
+                                    ->get(array('final'))->take(1);
+
+            //Parseamos la fecha con carbon para devolver el formato que queremos.
+            $fechaBS = Carbon::parse($fechaBS[0]->final)->format('d-m-Y');
+
+
+            //Insertamos los datos en los arrays
+            array_push($datos, 'carousel', $fechaBS, $numActuales, intval($this->numeroPublicidades[0]->recuadros));
+
+            array_push($resultados, $datos);
+        }
+        //----------fin parte carousel -----------//
+
+
+
         //---------- Para banner_sup -----------//
 
         //Obtenemos el número de franquicias que se están mostrando actualmente.

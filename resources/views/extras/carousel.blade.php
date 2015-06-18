@@ -9,30 +9,36 @@
               </ol>
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
+
                 @if(!$carousel->isEmpty())
                     <div class="item active">
                       <a href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><img src="{{ asset($carousel[0]->url_imagen)}} " alt="Chania" class="imgcarousel img-responsive"></a>
-                      <div class="carousel-caption">
-                          <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><h3>{{$carousel[0]->titulo_carousel}}</h3></a>
-                          </a><p class="pcarousel">{{$carousel[0]->descripcion_carousel}}</p>
-                      </div>
+
+                        @if( (!$carousel[0]->descripcion_carousel == '') || (!$carousel[0]->titulo_carousel == '') )
+                            <div class="carousel-caption">
+                              <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[0]->url_contenido) }}"><h3>{{$carousel[0]->titulo_carousel}}</h3></a>
+                              </a><p class="pcarousel">{{$carousel[0]->descripcion_carousel}}</p>
+                            </div>
+                        @endif
                     </div>
 
                   @for($i = 1; $i < count($carousel); $i++)
                     <div class="item">
                         <a href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[$i]->url_contenido) }}"><img src="{{ asset($carousel[$i]->url_imagen)}}" alt="Chania" class="imgcarousel img-responsive"></a>
-                        <div class="carousel-caption">
-                            <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[$i]->url_contenido) }}"><h3>{{$carousel[$i]->titulo_carousel}}</h3></a>
-                            </a><p class="pcarousel">{{$carousel[$i]->descripcion_carousel}}</p>
-                        </div>
+
+                        @if( (!$carousel[$i]->descripcion_carousel == '') || (!$carousel[$i]->titulo_carousel == '') )
+                            <div class="carousel-caption">
+                                <a class="carosuelref" href="{{ preg_replace("/[^a-zA-Z0-9\s\-\/\:]/","",$carousel[$i]->url_contenido) }}"><h3>{{$carousel[$i]->titulo_carousel}}</h3></a>
+                                </a><p class="pcarousel">{{$carousel[$i]->descripcion_carousel}}</p>
+                            </div>
+                        @endif
+
                     </div>
                   @endfor
 
                 @else
                     <!-- no debe ocurrir nunca será vacio ->
                 @endif
-
-
               </div>
 
               <!-- Left and right controls -->
