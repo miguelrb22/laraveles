@@ -1394,9 +1394,10 @@
 
             $('.date').change(function(){
 
-                var inicio = this.parentElement.parentElement.children[2].children[0].value;
-                var fin = this.parentElement.parentElement.children[3].children[0].value;
+                var inicio = this.parentElement.parentElement.children[2].children[1].value;
+                var fin = this.parentElement.parentElement.children[3].children[1].value;
                 var id = this.parentElement.parentElement.children[5].children[1].value;
+
                 var token = "{{ csrf_token()}}";
 
 

@@ -84,11 +84,14 @@
 
                                             <?php
 
-                                            $hoy = new DateTime("now");
-                                            $inicio = new DateTime($p->inicio);
-                                            $fin = new DateTime($p->final);
+                                            $hoy = time();
+                                            $hoy = date('Y-m-d', $hoy);
 
-                                            if ($inicio > $hoy) echo "<span style='color:darkorange; font-weight: bold'>Esperando</span>";
+                                            $inicio =$p->inicio;
+                                            $fin = $p->final;
+
+                                            if($inicio > $fin || $fin < $inicio ) echo "<span style='color:#000000; font-weight: bold''>Error intervalo</span>";
+                                            else if ($hoy < $inicio) echo "<span style='color:darkorange; font-weight: bold'>Esperando</span>";
                                             else if ($fin < $hoy) echo "<span style='color:#ff0000; font-weight: bold''>Caducado</span>";
                                             else  echo "<span style='color:green; font-weight: bold''>Activado</span>";
 
@@ -96,6 +99,7 @@
 
 
                                             ?>
+
                                         </td>
                                         <td>
                                             <button class="btn btn-xs btn-danger"
