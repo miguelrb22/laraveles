@@ -58,6 +58,8 @@
                                     </a>
                                 </h4>
                                 <hr/>
+                            </div>
+                            <div class="well well_efect">
                                 <h4 class="text-center letra">
                                     <strong>
                                         <a href="#" title="perfil">
@@ -72,38 +74,44 @@
 
                     @if(!$rentables->isEmpty())
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" ><strong>Franquicias rentables</strong></a></h4>
-                            <hr/>
-                            <h4 class="text-center letra">
-                                <strong>
-                                    <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">{{$rentables[0]->nombre_comercial}}</a>
-                                </strong>
-                            </h4>
-                            <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">
-                                <img class="img-responsive c_especial" src="{{ asset($rentables[0]->logo_url)}}" alt="prueba" >
-                            </a>
-                        </div>
-                    </div>
-                    @else
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <div class="well well_efect">
-                                    <h4 class="text-center">
-                                        <a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" >
-                                            <strong>Franquicias rentables</strong>
-                                        </a>
-                                    </h4>
-                                    <hr/>
-                                    <h4 class="text-center letra">
-                                        <strong>
-                                            <a href="#" title="perfil">
-                                                Multifranquicias
-                                            </a>
-                                        </strong>
-                                    </h4>
-                                    <img class="img-responsive c_especial" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
-                                </div>
+                            <div class="well well_efect">
+                                <h4 class="text-center">
+                                    <a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}">
+                                        <strong>Franquicias rentables</strong>
+                                    </a><
+                                </h4>
                             </div>
+                            <div class="well well_efect">
+                                <h4 class="text-center letra">
+                                    <strong>
+                                        <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">{{$rentables[0]->nombre_comercial}}</a>
+                                    </strong>
+                                </h4>
+                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">
+                                    <img class="img-responsive c_especial" src="{{ asset($rentables[0]->logo_url)}}" alt="prueba" >
+                                </a>
+                            </div>
+                        </div>
+                    @else
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="well well_efect">
+                                <h4 class="text-center">
+                                    <a href="{{ URL::route('especiales',array('tipo' => 'rentables')) }}" >
+                                        <strong>Franquicias rentables</strong>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="well well_efect">
+                                <h4 class="text-center letra">
+                                    <strong>
+                                        <a href="#" title="perfil">
+                                            Multifranquicias
+                                        </a>
+                                    </strong>
+                                </h4>
+                                <img class="img-responsive c_especial" src="{{ asset('multifranquicias_anucio.png') }}" alt="prueba" >
+                            </div>
+                        </div>
                     @endif
 
                 </section>
@@ -113,8 +121,13 @@
 
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
-                            <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}"  ><strong>Franquicias baratas</strong></a></h4>
-                            <hr/>
+                            <h4 class="text-center">
+                                <a href="{{ URL::route('especiales',array('tipo' => 'baratas')) }}">
+                                    <strong>Franquicias baratas</strong>
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="well well_efect">
                             <h4 class="text-center letra">
                                 <strong>
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$baratas[0]->nombre."/".$baratas[0]->nombre_comercial)))}}" title="perfil">{{$baratas[0]->nombre_comercial}}</a>
@@ -133,7 +146,8 @@
                                         <strong>Franquicias Baratas</strong>
                                     </a>
                                 </h4>
-                                <hr style="border-top-color: black"/>
+                            </div>
+                            <div class="well well_efect">
                                 <h4 class="text-center letra">
                                     <strong>
                                         <a href="" title="perfil">
@@ -150,7 +164,8 @@
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="well well_efect">
                             <h4 class="text-center"><a href="{{ URL::route('especiales',array('tipo' => 'lowcost')) }}" ><strong>Franquicias low cost</strong></a></h4>
-                            <hr/>
+                        </div>
+                        <div class="well well_efect">
                             <h4 class="text-center letra">
                                 <strong>
                                     <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lowcost[0]->nombre."/".$lowcost[0]->nombre_comercial)))}}" title="perfil">{{$lowcost[0]->nombre_comercial}}</a>
@@ -169,7 +184,8 @@
                                         <strong>Franquicias lowcost</strong>
                                     </a>
                                 </h4>
-                                <hr/>
+                            </div>
+                            <div class="well well_efect">
                                 <h4 class="text-center letra">
                                     <strong>
                                         <a href="" title="perfil">
