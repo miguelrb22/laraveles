@@ -77,16 +77,21 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->carousel = publicidad::where('idtipo_publicidad','=',1)
-                                        ->where('franquicia_id','<>',1)
-                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                        ->where('franquicia_id','<>',0)
+                                        ->where('inicio','<=',$time)
+                                        ->where('final','>=',$time)
+                                        ->orderBy(DB::raw('RAND()'))
                                         ->get();
 
         //Si el array carousel no está lleno con las franquicias de pago rellenamos con las de pega.
         if(count($this->carousel) < intval($this->numeroPublicidades[0]->recuadros)){
-                    $publicidad =  publicidad::where('franquicia_id', '=', 1)
+
+            //La diferencia entre el tamaño y los slider que hemos puesto que halla.
+            $coger = intval($this->numeroPublicidades[0]->recuadros) - count($this->carousel);
+                    $publicidad =  publicidad::where('franquicia_id', '=', 0)
                                                 ->where('idTipo_publicidad','=','1')
                                                 ->orderBy(DB::raw('RAND()'))
-                                                ->take(intval($this->numeroPublicidades[0]->recuadros))
+                                                ->take($coger)
                                                 ->get();
                    $this->carousel = $this->carousel->merge($publicidad);
         }
@@ -155,7 +160,6 @@ class WebController extends Controller {
             }
         }else
         {
-
             //Si solo esta la franquicia de pega "0" entra aquí entonces cogemos los ultimos 5 articulos
             //cuya franquicia es la 0 y cuyo tipo de publicidad es la 1 que es la de carousel.
             $this->carousel  = publicidad::where('franquicia_id', '=',1)
@@ -191,7 +195,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en el banner superior de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->banner_superior = publicidad_franquicias::where('idtipo_publicidad','=',2)
-                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->where('inicio','<=',$time)
+                                                        ->where('final','>=',$time)
+                                                        ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial'));
         
         //Compartimos el array con todas las vistas
@@ -206,7 +212,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->franquiciasSupDer = publicidad_franquicias::where('idtipo_publicidad','=',3)
-                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->where('inicio','<=',$time)
+                                                        ->where('final','>=',$time)
+                                                        ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial'));
 
         //Compartimos el array con todas las vistas
@@ -221,7 +229,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->franquiciasIzq = publicidad_franquicias::where('idtipo_publicidad','=',4)
-                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->where('inicio','<=',$time)
+                                                        ->where('final','>=',$time)
+                                                        ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial'));
         //Compartimos el array con todas las vistas
         View::share('franInIzq', $this->franquiciasIzq);
@@ -234,7 +244,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->patrocinadasB = publicidad_franquicias::where('idtipo_publicidad','=',6)
-                                                        ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                        ->where('inicio','<=',$time)
+                                                        ->where('final','>=',$time)
+                                                        ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial'));
 
         //Compartimos el array con todas las vistas
@@ -248,7 +260,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte izquierda de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->destacadas = publicidad_franquicias::where('idtipo_publicidad','=',8)
-                                                    ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                    ->where('inicio','<=',$time)
+                                                    ->where('final','>=',$time)
+                                                    ->orderBy(DB::raw('RAND()'))
                                                     ->get(array('url_imagen','nombre','nombre_comercial'));
 
         //Compartimos el array con todas las vistas
@@ -263,7 +277,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en franquicias de éxito de la vista publicidad_especial
         //para pasarlas a las vista para que se muestren, pasamos 1 sólo cada vez que se recarga la página
         $this->exito = publicidad_especial::where('idtipo_publicidad','=',9)
-                                            ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                            ->where('inicio','<=',$time)
+                                            ->where('final','>=',$time)
+                                            ->orderBy(DB::raw('RAND()'))
                                             ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
 
         //Compartimos el array con todas las vistas
@@ -278,7 +294,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en franquicias de éxito de la vista publicidad_especial
         //para pasarlas a las vista para que se muestren.
         $this->baratas = publicidad_especial::where('idtipo_publicidad','=',10)
-                                            ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                            ->where('inicio','<=',$time)
+                                            ->where('final','>=',$time)
+                                            ->orderBy(DB::raw('RAND()'))
                                             ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
 
         //Compartimos el array con todas las vistas
@@ -292,7 +310,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en franquicias de éxito de la vista publicidad_especial
         //para pasarlas a las vista para que se muestren.
         $this->rentables = publicidad_especial::where('idtipo_publicidad','=',11)
-                                                ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                                ->where('inicio','<=',$time)
+                                                ->where('final','>=',$time)
+                                                ->orderBy(DB::raw('RAND()'))
                                                 ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
 
         //Compartimos el array con todas las vistas
@@ -306,7 +326,9 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en franquicias de éxito de la vista publicidad_especial
         //para pasarlas a las vista para que se muestren.
         $this->lowcost = publicidad_especial::where('idtipo_publicidad','=',12)
-                                            ->where('inicio','<=',$time)->orderBy(DB::raw('RAND()'))
+                                            ->where('inicio','<=',$time)
+                                            ->where('final','>=',$time)
+                                            ->orderBy(DB::raw('RAND()'))
                                             ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
 
         //Compartimos el array con todas las vistas

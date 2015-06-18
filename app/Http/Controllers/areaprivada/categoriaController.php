@@ -49,9 +49,7 @@ class categoriaController extends Controller {
             $franquiciasSubResto = $franquiciasSubResto->merge($resto);
 
             $franquiciasSubDestacadas = $franquiciasSubDestacadas->merge($destacadas);
-
         }
-
 
         $resultados = count($franquiciasSubDestacadas)+ count($franquiciasSubResto);
         //Igualamos la categoria a la devuelta por la select por si tiene acentos y la formateamos para pasarla a la vista.

@@ -24,7 +24,9 @@
                             $tamCarousel = DB::table(DB::raw('tipo_publicidad tp'))->select(DB::raw('tp.recuadros'))->where('tp.id', '=', 1)->get();
                                 //dd(intval($tamCarousel[0]->recuadros));
                             //Seleccionamos el total de franquicias activas en el carousel (Ojo, franquicias que pagan no de pega)
-                            $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))->where('p.idtipo_publicidad', '=', 1)->get();
+                            $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))
+                                                                                ->where('p.idtipo_publicidad', '=', 1)
+                                                                                ->where('p.franquicia_id','<>', 0)    ->get();
                                 //dd(intval($carouselActivas[0]->cantidad));
                             if(intval($tamCarousel[0]->recuadros) >=  intval($carouselActivas[0]->cantidad))
                                 $flagCarousel = true;
@@ -147,9 +149,16 @@
                                                     @endif
 
 
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
+                                                <footer class="carousel_footer">
+
+                                                    <label><strong>1º en expirar:</strong></label>
+                                                    <label class="fecha"></label>
+                                                    <br>
+                                                    <label><strong>Nº franquicias:</strong></label>
+                                                    <label class="num"></label>
+                                                    <br>
+                                                    <label><strong>Nº recuadros:</strong></label>
+                                                    <label class="recuadros"></label>
 
                                                     @if($flagCarousel)
                                                         <button type="submit" class="btn btn-primary">
@@ -160,7 +169,6 @@
                                                             Activar
                                                         </button>
                                                     @endif
-
 
                                                 </footer>
                                             </form>
