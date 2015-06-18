@@ -179,6 +179,15 @@
             </form>
         </div>
 
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="inline-form recuadros">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <label>Noticias:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="noticia_des" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+            </form>
+        </div>
 
     </div>
 @endsection

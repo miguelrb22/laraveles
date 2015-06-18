@@ -77,7 +77,7 @@ class WebController extends Controller {
         //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
         //para pasarlas a las vista para que se muestren.
         $this->carousel = publicidad::where('idtipo_publicidad','=',1)
-                                        ->where('franquicia_id','<>',0)
+                                        ->where('franquicia_id','<>',1)
                                         ->where('inicio','<=',$time)
                                         ->where('final','>=',$time)
                                         ->orderBy(DB::raw('RAND()'))
@@ -88,7 +88,7 @@ class WebController extends Controller {
 
             //La diferencia entre el tamaño y los slider que hemos puesto que halla.
             $coger = intval($this->numeroPublicidades[0]->recuadros) - count($this->carousel);
-                    $publicidad =  publicidad::where('franquicia_id', '=', 0)
+                    $publicidad =  publicidad::where('franquicia_id', '=', 1)
                                                 ->where('idTipo_publicidad','=','1')
                                                 ->orderBy(DB::raw('RAND()'))
                                                 ->take($coger)
