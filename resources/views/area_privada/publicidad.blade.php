@@ -1394,7 +1394,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                                 <fieldset>
 
