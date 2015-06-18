@@ -1,9 +1,12 @@
 @extends('area_privada.multifranquicias')
 
 <style>
-
     .fa-mal {
         margin-top: 30%;
+    }
+
+    .lobibox-confirm{
+        margin-top: -20%;
     }
 </style>
 @section('main')
