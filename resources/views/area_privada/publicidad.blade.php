@@ -1586,6 +1586,7 @@
 
 
     var checkin3 = $('#inicio3').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1599,6 +1600,7 @@
     $('#final3')[0].focus();
     }).data('datepicker');
     var checkout3 = $('#final3').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin3.date.valueOf() ? 'disabled' : '';
     }
@@ -1608,6 +1610,7 @@
 
 
     var checkin4 = $('#inicio4').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1621,6 +1624,7 @@
     $('#final4')[0].focus();
     }).data('datepicker');
     var checkout4 = $('#final4').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin4.date.valueOf() ? 'disabled' : '';
     }
@@ -1630,6 +1634,7 @@
 
 
     var checkin5 = $('#inicio5').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1643,6 +1648,7 @@
     $('#final5')[0].focus();
     }).data('datepicker');
     var checkout5 = $('#final5').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin5.date.valueOf() ? 'disabled' : '';
     }
@@ -1652,6 +1658,7 @@
 
 
     var checkin6 = $('#inicio6').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1665,6 +1672,7 @@
     $('#final6')[0].focus();
     }).data('datepicker');
     var checkout6 = $('#final6').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin6.date.valueOf() ? 'disabled' : '';
     }
@@ -1674,6 +1682,7 @@
 
 
     var checkin7 = $('#inicio7').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1687,6 +1696,7 @@
     $('#final7')[0].focus();
     }).data('datepicker');
     var checkout7 = $('#final7').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin7.date.valueOf() ? 'disabled' : '';
     }
@@ -1696,6 +1706,7 @@
 
 
     var checkin8 = $('#inicio8').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1709,6 +1720,7 @@
     $('#final8')[0].focus();
     }).data('datepicker');
     var checkout8 = $('#final8').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin8.date.valueOf() ? 'disabled' : '';
     }
@@ -1718,6 +1730,7 @@
 
 
     var checkin9 = $('#inicio9').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1731,6 +1744,7 @@
     $('#final9')[0].focus();
     }).data('datepicker');
     var checkout9 = $('#final9').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin9.date.valueOf() ? 'disabled' : '';
     }
@@ -1740,6 +1754,7 @@
 
 
     var checkin10 = $('#inicio10').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1753,6 +1768,7 @@
     $('#final10')[0].focus();
     }).data('datepicker');
     var checkout10 = $('#final10').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin10.date.valueOf() ? 'disabled' : '';
     }
@@ -1762,6 +1778,7 @@
 
 
     var checkin11 = $('#inicio11').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1775,6 +1792,7 @@
     $('#final11')[0].focus();
     }).data('datepicker');
     var checkout11 = $('#final11').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin11.date.valueOf() ? 'disabled' : '';
     }
@@ -1784,6 +1802,7 @@
 
 
     var checkin12 = $('#inicio12').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -1797,6 +1816,7 @@
     $('#final12')[0].focus();
     }).data('datepicker');
     var checkout12 = $('#final12').datepicker({
+    format: 'dd-mm-yyyy',
     onRender: function(date) {
     return date.valueOf() <= checkin12.date.valueOf() ? 'disabled' : '';
     }
