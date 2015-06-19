@@ -39,14 +39,9 @@
     <!--</form>-->
 
     @if(!$patrocinadas->isEmpty())
-        <?php
-            //Numero aleatorio para sacar imagenes patrocinadas aleatorias de las existentes
-            $a1 = mt_rand(0,count($patrocinadas)-1);
-
-        ?>
         <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$patrocinadas[$a1]->nombre."/".$patrocinadas[$a1]->nombre_comercial)))}}">
-                <img id="patrocinado" class="img-responsive img-rounded" src="{{ asset($patrocinadas[$a1]->url_imagen) }}"  alt="prueba" style="width: auto">
+            <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$patrocinadas[0]->nombre."/".$patrocinadas[0]->nombre_comercial)))}}">
+                <img id="patrocinado" src="{{ asset($patrocinadas[0]->url_imagen) }}"  alt="prueba" width="150" height="60">
             </a>
         </div>
     @else
