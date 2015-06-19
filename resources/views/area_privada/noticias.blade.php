@@ -6,12 +6,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('area_privada/datepickersandbox/css/bootstrap-datepicker3.min.css') }}">
 
 @endsection
-
-
-
 @section('main')
-
-
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
@@ -81,25 +76,16 @@
                     <br>
                     <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus-square"></i> Publicar</button>
                 </form>
-
-
-
-
-
             </div>
         </div>
     </section>
 @endsection
 @section('js')
-
-
     <script src="{{ asset('area_privada/summernote\lang\summernote-es-ES.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/dist/summernote.min.js') }}"></script>
     <script src="{{ asset('area_privada/summernote/plugin/summernote-ext-video.js') }}"></script>
     <script src="{{ asset('area_privada/datepickersandbox/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('area_privada/datepickersandbox/locales/bootstrap-datepicker.es.min.js') }}"></script>
-
-
     <script type="text/javascript">
         $(function() {
             $('.summernote').summernote({
@@ -116,15 +102,9 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['insert',['table','link','hr','picture','video']]
-
                 ]
-
             });
         });
-
-
-
-
         $('.fecha_publi').datepicker({
 
             format: "yyyy-mm-dd",
@@ -133,19 +113,12 @@
             autoclose: true,
             todayHighlight: true
         });
-
     </script>
-
 @endsection
-
 @section('ready')
-
     $('#dashboard').removeClass("active")
     $('#publicaciones').addClass("active");
 
     $('#publicaciones').addClass('open');
     $('#publicaciones_panel').css('display','block');
-
-
-
 @endsection
