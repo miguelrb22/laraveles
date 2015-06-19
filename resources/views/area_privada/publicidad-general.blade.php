@@ -263,7 +263,7 @@
     responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic_articulos'), breakpointDefinition);
     }
     },
-    "aLengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+    "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "rowCallback": function (nRow) {
     responsiveHelper_dt_basic.createExpandIcon(nRow);
     },
@@ -271,6 +271,8 @@
     responsiveHelper_dt_basic.respond();
     }
     });
+
+
 
     $('.date').datepicker({
 
@@ -282,4 +284,14 @@
     });
 
 
+    $('body').on('focus',".date", function(){
+        $(this).datepicker({
+
+        format: "yyyy-mm-dd",
+        language: "es",
+        multidate: false,
+        autoclose: true,
+        todayHighlight: true
+        });
+    });
 @endsection
