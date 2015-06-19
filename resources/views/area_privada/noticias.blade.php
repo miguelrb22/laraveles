@@ -24,9 +24,7 @@
                         <label >Tipo de publicación</label>
                         <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
                             <option value="1" selected>Noticia</option>
-                            <option value="2">Reportaje</option>
-                            <option value="3">Carousel</option>
-
+                            <option value="2">Entrevista</option>
                         </select>
                     </div>
 

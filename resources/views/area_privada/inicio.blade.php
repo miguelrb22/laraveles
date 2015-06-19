@@ -1,81 +1,141 @@
+<script src="{{ asset('area_privada/js/angular.min.js') }}"></script>
+
+<script>
+    angular.module("modulo-inicio",[]).controller("GreetingController",["$scope",function(o){o.valor="1"}]);
+</script>
 
 @extends('area_privada.multifranquicias')
 
+@section('notifications')
+    <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 22 </b> </span>
+
+    <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+    <div class="ajax-dropdown" ng-app="modulo-inicio" ng-controller="GreetingController">
+
+        <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default" ng-click="valor=1">
+                <input type="radio" name="activityy" id="ajax/mail.php">
+                Msgs (14) </label>
+            <label class="btn btn-default" ng-click="valor=2">
+                <input type="radio" name="activityy" id="ajax/notifications.php" ng-click="Ctrl()">
+                notify (3) </label>
+            <label class="btn btn-default" ng-click="valor=3">
+                <input type="radio" name="activityy" id="ajax/tasks.php" ng-click="Ctrl()">
+                Tasks (4) </label>
+        </div>
+
+        <!-- notification content -->
+        <div class="ajax-notifications custom-scroll">
+
+            <div class="alert alert-transparent" ng-show="valor == 1">
+                <h4>Zona 1</h4>
+                @{{ valor  }}
+            </div>
+
+            <div class="alert alert-transparent" ng-show="valor == 2">
+                <h4>Zona 2</h4>
+                @{{ valor  }}
+            </div>
+
+            <div class="alert alert-transparent" ng-show="valor == 3">
+                <h4>Zona 3</h4>
+                @{{ valor  }}
+            </div>
+
+
+        </div>
+        <!-- end notification content -->
+
+        <!-- footer: refresh area -->
+            <span> Last updated on: 12/12/2013 9:43AM
+                <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..."
+                        class="btn btn-xs btn-default pull-right">
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </span>
+        <!-- end footer -->
+
+    </div>
+@endsection
+
 <style>
-
-    body {
-
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-    }
-
-    td{
-        cursor: pointer;
-        font-size: 12px;
-    }
-
-
+    body{-moz-user-select:none;-webkit-user-select:none;user-select:none}td{cursor:pointer;font-size:12px}
 </style>
 @section('main')
 
     <section id="widget-grid" class="">
         <div class="row">
-                <br>
-                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
-                    <!-- boton nueva areaprivada -->
+            <br>
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                <!-- boton nueva areaprivada -->
 
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a style="margin-bottom: 15px;" class="btn btn-success" id="nuevo-franquicia" href="{{ URL::route('nueva_alta') }}"><i class="fa fa-plus"></i> Alta Franquicia</a>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a style="margin-bottom: 15px;" class="btn btn-success" id="nuevo-franquicia"
+                           href="{{ URL::route('nueva_alta') }}"><i class="fa fa-plus"></i> Alta Franquicia</a>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-7 col-md-8 col-lg-9" style="margin-top: 5px;">
+                        <h4 id="franquiciacargada"> <?php
+
+                            $ses = Session::get('franquicia');
+
+                            if ($ses) {
+                                echo $ses->nombre_comercial;
+                            } else echo "Ninguna franquicia cargada";?>
+                        </h4>
+                    </div>
+                </div>
+                <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+                        <h2 id="titulo-tabla">Lista Franquicias </h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
                         </div>
+                        <!-- end widget edit box -->
 
-                        <div class="col-xs-6 col-sm-7 col-md-8 col-lg-9" style="margin-top: 5px;">
-                            <h4 id="franquiciacargada"> <?php
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
 
-                                $ses = Session::get('franquicia');
+                            <table id="dt_basic_inicio" class="table table-striped table-bordered table-hover"
+                                   width="100%">
+                                <thead>
+                                <tr>
+                                    <th data-class="expand">Nombre Comercial</th>
+                                    <th data-hide="phone,tablet"><i
+                                                class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
+                                        CIF
+                                    </th>
+                                    <th data-hide="phone"><i
+                                                class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>
+                                        Direccion
+                                    </th>
+                                    <th data-hide="pc">Telefono</th>
+                                    <th data-hide="phone,tablet"><i
+                                                class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>
+                                        web
+                                    </th>
+                                    <th data-class="expand"><i
+                                                class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i>
+                                        Cargar
+                                    </th>
 
-                                    if($ses){
-                                           echo $ses->nombre_comercial;
-                                    } else echo "Ninguna franquicia cargada";?>
-                            </h4>
-                        </div>
-                        </div>
-                    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                                    <th id="id" class="hidden"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        <header>
-                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2 id="titulo-tabla">Lista Franquicias </h2>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-                                <!-- This area used as dropdown edit box -->
-
-                            </div>
-                            <!-- end widget edit box -->
-
-                            <!-- widget content -->
-                            <div class="widget-body no-padding">
-
-                                <table id="dt_basic_inicio" class="table table-striped table-bordered table-hover" width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th data-class="expand">Nombre Comercial</th>
-                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> CIF </th>
-                                        <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Direccion</th>
-                                        <th data-hide="pc">Telefono</th>
-                                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> web</th>
-                                        <th data-class="expand"><i class="fa fa-fw fa-key txt-color-blue hidden-md hidden-sm hidden-xs"></i> Cargar </th>
-
-                                        <th id="id" class="hidden"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    @foreach($franquicias as $franquicia)
+                                @foreach($franquicias as $franquicia)
                                     <tr>
                                         <td>{{$franquicia->nombre_comercial }}</td>
                                         <td>{{$franquicia->cif }}</td>
@@ -83,19 +143,23 @@
                                         <td>{{$franquicia->tf_contacto }}</td>
                                         <td>{{$franquicia->web }}</td>
                                         <td class="hidden">{{$franquicia->id }}</td>
-                                        <td><button class="btn btn-info btn-xs" onclick="cargarfranquicia({{$franquicia->id }})"> Cargar</button></td>
+                                        <td>
+                                            <button class="btn btn-info btn-xs"
+                                                    onclick="cargarfranquicia({{$franquicia->id }})"> Cargar
+                                            </button>
+                                        </td>
 
                                     </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end widget content -->
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- end widget div -->
+                        <!-- end widget content -->
                     </div>
-                    <!-- end widget -->
-                </article>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
             <!-- WIDGET END -->
         </div>
     </section>
@@ -105,7 +169,7 @@
 <script>
 
 
-    function  cargarfranquicia (idd) {
+    function cargarfranquicia(idd) {
 
 
         var id = idd;
@@ -117,7 +181,8 @@
             css: {
                 border: 'none',
                 padding: '15px',
-                backgroundColor: 'transparent'}
+                backgroundColor: 'transparent'
+            }
 
         });
 

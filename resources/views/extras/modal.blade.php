@@ -36,7 +36,7 @@
                     <input type="password" class="form-control" id="Userpass" placeholder="Contraseña" name="password">
 
                 </div>
-                </br>
+                <br>
 
                 <div class="pull-right">
                 <button type="button" class="btn btn-default  btn-lg" data-dismiss="modal">
@@ -46,7 +46,7 @@
                     Entrar
                 </button>
                     </div>
-                </br>
+                <br>
             </div>
             </form>
 
