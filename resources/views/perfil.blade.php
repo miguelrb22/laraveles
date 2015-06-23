@@ -111,7 +111,7 @@
                                     <li><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$entrevista->titulo.'/'.$entrevista->id)))}}">{{$entrevista->titulo}}</a></li>
                                 @endforeach
                             @else
-                                <div><strong>No hay noticias de esta franquicia</strong></div>
+                                <div><strong>No hay entrevistas de esta franquicia</strong></div>
                             @endif
                         </ul>
                     </div>
