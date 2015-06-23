@@ -17,18 +17,27 @@
                     {!! Form::token() !!}
 
                     <div class="row">
+
                         <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Tipo de publicación</label>
-                        @if(!$cantidad->isEmpty())
-                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 restantes">Entrevistas restantes: {{$cantidad[0]->cantidad}} </label>
+                        @if(!$entrevistas->isEmpty())
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 entrevistas">Entrevistas restantes: {{$entrevistas[0]->cantidad}} </label>
+                        @endif
+                        @if(!$destacadas->isEmpty())
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 destacadas">Entrevistas restantes: {{$destacadas[0]->cantidad}} </label>
                         @endif
 
                     </div>
                     <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                         <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
                             <option value="1" selected>Noticia</option>
-                            @if(!$cantidad->isEmpty())
-                                @if($cantidad[0]->cantidad > 0)
+                            @if(!$entrevistas->isEmpty())
+                                @if($entrevistas[0]->cantidad > 0)
                                     <option value="2">Entrevista</option>
+                                @endif
+                            @endif
+                            @if(!$destacadas->isEmpty())
+                                @if($destacadas[0]->cantidad > 0)
+                                    <option value="3">Noticia destacada</option>
                                 @endif
                             @endif
                         </select>
@@ -147,10 +156,16 @@
         var tipo = $("#tipoarticulo")[0].value;
         if(tipo === "2")
         {
-            $(".restantes").css("display","block");
+            $(".entrevistas").css("display","block");
             $("#franquicia_id_articulo")[0].value = 2;
+            $(".destacadas").css("display","none");
+        }else if(tipo === "3"){
+            $(".destacadas").css("display","block");
+            $("#franquicia_id_articulo")[0].value = 2;
+            $(".entrevistas").css("display","none");
         }else{
-            $(".restantes").css("display","none");
+            $(".entrevistas").css("display","none");
+            $(".destacadas").css("display","none");
             $("#franquicia_id_articulo")[0].value = 1;
         }
     });

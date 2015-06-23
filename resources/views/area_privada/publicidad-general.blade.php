@@ -195,7 +195,7 @@
             <form class="inline-form recuadros">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
-                    <label>Noticias:</label>
+                    <label>Noticias destacadas:</label>
                 </div>
                 <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
                     <input name="noticia_des" type="number" width="20" onkeypress="return isNumberKey(event)"/>
@@ -212,6 +212,19 @@
                 </div>
                 <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
                     <input name="entrevista" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="inline-form recuadros">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Noticias general:</label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="noticias" type="number" width="20" onkeypress="return isNumberKey(event)"/>
                     <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
                 </div>
             </form>

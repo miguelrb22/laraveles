@@ -34,16 +34,24 @@ class publicacionController extends Controller
      */
     public function store(Request $request) {
 
-        //if el tipo es entrevista hay que reducir la cantidad de entrevistas que puede publicar la franquicia en cuestion
+        //Si el tipo es entrevista hay que reducir la cantidad de entrevistas que puede publicar la franquicia en cuestion
         if($request->Input("tipo") == 2)
         {
-                $publicidad = publicidad::where('franquicia_id','=',$request->Input('franquicia_id'))
-                                    ->where('idtipo_publicidad','=',13)->get();
-                if(!$publicidad->isEmpty()){
-                    $publicidad[0]->cantidad =  $publicidad[0]->cantidad -1;
-                    $publicidad[0]->save();
-                }
-
+            $publicidad = publicidad::where('franquicia_id','=',$request->Input('franquicia_id'))
+                                ->where('idtipo_publicidad','=',13)->get();
+            if(!$publicidad->isEmpty()){
+                $publicidad[0]->cantidad =  $publicidad[0]->cantidad -1;
+                $publicidad[0]->save();
+            }
+        }
+        //Si el tipo es destacada hay que reducir la cantidad de noticias destacadas que puede publicar.
+        if($request->Input("tipo") == 3){
+            $publicidad = publicidad::where('franquicia_id','=',$request->Input('franquicia_id'))
+                                    ->where('idtipo_publicidad','=',7)->get();
+            if(!$publicidad->isEmpty()){
+                $publicidad[0]->cantidad =  $publicidad[0]->cantidad -1;
+                $publicidad[0]->save();
+            }
         }
 
 

@@ -84,6 +84,10 @@ thead{
     background-color: #00b8d4;
 }
 
-.restantes{
+.entrevistas{
+    display: none;
+}
+
+.destacadas{
     display: none;
 }

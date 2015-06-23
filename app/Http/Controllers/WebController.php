@@ -51,6 +51,7 @@ class WebController extends Controller {
     private $lowcost = null;
     private $rentables = null;
     private $entrevistas = null;
+    private $publicaciones = null;
     /**
      *
      */
@@ -99,14 +100,34 @@ class WebController extends Controller {
         View::share('carousel',  $this->carousel);
         ////
 
+
+
         //Obtenemos las franquicias  que tienen  noticias destacadas a 1 en paquetes activos
         $this->noticias_des = new Collection();
 
-        $noticiasDesIds = PaquetesActivos::where('noticia_des', '=', 1)->get(array('id'));
 
-        foreach ($noticiasDesIds as $id) {
-            $franquicia = publicacion::where('franquicia_id','=', $id->id); //falta concatenarle un where donde tipo sea destacado
-            $this->noticias_des->push($franquicia);
+        $numDestacadas = $this->numeroPublicidades[6]->recuadros;
+
+        //obtenemos las publicaciones donde el tipo es = 2 que es de tipo entrevista y perteniencia 2 que
+        //indica que es de una franquicia que ha pagado
+        $this->noticias_des = Publicaciones::take($numDestacadas)->orderBy('id','DES')
+                                            ->where('fecha_publicacion','<=',$time)//quitarla?
+                                            ->where('fecha_finalizacion','>=',$time)
+                                            ->where('pertenencia','=',2)
+                                            ->where('tipo','=',3)->get();
+
+        //Si el array de entrevistas no está lleno con las franquicias de pago rellenamos con las de pega.
+        if(count($this->noticias_des) < $numDestacadas){
+                    //La diferencia entre las entrevistas devueltas y las entrevistas que hemos puesto que halla.
+                $coger = intval($this->numeroPublicidades[6]->recuadros) - count($this->entrevistas);
+                $resto = Publicaciones::take($coger)->orderBy('id','DES')
+                    ->where('fecha_publicacion','<=',$time)//quitarla?
+                    ->where('fecha_finalizacion','>=',$time)
+                    ->where('pertenencia','=',1)
+                    ->orderBy(DB::raw('RAND()'))
+                    ->where('tipo','=',3)->get();
+
+            $this->noticias_des = $this->noticias_des->merge($resto);
         }
 
         //Compartimos el array con todas las vistas
@@ -292,6 +313,15 @@ class WebController extends Controller {
         View::share('entrevistas', $this->entrevistas);
         ////
 
+
+        //obtenemos las noticias generales publicadas
+        $numeroPublicaciones = $this->numeroPublicidades[13]->recuadros;
+
+        $this->publicaciones = Publicaciones::take($numeroPublicaciones)->orderBy('id','DES')->where('tipo','=',1)->get();
+
+        //Compartimos el array con todas las vistas
+        View::share('publicaciones', $this->publicaciones);
+        ////
 
     }
     /*

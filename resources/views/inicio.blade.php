@@ -245,20 +245,21 @@
                                         <div class="row">
 
                                             @if(!$noticiaDestacada->isEmpty())
-                                                <?php
-                                                    $a1 = mt_rand(0,count($noticiaDestacada)-1)
-                                                ?>
-                                                <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
-                                                    <h4>{{ $noticiaDestaca[$a1]->titulo }}</h4>
-                                                    <p id="noticiaDes"> {{ $noticiaDestaca[$a1]->resumen }} </p>
-                                                    <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticiaDestaca->titulo.'/'.$noticiaDestaca->id)))}}">seguir leyendo</a>
-                                                </div>
-                                                <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
-                                                    <br>
-                                                    <br>
-                                                    <img class="img-responsive" id="imagen-noticia" src="{{ asset($publicaciones[$i]->url_imagen)  }}" alt="prueba" >
-                                                </div>
+
+                                                @foreach($noticiaDestacada as $noticia)
+                                                    <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><h4>{{ $noticia->titulo }}</h4></a>
+                                                        <p id="noticiaDes"> {{ $noticia->resumen }} </p>
+                                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}">seguir leyendo</a>
+                                                    </div>
+                                                    <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
+                                                        <br>
+                                                        <br>
+                                                        <img class="img-responsive" id="imagen-noticia" src="{{ asset($noticia->url_imagen)  }}" alt="prueba" >
+                                                    </div>
+                                                @endforeach
                                             @else
+
                                                 <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
                                                     <a href="#"><h4>Sweet Pharma cambia su estrategia</h4></a>
                                                     <p id="noticiaDes">Sweet Pharma cambia su estrategia redefiniendo las categorías de sus productos pasando a ocho categorías de tratamientos enfocadas según las necesidades del paciente: Ellos, Ellas, Amor, Salud, Emergencias, Dinero, Energía, Días grises. Esas cateogrías engloban todos sus productos y pretenden ser reflejo de todos los aspectos de Sweet Pharma. Sin embargo, sus productos como tal no cambian y ofrecen una amplia variedad de golosinas y chucherías para todos los que quieran endulzarse el día a día. </p>
@@ -268,6 +269,7 @@
                                                     <br>
                                                     <a href="#"><img class="img-responsive img-rounded" id="imagen-noticia" src="{{ asset('images/sweet_pharma.jpg') }}" alt="prueba" ></a>
                                                 </div>
+
                                             @endif
 
                                         </div>
@@ -285,9 +287,11 @@
                                                         "Septiembre", "Octube", "Noviembre", "Diciembre");
 
                                         $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+
+                                        $tam = count($publicaciones) - (floor(count($publicaciones)%3))
                                     ?>
 
-                                    @for($i=0; $i< 6; $i++)
+                                    @for($i=0; $i < $tam; $i++)
                                         <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
                                                 <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-prenoticia" width='' height=""></a>
@@ -319,7 +323,7 @@
                                                 </p>
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                @if($i+1 < 6)
+                                                @if($i+1 < $tam)
                                                     <hr class="separador_post">
                                                 @endif
                                             </div>
@@ -343,7 +347,7 @@
                                     <h3 class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <strong>Más....</strong>
                                     </h3>
-                                    @for($i=6; $i<count($publicaciones); $i++)
+                                    @for($i=$tam; $i<count($publicaciones); $i++)
                                         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
                                             <a id="newsEnlace" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
                                         </div>
@@ -377,6 +381,7 @@
                                         <br>
                                     </div>
                                 @else
+
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                         <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                                             <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >

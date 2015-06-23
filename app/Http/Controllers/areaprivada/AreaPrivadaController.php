@@ -12,6 +12,7 @@ use App\model\subcategoria;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View as v;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Type\Collection;
 use Ramsey\Uuid\Console\Exception;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
@@ -93,16 +94,34 @@ class AreaPrivadaController extends Controller
         $time = date("Y-m-d", $time);
 
         $franquicia = Session::get('franquicia');
+        $destacadas =  new Collection([]);
+        $entrevistas = new Collection();
 
 
-        //Comprobamos si tiene entrevistas para publicar esta franquicia.
-        $cantidad = publicidad::where('franquicia_id','=', $franquicia->id)
-                                ->where('idtipo_publicidad', '=', 13)
-                                ->where('inicio','<=',$time)//podriamos ahorrarnoslo y solo controlar que no se halla pasado
-                                ->where('final','>=',$time)
-                                ->get(array('cantidad'));
+        if($franquicia != null) {
 
-        return view('area_privada.noticias',compact('cantidad'));
+            //Comprobamos si tiene entrevistas para publicar esta franquicia.
+            $entrevistas = publicidad::where('franquicia_id', '=', $franquicia->id)
+                ->where('idtipo_publicidad', '=', 13)
+                ->where('inicio', '<=', $time)//podriamos ahorrarnoslo y solo controlar que no se halla pasado
+                ->where('final', '>=', $time)
+                ->get(array('cantidad'));
+
+            //Comprobamos si tiene noticias destacadas para publicar esta franquicia
+            $destacadas = publicidad::where('franquicia_id', '=', $franquicia->id)
+                ->where('idtipo_publicidad', '=', 7)
+                ->where('inicio', '<=', $time)//podriamos ahorrarnoslo y solo controlar que no se halla pasado
+                ->where('final', '>=', $time)
+                ->get(array('cantidad'));
+
+            return view('area_privada.noticias', compact('entrevistas', 'destacadas'));
+
+        }else{
+            $destacadas = publicidad::where('franquicia_id','=',99999999)->get();
+            $entrevistas = publicidad::where('franquicia_id','=',99999999)->get();
+            return view('area_privada.noticias', compact('entrevistas', 'destacadas'));
+        }
+
     }
 
 
