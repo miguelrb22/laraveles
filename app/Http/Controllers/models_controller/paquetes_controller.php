@@ -112,16 +112,16 @@ class paquetes_controller extends Controller
             $publicidad->save();
 
         }
-        else if($paquete === 'entrevista'){
-                //Si el paquete es entrevista entra aquí y comprobamos si lo tenia activado anteriormente
+        else if($paquete === 'entrevista' || $paquete === 'noticia_des'){
+
+                $idpubliciadad = $request->Input("idtipo_publicidad");
+                //Si el paquete es entrevista o noticia destacada entra aquí y comprobamos si lo tenia activado anteriormente
                 //para actualizarlo o insertarlo
                 $existe = publicidad::where('franquicia_id','=',$idFranquicia)
-                                    ->where('idtipo_publicidad','=',13)->get();
-
+                                    ->where('idtipo_publicidad','=',$idpubliciadad)->get();
 
                 if(!$existe->isEmpty())
                 {
-
                     //se le actualiza la cantidad si esta dentro del periodo de vigencia se le suma sino se le cambia la nueva
                     //fecha fin y la nueva cantidad
                     if($existe[0]->final >= $this->time) {

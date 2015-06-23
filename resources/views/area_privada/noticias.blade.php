@@ -18,7 +18,10 @@
 
                     <div class="row">
                         <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Tipo de publicación</label>
-                        <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 restantes">Entrevistas restantes: {{$cantidad[0]->cantidad}}</label>
+                        @if(!$cantidad->isEmpty())
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 restantes">Entrevistas restantes: {{$cantidad[0]->cantidad}} </label>
+                        @endif
+
                     </div>
                     <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                         <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
