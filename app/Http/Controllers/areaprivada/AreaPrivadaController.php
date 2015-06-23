@@ -277,7 +277,7 @@ class AreaPrivadaController extends Controller
         $now = time();
         $now = date("Y-m-d", $now);
 
-        $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
+        $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
         return $paquetes;
 
     }

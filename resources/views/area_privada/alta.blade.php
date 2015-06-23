@@ -791,6 +791,8 @@
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
     var checkin = $('#dpd1').datepicker({
+    format: 'yyyy/mm/dd',
+
     onRender: function(date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
@@ -804,6 +806,8 @@
     $('#dpd2')[0].focus();
     }).data('datepicker');
     var checkout = $('#dpd2').datepicker({
+    format: 'yyyy/mm/dd',
+
     onRender: function(date) {
     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
     }
@@ -828,7 +832,7 @@
 
     $('#finicio .datepicker')
         .datepicker({
-            format: 'dd/mm/yyyy'
+            format: 'yyyy/mm/dd'
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
@@ -837,7 +841,7 @@
 
     $('#ffin .datepicker')
             .datepicker({
-            format: 'dd/mm/yyyy'
+            format: 'yyyy/mm/dd'
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
