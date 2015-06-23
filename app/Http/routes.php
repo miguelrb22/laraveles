@@ -86,7 +86,7 @@ Route::group(['prefix' =>  'areaprivada' , 'namespace' => 'areaprivada'],functio
 
 });
 
-
+//Para actualizar un paquete de la franquicia
 Route::post('actualizarPaquete', ['as' => 'actualizarPaquete', 'uses' => 'models_controller\paquetes_controller@updateEspecial']);
 Route::post('fechasDisponibles' ,  ['as' => 'fechasDisponibles', 'uses' => 'models_controller\paquetes_controller@fechas']);
 
@@ -95,7 +95,7 @@ Route::post('editar-publicacionEdit', ['as' => 'editarpublicacion', 'uses' => 'm
 
 Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'models_controller\publicacionController@destroy']);
 
-
+Route::post('apuntoCaducar' ,  ['as' => 'apuntoCaducar', 'uses' => 'areaprivada\AreaPrivadaController@paquetesApuntoCaducar']);
 
 /***************************************************************************************************************/
 /***************************************************************************************************************/

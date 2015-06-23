@@ -14,6 +14,7 @@ use Illuminate\View as v;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Console\Exception;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 class AreaPrivadaController extends Controller
 {
 
@@ -86,7 +87,22 @@ class AreaPrivadaController extends Controller
      */
     public function noticias()
     {
-        return view('area_privada.noticias');
+
+        //Obtenemos la fecha del servidor para usarla en la selects
+        $time = time();
+        $time = date("Y-m-d", $time);
+
+        $franquicia = Session::get('franquicia');
+
+
+        //Comprobamos si tiene entrevistas para publicar esta franquicia.
+        $cantidad = publicidad::where('franquicia_id','=', $franquicia->id)
+                                ->where('idtipo_publicidad', '=', 13)
+                                ->where('inicio','<=',$time)//podriamos ahorrarnoslo y solo controlar que no se halla pasado
+                                ->where('final','>=',$time)
+                                ->get(array('cantidad'));
+
+        return view('area_privada.noticias',compact('cantidad'));
     }
 
 
@@ -234,6 +250,16 @@ class AreaPrivadaController extends Controller
 
         }
 
+
+    }
+
+    public function paquetesApuntoCaducar(){
+
+        $now = time();
+        $now = date("Y-m-d", $now);
+
+        $paquetes = DB::table("publicidad")->whereRaw('final >= DATE_ADD(CURRENT_DATE, INTERVAL 5 DAY)')->get();
+        return $paquetes;
 
     }
 

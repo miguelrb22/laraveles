@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\models_controller;
 
 use App\model\PaquetesActivos;
+use App\model\Publicaciones;
 use App\model\publicidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,14 +19,19 @@ class paquetes_controller extends Controller
 {
 
     private $numeroPublicidades = null;
+    private $time = null;
+
 
     public function __construct()
     {
 
         $this->middleware('auth');
-        //Obtener los recuadros de publicidad que hay activos en las web
-        //Obtenemos la cantidad de publicidades que va a haber en la página y la pasamos a las vistas.
+        //Obtenemos la cantidad de publicidades que hay en total.
         $this->numeroPublicidades = tipo_publicidad::all();
+        //Obtenemos la fecha del servidor para usarla en la selects
+        $this->time = time();
+        $this->time = date("Y-m-d", $this->time);
+
 
     }
 
@@ -105,7 +111,36 @@ class paquetes_controller extends Controller
             //Guardamos la publicidad.
             $publicidad->save();
 
-        }else {
+        }
+        else if($paquete === 'entrevista'){
+                //Si el paquete es entrevista entra aquí y comprobamos si lo tenia activado anteriormente
+                //para actualizarlo o insertarlo
+                $existe = publicidad::where('franquicia_id','=',$idFranquicia)
+                                    ->where('idtipo_publicidad','=',13)->get();
+
+
+                if(!$existe->isEmpty())
+                {
+
+                    //se le actualiza la cantidad si esta dentro del periodo de vigencia se le suma sino se le cambia la nueva
+                    //fecha fin y la nueva cantidad
+                    if($existe[0]->final >= $this->time) {
+                        $existe[0]->cantidad = $request->Input('cantidad') + $existe[0]->cantidad;
+                        $existe[0]->final = $final;
+                        $existe[0]->save();
+                    }else{
+                        $existe[0]->cantidad = $request->Input('cantidad');
+                        $existe[0]->final = $final;
+                        $existe[0]->save();
+                    }
+
+                }else{
+
+                    $publicidad->save();
+                }
+        }
+        else {
+
             //Guardamos la imagen subida en en la carpeta y toda la información en publicidad y
             //le asignamos el nombredevuelto y guardamos finalmente la publicidad
             $url = $this->guardarImagen($request->file('url_imagen'),$paquete);
@@ -480,6 +515,39 @@ class paquetes_controller extends Controller
 
         //----------fin parte lowcost -----------//
 
+
+
+        //---------- Para parte entrevistas -----------//
+
+        //Obtenemos el número de entrevistas que se están mostrando actualmente.
+        //por eso cogemos las entrevitas cuya fecha cuyo fecha actual se encuentra dentro del
+        // periodo de visualizacion de la entrevista
+        $numActuales = Publicaciones::where('fecha_publicacion' , '<=', $time)
+                                    ->where('fecha_finalizacion','>=', $time)
+                                     ->where('tipo' ,'=', 2)->count();
+
+        //Si hay entrevistas mostrandose  pasamos datos a la vista de fecha y nº de entrevistas sino no.
+        if($numActuales > 0) {
+            $datos = array();
+
+            //Obtenemos las fechas de última disponibilidad para las publicidades
+            //de la tabla publicidad
+            $fechaBS = Publicaciones::where('tipo', '=', 2)->orderBy('fecha_finalizacion', 'ASC')
+                                        ->where('fecha_publicacion' , '<=', $time)
+                                        ->where('fecha_finalizacion','>=', $time)
+                                        ->get(array('fecha_finalizacion'))->take(1);
+
+            //Parseamos la fecha con carbon para devolver el formato que queremos.
+            $fechaBS = Carbon::parse($fechaBS[0]->fecha_finalizacion)->format('d-m-Y');
+
+
+            //Insertamos los datos en los arrays
+            array_push($datos, 'entrevista', $fechaBS, $numActuales, intval($this->numeroPublicidades[12]->recuadros));
+
+            array_push($resultados, $datos);
+        }
+
+        //----------fin parte lowcost -----------//
 
 
 

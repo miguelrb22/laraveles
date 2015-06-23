@@ -202,7 +202,7 @@
             <!-- PARTE NOTICAS -->
             <div class="row">
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="row">
+                    <div class="">
                         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
                             @if(!$franInIzq->isEmpty())
@@ -310,7 +310,6 @@
                                                         if(strlen($minutos) < 2){$minutos = "0".$minutos;}
                                                         if(strlen($hora) < 2){$hora = "0".$hora;}
 
-
                                                         $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
                                                                       $hora . ":" . $minutos;
 
@@ -360,7 +359,6 @@
         @section('der')
             @include('extras.derecha')
 
-
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row panel panel-info text-center">
                     <div class="panel-heading textoblanco" style="background:#333">
@@ -389,7 +387,7 @@
                             @endfor
 
                         @else
-                            <!-- provisional hay que añadir franquicias nuestras a la base de datos para rellenar-->
+
                             @for($i = 0; $i < $numPublicaciones[7]->recuadros; $i++)
                                 <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
@@ -404,6 +402,7 @@
                 </div>
             </div>
 
+            @include('extras.entrevistas')
 
         @endsection
 

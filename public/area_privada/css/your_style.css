@@ -77,3 +77,13 @@
 thead{
     text-align: center !important;
 }
+
+.avisos {
+    margin-top: -35px;
+    margin-left: 15px;
+    background-color: #00b8d4;
+}
+
+.restantes{
+    display: none;
+}

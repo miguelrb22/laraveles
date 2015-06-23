@@ -26,11 +26,10 @@
                             //Seleccionamos el total de franquicias activas en el carousel (Ojo, franquicias que pagan no de pega)
                             $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))
                                                                                 ->where('p.idtipo_publicidad', '=', 1)
-                                                                                ->where('p.franquicia_id','<>', 1)    ->get();
+                                                                                ->where('p.franquicia_id','<>', 0)    ->get();
                                 //dd(intval($carouselActivas[0]->cantidad));
                             if(intval($tamCarousel[0]->recuadros) >=  intval($carouselActivas[0]->cantidad))
                                 $flagCarousel = true;
-
                             ?>
 
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"><h3>Franquicia: {{$ses->nombre_comercial}}</h3></div>
@@ -80,6 +79,7 @@
                                         </div>
                                         <!-- end widget edit box -->
 
+
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
@@ -100,18 +100,17 @@
                                                                     <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
 
                                                             </section>
-
                                                             <section class="col col-xs-12 col-md-6 col-sm-6">
                                                                 <label class="input">Inicio:</label>
                                                                 <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="inicio" id="inicio1" placeholder="Fecha Alta Ficha" required>
+                                                                    <input type="text" name="inicio" id="inicio1" placeholder="Fecha Inicio" required>
                                                                 </label>
                                                             </section>
 
                                                             <section class="col col-xs-12 col-md-6 col-sm-6">
                                                                 <label>Fin</label>
                                                                 <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                                    <input type="text" name="final" id="final1" placeholder="Fecha Fin Ficha" required>
+                                                                    <input type="text" name="final" id="final1" placeholder="Fecha Fin" required>
                                                                 </label>
                                                             </section>
 
@@ -352,13 +351,13 @@
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio3" placeholder="Fecha Alta Ficha">
+                                                                <input type="text" name="inicio" id="inicio3" placeholder="Fecha Inicio">
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final3" placeholder="Fecha Fin Ficha">
+                                                                <input type="text" name="final" id="final3" placeholder="Fecha Fin">
                                                             </label>
                                                         </section>
 
@@ -475,14 +474,14 @@
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio4" class="calendar" placeholder="Fecha Alta Ficha" required>
+                                                                <input type="text" name="inicio" id="inicio4" class="calendar" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final4" class="calendar" placeholder="Fecha Fin Ficha" required>
+                                                                <input type="text" name="final" id="final4" class="calendar" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
 
@@ -593,13 +592,13 @@
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio5" class="calendar" placeholder="Fecha Alta Ficha">
+                                                                <input type="text" name="inicio" id="inicio5" class="calendar" placeholder="Fecha Inicio">
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final5" class="calendar" placeholder="Fecha Fin Ficha">
+                                                                <input type="text" name="final" id="final5" class="calendar" placeholder="Fecha Fin">
                                                             </label>
                                                         </section>
 
@@ -709,13 +708,13 @@
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio" id="inicio6" class="calendar" placeholder="Fecha Alta Ficha" required>
+                                                                <input type="text" name="inicio" id="inicio6" class="calendar" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final" id="final6" class="calendar" placeholder="Fecha Fin Ficha" required>
+                                                                <input type="text" name="final" id="final6" class="calendar" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
                                                     </div>
@@ -1166,16 +1165,16 @@
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio10" id="inicio10" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                                <input type="text" name="inicio" id="inicio10" class="calendar"
+                                                                       placeholder="Fecha Inicio">
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final10" id="final10" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                                <input type="text" name="final" id="final10" class="calendar"
+                                                                       placeholder="Fecha Fin">
                                                             </label>
                                                         </section>
 
@@ -1292,13 +1291,13 @@
                                                             <label class="input">Inicio:</label>
                                                             <label class="input"><i
                                                                         class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="inicio11" id="inicio11" class="calendar" placeholder="Fecha Alta Ficha" required>
+                                                                <input type="text" name="inicio11" id="inicio11" class="calendar" placeholder="Fecha Inicio" required>
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
                                                             <label>Fin</label>
                                                             <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                                                <input type="text" name="final11" id="final11" class="calendar" placeholder="Fecha Fin Ficha" required>
+                                                                <input type="text" name="final11" id="final11" class="calendar" placeholder="Fecha Fin" required>
                                                             </label>
                                                         </section>
 
@@ -1414,7 +1413,7 @@
                                                             <label class="input"><i
                                                                         class="icon-append fa fa-calendar"></i>
                                                                 <input type="text" name="inicio12" id="inicio12" class="calendar"
-                                                                       placeholder="Fecha Alta Ficha">
+                                                                       placeholder="Fecha Inicio">
                                                             </label>
                                                         </section>
                                                         <section class="col col-xs-12 col-md-6 col-sm-6">
@@ -1422,7 +1421,7 @@
                                                             <label class="input"> <i
                                                                         class="icon-append fa fa-calendar"></i>
                                                                 <input type="text" name="final12" id="final12" class="calendar"
-                                                                       placeholder="Fecha Fin Ficha">
+                                                                       placeholder="Fecha Fin">
                                                             </label>
                                                         </section>
 
@@ -1449,6 +1448,132 @@
                                                     <button type="submit" class="btn btn-primary">
                                                         Actualizar
                                                     </button>
+                                                </footer>
+                                            </form>
+
+                                        </div>
+                                        <!-- end widget content -->
+
+                                    </div>
+                                    <!-- end widget div -->
+
+                                </div>
+                            </article>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
+
+                                <!-- Widget ID (each widget will need unique ID)-->
+                                <div class="jarviswidget jarviswidget-sortable" id="wid-id-1"
+                                     data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                                    <!-- widget options:
+                                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                        data-widget-colorbutton="false"
+                                        data-widget-editbutton="false"
+                                        data-widget-togglebutton="false"
+                                        data-widget-deletebutton="false"
+                                        data-widget-fullscreenbutton="false"
+                                        data-widget-custombutton="false"
+                                        data-widget-collapsed="true"
+                                        data-widget-sortable="false"
+
+                                    -->
+                                    <header role="heading">
+                                        <div class="jarviswidget-ctrls" role="menu"><a href="javascript:void(0);"
+                                                                                       class="button-icon jarviswidget-toggle-btn"
+                                                                                       rel="tooltip" title=""
+                                                                                       data-placement="bottom"
+                                                                                       data-original-title="Collapse"><i
+                                                        class="fa fa-minus "></i></a> <a href="javascript:void(0);"
+                                                                                         class="button-icon jarviswidget-delete-btn"
+                                                                                         rel="tooltip" title=""
+                                                                                         data-placement="bottom"
+                                                                                         data-original-title="Delete"><i
+                                                        class="fa fa-times"></i></a>
+                                        </div>
+                                        <h2 id="tc">Entrevistas</h2>
+                                        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                                    </header>
+                                    <!-- widget div-->
+                                    <div role="content">
+
+                                        <!-- widget edit box -->
+                                        <div class="jarviswidget-editbox">
+                                            <!-- This area used as dropdown edit box -->
+
+                                        </div>
+                                        <!-- end widget edit box -->
+
+                                        <!-- widget content -->
+                                        <div class="widget-body no-padding">
+
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
+
+                                                <fieldset>
+
+                                                    <div class="row">
+                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                            <label class="toggle">
+                                                                @if ($paquetes[0]->entrevista == 0)
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
+                                                                @else
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
+                                                                @endif
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
+                                                        </section>
+                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                            <label class="input">Inicio:</label>
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio13" class="calendar" placeholder="Fecha Inicio" required>
+                                                            </label>
+                                                        </section>
+                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                            <label>Fin</label>
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final13" class="calendar" placeholder="Fecha Fin" required>
+                                                            </label>
+                                                        </section>
+
+                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
+
+                                                            <div class="input input-file">
+                                                                <input type="text" name="cantidad" placeholder="Nº de entrevistas" required>
+                                                            </div>
+
+                                                        </section>
+
+                                                        <input type="text" value="13" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="entrevista" name="nombre_paquete" hidden>
+
+
+                                                    </div>
+
+                                                </fieldset>
+
+
+                                                <footer class="entrevista_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº entrevistas:</strong></label>
+                                                            <label class="num">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="recuadros"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 
@@ -1823,6 +1948,31 @@
     }).on('changeDate', function(ev) {
     checkout12.hide();
     }).data('datepicker');
+
+
+    var checkin13 = $('#inicio13').datepicker({
+    format: 'dd-mm-yyyy',
+    onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+    if (ev.date.valueOf() > checkout13.date.valueOf()) {
+    var newDate = new Date(ev.date)
+    newDate.setDate(newDate.getDate() + 1);
+    checkout13.setValue(newDate);
+    }
+    checkin13.hide();
+    $('#final13')[0].focus();
+    }).data('datepicker');
+    var checkout13 = $('#final13').datepicker({
+    format: 'dd-mm-yyyy',
+    onRender: function(date) {
+    return date.valueOf() <= checkin13.date.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+    checkout13.hide();
+    }).data('datepicker');
+
 
 
 

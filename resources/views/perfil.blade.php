@@ -83,13 +83,32 @@
             <div class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                 <div class="row panel panel-info text-center">
                     <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
-                        Noticias de esta franquicia
+                        Noticias de la franquicia
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
                         <ul class="list-unstyled pull-left text-justify">
-                            @if((!$publicaciones->isEmpty()))
-                                @foreach($publicaciones as $publicacion)
-                                    <li><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicacion->titulo.'/'.$publicacion->id)))}}">{{$publicacion->titulo}}</a></li>
+                            @if((!$noticias->isEmpty()))
+                                @foreach($noticias as $noticias)
+                                    <li><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticias->titulo.'/'.$noticias->id)))}}">{{$noticias->titulo}}</a></li>
+                                @endforeach
+                            @else
+                                <div><strong>No hay noticias de esta franquicia</strong></div>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                <div class="row panel panel-info text-center">
+                    <div class="panel-heading textoblanco" id="panelfe" style="background:#333">
+                        Entrevistas de la franquicia
+                    </div>
+                    <div class="panel-body" style="margin-bottom: -16px;">
+                        <ul class="list-unstyled pull-left text-justify">
+                            @if((!$entrevistas->isEmpty()))
+                                @foreach($entrevistas as $entrevista)
+                                    <li><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$entrevista->titulo.'/'.$entrevista->id)))}}">{{$entrevista->titulo}}</a></li>
                                 @endforeach
                             @else
                                 <div><strong>No hay noticias de esta franquicia</strong></div>

@@ -27,6 +27,7 @@ class publicidad extends Model{
                             'nombre_paquete',
                             'subcategoria',
                             'created_at',
+                            'cantidad',
                             'updated_at'];
 
 }

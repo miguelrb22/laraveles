@@ -1,61 +1,87 @@
 <script src="{{ asset('area_privada/js/angular.min.js') }}"></script>
 
 <script>
-    angular.module("modulo-inicio",[]).controller("GreetingController",["$scope",function(o){o.valor="1"}]);
+        var app = angular.module("modulo-inicio",[]);
+
+        app.controller("GreetingController",["$scope","$http",function(o,h){
+            o.valor="1"
+            o.paquetes = [];
+            o.cargando = true;
+
+            h.post("{{URL::route('apuntoCaducar')}}").success(function (data) {
+                o.paquetes = data;
+                o.cargando = false;
+                o.cantidad = o.paquetes.length;
+            })
+            .error(function(error)
+            {
+                cargando = false;
+            });
+
+
+        }]);
+
 </script>
 
 @extends('area_privada.multifranquicias')
 
 @section('notifications')
-    <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 22 </b> </span>
+
+
+    <div ng-app="modulo-inicio">
+    <span id="activity" class="activity-dropdown"  ng-controller="GreetingController" > <i class="fa fa-user"></i> <b class="badge avisos" ng-show="!cargando && paquetes.length > 0"> @{{cantidad}} </b> </span>
 
     <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-    <div class="ajax-dropdown" ng-app="modulo-inicio" ng-controller="GreetingController">
+        <div class="ajax-dropdown"  ng-controller="GreetingController">
 
-        <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
-        <div class="btn-group btn-group-justified" data-toggle="buttons">
-            <label class="btn btn-default" ng-click="valor=1">
-                <input type="radio" name="activityy" id="ajax/mail.php">
-                Msgs (14) </label>
-            <label class="btn btn-default" ng-click="valor=2">
-                <input type="radio" name="activityy" id="ajax/notifications.php" ng-click="Ctrl()">
-                notify (3) </label>
-            <label class="btn btn-default" ng-click="valor=3">
-                <input type="radio" name="activityy" id="ajax/tasks.php" ng-click="Ctrl()">
-                Tasks (4) </label>
+            <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
+            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                <label class="btn btn-default" ng-click="valor=1">
+                    <input type="radio" name="activityy" id="ajax/mail.php">
+                    Avisos (@{{cantidad}}) </label>
+                <label class="btn btn-default" ng-click="valor=2">
+                    <input type="radio" name="activityy" id="ajax/notifications.php" ng-click="Ctrl()">
+                    notify (3) </label>
+                <label class="btn btn-default" ng-click="valor=3">
+                    <input type="radio" name="activityy" id="ajax/tasks.php" ng-click="Ctrl()">
+                    Tasks (4) </label>
+            </div>
+
+            <!-- notification content -->
+                <div class="ajax-notifications custom-scroll">
+
+                <div class="alert alert-transparent" ng-show="valor == 1">
+                    <ul ng-repeat="paquete in paquetes">
+                        <div class="row">
+                            <p>@{{ paquete.franquicia_id }}</p>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="alert alert-transparent" ng-show="valor == 2">
+                    <h4>Zona 2</h4>
+                    @{{ valor  }}
+                </div>
+
+                <div class="alert alert-transparent" ng-show="valor == 3">
+                    <h4>Zona 3</h4>
+                    @{{ valor  }}
+                </div>
+
+
+            </div>
+
+            <!-- end notification content -->
+
+            <!-- footer: refresh area -->
+                <span> Last updated on: 12/12/2013 9:43AM
+                    <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..."
+                            class="btn btn-xs btn-default pull-right">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </span>
+            <!-- end footer -->
         </div>
-
-        <!-- notification content -->
-        <div class="ajax-notifications custom-scroll">
-
-            <div class="alert alert-transparent" ng-show="valor == 1">
-                <h4>Zona 1</h4>
-                @{{ valor  }}
-            </div>
-
-            <div class="alert alert-transparent" ng-show="valor == 2">
-                <h4>Zona 2</h4>
-                @{{ valor  }}
-            </div>
-
-            <div class="alert alert-transparent" ng-show="valor == 3">
-                <h4>Zona 3</h4>
-                @{{ valor  }}
-            </div>
-
-
-        </div>
-        <!-- end notification content -->
-
-        <!-- footer: refresh area -->
-            <span> Last updated on: 12/12/2013 9:43AM
-                <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..."
-                        class="btn btn-xs btn-default pull-right">
-                    <i class="fa fa-refresh"></i>
-                </button>
-            </span>
-        <!-- end footer -->
-
     </div>
 @endsection
 
@@ -63,7 +89,6 @@
     body{-moz-user-select:none;-webkit-user-select:none;user-select:none}td{cursor:pointer;font-size:12px}
 </style>
 @section('main')
-
     <section id="widget-grid" class="">
         <div class="row">
             <br>

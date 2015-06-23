@@ -142,50 +142,78 @@
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <form class="inline-form recuadros">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <label>Izquierda: <span> &nbsp;&nbsp;&nbsp;  </span></label>
-                <input name="izquierda" type="number" width="20" onkeypress="return isNumberKey(event)"/>
-                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Izquierda: <span> &nbsp;&nbsp;&nbsp;  </span></label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="izquierda" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
             </form>
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <form class="inline-form recuadros">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <label>Derecha:<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span></label>
-                <input name="derecha" type="number" width="20" onkeypress="return isNumberKey(event)"/>
-                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Derecha:</label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="derecha" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
             </form>
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <form class="inline-form recuadros">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <label>Destacados:</label>
-                <input name="destacados" type="number" width="20" onkeypress="return isNumberKey(event)"/>
-                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Destacados:</label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="destacados" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
             </form>
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <form class="inline-form recuadros">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <label>Carousel:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
-                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Carousel:</label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="carousel" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
             </form>
         </div>
 
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <form class="inline-form recuadros">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Noticias:</label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="noticia_des" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
+            </form>
+        </div>
 
-                <label>Noticias:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input name="noticia_des" type="number" width="20" onkeypress="return isNumberKey(event)"/>
-                <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="inline-form recuadros">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="col-xs-3 col-md-2 col-sm-2 col-lg-2">
+                    <label>Entrevistas:</label>
+                </div>
+                <div class="col-xs-9 col-md-6 col-sm-6-col-lg-6">
+                    <input name="entrevista" type="number" width="20" onkeypress="return isNumberKey(event)"/>
+                    <button type="submit" class="btn btn-success btn-xs" style="margin-top: -3px;">Cambiar</button>
+                </div>
             </form>
         </div>
 

@@ -50,6 +50,7 @@ class WebController extends Controller {
     private $exito = null;
     private $lowcost = null;
     private $rentables = null;
+    private $entrevistas = null;
     /**
      *
      */
@@ -68,7 +69,6 @@ class WebController extends Controller {
         //Obtenemos la cantidad de publicidades (carousel, derecha, izquierda)  que va a haber en la página y la pasamos a las vistas.
         $this->numeroPublicidades = tipo_publicidad::all();
         View::share('numPublicaciones', $this->numeroPublicidades);
-
 
 
         //Obtenemos las franquicias que tienen superior derecha a 1 en paquetes activos
@@ -98,80 +98,6 @@ class WebController extends Controller {
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);
         ////
-
-        //-----Obtenemos las franquicias que están en el carousel---
-
-        //obtenemos los ids de todas las franquicias con el carousel activo a 1 y de forma desordenada quitando la de pega
-        //porque la buscamos explícitamente luego y dame solo cierta cantidad en este caso $this->tam_carousel
-        /*$carouselIds = PaquetesActivos::where('carousel', '=', 1)
-                                        ->where('id','<>',1)
-                                        ->orderBy(DB::raw('RAND()'))
-                                        ->take(intval($this->numeroPublicidades[0]->recuadros))
-                                        ->get(array('id'));
-        //Creamos el array de datos obtenido de la tabla publicidad
-        $arrayDatosCarousel = new Collection();
-
-        //Comprobamos que hay alguna franquicia aparte de la 0 dentro de los ids del caruoselIds (franquicia 0 es la de pega)
-        if(count($carouselIds) > 0)
-        {
-            //Si hay alguna franquicia aparte que ha contratado este servicio, pero son menos de 5,
-            // obtenemos su publicidad y el resto rellenamos con la de pega.
-            if(count($carouselIds) < $this->tam_carousel)
-            {
-
-                //sino iremos sacando las que hay más valores de pega
-                //en este primer for
-                foreach($carouselIds as $id)
-                {
-                    $publicidad =  publicidad::where('franquicia_id', '=',$id->id)
-                                             ->where('idTipo_publicidad','=','1')->get();
-                    $arrayDatosCarousel->push($publicidad);
-                }
-
-                //Obtenemos las publicidades de la de pega que son la diferencia entre las normales y el tamaño total
-                //5 en este caso
-                $publicidadPega = publicidad::where('franquicia_id', '=',0)
-                                            ->where('idTipo_publicidad','=','1')
-                                            ->orderBy('idTipo_publicidad','DESC')->take($this->tam_carousel - count($carouselIds))->get();
-
-                //Reccorremos el collection devuelto y almacenado en $publicidadPega y guardamos en el nuevo array
-                for($i=0; $i < count($publicidadPega); $i++)
-                {
-                    $publicidad =  $publicidadPega[$i];
-                    $arrayDatosCarousel->push($publicidad);
-
-                }
-
-                $this->carousel = $arrayDatosCarousel;
-
-
-            }else{
-                //sino esque seran 5
-                foreach($carouselIds as $id)
-                {
-                    //metemos las 5 publicaciones aleatorias devueltas en el array.
-                    $publicidad = publicidad::where('franquicia_id', '=',$id->id)
-                                            ->where('idTipo_publicidad','=','1')->get();
-                    $arrayDatosCarousel->push($publicidad);
-                }
-
-                $this->carousel = $arrayDatosCarousel;
-
-            }
-        }else
-        {
-            //Si solo esta la franquicia de pega "0" entra aquí entonces cogemos los ultimos 5 articulos
-            //cuya franquicia es la 0 y cuyo tipo de publicidad es la 1 que es la de carousel.
-            $this->carousel  = publicidad::where('franquicia_id', '=',1)
-                                    ->where('idTipo_publicidad','=','1')
-                                    ->orderBy('id','DESC')->get();
-
-        }
-        //Compartimos el array con todas las vistas
-        View::share('carousel',$this->carousel);
-        ////--------*/
-
-
 
         //Obtenemos las franquicias  que tienen  noticias destacadas a 1 en paquetes activos
         $this->noticias_des = new Collection();
@@ -287,7 +213,6 @@ class WebController extends Controller {
         ////
 
 
-
         //Obtenemos las franquicias que tienen baratas a 1 en paquetes activos
         $this->baratas = new Collection();
 
@@ -336,6 +261,37 @@ class WebController extends Controller {
         ////
 
 
+        //Obtenemos las entrevistas de las franquicias
+        $numEntrevistas = $this->numeroPublicidades[12]->recuadros;
+        $this->entrevistas = new Collection();
+
+        //obtenemos las publicaciones donde el tipo es = 2 que es de tipo entrevista y perteniencia 2 que
+        //indica que es de una franquicia que ha pagado
+        $this->entrevistas = Publicaciones::take($numEntrevistas)->orderBy('id','DES')
+                                            ->where('fecha_publicacion','<=',$time)//quitarla?
+                                            ->where('fecha_finalizacion','>=',$time)
+                                            ->where('pertenencia','=',2)
+                                            ->where('tipo','=',2)->get();
+
+        //Si el array de entrevistas no está lleno con las franquicias de pago rellenamos con las de pega.
+        if(count($this->entrevistas) < $numEntrevistas){
+
+                //La diferencia entre las entrevistas devueltas y las entrevistas que hemos puesto que halla.
+                $coger = intval($this->numeroPublicidades[12]->recuadros) - count($this->entrevistas);
+                $resto = Publicaciones::take($coger)->orderBy('id','DES')
+                                    ->where('fecha_publicacion','<=',$time)//quitarla?
+                                    ->where('fecha_finalizacion','>=',$time)
+                                    ->where('pertenencia','=',1)
+                                    ->orderBy(DB::raw('RAND()'))
+                                    ->where('tipo','=',2)->get();
+
+                $this->entrevistas = $this->entrevistas->merge($resto);
+        }
+
+        //Compartimos el array con todas las vistas
+        View::share('entrevistas', $this->entrevistas);
+        ////
+
 
     }
     /*
@@ -358,23 +314,17 @@ class WebController extends Controller {
      */
     public function index()
     {
-        //Obtenemos todos los datos de la base de datos que hay que pasar a la página principal como
-        //las franquicias de éxito, rentables, destacadas, los articulos. carousel, patrocinadas
-        //$franquicias_exito = franquicia_especial_subcategoria::where('especial','=', 'exito')->groupBy('id')->get();
-        //$franquicias_baratas = franquicia_especial_subcategoria::where('especial','=', 'baratas')->groupBy('id')->get();
-        $franquicias_rentables = franquicia_especial_subcategoria::where('especial','=', 'rentables')->groupBy('id')->get();
-        //$franquicias_lowcost = franquicia_especial_subcategoria::where('especial','=', 'lowcost')->groupBy('id')->get();
-        //$franquicias_destacadas = franquicia_especial_subcategoria::where('especial','=', 'destacados')->groupBy('id')->get();
 
-        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
-        $patrocinadas = $this->patrocinadasB;
+        //Obtenemos las últimas 5 publicaciones para pasarlas a la vista principal (sólo a al vista principal)
+        $publicaciones = Publicaciones::take(10)->orderBy('id','DES')->where('tipo','=',1)->get();
 
-        //Obtenemos las últimas 5 publicaciones para pasarlas a la vista principal
-        $publicaciones = Publicaciones::take(10)->orderBy('id','DES')->get();
+        //Obtenemos las x ultimas entrevistas para pasarlas a la vista principal (sólo a la vista principal)
+
+
 
         //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
         $categorias = Categoria::all();
-        return view('inicio',compact('franquicias_rentables','franquicias_destacadas','publicaciones','patrocinadas'));
+        return view('inicio',compact('publicaciones','entrevistas'));
     }
 
     /*
@@ -837,13 +787,18 @@ class WebController extends Controller {
         $similares = $this->franquiciasMismoTipo($tipo,$franquicia->id);
 
         //obtenemos las noticias de esta franquicia para pasarlas también a la información del perfil
-        $publicaciones = Publicaciones::where('franquicia_id','=', $franquicia->id)->get();
+        $noticias = Publicaciones::where('franquicia_id','=', $franquicia->id)
+                                    ->where('tipo','=',1)->get();
+
+        //obtenemos las entrevistas de esta franquicia para pasarlas también a la información del perfil
+        $entrevistas = Publicaciones::where('franquicia_id','=', $franquicia->id)
+                                        ->where('tipo','=',2)->get();
 
         //Obtenemos las imagenes de la tabla 1:N de imagenes_franquicia
         $imagenes = files::where('franquicia_id','=',$franquicia->id)->get();
 
         //Devolvemos la vista con los parámetros. (la franquicia, la lista de franquicias de la misma categoria y las publicaciones)
-        return view('perfil', compact('franquicia','similares','publicaciones','imagenes'));
+        return view('perfil', compact('franquicia','similares','noticias','imagenes','entrevistas'));
     }
 
     /**

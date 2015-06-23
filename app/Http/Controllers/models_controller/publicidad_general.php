@@ -69,6 +69,12 @@ class publicidad_general extends Controller
             $tp->recuadros = $request->input('noticia_des');
             $tp->save();
         }
+
+        if($request->input('entrevista')){
+            $tp = tipo_publicidad::find(13);
+            $tp->recuadros = $request->input('entrevista');
+            $tp->save();
+        }
     }
 
 

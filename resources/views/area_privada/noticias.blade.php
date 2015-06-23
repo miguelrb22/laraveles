@@ -7,6 +7,7 @@
 
 @endsection
 @section('main')
+
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
@@ -14,25 +15,31 @@
                 <form id="nueva-publicacion"  accept-charset="UTF-8" enctype="multipart/form-data">
 
                     {!! Form::token() !!}
-                    <div class="input-group">
 
-                        <label >Tipo de publicación</label>
+                    <div class="row">
+                        <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Tipo de publicación</label>
+                        <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 restantes">Entrevistas restantes: {{$cantidad[0]->cantidad}}</label>
+                    </div>
+                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                         <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
                             <option value="1" selected>Noticia</option>
-                            <option value="2">Entrevista</option>
+                            @if(!$cantidad->isEmpty())
+                                @if($cantidad[0]->cantidad > 0)
+                                    <option value="2">Entrevista</option>
+                                @endif
+                            @endif
                         </select>
                     </div>
 
                     <br>
 
-                    <div class="input-group">
+                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
 
                         <label >Pertenencia publicación</label>
                         <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
                             <option value="1" selected>General</option>
                             <?php $ses = Session::get('franquicia') ;
                             if(isset($ses)){
-
                                 echo "<option value='2'>$ses->nombre_comercial</option>";
                             }
                             ?>
@@ -57,8 +64,18 @@
                     <br>
 
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input type="text" name="fecha_publicacion" class="form-control fecha_publi" placeholder="Fecha de publicacion..." required>
+                        <label>Periodo de visualizacón en la vista principal</label>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" name="fecha_publicacion" class="form-control fecha_publi" placeholder="Fecha de publicacion" required>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" name="fecha_finalizacion" class="form-control fecha_publi" placeholder="Fecha de finalizacion" required>
+
+                            </div>
+                        </div>
                     </div>
                     <br>
 
@@ -121,4 +138,18 @@
 
     $('#publicaciones').addClass('open');
     $('#publicaciones_panel').css('display','block');
+
+
+    $("#tipoarticulo").on("change",function(){
+        var tipo = $("#tipoarticulo")[0].value;
+        if(tipo === "2")
+        {
+            $(".restantes").css("display","block");
+            $("#franquicia_id_articulo")[0].value = 2;
+        }else{
+            $(".restantes").css("display","none");
+            $("#franquicia_id_articulo")[0].value = 1;
+        }
+    });
+
 @endsection
