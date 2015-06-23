@@ -537,7 +537,7 @@
 
                                 <footer>
                                     <section>
-                                        <button type="submit" class="btn btn-primary pull-right">
+                                        <button type="submit" class="btn btn-primary pull-right btn2">
                                             Enviar formulario
                                         </button>
                                     </section>
@@ -599,7 +599,7 @@
 
     $('#formulario_contacto').submit(function(e) {
 
-    $( ".btn" ).prop( "disabled", true );
+    $( ".btn2" ).prop( "disabled", true );
 
         e.preventDefault();
 
