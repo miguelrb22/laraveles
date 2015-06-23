@@ -315,9 +315,12 @@ class WebController extends Controller {
 
 
         //obtenemos las noticias generales publicadas
+
         $numeroPublicaciones = $this->numeroPublicidades[13]->recuadros;
 
+
         $this->publicaciones = Publicaciones::take($numeroPublicaciones)->orderBy('id','DES')->where('tipo','=',1)->get();
+        //dd($this->publicaciones);
 
         //Compartimos el array con todas las vistas
         View::share('publicaciones', $this->publicaciones);
@@ -345,16 +348,7 @@ class WebController extends Controller {
     public function index()
     {
 
-        //Obtenemos las últimas 5 publicaciones para pasarlas a la vista principal (sólo a al vista principal)
-        $publicaciones = Publicaciones::take(10)->orderBy('id','DES')->where('tipo','=',1)->get();
-
-        //Obtenemos las x ultimas entrevistas para pasarlas a la vista principal (sólo a la vista principal)
-
-
-
-        //Obtenemos las categorias del buscador para cargarlas dinámicamente de la BD.
-        $categorias = Categoria::all();
-        return view('inicio',compact('publicaciones','entrevistas'));
+        return view('inicio');
     }
 
     /*
@@ -777,10 +771,6 @@ class WebController extends Controller {
      */
     public function showpublicacion($titulo,$id)
     {
-
-        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
-        $patrocinadas = $this->patrocinadasB;
-
         $articulo = Publicaciones::where('id','=',$id)->get();
 
         $url = $articulo[0]->contenido;
@@ -818,7 +808,8 @@ class WebController extends Controller {
 
         //obtenemos las noticias de esta franquicia para pasarlas también a la información del perfil
         $noticias = Publicaciones::where('franquicia_id','=', $franquicia->id)
-                                    ->where('tipo','=',1)->get();
+                                    ->where('tipo','=',1)
+                                    ->orWhere('tipo','=',3)->get();
 
         //obtenemos las entrevistas de esta franquicia para pasarlas también a la información del perfil
         $entrevistas = Publicaciones::where('franquicia_id','=', $franquicia->id)
