@@ -4,7 +4,7 @@
         var app = angular.module("modulo-inicio",[]);
 
         app.controller("GreetingController",["$scope","$http",function(o,h){
-            o.valor="1"
+            o.valor="1";
             o.paquetes = [];
             o.cargando = true;
 
@@ -12,10 +12,16 @@
                 o.paquetes = data;
                 o.cargando = false;
                 o.cantidad = o.paquetes.length;
-            })
-            .error(function(error)
+            }).error(function(error)
             {
                 cargando = false;
+            });
+
+            h.post("{{URL::route('apuntoCaducarPaquetes')}}").success(function (data) {
+                o.paquetes2 = data;
+                o.cantidad2 = o.paquetes2.length;
+            }).error(function(error)
+            {
             });
 
 
@@ -36,26 +42,35 @@
 
             <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
             <div class="btn-group btn-group-justified" data-toggle="buttons">
+
                 <label class="btn btn-default" ng-click="valor=1">
-                    <input type="radio" name="activityy" id="ajax/mail.php">
-                    Avisos (@{{cantidad}}) </label>
+                    <input type="radio" name="activityy" id="mail">
+                    Franquicias (@{{cantidad}})
+                </label>
+
                 <label class="btn btn-default" ng-click="valor=2">
-                    <input type="radio" name="activityy" id="ajax/notifications.php" ng-click="Ctrl()">
-                    notify (3) </label>
-                <label class="btn btn-default" ng-click="valor=3">
-                    <input type="radio" name="activityy" id="ajax/tasks.php" ng-click="Ctrl()">
-                    Tasks (4) </label>
+                    <input type="radio" name="activityy" id="notificacion">
+                    Paquetes (3)
+                </label>
+
             </div>
 
             <!-- notification content -->
                 <div class="ajax-notifications custom-scroll">
 
-                <div class="alert alert-transparent" ng-show="valor == 1">
-                    <ul ng-repeat="paquete in paquetes">
-                        <div class="row">
-                            <p>@{{ paquete.franquicia_id }}</p>
-                        </div>
-                    </ul>
+
+                    <div class="alert alert-transparent" ng-show="valor == 1">
+
+                        <div class="fluid-container">
+
+                        <div ng-repeat="paquete in paquetes" class="row" style="left: 0;">
+
+                                <p><span style="font-weight: bold">@{{ paquete['nombre_comercial'] }} </span> caducará el próximo: <br><span style="color: #ff0000; font-weight: bold; margin-right: 10px;"> @{{ paquete['fecha_vencimiento_ficha'] | date:'dd-MM-yyyy' }}</span><button class="btn btn-success btn-xs" style="background-color: #ffffff; color: green;" disabled><i class="fa fa-phone"></i> @{{ paquete['tf_contacto']}}</button></p>
+                                <hr>
+                            </div>
+                            </div>
+
+
                 </div>
 
                 <div class="alert alert-transparent" ng-show="valor == 2">
@@ -63,23 +78,12 @@
                     @{{ valor  }}
                 </div>
 
-                <div class="alert alert-transparent" ng-show="valor == 3">
-                    <h4>Zona 3</h4>
-                    @{{ valor  }}
-                </div>
-
-
             </div>
 
             <!-- end notification content -->
 
             <!-- footer: refresh area -->
-                <span> Last updated on: 12/12/2013 9:43AM
-                    <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..."
-                            class="btn btn-xs btn-default pull-right">
-                        <i class="fa fa-refresh"></i>
-                    </button>
-                </span>
+
             <!-- end footer -->
         </div>
     </div>
