@@ -511,7 +511,7 @@
                                             <label>Marque las franquicias de su interés.</label>
                                         </div>
                                         <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <button type="button" id="desmarcar" class="desmarcar">Desmarmar todas las opciones</button>
+                                            <button type="button" id="desmarcar" class="desmarcar">Desmarcar todas las opciones</button>
                                         </div>
                                         <br>
                                         <br>
