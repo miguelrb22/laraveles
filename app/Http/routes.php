@@ -95,7 +95,8 @@ Route::post('editar-publicacionEdit', ['as' => 'editarpublicacion', 'uses' => 'm
 
 Route::post('borrar-publicacion', ['as' => 'delnoticia', 'uses' => 'models_controller\publicacionController@destroy']);
 
-Route::post('apuntoCaducar' ,  ['as' => 'apuntoCaducar', 'uses' => 'areaprivada\AreaPrivadaController@paquetesApuntoCaducar']);
+Route::post('apuntoCaducar' ,  ['as' => 'apuntoCaducar', 'uses' => 'areaprivada\AreaPrivadaController@franquiciasApuntoCaducar']);
+Route::post('apuntoCaducarPaquetes' ,  ['as' => 'apuntoCaducarPaquetes', 'uses' => 'areaprivada\AreaPrivadaController@paquetesApuntoCaducar']);
 
 /***************************************************************************************************************/
 /***************************************************************************************************************/

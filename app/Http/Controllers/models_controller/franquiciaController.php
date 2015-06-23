@@ -158,7 +158,7 @@ class franquiciaController extends Controller
         //actualizar categorias especiales
 
         DB::table('paquetes_activos')->where('id', '=', $id)
-            ->update(['especial_lc' => 0, 'especial_ex' => 0, 'especial_ba' => 0, 'especial_re' => 0, 'destacado_categoria' => 0]);
+            ->update(['lowcost' => 0, 'exito' => 0, 'baratas' => 0, 'rentables' => 0, 'destacado_categoria' => 0]);
 
         DB::table('franquicia_has_categoria_especial')->where('franquicia_idfranquicia', '=', $id)->delete();
 

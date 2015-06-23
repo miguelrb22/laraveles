@@ -272,12 +272,22 @@ class AreaPrivadaController extends Controller
 
     }
 
+    public function franquiciasApuntoCaducar(){
+
+        $now = time();
+        $now = date("Y-m-d", $now);
+
+        $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
+        return $paquetes;
+
+    }
+
     public function paquetesApuntoCaducar(){
 
         $now = time();
         $now = date("Y-m-d", $now);
 
-        $paquetes = DB::table("publicidad")->whereRaw('final >= DATE_ADD(CURRENT_DATE, INTERVAL 5 DAY)')->get();
+        $paquetes = DB::table("publicidad_franquicias")->whereRaw('final >= DATE_ADD(CURRENT_DATE, INTERVAL 5 DAY)')->get();
         return $paquetes;
 
     }
