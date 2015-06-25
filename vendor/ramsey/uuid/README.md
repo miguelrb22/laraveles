@@ -40,7 +40,13 @@ Much inspiration for this library came from the [Java][javauuid] and
 
 The [latest class API documentation][apidocs] is available online. This project
 uses [ApiGen](http://apigen.org/) to generate this documentation. To
-generate the documentation on your own, run `apigen` from the root of the project.
+generate the documentation on your own, install ApiGen and run the following command
+from the root of the project:
+
+```
+apigen generate --source="src" --destination="build/apidocs" --title="ramsey/uuid" --template-theme="bootstrap" --deprecated --todo
+```
+
 This will generate documentation in the `build/apidocs/` folder.
 
 ## Requirements
@@ -108,4 +114,4 @@ composer require ramsey/uuid
 [packagist]: https://packagist.org/packages/ramsey/uuid
 [composer]: http://getcomposer.org/
 [moontoast\math]: https://github.com/moontoast/math
-[apidocs]: http://docs.benramsey.com/ramsey-uuid/2.8/
+[apidocs]: http://docs.benramsey.com/ramsey-uuid/3.0.x-dev/

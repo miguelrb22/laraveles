@@ -151,26 +151,10 @@ class franquiciaController extends Controller
 
 
         $id = $request->id;
-        $categorias_especiales = $request->input('especial');
         $categorias = $request->input('categoria');
 
 
-        //actualizar categorias especiales
 
-        DB::table('paquetes_activos')->where('id', '=', $id)
-            ->update(['lowcost' => 0, 'exito' => 0, 'baratas' => 0, 'rentables' => 0, 'destacado_categoria' => 0]);
-
-        DB::table('franquicia_has_categoria_especial')->where('franquicia_idfranquicia', '=', $id)->delete();
-
-        if (!$categorias_especiales==null){
-            foreach ($categorias_especiales as $ce) {
-
-                $fhe = New FHE();
-                $fhe->franquicia_idfranquicia = "$id";
-                $fhe->idcategoria_especial = $ce;
-                $fhe->save();
-            }
-         }
         /////////////
 
 

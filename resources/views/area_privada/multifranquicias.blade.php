@@ -1379,7 +1379,9 @@
 
                 var $hoy = new Date(today);
                 var $inicio = new Date(inicio);
+                $inicio.setHours(00);
                 var $fin = new Date(fin);
+                $fin.setHours(00);
 
 
                 var c = this.parentElement.parentElement.children[4];

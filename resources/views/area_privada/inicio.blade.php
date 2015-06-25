@@ -10,18 +10,20 @@
 
             h.post("{{URL::route('apuntoCaducar')}}").success(function (data) {
                 o.paquetes = data;
-                o.cargando = false;
                 o.cantidad = o.paquetes.length;
             }).error(function(error)
             {
-                cargando = false;
             });
 
             h.post("{{URL::route('apuntoCaducarPaquetes')}}").success(function (data) {
                 o.paquetes2 = data;
                 o.cantidad2 = o.paquetes2.length;
+                o.cargando = false;
+
             }).error(function(error)
             {
+                cargando = false;
+
             });
 
 
@@ -35,7 +37,7 @@
 
 
     <div ng-app="modulo-inicio">
-    <span id="activity" class="activity-dropdown"  ng-controller="GreetingController" > <i class="fa fa-user"></i> <b class="badge avisos" ng-show="!cargando && paquetes.length > 0"> @{{cantidad}} </b> </span>
+    <span id="activity" class="activity-dropdown"  ng-controller="GreetingController" > <i class="fa fa-user"></i> <b class="badge avisos" ng-show="!cargando && paquetes.length > 0"> @{{cantidad + cantidad2}} </b> </span>
 
     <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
         <div class="ajax-dropdown"  ng-controller="GreetingController">
@@ -65,7 +67,7 @@
 
                         <div ng-repeat="paquete in paquetes" class="row" style="left: 0;">
 
-                                <p><span style="font-weight: bold">@{{ paquete['nombre_comercial'] }} </span> caducará el próximo: <br><span style="color: #ff0000; font-weight: bold; margin-right: 10px;"> @{{ paquete['fecha_vencimiento_ficha'] | date:'dd-MM-yyyy' }}</span><button class="btn btn-success btn-xs" style="background-color: #ffffff; color: green;" disabled><i class="fa fa-phone"></i> @{{ paquete['tf_contacto']}}</button></p>
+                                <p><span style="font-weight: bold">@{{ paquete['nombre_comercial'] }} </span> caducará el próximo: <br><span style="color: #ff0000; font-weight: bold; margin-right: 10px;"> @{{ paquete['fecha_vencimiento_ficha'] | date:'dd-MM-yyyy' }}</span><button class="btn btn-success btn-xs" style="background-color: #ffffff; color: green;" disabled><i class="fa fa-phone"></i><span ng-show=" paquete['tf_contacto']=='' "> No disponible</span> @{{ paquete['tf_contacto']}}</button></p>
                                 <hr>
                         </div>
 
