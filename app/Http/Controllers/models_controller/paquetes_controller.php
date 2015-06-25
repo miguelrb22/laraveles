@@ -106,7 +106,7 @@ class paquetes_controller extends Controller
         //Vemos si el paquete es de categoria especial (exito,lowcost...) o de otro tipo aunque aparte el form tiene
         //en el input el id del paquete
         if($paquete === 'exito' || $paquete === 'rentables' || $paquete === 'baratas'
-            || $paquete === 'lowcost')
+            || $paquete === 'lowcost' || $paquete === 'noticias')
         {
             //Guardamos la publicidad.
             $publicidad->save();
@@ -548,6 +548,75 @@ class paquetes_controller extends Controller
         }
 
         //----------fin parte lowcost -----------//
+
+
+        //---------- Para parte entrevistas -----------//
+
+        //Obtenemos el número de entrevistas que se están mostrando actualmente.
+        //por eso cogemos las entrevitas cuya fecha cuyo fecha actual se encuentra dentro del
+        // periodo de visualizacion de la entrevista
+        $numActuales = Publicaciones::where('fecha_publicacion' , '<=', $time)
+            ->where('fecha_finalizacion','>=', $time)
+            ->where('tipo' ,'=', 2)->count();
+
+        //Si hay entrevistas mostrandose  pasamos datos a la vista de fecha y nº de entrevistas sino no.
+        if($numActuales > 0) {
+            $datos = array();
+
+            //Obtenemos las fechas de última disponibilidad para las publicidades
+            //de la tabla publicidad
+            $fechaBS = Publicaciones::where('tipo', '=', 2)->orderBy('fecha_finalizacion', 'ASC')
+                ->where('fecha_publicacion' , '<=', $time)
+                ->where('fecha_finalizacion','>=', $time)
+                ->get(array('fecha_finalizacion'))->take(1);
+
+            //Parseamos la fecha con carbon para devolver el formato que queremos.
+            $fechaBS = Carbon::parse($fechaBS[0]->fecha_finalizacion)->format('d-m-Y');
+
+
+            //Insertamos los datos en los arrays
+            array_push($datos, 'entrevista', $fechaBS, $numActuales, intval($this->numeroPublicidades[12]->recuadros));
+
+            array_push($resultados, $datos);
+        }
+
+        //----------fin parte entrevistas -----------//
+
+
+        //---------- Para parte noticiasDestacadas -----------//
+
+        //Obtenemos el número de noticiadas destacadas que se están mostrando actualmente.
+        //por eso cogemos las noticias destacadas cuya fecha cuyo fecha actual se encuentra dentro del
+        // periodo de visualizacion de la noticia
+        $numActuales = Publicaciones::where('fecha_publicacion' , '<=', $time)
+                                    ->where('fecha_finalizacion','>=', $time)
+                                    ->where('tipo' ,'=', 3)->count();
+
+        //Si hay entrevistas mostrandose  pasamos datos a la vista de fecha y nº de entrevistas sino no.
+        if($numActuales > 0) {
+            $datos = array();
+
+            //Obtenemos las fechas de última disponibilidad para las publicidades
+            //de la tabla publicidad
+            $fechaBS = Publicaciones::where('tipo', '=', 3)->orderBy('fecha_finalizacion', 'ASC')
+                                    ->where('fecha_publicacion' , '<=', $time)
+                                    ->where('fecha_finalizacion','>=', $time)
+                                    ->get(array('fecha_finalizacion'))->take(1);
+
+            //Parseamos la fecha con carbon para devolver el formato que queremos.
+            $fechaBS = Carbon::parse($fechaBS[0]->fecha_finalizacion)->format('d-m-Y');
+
+
+            //Insertamos los datos en los arrays
+            array_push($datos, 'noticia_des', $fechaBS, $numActuales, intval($this->numeroPublicidades[6]->recuadros));
+
+            array_push($resultados, $datos);
+        }
+
+        //----------fin parte entrevistas -----------//
+
+
+
 
 
 

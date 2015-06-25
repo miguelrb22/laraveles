@@ -237,7 +237,7 @@
                                         <img src="{{ asset('images/multifranquicias_anucio.png') }}" class="img-responsive" alt="Responsive image">
                                     </div>
                                 </div>
-                                <div class="row panel panel-inf" id="panelNoticias">
+                                <div class="row panel-inf" id="panelNoticias">
                                     <div class="panel-heading  text-center" id="noticiasHeader">
                                         <h3> Noticias de franquicias </h3>
                                     </div>
@@ -247,17 +247,21 @@
                                             @if(!$noticiaDestacada->isEmpty())
 
                                                 @foreach($noticiaDestacada as $noticia)
-                                                    <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
-                                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><h4>{{ $noticia->titulo }}</h4></a>
-                                                        <p id="noticiaDes"> {{ $noticia->resumen }} </p>
-                                                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}">seguir leyendo</a>
+                                                    <div class="row">
+                                                        <div class="col col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><h4>{{ $noticia->titulo }}</h4></a>
+                                                            <p id="noticiaDes"> {{ $noticia->resumen  }} ... </p>
+                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}">seguir leyendo</a>
+                                                        </div>
+                                                        <div class="col col-xs-4 col-sm-4 col-md-3 col-lg-3" style="margin-top: -2%">
+                                                            <br>
+                                                            <br>
+                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><img class="img-responsive img-rounded" id="imagen-noticia" src="{{ asset($noticia->url_imagen)  }}" alt="prueba"  width="140px"></a>
+                                                        </div>
                                                     </div>
-                                                    <div class="col col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 2%">
-                                                        <br>
-                                                        <br>
-                                                        <img class="img-responsive" id="imagen-noticia" src="{{ asset($noticia->url_imagen)  }}" alt="prueba" >
-                                                    </div>
+                                                    <hr>
                                                 @endforeach
+
                                             @else
 
                                                 <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
@@ -382,7 +386,6 @@
                                         <br>
                                     </div>
                                 @else
-
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12" style="margin-bottom:30px">
                                         <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                                             <img class="img-responsive" src={{ asset('images/seform.gif') }} alt="prueba" >

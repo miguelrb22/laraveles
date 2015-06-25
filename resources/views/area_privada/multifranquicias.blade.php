@@ -143,6 +143,7 @@
                 <div id="hide-menu" class="btn-header pull-right">
                     <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
                 </div>
+
                 <!-- end collapse menu -->
 
                 <!-- #MOBILE -->
@@ -188,6 +189,10 @@
                 <div id="fullscreen" class="btn-header transparent pull-right">
                     <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
                 </div>
+                <div id="fullscreen" class="btn-header transparent pull-right">
+                    <span> <a href="javascript:void(0);" class="remove" title="Full Screen"><i class="fa fa-remove"></i></a> </span>
+                </div>
+
                 <!-- end fullscreen button -->
 
 
@@ -1418,6 +1423,11 @@
                     }
                 });
             });
+
+            $(".remove").on("click",function(){
+                var a = "{{Session::forget('franquicia')}}";
+                location.reload();
+            })
 
 
             @yield('ready')

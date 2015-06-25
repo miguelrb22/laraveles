@@ -121,11 +121,11 @@ class WebController extends Controller {
                     //La diferencia entre las entrevistas devueltas y las entrevistas que hemos puesto que halla.
                 $coger = intval($this->numeroPublicidades[6]->recuadros) - count($this->entrevistas);
                 $resto = Publicaciones::take($coger)->orderBy('id','DES')
-                    ->where('fecha_publicacion','<=',$time)//quitarla?
-                    ->where('fecha_finalizacion','>=',$time)
-                    ->where('pertenencia','=',1)
-                    ->orderBy(DB::raw('RAND()'))
-                    ->where('tipo','=',3)->get();
+                                            ->where('fecha_publicacion','<=',$time)//quitarla?
+                                            ->where('fecha_finalizacion','>=',$time)
+                                            ->where('pertenencia','=',1)
+                                            ->orderBy(DB::raw('RAND()'))
+                                            ->where('tipo','=',3)->get();
 
             $this->noticias_des = $this->noticias_des->merge($resto);
         }
@@ -315,7 +315,6 @@ class WebController extends Controller {
 
 
         //obtenemos las noticias generales publicadas
-
         $numeroPublicaciones = $this->numeroPublicidades[13]->recuadros;
 
 

@@ -1280,10 +1280,9 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->patrocinado_b == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
                                                         </section>
@@ -1401,10 +1400,9 @@
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
                                                                 @if ($paquetes[0]->destacado_categoria == 0)
-                                                                    <input type='checkbox' name='checkbox-toggle'>
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
-                                                                    <input type='checkbox' name='checkbox-toggle'
-                                                                           checked="checked">
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
                                                                 @endif
                                                                 <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Activar/Desactivar</label>
                                                         </section>
@@ -1424,30 +1422,32 @@
                                                                        placeholder="Fecha Fin">
                                                             </label>
                                                         </section>
-
-
-                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
-                                                            <div class="input input-file">
-                                                                <span class="button"><input type="file" id="file"
-                                                                                            name="file"
-                                                                                            onchange="this.parentNode.nextSibling.value = this.value">Subir</span><input
-                                                                        type="text" placeholder="Seleciona una imagen"
-                                                                        readonly="">
-                                                            </div>
-                                                        </section>
                                                     </div>
+
+
+                                                    <input type="text" value="14" name="idtipo_publicidad" hidden>
+                                                    <input type="text" value="noticias" name="nombre_paquete" hidden>
 
                                                 </fieldset>
 
-
-                                                <footer>
-                                                    <label><strong>Disponible el:</strong></label>
-                                                    <label>fecha</label>
-
-
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Actualizar
-                                                    </button>
+                                                <footer class="noticia_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº franquicias:</strong></label>
+                                                            <label class="num">fecha</label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="recuadros"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </footer>
                                             </form>
 

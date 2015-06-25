@@ -8,6 +8,13 @@
 @endsection
 @section('main')
 
+
+    <?php
+        $ses = Session::get('franquicia');
+    ?>
+    @if(isset($ses))
+        <h5 class="text-center">Franquicia cargada: {{$ses->nombre_comercial}}</h5>
+    @endif
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
@@ -16,48 +23,71 @@
 
                     {!! Form::token() !!}
 
-                    <div class="row">
 
-                        <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Tipo de publicación</label>
-                        @if(!$entrevistas->isEmpty())
-                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 entrevistas">Entrevistas restantes: {{$entrevistas[0]->cantidad}} </label>
-                        @endif
-                        @if(!$destacadas->isEmpty())
-                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 destacadas">Entrevistas restantes: {{$destacadas[0]->cantidad}} </label>
-                        @endif
+                        <div class="row">
 
-                    </div>
-                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
-                        <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
-                            <option value="1" selected>Noticia</option>
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Tipo de publicación</label>
                             @if(!$entrevistas->isEmpty())
-                                @if($entrevistas[0]->cantidad > 0)
-                                    <option value="2">Entrevista</option>
-                                @endif
+                                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 entrevistas">Entrevistas restantes: {{$entrevistas[0]->cantidad}} </label>
                             @endif
                             @if(!$destacadas->isEmpty())
-                                @if($destacadas[0]->cantidad > 0)
-                                    <option value="3">Noticia destacada</option>
-                                @endif
+                                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 destacadas">Entrevistas restantes: {{$destacadas[0]->cantidad}} </label>
                             @endif
-                        </select>
-                    </div>
 
-                    <br>
+                        </div>
 
-                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+                            @if(!isset($ses))
+                             <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+                                <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
+                                    <option value="1">Noticia</option>
+                                </select>
+                             </div>
+                            @else
+                                <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
 
-                        <label >Pertenencia publicación</label>
-                        <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
-                            <option value="1" selected>General</option>
-                            <?php $ses = Session::get('franquicia') ;
-                            if(isset($ses)){
-                                echo "<option value='2'>$ses->nombre_comercial</option>";
-                            }
-                            ?>
+                                    <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
+                                        <option value="1"> - Seleccionar paquete -</option>
+                                        @if(!$noticias->isEmpty())
+                                            <option value="1">Noticia</option>
+                                        @endif
+                                        @if(!$entrevistas->isEmpty())
+                                            @if($entrevistas[0]->cantidad > 0)
+                                                <option value="2">Entrevista</option>
+                                            @endif
+                                        @endif
+                                        @if(!$destacadas->isEmpty())
+                                            @if($destacadas[0]->cantidad > 0)
+                                                <option value="3">Noticia destacada</option>
+                                            @endif
+                                        @endif
+                                    </select>
+                                </div>
+                            @endif
 
-                        </select>
-                    </div>
+                        @if(!$noticias->isEmpty() || !$entrevistas->isEmpty() || !$destacadas->isEmpty())
+                            <br>
+                            <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+
+                                <label>Pertenencia publicación</label>
+                                <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
+                                        <option value="1">Propia/General</option>
+                                    @if(isset($ses))
+                                        <option value='2'>{{$ses->nombre_comercial}}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        @endif
+
+                        @if(!isset($ses))
+                            <br>
+                            <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+                                <label>Pertenencia publicación</label>
+                                <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
+                                    <option value="1">Propia/General</option>
+                                </select>
+                            </div>
+                        @endif
+
 
                     <?php
                     if(isset($ses)){
@@ -103,7 +133,7 @@
 
                     <textarea name ='contenido' class="summernote" placeholder="Escriba aqui el contenido de su publicación..."></textarea>
                     <br>
-                    <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus-square"></i> Publicar</button>
+                    <button type="submit" class="btn btn-success btn-lg publicar" disabled><i class="fa fa-plus-square"></i> Publicar</button>
                 </form>
             </div>
         </div>
@@ -159,15 +189,20 @@
             $(".entrevistas").css("display","block");
             $("#franquicia_id_articulo")[0].value = 2;
             $(".destacadas").css("display","none");
+            $(".publicar").removeAttr("disabled");
         }else if(tipo === "3"){
             $(".destacadas").css("display","block");
             $("#franquicia_id_articulo")[0].value = 2;
             $(".entrevistas").css("display","none");
+            //$(".publicar").removeAttr("disabled");
         }else{
             $(".entrevistas").css("display","none");
             $(".destacadas").css("display","none");
             $("#franquicia_id_articulo")[0].value = 1;
+            $(".publicar").attr("disabled","disabled");
         }
     });
+
+
 
 @endsection

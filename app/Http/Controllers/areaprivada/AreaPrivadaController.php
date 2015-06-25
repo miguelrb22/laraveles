@@ -94,8 +94,6 @@ class AreaPrivadaController extends Controller
         $time = date("Y-m-d", $time);
 
         $franquicia = Session::get('franquicia');
-        $destacadas =  new Collection([]);
-        $entrevistas = new Collection();
 
 
         if($franquicia != null) {
@@ -114,12 +112,21 @@ class AreaPrivadaController extends Controller
                 ->where('final', '>=', $time)
                 ->get(array('cantidad'));
 
-            return view('area_privada.noticias', compact('entrevistas', 'destacadas'));
+            //Comprobamos si tiene noticias activado para publicar esta franquicia
+            $noticias = publicidad::where('franquicia_id', '=', $franquicia->id)
+                ->where('idtipo_publicidad', '=', 14)
+                ->where('inicio', '<=', $time)//podriamos ahorrarnoslo y solo controlar que no se halla pasado
+                ->where('final', '>=', $time)
+                ->get();
+
+            return view('area_privada.noticias', compact('entrevistas', 'destacadas','noticias'));
 
         }else{
-            $destacadas = publicidad::where('franquicia_id','=',99999999)->get();
-            $entrevistas = publicidad::where('franquicia_id','=',99999999)->get();
-            return view('area_privada.noticias', compact('entrevistas', 'destacadas'));
+            //para pasar un array vacia hacemos una select de una franquicia que nunca va a existir
+            $destacadas = publicidad::where('franquicia_id','=',999999999)->get();
+            $entrevistas = publicidad::where('franquicia_id','=',999999999)->get();
+            $noticias = publicidad::where('franquicia_id','=',999999999)->get();
+            return view('area_privada.noticias', compact('entrevistas', 'destacadas','noticias'));
         }
 
     }
