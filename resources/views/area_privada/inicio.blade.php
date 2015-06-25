@@ -50,7 +50,7 @@
 
                 <label class="btn btn-default" ng-click="valor=2">
                     <input type="radio" name="activityy" id="notificacion">
-                    Paquetes (3)
+                    Paquetes (@{{cantidad2}})
                 </label>
 
             </div>
@@ -67,15 +67,37 @@
 
                                 <p><span style="font-weight: bold">@{{ paquete['nombre_comercial'] }} </span> caducará el próximo: <br><span style="color: #ff0000; font-weight: bold; margin-right: 10px;"> @{{ paquete['fecha_vencimiento_ficha'] | date:'dd-MM-yyyy' }}</span><button class="btn btn-success btn-xs" style="background-color: #ffffff; color: green;" disabled><i class="fa fa-phone"></i> @{{ paquete['tf_contacto']}}</button></p>
                                 <hr>
+                        </div>
+
+                            <div ng-show="cantidad == 0">
+
+                                <h3>No hay franquicias próximas a caducar.</h3>
+                               <center> <i class="fa fa-comment fa-5x" style=""></i></center>
+
                             </div>
-                            </div>
+
+                        </div>
 
 
                 </div>
 
                 <div class="alert alert-transparent" ng-show="valor == 2">
-                    <h4>Zona 2</h4>
-                    @{{ valor  }}
+                    <div class="fluid-container">
+
+                        <div ng-repeat="paquete in paquetes2" class="row" style="left: 0;">
+
+                            <p><span>El paquete <span style="font-weight: bold; color: #00bfff">@{{ paquete['nombre_paquete'] }}</span> de </span><span style="font-weight: bold">@{{ paquete['nombre_comercial'] }} </span> caducará el próximo: <br><span style="color: #ff0000; font-weight: bold; margin-right: 10px;"> @{{ paquete['final'] | date:'dd-MM-yyyy' }}</span><button class="btn btn-success btn-xs" style="background-color: #ffffff; color: green;" disabled><i class="fa fa-phone"></i> <span ng-show=" paquete['tf_contacto']=='' ">No disponible</span>@{{ paquete['tf_contacto']}}</button></p>
+                            <hr>
+                        </div>
+
+                        <div ng-show="cantidad2 == 0">
+
+                            <h3>No hay paquetes próximas a caducar.</h3>
+                            <center> <i class="fa fa-comment fa-5x" style=""></i></center>
+
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
@@ -88,7 +110,6 @@
         </div>
     </div>
 @endsection
-
 <style>
     body{-moz-user-select:none;-webkit-user-select:none;user-select:none}td{cursor:pointer;font-size:12px}
 </style>

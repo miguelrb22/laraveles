@@ -169,8 +169,6 @@ class franquiciaController extends Controller
                 $fhe->franquicia_idfranquicia = "$id";
                 $fhe->idcategoria_especial = $ce;
                 $fhe->save();
-
-
             }
          }
         /////////////
