@@ -6,7 +6,7 @@
     }
 
     .lobibox-confirm{
-        margin-top: -20%;
+        margin-top: -10%;
     }
 </style>
 @section('main')
@@ -99,8 +99,6 @@
                                             else  echo "<span style='color:green; font-weight: bold''>Activado</span>";
 
 
-
-
                                             ?>
 
                                         </td>
@@ -132,6 +130,14 @@
             <!-- WIDGET END -->
         </div>
     </section>
+
+    <div class="row">
+
+        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button id="borrartodo" class="btn btn-danger"  onclick="borrartodo()"><i class="fa fa-trash-o"></i> Limpiar caducadas <i class="fa fa-warning"></i></button>
+        </div>
+
+    </div>
 
     <div class="row">
 
@@ -289,6 +295,55 @@
             }
         });
     }
+
+</script>
+
+<script>
+
+    function borrartodo(){
+
+        var token = "{{ csrf_token()}}";
+
+        Lobibox.confirm({
+
+            title: 'Borrar todo',
+
+            msg: "Vas a eliminar todas las publicidades caducadas",
+            callback: function ($this, type, ev) {
+                if (type === 'yes') {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ URL::route('borrar-publicidad-general-todo') }}",
+                        data: { _token: token},
+                        dataType: "html",
+                        error: function () {
+                            alert("error petición ajax");
+                        },
+                        success: function (data) {
+
+                            Lobibox.notify('success', {
+                                title: 'Borrado',
+                                msg: 'Borrado correctamente'
+                            });
+
+
+
+                            location.reload();
+
+
+
+                        }
+                    });
+
+                } else if (type === 'no') {
+                    Lobibox.notify('info', {
+                        msg: 'Una vez borrado no se puede recuperar, lleve cuidado'
+                    });
+                }
+            }
+        });
+    }
 </script>
 @section('ready')
 
@@ -335,4 +390,5 @@
         todayHighlight: true
         });
     });
+
 @endsection

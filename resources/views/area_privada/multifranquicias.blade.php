@@ -1362,6 +1362,39 @@
 
                 var token = "{{ csrf_token()}}";
 
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd='0'+dd
+                }
+
+                if(mm<10) {
+                    mm='0'+mm
+                }
+
+                today = yyyy+'/'+mm+'/'+dd;
+
+                var $hoy = new Date(today);
+                var $inicio = new Date(inicio);
+                var $fin = new Date(fin);
+
+
+                var c = this.parentElement.parentElement.children[4];
+
+                if($inicio > $fin || $fin < $inicio )
+                    c.innerHTML = "<span style='color:#000000; font-weight: bold''>Error intervalo</span>";
+                else if ($hoy < $inicio)
+                    c.innerHTML = "<span style='color:darkorange; font-weight: bold'>Esperando</span>";
+                else if ($fin < $hoy)
+                    c.innerHTML ="<span style='color:#ff0000; font-weight: bold''>Caducado</span>";
+                else c.innerHTML = "<span style='color:green; font-weight: bold''>Activado</span>";
+
+
+
+
 
                 $.ajax({
 

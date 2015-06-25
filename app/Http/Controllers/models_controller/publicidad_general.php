@@ -7,7 +7,7 @@ use App\model\publicidad;
 use App\model\tipo_publicidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 
 class publicidad_general extends Controller
 {
@@ -35,6 +35,16 @@ class publicidad_general extends Controller
 
       publicidad::find($request->aux)->delete();
 
+
+    }
+
+    public  function delall(Request $request){
+
+
+
+        $officialDate = Carbon::now()->toDateString();
+
+        $publicidad = publicidad::where('final','<',$officialDate)->delete();
 
     }
 
