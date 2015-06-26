@@ -104,6 +104,7 @@ class publicacionController extends Controller
         $publicacion->save();
 
 
+        /**
         $settings = array(
             'oauth_access_token' => "",
             'oauth_access_token_secret' => "",
@@ -116,6 +117,8 @@ class publicacionController extends Controller
         $requestMethod = 'POST';
         $postfields = array( 'status' => "hola", );
         return $twitter->buildOauth($url, $requestMethod)->setPostfields($postfields)->performRequest();
+         *
+         * **/
 
 
 
