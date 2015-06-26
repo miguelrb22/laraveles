@@ -68,7 +68,7 @@
                                             <?php
                                                 $color =  dechex(mt_rand(0x000000, 0xFFFFFF));
                                             ?>
-                                            <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
+                                            <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5 subcategorias3" style="margin-left: 30px;">
                                                 <div class="row panel panel-info">
                                                     <div class="panel-heading text-center" id="" style="background:{{ '#'.$color  }}; box-shadow: 0 0 7px {{ '#' .$color  }}">
                                                         <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i]->nombre)))}}" class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
