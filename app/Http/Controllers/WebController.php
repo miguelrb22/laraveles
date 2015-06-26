@@ -394,8 +394,8 @@ class WebController extends Controller {
         //Obtenemos las subcategoria de una categoria dada ($categoria)
         $subcategorias = subcategoria::where('categoria_id', '=', $categoria )->get(['id','nombre']);
         ///Definimos la query///
+
         $query = new franquicia_nom_subcategoria;
-        //$query = new Franquicia;
         ///-----------------///
 
         ///Vamos concatenando wheres para la busqueda segun existan los parámetros///
@@ -411,20 +411,29 @@ class WebController extends Controller {
             }
             if ($categoria != -1) {
 
-                $listaIdsFranquicias = array(); //Lista con los ids de las franquicias que cumplen que la subcategoria es igual a la categoria pasada
+                //$listaIdsFranquicias = array(); //Lista con los ids de las franquicias que cumplen que la subcategoria es igual a la categoria pasada
                 //Vamos extrayendo franquicias que cumplan la condicion de anterior y esta
+                $listaIdsFranquicias = collect();
+
+
                 foreach($subcategorias as $id)
                 {
                     $ids = franquicia_subcategoria::where('subcategoria_id', '=', $id->id)->get();
-                    array_push($listaIdsFranquicias,$ids);
+                    //array_push($listaIdsFranquicias,$ids);
+                    $listaIdsFranquicias = $listaIdsFranquicias->merge($ids);
+
                 }
 
+
+
+
+                //BIEN
                 //Comprobamos si de ids no está vacia para hacer la igualacion, si está vacía devolvemos la vista si nada y no continuamos
                 //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
 
                 if(!empty($listaIdsFranquicias)) { //Falta comprobar
                     //Hacemos esta igualacion porque listaIds es un array con un collect dentro.
-                    $listaIdsFranquicias = $listaIdsFranquicias[0];
+
 
                     $query = $query->where(function ($query) use ($listaIdsFranquicias) {
 
@@ -434,14 +443,8 @@ class WebController extends Controller {
 
                         }
                     });
-                    //Segundo filtro para que no devuelva todas las franquicias con un id que no es de la subcategoria buscada
-                    $query = $query->where(function ($query) use ($subcategorias) {
 
-                        foreach ($subcategorias as $subcategoria) {
 
-                            $query = $query->orWhere('subcategoria_id', '=', $subcategoria->id);
-                        }
-                    });
                     $flag = true;
                 }
             }
@@ -458,6 +461,7 @@ class WebController extends Controller {
             //Comprobamos si el flag está a true porque ha entrada en algún filtro
             if($flag) {
                 $franquicias = $query->orderBy('nombre_comercial','ASC')->get();
+
             }
 
             $resultados = count($franquicias);
