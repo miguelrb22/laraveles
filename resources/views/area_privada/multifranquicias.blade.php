@@ -1427,7 +1427,7 @@
             $(".remove").on("click",function(){
                 var a = "{{Session::forget('franquicia')}}";
                 location.reload();
-            })
+            });
 
 
             @yield('ready')

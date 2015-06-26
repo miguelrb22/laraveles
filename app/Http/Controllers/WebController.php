@@ -536,6 +536,7 @@ class WebController extends Controller {
             $subcategorias = array();
         }
 
+
         $categorias = $this->categorias_deplegables;
         return view ('franquicias',compact('lista'));
     }

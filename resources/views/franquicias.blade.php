@@ -56,20 +56,25 @@
 
                                                     <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
                                                                 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item small"> {{$lista[$i]}} </a>
-                                                    @for($j=1 ; $j < count($lista[$i+1]); $j++)
+                                                    @for($j=0 ; $j < count($lista[$i+1]); $j++)
+
+                                                        @if(!($lista[$i+1][$j] === $lista[$i]))
+
                                                         <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i+1][$j]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
                                                                 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item small"> {{$lista[$i+1][$j]}} </a>
+                                                        @endif
+
                                                     @endfor
                                                 </div>
                                             </div>
                                         @else
-                                            @if(count($lista[$i+1]) > 0)
-                                                <div class="panel">
-                                                    <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
-                                                                'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
-                                                </div>
-                                            @endif
+
+                                            <div class="panel">
+                                                <a href="{{URL::to('franquicias-de-'.strtr(utf8_decode(strtolower(str_replace(' ','-',$lista[$i]))),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
+                                                            'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))}}" class="list-group-item"  data-parent="#accordion">{{$lista[$i]}}</a>
+                                            </div>
                                         @endif
+
                                     @endfor
                                 </div>
                     </div>

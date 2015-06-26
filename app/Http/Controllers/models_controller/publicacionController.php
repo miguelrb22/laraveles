@@ -3,10 +3,12 @@
 
 namespace App\Http\Controllers\models_controller;
 
+use app\Http\Controllers\TwitterAPIExchange;
 use App\model\Publicaciones;
 use App\model\publicidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TwitterAPIExchange as twitter;
 use Ramsey\Uuid\Uuid;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -100,6 +102,21 @@ class publicacionController extends Controller
        }
 
         $publicacion->save();
+
+
+        $settings = array(
+            'oauth_access_token' => "",
+            'oauth_access_token_secret' => "",
+            'consumer_key' => "nBsn4AVKPOjIJRm6vicCUgsgP",
+            'consumer_secret' => "IZ3c9KoW1ekJ5G2eN3ZqmmY0NdgRgsKmYEY3WNyTFghVaoeHI5"
+        );
+        $twitter = new twitter($settings);
+
+        $url = 'https://api.twitter.com/1.1/statuses/update.json';
+        $requestMethod = 'POST';
+        $postfields = array( 'status' => "hola", );
+        return $twitter->buildOauth($url, $requestMethod)->setPostfields($postfields)->performRequest();
+
 
 
     }
