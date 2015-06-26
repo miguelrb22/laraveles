@@ -444,7 +444,14 @@ class WebController extends Controller {
                         }
                     });
 
+                   /** //Segundo filtro para que no devuelva todas las franquicias con un id que no es de la subcategoria buscada
+                    $query = $query->where(function ($query) use ($subcategorias) {
 
+                        foreach ($subcategorias as $subcategoria) {
+
+                            $query = $query->orWhere('subcategoria_id', '=', $subcategoria->id);
+                        }
+                    });*/
                     $flag = true;
                 }
             }
@@ -461,7 +468,6 @@ class WebController extends Controller {
             //Comprobamos si el flag está a true porque ha entrada en algún filtro
             if($flag) {
                 $franquicias = $query->orderBy('nombre_comercial','ASC')->get();
-
             }
 
             $resultados = count($franquicias);

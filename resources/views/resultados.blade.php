@@ -15,8 +15,7 @@
     <div class="row">
         <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
-
-                <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <section class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
                     @if(!$franInIzq->isEmpty())
                         <!-- numPublicaicones[3] el el numero de recuadros que va a haber en la izquierda-->
@@ -42,7 +41,7 @@
                     @endif
 
                 </section>
-                <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="well">
                         <label>Resultados de busqueda: <span class="badge badge-info"> {{ $resultados }} </span> franquicias  </label>
                     </div>
