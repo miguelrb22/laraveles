@@ -823,4 +823,13 @@ body,a,label,h1,h2,h3,h4,h5,h6,div{
 
     color:#00bfff !important;
 }
-
+@media(min-width:  200px) and (max-width: 767px){
+    .subcategorias1{
+        margin-left: 0px !important;
+    }
+}
+@media(min-width:  200px) and (max-width: 767px){
+    .subcategorias2 {
+        margin-right: 0px !important;
+    }
+}

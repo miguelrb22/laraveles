@@ -75,10 +75,10 @@
                                                     </div>
                                                     <div class="panel-body" style="margin-bottom: -16px;">
                                                         <div class="row">
-                                                            <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
+                                                            <div class="col col-xs-12 col-sm-12 col-md-7 col-lg-7 text-center">
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".strtr(utf8_decode($fran_categ[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-responsive img-rounded thumbnail" src="{{ asset($fran_categ[0]->logo_url) }}" alt="prueba" style="width: 250px"></a>
                                                             </div>
-                                                            <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                                            <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".strtr(utf8_decode($fran_categ[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                             </div>
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ[0]->descripcion),0,70).'...'}}</p>
@@ -135,18 +135,18 @@
                                                 $color1 =  dechex(mt_rand(0x000000, 0xFFFFFF));
                                                 $color2 =  dechex(mt_rand(0x000000, 0xFFFFFF));
                                             ?>
-                                            <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-left: 30px;">
+                                            <div class="col col-xs-12 col-sm-5 col-md-5 col-lg-5 subcategorias1" style="margin-left: 30px;">
                                                 <div class="row panel panel-info">
                                                     <div class="panel-heading text-center" id="" style="background: {{"#".$color1}}}; box-shadow: 0 0 7px {{ '#' .$color1  }}">
                                                         <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i]->nombre)))}}"  class="textoblanco subcategoria">{{$subcategorias[$i]->nombre}}</a></span>
                                                     </div>
                                                     <div class="panel-body" style="margin-bottom: -16px;">
                                                         <div class="row">
-                                                            <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
+                                                            <div class="col col-xs-12 col-sm-12 col-md-7 col-lg-7 text-center">
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".strtr(utf8_decode($fran_categ[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-responsive img-rounded thumbnail" src="{{asset($fran_categ[0]->logo_url)}} " alt="prueba" style="width: 250px"></a>
                                                             </div>
-                                                            <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
-                                                               <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".strtr(utf8_decode($fran_categ[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"> <h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
+                                                            <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ[0]->nombre."/".strtr(utf8_decode($fran_categ[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"> <h3 class="text-center">{{$fran_categ[0]->nombre_comercial}}</h3></a>
                                                             </div>
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ[0]->descripcion),0,70).'...'}}</p>
                                                             <div class="row col-xs-12 col-sd-12 col-md-12 col-lg-12">
@@ -157,16 +157,16 @@
                                                                 @endif
 
                                                                 @for($j = 1; $j<count($fran_categ); $j++)
-                                                                        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
-                                                                            <ul class="list-unstyled">
-                                                                                <li>
-                                                                                    <a href="{{URL::to(strtolower(str_replace(' ','-','franquicias-de-'.$fran_categ[$j]->nombre."/".strtr(utf8_decode($fran_categ[$j]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}">{{$fran_categ[$j]->nombre_comercial}}</a>
-                                                                                </li>
-                                                                                <!--<li>
-                                                                                    <a href="#">Tasca joselito</a>
-                                                                                </li>-->
-                                                                            </ul>
-                                                                        </div>
+                                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                                        <ul class="list-unstyled">
+                                                                            <li>
+                                                                                <a href="{{URL::to(strtolower(str_replace(' ','-','franquicias-de-'.$fran_categ[$j]->nombre."/".strtr(utf8_decode($fran_categ[$j]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}">{{$fran_categ[$j]->nombre_comercial}}</a>
+                                                                            </li>
+                                                                            <!--<li>
+                                                                                <a href="#">Tasca joselito</a>
+                                                                            </li>-->
+                                                                        </ul>
+                                                                    </div>
                                                                 @endfor
 
                                                             </div>
@@ -174,18 +174,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-right: -60px;"></div>
-                                            <div class="col col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                            <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 subcategorias2" style="margin-right: -60px;"></div>
+                                            <div class="col col-xs-12 col-sm-5 col-md-5 col-lg-5">
                                                 <div class="row panel panel-info">
                                                     <div class="panel-heading text-center" id="" style="background:{{ '#'.$color2 = dechex(rand(0x000000, 0xFFFFFF))  }}; box-shadow: 0 0 7px {{ '#' .$color2  }}">
                                                         <span><a href="{{URL::to('busqueda-'.strtolower(str_replace(' ','-',$subcategorias[$i+1]->nombre)))}}" class="textoblanco subcategoria">{{$subcategorias[$i+1]->nombre}}</a></span>
                                                     </div>
                                                     <div class="panel-body" style="margin-bottom: -16px;">
                                                         <div class="row">
-                                                            <div class="col col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center">
+                                                            <div class="col col-xs-12 col-sm-12 col-md-7 col-lg-7 text-center">
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ1[0]->nombre."/".strtr(utf8_decode($fran_categ1[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-responsive img-rounded thumbnail" src="{{ asset($fran_categ1[0]->logo_url) }}" alt="prueba" style="width: 250px"></a>
                                                             </div>
-                                                            <div class="col col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                                            <div class="col col-xs-12 col-sm-12 col-md-5 col-lg-5">
                                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ1[0]->nombre."/".strtr(utf8_decode($fran_categ1[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" ><h3 class="text-center">{{$fran_categ1[0]->nombre_comercial}}</h3></a>
                                                             </div>
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ1[0]->descripcion),0,70).'...'}}</p>
@@ -195,16 +195,16 @@
                                                                     <hr style="border-top:2px solid {{ '#'.$color2  }}; margin-left:6%">
                                                                 @endif
                                                                 @for($j = 1; $j<count($fran_categ1); $j++)
-                                                                        <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
-                                                                            <ul class="list-unstyled">
-                                                                                <li>
-                                                                                    <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ1[$j]->nombre."/".strtr(utf8_decode($fran_categ1[$j]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}">{{$fran_categ1[$j]->nombre_comercial}}</a>
-                                                                                </li>
-                                                                                <!--<li>
-                                                                                    <a href="#">Tasca joselito</a>
-                                                                                </li>-->
-                                                                            </ul>
-                                                                        </div>
+                                                                    <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-6">
+                                                                        <ul class="list-unstyled">
+                                                                            <li>
+                                                                                <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$fran_categ1[$j]->nombre."/".strtr(utf8_decode($fran_categ1[$j]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}">{{$fran_categ1[$j]->nombre_comercial}}</a>
+                                                                            </li>
+                                                                            <!--<li>
+                                                                                <a href="#">Tasca joselito</a>
+                                                                            </li>-->
+                                                                        </ul>
+                                                                    </div>
                                                                 @endfor
 
                                                             </div>
