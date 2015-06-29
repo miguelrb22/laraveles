@@ -1400,9 +1400,6 @@
                 else c.innerHTML = "<span style='color:green; font-weight: bold''>Activado</span>";
 
 
-
-
-
                 $.ajax({
 
                     type: "POST",
@@ -1424,11 +1421,44 @@
                 });
             });
 
-            $(".remove").on("click",function(){
-                var a = "{{Session::forget('franquicia')}}";
-                location.reload();
-            });
 
+            $(".remove").on("click",function(){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{ URL::route('removerSession') }}",
+                    data: $(this).serialize(),
+                    dataType: "html",
+                    error: function () {
+
+                        Lobibox.notify('error', {
+                            title: 'No se ha podido tramitar la petición',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+                            position: 'bottom left'
+                        });
+                    },
+                    success: function (data) {
+
+                        Lobibox.notify('success', {
+                            title: 'La franquicia ya no está cargada',
+                            showClass: 'flipInX',
+                            delay: 3000,
+                            delayIndicator: false,
+                            position: 'bottom left'
+                        });
+                        location.reload();
+                    }
+                });
+
+            });
 
             @yield('ready')
         });
