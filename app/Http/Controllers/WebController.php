@@ -109,6 +109,10 @@ class WebController extends Controller {
                 ->take(1)
                 ->get();
 
+
+
+
+
             if($comprobar->isEmpty()) {
 
                 $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '3', 'total' => '1', 'fecha' => date("Y-m-d")]);
