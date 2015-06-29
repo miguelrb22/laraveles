@@ -307,24 +307,25 @@ class WebController extends Controller {
                                             ->where('pertenencia','=',2)
                                             ->where('tipo','=',2)->get();
 
-        //Si el array de entrevistas no está lleno con las franquicias de pago rellenamos con las de pega.
+        //Si el array de entrevistas no está lleno con las franquicias de pago rellenamos con las de pega es decir pertenencia a 1.
         if(count($this->entrevistas) < $numEntrevistas){
 
-                //La diferencia entre las entrevistas devueltas y las entrevistas que hemos puesto que halla.
-                $coger = intval($this->numeroPublicidades[12]->recuadros) - count($this->entrevistas);
-                $resto = Publicaciones::take($coger)->orderBy('id','DES')
-                                    ->where('fecha_publicacion','<=',$time)//quitarla?
-                                    ->where('fecha_finalizacion','>=',$time)
-                                    ->where('pertenencia','=',1)
-                                    ->orderBy(DB::raw('RAND()'))
-                                    ->where('tipo','=',2)->get();
+            //La diferencia entre las entrevistas devueltas y las entrevistas que hemos puesto que halla.
+            $coger = intval($this->numeroPublicidades[12]->recuadros) - count($this->entrevistas);
+            $resto = Publicaciones::take($coger)->orderBy('id','DES')
+                                ->where('fecha_publicacion','<=',$time)//quitarla?
+                                ->where('fecha_finalizacion','>=',$time)
+                                ->where('pertenencia','=',1)
+                                ->orderBy(DB::raw('RAND()'))
+                                ->where('tipo','=',2)->get();
 
-                $this->entrevistas = $this->entrevistas->merge($resto);
+            $this->entrevistas = $this->entrevistas->merge($resto);
         }
 
         //Compartimos el array con todas las vistas
         View::share('entrevistas', $this->entrevistas);
         ////
+
 
 
         //obtenemos las noticias generales publicadas
