@@ -111,10 +111,9 @@ class WebController extends Controller {
         //Obtenemos las franquicias  que tienen  noticias destacadas a 1 en paquetes activos
         $this->noticias_des = new Collection();
 
-
         $numDestacadas = $this->numeroPublicidades[6]->recuadros;
 
-        //obtenemos las publicaciones donde el tipo es = 2 que es de tipo entrevista y perteniencia 2 que
+        //obtenemos las publicaciones donde el tipo es = 2 que es de tipo noticia_des y perteniencia 2 que
         //indica que es de una franquicia que ha pagado
         $this->noticias_des = Publicaciones::take($numDestacadas)->orderBy('id','DES')
                                             ->where('fecha_publicacion','<=',$time)//quitarla?
@@ -122,10 +121,10 @@ class WebController extends Controller {
                                             ->where('pertenencia','=',2)
                                             ->where('tipo','=',3)->get();
 
-        //Si el array de entrevistas no está lleno con las franquicias de pago rellenamos con las de pega.
+        //Si el array de noticias_des no está lleno con las franquicias de pago rellenamos con las de pega.
         if(count($this->noticias_des) < $numDestacadas){
-                    //La diferencia entre las entrevistas devueltas y las entrevistas que hemos puesto que halla.
-                $coger = intval($this->numeroPublicidades[6]->recuadros) - count($this->entrevistas);
+                    //La diferencia entre las noticias_des devueltas y las noticia_des que hemos puesto que halla.
+                $coger = intval($this->numeroPublicidades[6]->recuadros) - count($this->noticias_des);
                 $resto = Publicaciones::take($coger)->orderBy('id','DES')
                                             ->where('fecha_publicacion','<=',$time)//quitarla?
                                             ->where('fecha_finalizacion','>=',$time)
@@ -1315,7 +1314,24 @@ class WebController extends Controller {
     }
 
     public function impresionEntrevista (){
+        foreach($this->rentables as $franquicia){
 
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
+                ->where('idtipo_estadistica','=','24')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->franquicia_id, 'idtipo_estadistica' => '24', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
     }
 
 }
