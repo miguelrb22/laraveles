@@ -675,7 +675,7 @@ class paquetes_controller extends Controller
 
 
             //Insertamos los datos en los arrays
-            array_push($datos, 'rentables', $fechaBS, $numActuales, intval($this->numeroPublicidades[14]->recuadros));
+            array_push($datos, 'banner_int', $fechaBS, $numActuales, intval($this->numeroPublicidades[14]->recuadros));
 
             array_push($resultados, $datos);
         }
