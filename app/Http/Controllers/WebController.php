@@ -97,6 +97,30 @@ class WebController extends Controller {
                                                 ->get();
                    $this->carousel = $this->carousel->merge($publicidad);
         }
+
+
+
+        //impresion carousel
+        foreach($this->carousel as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','3')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '3', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+
+        }
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);
         ////
