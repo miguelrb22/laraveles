@@ -15,6 +15,6 @@ class EstadisticasDiarias extends Model {
 
     protected $table = 'estadisticas_diarias';
 
-    protected $fillable = [ 'franquicia', 'tipo', 'idtipo_estadistica', 'fecha' ];
+    protected $fillable = [ 'franquicia', 'tipo', 'idtipo_estadistica', 'fecha','total'];
 
 }

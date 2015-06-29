@@ -869,6 +869,7 @@ class WebController extends Controller {
 
         $data = array
         (
+            'nombre_comercial' =>$request::input('nombre_comercial'),
             'nombre' => $request::input('nombre'),
             'apellidos' => $request::input('apellidos'),
             'email' => $request::input('email'),
@@ -905,11 +906,22 @@ class WebController extends Controller {
 
             $franquicia = Franquicia::where('email_contacto','=',$toEmail)->get(['id']);
 
-            $estadistica = new EstadisticasDiarias();
-            $estadistica->franquicia = $franquicia[0]->id;
-            $estadistica->idtipo_estadistica = '21';
-            $estadistica->fecha =  date("Y-m-d");
-            $estadistica->save();
+            $comprobar = EstadisticasDiarias::where('franquicia','=',$franquicia[0]->id)
+                ->where('idtipo_estadistica','=','21')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia[0]->id, 'idtipo_estadistica' => '21', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
 
         }
 
@@ -927,6 +939,7 @@ class WebController extends Controller {
 
                     $toEmail = $destinatario[0];
                     $toName = $destinatario[1];
+                    $data['nombre_comercial'] = $toName;
                     $id = $destinatario[2];
 
                     \Mail::send('emails.contacto', $data, function ($message) use ($fromName, $fromEmail,$toEmail,$toName) {
@@ -939,8 +952,23 @@ class WebController extends Controller {
                 catch(\Swift_RfcComplianceException $e){ dd($e->getMessage());}
                 finally{
 
-                    $estadistica = new EstadisticasDiarias(['franquicia' => $id, 'idtipo_estadistica' =>'22','fecha' => date("Y-m-d") ]);
-                    $estadistica->save();
+
+                    $comprobar = EstadisticasDiarias::where('franquicia','=',$id)
+                        ->where('idtipo_estadistica','=','22')
+                        ->where('fecha','=',date("Y-m-d"))
+                        ->take(1)
+                        ->get();
+
+                    if($comprobar->isEmpty()) {
+
+                        $estadistica = new EstadisticasDiarias(['franquicia' => $id, 'idtipo_estadistica' => '22', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                        $estadistica->save();
+
+                    } else{
+
+                        $comprobar[0]->total = ($comprobar[0]->total)+1;
+                        $comprobar[0]->save();
+                    }
 
                 }
 

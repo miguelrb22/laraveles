@@ -518,6 +518,7 @@
                                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                         <input type="hidden" name="email_franquicia" value="{{ $franquicia->email_contacto }}">
                                         <input type="hidden" name="nombre_franquicia" value="{{ $franquicia->nombre_comercial }}">
+                                        <input type="hidden" name="id_franquicia" value="{{ $franquicia->id }}">
 
 
                                         <table class="table-responsive">

@@ -4,6 +4,7 @@
 <head></head>
 <body>
 <h2> Una persona está interesada en su franquicia</h2>
+<h4>{{$nombre_comercial}}</h4>
 <h4> A continuación le mostramos sus datos:</h4>
 <p>Nombre: {{$nombre}}</p>
 <p>Apellidos: {{$apellidos}}</p>
