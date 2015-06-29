@@ -286,7 +286,7 @@ class WebController extends Controller {
         $numEntrevistas = $this->numeroPublicidades[12]->recuadros;
         $this->entrevistas = new Collection();
 
-        //obtenemos las publicaciones donde el tipo es = 2 que es de tipo entrevista y perteniencia 2 que
+        //obtenemos las publicaciones donde el tipo es = 2 que es de tipo entrevista y pertenencia 2 que
         //indica que es de una franquicia que ha pagado
         $this->entrevistas = Publicaciones::take($numEntrevistas)->orderBy('id','DES')
                                             ->where('fecha_publicacion','<=',$time)//quitarla?
@@ -424,10 +424,6 @@ class WebController extends Controller {
 
                 }
 
-
-
-
-                //BIEN
                 //Comprobamos si de ids no está vacia para hacer la igualacion, si está vacía devolvemos la vista si nada y no continuamos
                 //Comprobamos antes si hay de franquicias para la subcategoria (cateogria) dada
 

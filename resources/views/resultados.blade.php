@@ -84,7 +84,7 @@
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ[0]->descripcion),0,70).'...'}}</p>
                                                             <div class="row col-xs-12 col-sd-12 col-md-12 col-lg-12">
 
-
+                                                                <br>
                                                                 @if(count($fran_categ)>1)
                                                                     <div class="text-center"><label>Más de esta categoría</label></div>
                                                                     <hr style="border-top:2px solid {{ '#'.$color  }}; margin-left:6%">
@@ -150,6 +150,7 @@
                                                             </div>
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ[0]->descripcion),0,70).'...'}}</p>
                                                             <div class="row col-xs-12 col-sd-12 col-md-12 col-lg-12">
+
                                                                 <br>
                                                                 @if(count($fran_categ)>1)
                                                                     <div class="text-center"><label>Más de esta categoría</label></div>
@@ -190,6 +191,7 @@
                                                             </div>
                                                             <p class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">{{substr(strip_tags($fran_categ1[0]->descripcion),0,70).'...'}}</p>
                                                             <div class="row col-xs-12 col-sd-12 col-md-12 col-lg-12">
+                                                                <br>
                                                                 @if(count($fran_categ1)>1)
                                                                     <div class="text-center"><label>Más de esta categoría</label></div>
                                                                     <hr style="border-top:2px solid {{ '#'.$color2  }}; margin-left:6%">

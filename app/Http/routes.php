@@ -252,6 +252,11 @@ Route::post('eliminarsubcategoria' ,  ['as' => 'eliminarsubcategoria', 'uses' =>
 Route::post('eliminarcategoria' ,  ['as' => 'eliminarcategoria', 'uses' => 'models_controller\categoriaController@delete']);
 Route::post('nueva-publicacion' ,  ['as' => 'nueva-publicacion', 'uses' => 'models_controller\publicacionController@store']);
 
+Route::post('removerSession' ,  ['as' => 'removerSession', function(){
+    Session::forget('franquicia');
+}]);
+
+
 
 Route::post('nuevousuario' ,  ['as' => 'nuevousuario', 'uses' => 'models_controller\userController@nuevoAdmin']);
 

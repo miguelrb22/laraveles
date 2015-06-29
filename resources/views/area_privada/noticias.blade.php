@@ -31,7 +31,7 @@
                                 <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 entrevistas">Entrevistas restantes: {{$entrevistas[0]->cantidad}} </label>
                             @endif
                             @if(!$destacadas->isEmpty())
-                                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 destacadas">Entrevistas restantes: {{$destacadas[0]->cantidad}} </label>
+                                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 destacadas">Noticias destacadas restantes: {{$destacadas[0]->cantidad}} </label>
                             @endif
 
                         </div>
@@ -39,44 +39,48 @@
                             @if(!isset($ses))
                              <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                                 <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
+                                    <option value="-1">- Seleccionar tipo -</option>
                                     <option value="1">Noticia</option>
                                 </select>
                              </div>
                             @else
-                                <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+                                @if(!$noticias->isEmpty() || !$entrevistas->isEmpty() || !$destacadas->isEmpty())
+                                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
 
-                                    <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
-                                        <option value="1"> - Seleccionar paquete -</option>
-                                        @if(!$noticias->isEmpty())
-                                            <option value="1">Noticia</option>
-                                        @endif
-                                        @if(!$entrevistas->isEmpty())
-                                            @if($entrevistas[0]->cantidad > 0)
-                                                <option value="2">Entrevista</option>
+                                        <select name="tipo" id="tipoarticulo" class="form-control input input-sm">
+                                            <option value="-1"> - Seleccionar tipo -</option>
+                                            @if(!$noticias->isEmpty())
+                                                <option value="1">Noticia</option>
                                             @endif
-                                        @endif
-                                        @if(!$destacadas->isEmpty())
-                                            @if($destacadas[0]->cantidad > 0)
-                                                <option value="3">Noticia destacada</option>
+                                            @if(!$entrevistas->isEmpty())
+                                                @if($entrevistas[0]->cantidad > 0)
+                                                    <option value="2">Entrevista</option>
+                                                @endif
                                             @endif
-                                        @endif
-                                    </select>
-                                </div>
+                                            @if(!$destacadas->isEmpty())
+                                                @if($destacadas[0]->cantidad > 0)
+                                                    <option value="3">Noticia destacada</option>
+                                                @endif
+                                            @endif
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+                                        <label>Pertenencia publicación</label>
+                                        <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
+                                            <option value="1">Propia/General</option>
+                                            <option value='2'>{{$ses->nombre_comercial}}</option>
+                                        </select>
+                                    </div>
+                                @else
+                                    <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
+
+                                        <select name="tipo" id="tipoarticulo" class="form-control input input-sm" disabled>
+                                            <option value="-1"> - Ningún paquete activo -</option>
+                                        </select>
+                                    </div>
+                                @endif
                             @endif
-
-                        @if(!$noticias->isEmpty() || !$entrevistas->isEmpty() || !$destacadas->isEmpty())
-                            <br>
-                            <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
-
-                                <label>Pertenencia publicación</label>
-                                <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
-                                        <option value="1">Propia/General</option>
-                                    @if(isset($ses))
-                                        <option value='2'>{{$ses->nombre_comercial}}</option>
-                                    @endif
-                                </select>
-                            </div>
-                        @endif
 
                         @if(!isset($ses))
                             <br>
@@ -184,8 +188,13 @@
 
     $("#tipoarticulo").on("change",function(){
         var tipo = $("#tipoarticulo")[0].value;
-        if(tipo === "2")
+        if(tipo === "1")
         {
+            $("#franquicia_id_articulo")[0].value = 1;
+            $(".destacadas").css("display","none");
+            $(".entrevistas").css("display","none");
+            $(".publicar").removeAttr("disabled");
+        }else if(tipo === "2"){
             $(".entrevistas").css("display","block");
             $("#franquicia_id_articulo")[0].value = 2;
             $(".destacadas").css("display","none");
@@ -194,7 +203,7 @@
             $(".destacadas").css("display","block");
             $("#franquicia_id_articulo")[0].value = 2;
             $(".entrevistas").css("display","none");
-            //$(".publicar").removeAttr("disabled");
+            $(".publicar").removeAttr("disabled");
         }else{
             $(".entrevistas").css("display","none");
             $(".destacadas").css("display","none");
