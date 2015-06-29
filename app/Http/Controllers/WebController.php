@@ -101,24 +101,7 @@ class WebController extends Controller {
 
 
         //impresion carousel
-        foreach($this->carousel as $franquicia){
 
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
-                ->where('idtipo_estadistica','=','3')
-                ->where('fecha','=',date("Y-m-d"))
-                ->take(1)
-                ->get();
-
-            if($comprobar->isEmpty()) {
-
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->franquicia_id, 'idtipo_estadistica' => '3', 'total' => '1', 'fecha' => date("Y-m-d")]);
-                $estadistica->save();
-            } else{
-
-                $comprobar[0]->total = ($comprobar[0]->total)+1;
-                $comprobar[0]->save();
-            }
-        }
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);
         ////
@@ -153,24 +136,6 @@ class WebController extends Controller {
             $this->noticias_des = $this->noticias_des->merge($resto);
         }
 
-        foreach($this->noticias_des as $franquicia){
-
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
-                ->where('idtipo_estadistica','=','23')
-                ->where('fecha','=',date("Y-m-d"))
-                ->take(1)
-                ->get();
-
-            if($comprobar->isEmpty()) {
-
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->franquicia_id, 'idtipo_estadistica' => '23', 'total' => '1', 'fecha' => date("Y-m-d")]);
-                $estadistica->save();
-            } else{
-
-                $comprobar[0]->total = ($comprobar[0]->total)+1;
-                $comprobar[0]->save();
-            }
-        }
 
         //Compartimos el array con todas las vistas
         View::share('noticiaDestacada', $this->noticias_des);
@@ -190,24 +155,7 @@ class WebController extends Controller {
                                                         ->take(1)
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
-        foreach($this->banner_superior as $franquicia){
 
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
-                ->where('idtipo_estadistica','=','1')
-                ->where('fecha','=',date("Y-m-d"))
-                ->take(1)
-                ->get();
-
-            if($comprobar->isEmpty()) {
-
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '1', 'total' => '1', 'fecha' => date("Y-m-d")]);
-                $estadistica->save();
-            } else{
-
-                $comprobar[0]->total = ($comprobar[0]->total)+1;
-                $comprobar[0]->save();
-            }
-        }
 
         //Compartimos el array con todas las vistas
         View::share('bannerSup', $this->banner_superior);
@@ -226,24 +174,7 @@ class WebController extends Controller {
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
-        foreach($this->franquiciasSupDer as $franquicia){
 
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
-                ->where('idtipo_estadistica','=','5')
-                ->where('fecha','=',date("Y-m-d"))
-                ->take(1)
-                ->get();
-
-            if($comprobar->isEmpty()) {
-
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '5', 'total' => '1', 'fecha' => date("Y-m-d")]);
-                $estadistica->save();
-            } else{
-
-                $comprobar[0]->total = ($comprobar[0]->total)+1;
-                $comprobar[0]->save();
-            }
-        }
         //Compartimos el array con todas las vistas
         View::share('franSupDer', $this->franquiciasSupDer);
         ////
@@ -261,24 +192,7 @@ class WebController extends Controller {
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
-        foreach($this->franquiciasIzq as $franquicia){
 
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
-                ->where('idtipo_estadistica','=','17')
-                ->where('fecha','=',date("Y-m-d"))
-                ->take(1)
-                ->get();
-
-            if($comprobar->isEmpty()) {
-
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '17', 'total' => '1', 'fecha' => date("Y-m-d")]);
-                $estadistica->save();
-            } else{
-
-                $comprobar[0]->total = ($comprobar[0]->total)+1;
-                $comprobar[0]->save();
-            }
-        }
         //Compartimos el array con todas las vistas
         View::share('franInIzq', $this->franquiciasIzq);
         ////
@@ -295,24 +209,6 @@ class WebController extends Controller {
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
-        foreach($this->patrocinadasB as $franquicia){
-
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
-                ->where('idtipo_estadistica','=','20')
-                ->where('fecha','=',date("Y-m-d"))
-                ->take(1)
-                ->get();
-
-            if($comprobar->isEmpty()) {
-
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '20', 'total' => '1', 'fecha' => date("Y-m-d")]);
-                $estadistica->save();
-            } else{
-
-                $comprobar[0]->total = ($comprobar[0]->total)+1;
-                $comprobar[0]->save();
-            }
-        }
 
         //Compartimos el array con todas las vistas
         View::share('patrocinadas', $this->patrocinadasB);
@@ -328,7 +224,7 @@ class WebController extends Controller {
                                                     ->where('inicio','<=',$time)
                                                     ->where('final','>=',$time)
                                                     ->orderBy(DB::raw('RAND()'))
-                                                    ->get(array('url_imagen','nombre','nombre_comercial'));
+                                                    ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
         //Compartimos el array con todas las vistas
         View::share('destacadas', $this->destacadas);
@@ -345,7 +241,7 @@ class WebController extends Controller {
                                             ->where('inicio','<=',$time)
                                             ->where('final','>=',$time)
                                             ->orderBy(DB::raw('RAND()'))
-                                            ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
+                                            ->get(array('logo_url','nombre','nombre_comercial','id'))->take(1);
 
         //Compartimos el array con todas las vistas
         View::share('exito', $this->exito);
@@ -361,7 +257,7 @@ class WebController extends Controller {
                                             ->where('inicio','<=',$time)
                                             ->where('final','>=',$time)
                                             ->orderBy(DB::raw('RAND()'))
-                                            ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
+                                            ->get(array('logo_url','nombre','nombre_comercial','id'))->take(1);
 
         //Compartimos el array con todas las vistas
         View::share('baratas', $this->baratas);
@@ -377,7 +273,7 @@ class WebController extends Controller {
                                                 ->where('inicio','<=',$time)
                                                 ->where('final','>=',$time)
                                                 ->orderBy(DB::raw('RAND()'))
-                                                ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
+                                                ->get(array('logo_url','nombre','nombre_comercial','id'))->take(1);
 
         //Compartimos el array con todas las vistas
         View::share('rentables', $this->rentables);
@@ -393,7 +289,7 @@ class WebController extends Controller {
                                             ->where('inicio','<=',$time)
                                             ->where('final','>=',$time)
                                             ->orderBy(DB::raw('RAND()'))
-                                            ->get(array('logo_url','nombre','nombre_comercial'))->take(1);
+                                            ->get(array('logo_url','nombre','nombre_comercial','id'))->take(1);
 
         //Compartimos el array con todas las vistas
         View::share('lowcost', $this->lowcost);
@@ -453,7 +349,7 @@ class WebController extends Controller {
                                                     ->where('inicio','<=',$time)
                                                     ->where('final','>=',$time)
                                                     ->orderBy(DB::raw('RAND()'))
-                                                    ->get(array('url_imagen','nombre','nombre_comercial'));
+                                                    ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
         //Compartimos el array con todas las vistas
         View::share('banner_int', $this->banner_int);
@@ -480,6 +376,24 @@ class WebController extends Controller {
      */
     public function index()
     {
+
+
+        $this->impresionBA();
+        $this->impresionBannerIntermedio();
+        $this->impresionBannerSup();
+        $this->impresionCarousel();
+        $this->impresionDCategoria();
+        $this->impresionDerecha();
+        $this->impresionDestacados();
+        $this->impresionEntrevista();
+        $this->impresionEX();
+        $this->impresionIzquierda();
+        $this->impresionLC();
+        $this->impresionRE();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionNoticiaDestacada();
+
+
 
         return view('inicio');
     }
@@ -1109,6 +1023,298 @@ class WebController extends Controller {
         }
 
         return 1;
+
+    }
+
+
+    //Estadisticas Banner superior
+    public function impresionBannerSup (){
+
+        foreach($this->banner_superior as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','1')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '1', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+
+    //Estadisticas Banner Intermedio
+    public function impresionBannerIntermedio (){
+
+        foreach($this->banner_int as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','2')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '2', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+    public function impresionCarousel (){
+
+        foreach($this->carousel as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
+                ->where('idtipo_estadistica','=','3')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->franquicia_id, 'idtipo_estadistica' => '3', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+
+
+    public function impresionDestacados (){
+
+        foreach($this->destacadas as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','4')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '4', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+
+    //Estadisticas superior derecha
+    public function impresionDerecha (){
+
+        foreach($this->franquiciasSupDer as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','5')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '5', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+
+
+    //Estadisticas izquierda
+    public function impresionIzquierda (){
+
+        foreach($this->franquiciasIzq as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','17')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '17', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+    public function impresionLC (){
+
+        foreach($this->lowcost as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','6')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '6', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+    public function impresionBA (){
+
+        foreach($this->baratas as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','7')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '7', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+    public function impresionEX (){
+
+        foreach($this->exito as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','8')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '8', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+
+    public function impresionRE (){
+
+        foreach($this->rentables as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','19')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '19', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+    public function impresionDCategoria (){
+
+    }
+
+
+    //Estadisticas patrocinada buscador
+    public function impresionPatrocinadoBuscador (){
+
+
+        foreach($this->patrocinadasB as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+                ->where('idtipo_estadistica','=','20')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '20', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+    }
+
+
+    //Estadisticas noticias destacadas
+    public function impresionNoticiaDestacada (){
+
+        foreach($this->noticias_des as $franquicia){
+
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
+                ->where('idtipo_estadistica','=','23')
+                ->where('fecha','=',date("Y-m-d"))
+                ->take(1)
+                ->get();
+
+            if($comprobar->isEmpty()) {
+
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->franquicia_id, 'idtipo_estadistica' => '23', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica->save();
+            } else{
+
+                $comprobar[0]->total = ($comprobar[0]->total)+1;
+                $comprobar[0]->save();
+            }
+        }
+
+
+    }
+
+    public function impresionEntrevista (){
 
     }
 
