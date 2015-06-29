@@ -52,6 +52,7 @@ class WebController extends Controller {
     private $rentables = null;
     private $entrevistas = null;
     private $publicaciones = null;
+    private $banner_int = null;
     /**
      *
      */
@@ -319,10 +320,26 @@ class WebController extends Controller {
 
 
         $this->publicaciones = Publicaciones::take($numeroPublicaciones)->orderBy('id','DES')->where('tipo','=',1)->get();
-        //dd($this->publicaciones);
 
         //Compartimos el array con todas las vistas
         View::share('publicaciones', $this->publicaciones);
+        ////
+
+
+
+        //Obtenemos las franquicias que tienen lowcost a 1 en paquetes activos
+        $this->banner_int = new Collection();
+
+        //Obtenemos las publicidades que están en franquicias de éxito de la vista publicidad_especial
+        //para pasarlas a las vista para que se muestren.
+        $this->banner_int = publicidad_franquicias::where('idtipo_publicidad','=',15)
+                                                    ->where('inicio','<=',$time)
+                                                    ->where('final','>=',$time)
+                                                    ->orderBy(DB::raw('RAND()'))
+                                                    ->get(array('url_imagen','nombre','nombre_comercial'));
+
+        //Compartimos el array con todas las vistas
+        View::share('banner_int', $this->banner_int);
         ////
 
     }

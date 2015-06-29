@@ -76,6 +76,14 @@ return [
             'root'   => public_path().'/publicidad/banner_sup',
         ],
 
+
+        //Imagenes del banner intermedio de las franquicias
+        'banner_int' => [
+            'driver' => 'local',
+            'root'   => public_path().'/publicidad/banner_int',
+        ],
+
+
         //Imagenes en la parte superior de las franquicias
         'sup_derecha' => [
             'driver' => 'local',

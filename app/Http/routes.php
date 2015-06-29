@@ -11,6 +11,7 @@
 use App\model\subcategoria;
 use App\model\Franquicia;
 use App\model\franquicia_subcategoria;
+use Illuminate\Support\Facades\Session;
 
 
 

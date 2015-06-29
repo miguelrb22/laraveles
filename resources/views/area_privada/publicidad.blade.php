@@ -1319,10 +1319,10 @@
                                                     <div row>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <label><strong>1º en expirar:</strong></label>
-                                                            <label class="fecha">fecha</label>
+                                                            <label class="fecha"></label>
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
-                                                            <label class="num">fecha</label>
+                                                            <label class="num"></label>
                                                             <br>
                                                             <label><strong>Nº recuadros:</strong></label>
                                                             <label class="recuadros"></label>
@@ -1434,10 +1434,10 @@
                                                     <div row>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <label><strong>1º en expirar:</strong></label>
-                                                            <label class="fecha">fecha</label>
+                                                            <label class="fecha"></label>
                                                             <br>
                                                             <label><strong>Nº franquicias:</strong></label>
-                                                            <label class="num">fecha</label>
+                                                            <label class="num"></label>
                                                             <br>
                                                             <label><strong>Nº recuadros:</strong></label>
                                                             <label class="recuadros"></label>
@@ -1678,6 +1678,125 @@
 
 
                                                 <footer class="noticia_des_footer">
+                                                    <div row>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <label><strong>1º en expirar:</strong></label>
+                                                            <label class="fecha"></label>
+                                                            <br>
+                                                            <label><strong>Nº entrevistas:</strong></label>
+                                                            <label class="num"></label>
+                                                            <br>
+                                                            <label><strong>Nº recuadros:</strong></label>
+                                                            <label class="recuadros"></label>
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <button id="1" type="submit" class="btn btn-primary actualizar">
+                                                                Activar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </footer>
+                                            </form>
+
+                                        </div>
+                                        <!-- end widget content -->
+
+                                    </div>
+                                    <!-- end widget div -->
+
+                                </div>
+                            </article>
+
+                            <article class="col col-xs-12 col-sm-12 col-md-4 col-lg-4 sortable-grid ui-sortable">
+
+                                <!-- Widget ID (each widget will need unique ID)-->
+                                <div class="jarviswidget jarviswidget-sortable" id="wid-id-1"
+                                     data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                                    <!-- widget options:
+                                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                        data-widget-colorbutton="false"
+                                        data-widget-editbutton="false"
+                                        data-widget-togglebutton="false"
+                                        data-widget-deletebutton="false"
+                                        data-widget-fullscreenbutton="false"
+                                        data-widget-custombutton="false"
+                                        data-widget-collapsed="true"
+                                        data-widget-sortable="false"
+
+                                    -->
+                                    <header role="heading">
+                                        <div class="jarviswidget-ctrls" role="menu"><a href="javascript:void(0);"
+                                                                                       class="button-icon jarviswidget-toggle-btn"
+                                                                                       rel="tooltip" title=""
+                                                                                       data-placement="bottom"
+                                                                                       data-original-title="Collapse"><i
+                                                        class="fa fa-minus "></i></a> <a href="javascript:void(0);"
+                                                                                         class="button-icon jarviswidget-delete-btn"
+                                                                                         rel="tooltip" title=""
+                                                                                         data-placement="bottom"
+                                                                                         data-original-title="Delete"><i
+                                                        class="fa fa-times"></i></a>
+                                        </div>
+                                        <h2 id="tc">Banner intermedio</h2>
+                                        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                                    </header>
+                                    <!-- widget div-->
+                                    <div role="content">
+
+                                        <!-- widget edit box -->
+                                        <div class="jarviswidget-editbox">
+                                            <!-- This area used as dropdown edit box -->
+
+                                        </div>
+                                        <!-- end widget edit box -->
+
+                                        <!-- widget content -->
+                                        <div class="widget-body no-padding">
+
+                                            <form class="smart-form actualizar_paquete" accept-charset="UTF-8" enctype="multipart/form-data">
+
+                                                <fieldset>
+
+                                                    <div class="row">
+                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                            <label class="toggle">
+                                                                @if ($paquetes[0]->banner_int == 0)
+                                                                    <input type='checkbox' name='checkbox-toggle' disabled>
+                                                                @else
+                                                                    <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
+                                                                @endif
+                                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado</label>
+                                                        </section>
+                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                            <label class="input">Inicio:</label>
+                                                            <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="inicio" id="inicio15" class="calendar" placeholder="Fecha Inicio" required>
+                                                            </label>
+                                                        </section>
+                                                        <section class="col col-xs-12 col-md-6 col-sm-6">
+                                                            <label>Fin</label>
+                                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                                <input type="text" name="final" id="final15" class="calendar" placeholder="Fecha Fin" required>
+                                                            </label>
+                                                        </section>
+
+                                                        <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                                                            <div class="input input-file">
+                                                                <input type="file" id="file" name="url_imagen" required="">
+                                                            </div>
+                                                        </section>
+
+                                                        <input type="text" value="15" name="idtipo_publicidad" hidden>
+                                                        <input type="text" value="banner_int" name="nombre_paquete" hidden>
+
+
+                                                    </div>
+
+                                                </fieldset>
+
+
+                                                <footer class="banner_int_footer">
                                                     <div row>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <label><strong>1º en expirar:</strong></label>
@@ -2119,7 +2238,28 @@
     }).data('datepicker');
 
 
-
+    var checkin15 = $('#inicio15').datepicker({
+    format: 'dd-mm-yyyy',
+    onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+    if (ev.date.valueOf() > checkout15.date.valueOf()) {
+    var newDate = new Date(ev.date)
+    newDate.setDate(newDate.getDate() + 1);
+    checkout15.setValue(newDate);
+    }
+    checkin15.hide();
+    $('#final15')[0].focus();
+    }).data('datepicker');
+    var checkout15 = $('#final15').datepicker({
+    format: 'dd-mm-yyyy',
+    onRender: function(date) {
+    return date.valueOf() <= checkin14.date.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+    checkout15.hide();
+    }).data('datepicker');
 
 
     function fileSelect(id, e){

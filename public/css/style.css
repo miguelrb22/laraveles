@@ -535,7 +535,10 @@ p{ text-align: justify; }
     background-color: #606;
 }
 
-#separador{ border-top-width: 5px; }
+#separador{
+    border-top-width: 5px;
+    margin-top: 0px !important;
+}
 
 #tperfil td { width: 50%; }
 
