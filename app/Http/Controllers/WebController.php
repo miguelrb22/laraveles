@@ -103,19 +103,15 @@ class WebController extends Controller {
         //impresion carousel
         foreach($this->carousel as $franquicia){
 
-            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
+            $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
                 ->where('idtipo_estadistica','=','3')
                 ->where('fecha','=',date("Y-m-d"))
                 ->take(1)
                 ->get();
 
-
-
-
-
             if($comprobar->isEmpty()) {
 
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->id, 'idtipo_estadistica' => '3', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia->franquicia_id, 'idtipo_estadistica' => '3', 'total' => '1', 'fecha' => date("Y-m-d")]);
                 $estadistica->save();
 
             } else{
@@ -125,6 +121,8 @@ class WebController extends Controller {
             }
 
         }
+
+        dd($this->carousel);
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);
         ////
