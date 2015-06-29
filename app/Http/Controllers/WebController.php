@@ -121,8 +121,6 @@ class WebController extends Controller {
             }
 
         }
-
-        dd($this->carousel);
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);
         ////
