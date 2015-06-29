@@ -869,7 +869,7 @@ class WebController extends Controller {
 
         $data = array
         (
-            'nombre_comercial' =>$request::input('nombre_comercial'),
+            'nombre_comercial' =>$request::input('nombre_franquicia'),
             'nombre' => $request::input('nombre'),
             'apellidos' => $request::input('apellidos'),
             'email' => $request::input('email'),
@@ -904,9 +904,7 @@ class WebController extends Controller {
          catch(\Swift_RfcComplianceException $e){}
         finally{
 
-            $franquicia = Franquicia::where('email_contacto','=',$toEmail)->get(['id']);
-
-            $comprobar = EstadisticasDiarias::where('franquicia','=',$franquicia[0]->id)
+            $comprobar = EstadisticasDiarias::where('franquicia','=',$request::input('id_franquicia'))
                 ->where('idtipo_estadistica','=','21')
                 ->where('fecha','=',date("Y-m-d"))
                 ->take(1)
