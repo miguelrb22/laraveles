@@ -1259,6 +1259,8 @@ class WebController extends Controller {
     }
     public function impresionDCategoria (){
 
+
+
     }
 
 
@@ -1314,7 +1316,7 @@ class WebController extends Controller {
     }
 
     public function impresionEntrevista (){
-        dd("entra");
+
         foreach($this->entrevistas as $franquicia){
 
             $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->franquicia_id)
