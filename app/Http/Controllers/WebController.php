@@ -261,7 +261,7 @@ class WebController extends Controller {
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
-        foreach($this->franquiciasSupDer as $franquicia){
+        foreach($this->franquiciasIzq as $franquicia){
 
             $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
                 ->where('idtipo_estadistica','=','17')
@@ -295,7 +295,7 @@ class WebController extends Controller {
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
-        foreach($this->franquiciasSupDer as $franquicia){
+        foreach($this->patrocinadasB as $franquicia){
 
             $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia->id)
                 ->where('idtipo_estadistica','=','20')
