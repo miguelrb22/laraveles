@@ -908,6 +908,7 @@ class WebController extends Controller {
             $estadistica = new EstadisticasDiarias();
             $estadistica->franquicia = $franquicia[0]->id;
             $estadistica->idtipo_estadistica = '21';
+            $estadistica->fecha =  date("Y-m-d");
             $estadistica->save();
 
         }
@@ -938,7 +939,7 @@ class WebController extends Controller {
                 catch(\Swift_RfcComplianceException $e){ dd($e->getMessage());}
                 finally{
 
-                    $estadistica = new EstadisticasDiarias(['franquicia' => $id, 'idtipo_estadistica' =>'22']);
+                    $estadistica = new EstadisticasDiarias(['franquicia' => $id, 'idtipo_estadistica' =>'22','fecha' => date("Y-m-d") ]);
                     $estadistica->save();
 
                 }
