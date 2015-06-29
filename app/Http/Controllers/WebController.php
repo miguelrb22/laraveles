@@ -929,7 +929,7 @@ class WebController extends Controller {
 
             if($comprobar->isEmpty()) {
 
-                $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia[0]->id, 'idtipo_estadistica' => '21', 'total' => '1', 'fecha' => date("Y-m-d")]);
+                $estadistica = new EstadisticasDiarias(['franquicia' => $request::input('id_franquicia'), 'idtipo_estadistica' => '21', 'total' => '1', 'fecha' => date("Y-m-d")]);
                 $estadistica->save();
 
             } else{
