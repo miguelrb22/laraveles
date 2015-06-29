@@ -188,7 +188,7 @@ class WebController extends Controller {
                                                         ->where('final','>=',$time)
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->take(1)
-                                                        ->get(array('url_imagen','nombre','nombre_comercial','id'));
+                                                        ->get(array('url_imagen','nombre','nombre_comercial','franquicia_id'));
 
         foreach($this->banner_superior as $franquicia){
 
