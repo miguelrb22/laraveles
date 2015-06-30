@@ -6,8 +6,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('PieProgress/css/progress.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('PieProgress/css/rainbow.css')}}"/>
 
-    @endsection
-@section('completa')
+@endsection
+@section('contenido')
     </br>
         <div class="row">
 
@@ -109,6 +109,12 @@
 
 
         </div>
+    @endsection
+
+    @section('der')
+
+        @include('extras.derecha')
+
     @endsection
 
 @section('javascript')

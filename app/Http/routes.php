@@ -204,8 +204,9 @@ Route::get('noticias', ['as' => 'noticias_web', 'uses' => 'WebController@noticia
 
 Route::get('reportajes', ['as' => 'reportajes_web', 'uses' => 'WebController@reportajes']);
 
-
 Route::get('resultados', ['as' => 'resultados', 'uses' => 'WebController@resultados']);
+
+Route::get('estadisticas_click', ['as' => 'estadisticas_click', 'uses' => 'WebController@estadisticasClick']);
 
 //Para los resultado de busqueda de franquicias
 Route::get('busqueda-{tipo}', ['as' => 'categoria', function ($tipo) {
@@ -258,15 +259,12 @@ Route::post('removerSession' ,  ['as' => 'removerSession', function(){
 }]);
 
 
-
 Route::post('nuevousuario' ,  ['as' => 'nuevousuario', 'uses' => 'models_controller\userController@nuevoAdmin']);
 
 
 Route::get('noticias/{titulo}/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion']);
 
 Route::post('contacto-franquicias' ,  ['as' => 'contacto-franquicias', 'uses' => 'WebController@enviarformulariofranquicia']);
-
-//Route::post('images', ['as' => 'images', 'uses' => 'ImagesController@subirImagen']);
 
 Route::get('cargarImagenes' ,  ['as' => 'cargarImagenes', 'uses' => 'ImagesController@extraer']);
 
