@@ -74,8 +74,8 @@ class WebController extends Controller {
         //Obtenemos las franquicias que tienen superior derecha a 1 en paquetes activos
         $this->carousel = new Collection();
 
-        //Obtenemos las publicidades que están en la parte superior derecha de la vista publicidad_franquicias
-        //para pasarlas a las vista para que se muestren.
+        //Obtenemos las publicidades que están en el carousel de la tabla publicidad
+        //para pasarlas a las vista y que se muestren.
         $this->carousel = publicidad::where('idtipo_publicidad','=',1)
                                         ->where('franquicia_id','<>',1)
                                         ->where('inicio','<=',$time)
@@ -95,10 +95,6 @@ class WebController extends Controller {
                                                 ->get();
                    $this->carousel = $this->carousel->merge($publicidad);
         }
-
-
-
-        //impresion carousel
 
         //Compartimos el array con todas las vistas
         View::share('carousel',  $this->carousel);

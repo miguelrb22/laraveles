@@ -20,9 +20,15 @@ use Illuminate\Support\Facades\DB;
 class AreaPrivadaController extends Controller
 {
 
+    private $time = null;
+
+
+
 
     public function __construct()
     {
+        $this->time = time();
+        $this->time = date("Y-m-d", $this->time);
 
         $this->middleware('auth');
     }
@@ -49,7 +55,21 @@ class AreaPrivadaController extends Controller
 
         $franquicia = Session::get('franquicia');
         $id = $franquicia->id;
-        $paquetes = PaquetesActivos::where('id', '=', $id)->get();
+        $paquetes = array();
+        /*$paquetes = PaquetesActivos::where('id', '=', $id)->get();*/
+
+        $publicidades = publicidad::where('franquicia_id','=',$id)
+                                    ->where('inicio','<=',$this->time)
+                                    ->where('final','>=',$this->time)
+                                    ->groupBy(DB::raw('idtipo_publicidad'))
+                                    ->get(array('idtipo_publicidad'));
+
+        //creamos el array con solo los ids
+        foreach($publicidades as $publicidad){
+
+            array_push($paquetes,$publicidad->idtipo_publicidad);
+        }
+
         return view('area_privada.publicidad', compact('paquetes'));
 
 

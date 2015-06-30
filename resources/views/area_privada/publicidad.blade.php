@@ -91,10 +91,12 @@
                                                             <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                                 <label class="toggle">
 
-                                                                    @if ($paquetes[0]->carousel == 0)
+                                                                    @if(!in_array(1,$paquetes))
+
                                                                         <input type='checkbox' name='checkbox-toggle' value="0" disabled>
                                                                     @else
-                                                                        <input type='checkbox' name='checkbox-toggle' value="1" disabled>
+
+                                                                        <input type='checkbox' name='checkbox-toggle' checked="checked" value="1" disabled>
                                                                     @endif
 
                                                                     <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Estado:</label>
@@ -236,7 +238,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->banner_sup == 0)
+                                                                @if (!in_array(2,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -341,7 +343,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->destacados == 0)
+                                                                @if (!in_array(8,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -464,7 +466,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->sup_derecha == 0)
+                                                                @if(!in_array(3,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -582,7 +584,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->izquierda == 0)
+                                                                @if (!in_array(4,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -698,7 +700,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->lowcost == 0)
+                                                                @if (!in_array(12,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -813,7 +815,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->exito == 0)
+                                                                @if (!in_array(9,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -926,7 +928,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->baratas == 0)
+                                                                @if (!in_array(10,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1039,7 +1041,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->rentables == 0)
+                                                                @if (!in_array(11,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1154,7 +1156,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->destacado_categoria == 0)
+                                                                @if (!in_array(5,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1279,7 +1281,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->patrocinado_b == 0)
+                                                                @if (!in_array(6,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1376,7 +1378,7 @@
                                                                                          data-original-title="Delete"><i
                                                         class="fa fa-times"></i></a>
                                         </div>
-                                        <h2 id="tc">Noticia <destacada></destacada></h2>
+                                        <h2 id="tc">Noticia</h2>
                                         <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
                                     </header>
                                     <!-- widget div-->
@@ -1399,7 +1401,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->destacado_categoria == 0)
+                                                                @if (!in_array(14,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1519,7 +1521,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->entrevista == 0)
+                                                                @if (in_array(!13,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1640,7 +1642,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->noticia_des == 0)
+                                                                @if (!in_array(7,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -1761,7 +1763,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if ($paquetes[0]->banner_int == 0)
+                                                                @if (!in_array(15,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
