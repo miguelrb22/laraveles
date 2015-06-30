@@ -402,6 +402,9 @@ class WebController extends Controller {
      */
     public function privacidad()
     {
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionDerecha();
+
         return view('privacidad');
     }
 
@@ -410,6 +413,9 @@ class WebController extends Controller {
      */
     public function aviso()
     {
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionDerecha();
+
         return view('aviso-legal');
     }
 
@@ -427,10 +433,14 @@ class WebController extends Controller {
      * @param Request $request la peticion enviada por el form
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function select(Request $request){
-
-        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
-        $patrocinadas = $this->patrocinadasB;
+    public function select(Request $request)
+    {
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionBannerSup();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionIzquierda();
+        $this->impresionDerecha();
+        $this->impresionBannerIntermedio();
 
         ///Obtenemos los parámetros del post///
         $categoria=$request::Input('categoria');
@@ -549,7 +559,6 @@ class WebController extends Controller {
         $franquicias = publicidad_especial::where('nombre_paquete', 'like', $tipo )
                                             ->orderBy(DB::raw('RAND()'))->groupBy('id')->get();
 
-        //hacemos las llamadas a la impresiones
         //llamamos a las estadisticas que se imprimen en esta vista.
         $this->impresionBannerSup();
         $this->impresionPatrocinadoBuscador();
@@ -562,6 +571,9 @@ class WebController extends Controller {
 
     public function quiensoy()
     {
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionDerecha();
+
         return view('quien-soy');
     }
 
@@ -616,18 +628,28 @@ class WebController extends Controller {
         return view ('franquicias-consultoria');
     }
 
-    public function dudasgenerales(){
+    public function dudasgenerales()
+    {
+
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionDerecha();
+        $this->banner_superior();
+
         return view ('dudas-generales');
     }
 
     public function dudasfranquicias(){
 
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionDerecha();
+        $this->banner_superior();
+
         return view ('dudas-franquicias');
     }
 
-    public function resultados(){
+    /*public function resultados(){
         return view ('resultados');
-    }
+    }*/
     /*
      * Para cargar las primeras noticias nada más abrir la página
      */
