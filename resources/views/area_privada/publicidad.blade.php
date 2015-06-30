@@ -26,7 +26,7 @@
                             //Seleccionamos el total de franquicias activas en el carousel (Ojo, franquicias que pagan no de pega)
                             $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))
                                                                                 ->where('p.idtipo_publicidad', '=', 1)
-                                                                                ->where('p.franquicia_id','<>', 0)    ->get();
+                                                                                ->where('p.franquicia_id','<>', 1)    ->get();
                                 //dd(intval($carouselActivas[0]->cantidad));
                             if(intval($tamCarousel[0]->recuadros) > intval($carouselActivas[0]->cantidad))
                                 $flagCarousel = true;
