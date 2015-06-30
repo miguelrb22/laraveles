@@ -267,7 +267,7 @@
     $(document).ajaxStop($.unblockUI);
 
     function estadisticas(tipo,franquicia){
-        alert("tipo " + tipo + " franquicia " + franquicia)
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

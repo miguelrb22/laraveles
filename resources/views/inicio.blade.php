@@ -84,11 +84,11 @@
                             <div class="well well_efect">
                                 <h4 class="text-center letra">
                                     <strong>
-                                        <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">{{$rentables[0]->nombre_comercial}}</a>
+                                        <a onclick="estadisticas(16,'{{$rentables[0]->id}}');" href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">{{$rentables[0]->nombre_comercial}}</a>
                                     </strong>
                                 </h4>
                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$rentables[0]->nombre."/".$rentables[0]->nombre_comercial)))}}" title="perfil">
-                                    <img class="img-responsive c_especial" src="{{ asset($rentables[0]->logo_url)}}" alt="prueba" >
+                                    <img onclick="estadisticas(16,'{{$rentables[0]->id}}');" class="img-responsive c_especial" src="{{ asset($rentables[0]->logo_url)}}" alt="prueba" >
                                 </a>
                             </div>
                         </div>
@@ -130,11 +130,11 @@
                         <div class="well well_efect">
                             <h4 class="text-center letra">
                                 <strong>
-                                    <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$baratas[0]->nombre."/".$baratas[0]->nombre_comercial)))}}" title="perfil">{{$baratas[0]->nombre_comercial}}</a>
+                                    <a onclick="estadisticas(14,'{{$baratas[0]->id}}');" href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$baratas[0]->nombre."/".$baratas[0]->nombre_comercial)))}}" title="perfil">{{$baratas[0]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
                             <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$baratas[0]->nombre."/".$baratas[0]->nombre_comercial)))}}" title="perfil">
-                                <img class="img-responsive c_especial" src="{{ asset($baratas[0]->logo_url) }}" alt="prueba" >
+                                <img onclick="estadisticas(14,'{{$baratas[0]->id}}');" class="img-responsive c_especial" src="{{ asset($baratas[0]->logo_url) }}" alt="prueba" >
                             </a>
                         </div>
                     </div>
@@ -168,11 +168,11 @@
                         <div class="well well_efect">
                             <h4 class="text-center letra">
                                 <strong>
-                                    <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lowcost[0]->nombre."/".$lowcost[0]->nombre_comercial)))}}" title="perfil">{{$lowcost[0]->nombre_comercial}}</a>
+                                    <a onclick="estadisticas(13,'{{$lowcost[0]->id}}');" href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lowcost[0]->nombre."/".$lowcost[0]->nombre_comercial)))}}" title="perfil">{{$lowcost[0]->nombre_comercial}}</a>
                                 </strong>
                             </h4>
                             <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$lowcost[0]->nombre."/".$lowcost[0]->nombre_comercial)))}}" title="perfil">
-                                <img class="img-responsive c_especial" src="{{ asset($lowcost[0]->logo_url) }}" alt="prueba" >
+                                <img onclick="estadisticas(13,'{{$lowcost[0]->id}}');" class="img-responsive c_especial" src="{{ asset($lowcost[0]->logo_url) }}" alt="prueba" >
                             </a>
                         </div>
                     </div>
@@ -232,12 +232,11 @@
                         </div>
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
-
                                 @if(!$banner_int->isEmpty())
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <a  href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($banner_int[0]->nombre."/".$bannerSup[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" title="perfil">
-                                                <img id="publicidad" src="{{ asset($banner_int[0]->url_imagen) }}" class="img-responsive" alt="Responsive image">
+                                                <img onclick="estadisticas(9,'{{$banner_int[0]->id}}');" id="publicidad" src="{{ asset($banner_int[0]->url_imagen) }}" class="img-responsive" alt="Responsive image">
                                             </a>
                                         </div>
                                     </div>
@@ -261,14 +260,14 @@
                                                 @foreach($noticiaDestacada as $noticia)
                                                     <div class="row">
                                                         <div class="col col-xs-8 col-sm-8 col-md-9 col-lg-9">
-                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><h4>{{ $noticia->titulo }}</h4></a>
-                                                            <p id="noticiaDes"> {{ $noticia->resumen  }} ... </p>
-                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}">seguir leyendo</a>
+                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><h4 onclick="estadisticas(27,'{{$noticia->franquicia_id}}');">{{ $noticia->titulo }}</h4></a>
+                                                            <p id="noticiaDes"> {{ $noticia->resumen }} ... </p>
+                                                            <a onclick="estadisticas(27,'{{$noticia->franquicia_id}}');" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}">seguir leyendo</a>
                                                         </div>
                                                         <div class="col col-xs-4 col-sm-4 col-md-3 col-lg-3" style="margin-top: -2%">
                                                             <br>
                                                             <br>
-                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><img class="img-responsive img-rounded" id="imagen-noticia" src="{{ asset($noticia->url_imagen)  }}" alt="prueba"  width="140px"></a>
+                                                            <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$noticia->titulo.'/'.$noticia->id)))}}"><img onclick="estadisticas(27,'{{$noticia->franquicia_id}}');" class="img-responsive img-rounded" id="imagen-noticia" src="{{ asset($noticia->url_imagen)  }}" alt="prueba"  width="140px"></a>
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -393,8 +392,8 @@
 
                                 @if($i < count($destacadas))
                                     <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 text-center">
-                                        <h3><a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$destacadas[$i]->nombre."/".$destacadas[$i]->nombre_comercial)))}}">{{$destacadas[$i]->nombre_comercial}}</a></h3>
-                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$destacadas[$i]->nombre."/".$destacadas[$i]->nombre_comercial)))}}"><img class="img-responsive img_destacados" src="{{ asset($destacadas[$i]->url_imagen) }}" alt="prueba" ></a>
+                                        <h3><a onclick="estadisticas(11,'{{$destacadas[$i]->id}}');" href="{{ URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$destacadas[$i]->nombre."/".$destacadas[$i]->nombre_comercial)))}}">{{$destacadas[$i]->nombre_comercial}}</a></h3>
+                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(" ","-",$destacadas[$i]->nombre."/".$destacadas[$i]->nombre_comercial)))}}"><img onclick="estadisticas(11,'{{$destacadas[$i]->id}}');" class="img-responsive img_destacados" src="{{ asset($destacadas[$i]->url_imagen) }}" alt="prueba" ></a>
                                         <br>
                                     </div>
                                 @else

@@ -125,6 +125,9 @@
                     </div>
                     <br>
 
+                    @if(isset($ses))
+                        <input type="text" value="{{$ses->nombre_comercial}}" name="nombre_comercial" hidden>
+                    @endif
 
                     <div class="input-group">
                         <span><strong>Selecciona una imagen para la publicación:</strong></span>

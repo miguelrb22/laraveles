@@ -15,7 +15,7 @@ class Publicaciones extends Model{
 
     protected $table = 'publicacion';
 
-    protected $fillable = ['id','franquicia_id','titulo','contenido','url_imagen','tipo','fecha','pertenencia','resumen','fecha_publicacion','fecha_finalizacion'];
+    protected $fillable = ['id','franquicia_id','titulo','contenido','url_imagen','tipo','fecha','pertenencia','resumen','fecha_publicacion','fecha_finalizacion','nombre_comercial',];
 
     public function getRouteKey(){
 

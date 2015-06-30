@@ -37,11 +37,10 @@
 
     {!! Form::Close() !!}
     <!--</form>-->
-
     @if(!$patrocinadas->isEmpty())
         <div class="col col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$patrocinadas[0]->nombre."/".$patrocinadas[0]->nombre_comercial)))}}">
-                <img id="patrocinado" src="{{ asset($patrocinadas[0]->url_imagen) }}"  alt="prueba" width="150" height="60">
+                <img onclick="estadisticas(28,'{{$patrocinadas[0]->id}}');" id="patrocinado" src="{{ asset($patrocinadas[0]->url_imagen) }}"  alt="prueba" width="150" height="60">
             </a>
         </div>
     @else

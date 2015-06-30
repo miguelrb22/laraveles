@@ -8,18 +8,18 @@
 
                 @foreach($entrevistas as $entrevista)
                     <div class="row">
-                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$entrevista->titulo).'/'.$entrevista->id)))}}"> <h3>{{$entrevista->titulo}}</h3></a>
+                        <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$entrevista->titulo).'/'.$entrevista->id)))}}"> <h3 onclick="estadisticas(29,'{{$entrevista->franquicia_id}}');">{{$entrevista->titulo}}</h3></a>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <label>nombre de franquicia</label>
+                            <label>{{$entrevista->nombre_comercial}}</label>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$entrevista->titulo).'/'.$entrevista->id)))}}">
-                                <img class="img-responsive img_destacados" src="{{ asset($entrevista->url_imagen) }}" alt="prueba" >
+                                <img onclick="estadisticas(29,'{{$entrevista->franquicia_id}}');" class="img-responsive img_destacados" src="{{ asset($entrevista->url_imagen) }}" alt="prueba" >
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <p>{{$entrevista->resumen}} ...</p>
-                                <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$entrevista->titulo).'/'.$entrevista->id)))}}"> + seguir leyendo</a>
+                                <a onclick="estadisticas(29,'{{$entrevista->franquicia_id}}');" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$entrevista->titulo).'/'.$entrevista->id)))}}"> + seguir leyendo</a>
                         </div>
                     </div>
                     <hr>
