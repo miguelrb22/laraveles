@@ -1395,6 +1395,30 @@ class WebController extends Controller {
         }
     }
 
+    public function estadisticasClick(Request $r){
+
+        $tipoEstadistica = $r::Input('tipo');
+        $franquicia = $r::Input('franquicia');
+
+        $comprobar = EstadisticasDiarias::where('franquicia','=', $franquicia)
+            ->where('idtipo_estadistica','=', $tipoEstadistica)
+            ->where('fecha','=',date("Y-m-d"))
+            ->take(1)
+            ->get();
+
+        if($comprobar->isEmpty()) {
+
+            $estadistica = new EstadisticasDiarias(['franquicia' => $franquicia, 'idtipo_estadistica' => $tipoEstadistica, 'total' => '1', 'fecha' => date("Y-m-d")]);
+            $estadistica->save();
+        } else{
+
+            $comprobar[0]->total = ($comprobar[0]->total)+1;
+            $comprobar[0]->save();
+        }
+
+
+    }
+
 }
 
 

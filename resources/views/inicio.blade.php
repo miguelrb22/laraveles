@@ -440,12 +440,37 @@
             console.log(this.getAttribute("id"));
         })
 
+        //Click en banner sup
+
     @stop
 
 
 
 <script type="text/javascript">
 
+    function estadisticas(tipo,franquicia){
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+
+            type: "GET",
+            url: "{{ URL::route('estadisticas_click') }}",
+            data: {"tipo" : tipo , "franquicia" : franquicia},
+            dataType: "html",
+            error: function () {
+
+            },
+            success: function (data) {
+
+            }
+        });
+
+    }
 
 </script>
 
