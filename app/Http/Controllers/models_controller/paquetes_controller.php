@@ -205,6 +205,7 @@ class paquetes_controller extends Controller
         //por eso cogemos las publicidades cuya fecha de inicio es < o = que la actual y la final mayor o igual que la actual
         $numActuales = publicidad::where('inicio' , '<=', $time)
                                     ->where('final','>=',$time)
+                                    ->where('franquicia_id','<>',1)
                                     ->where('idTipo_publicidad' ,'=', 1)->count();
 
         //Si hay franquicias con este tipo de paquetes pasamos datos a la vista de fecha y nº franquicias sino no.

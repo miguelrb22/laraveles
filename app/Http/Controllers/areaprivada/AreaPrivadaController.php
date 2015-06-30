@@ -10,6 +10,7 @@ use App\model\Publicaciones;
 use App\model\publicidad;
 use App\model\PublicidadGeneral;
 use App\model\subcategoria;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View as v;
 use Illuminate\Http\Request;
@@ -54,23 +55,30 @@ class AreaPrivadaController extends Controller
     {
 
         $franquicia = Session::get('franquicia');
-        $id = $franquicia->id;
-        $paquetes = array();
-        /*$paquetes = PaquetesActivos::where('id', '=', $id)->get();*/
 
-        $publicidades = publicidad::where('franquicia_id','=',$id)
-                                    ->where('inicio','<=',$this->time)
-                                    ->where('final','>=',$this->time)
-                                    ->groupBy(DB::raw('idtipo_publicidad'))
-                                    ->get(array('idtipo_publicidad'));
+        if(isset($franquicia)) {
 
-        //creamos el array con solo los ids
-        foreach($publicidades as $publicidad){
+            $id = $franquicia->id;
+            $paquetes = array();
+            /*$paquetes = PaquetesActivos::where('id', '=', $id)->get();*/
 
-            array_push($paquetes,$publicidad->idtipo_publicidad);
+            $publicidades = publicidad::where('franquicia_id', '=', $id)
+                ->where('inicio', '<=', $this->time)
+                ->where('final', '>=', $this->time)
+                ->groupBy(DB::raw('idtipo_publicidad'))
+                ->get(array('idtipo_publicidad'));
+
+            //creamos el array con solo los ids
+            foreach ($publicidades as $publicidad) {
+
+                array_push($paquetes, $publicidad->idtipo_publicidad);
+            }
+
+            return view('area_privada.publicidad', compact('paquetes'));
+        }else{
+
+            return Redirect::route('private');
         }
-
-        return view('area_privada.publicidad', compact('paquetes'));
 
 
     }

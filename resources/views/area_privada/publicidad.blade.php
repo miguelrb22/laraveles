@@ -1,8 +1,7 @@
-
-
 @extends('area_privada.multifranquicias')
 
 @section('main')
+
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
@@ -26,8 +25,8 @@
                             //Seleccionamos el total de franquicias activas en el carousel (Ojo, franquicias que pagan no de pega)
                             $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))
                                                                                 ->where('p.idtipo_publicidad', '=', 1)
-                                                                                ->where('p.franquicia_id','<>', 0)    ->get();
-                                //dd(intval($carouselActivas[0]->cantidad));
+                                                                                ->where('p.franquicia_id','<>', 1)    ->get();
+
                             if(intval($tamCarousel[0]->recuadros) > intval($carouselActivas[0]->cantidad))
                                 $flagCarousel = true;
                             ?>
@@ -1521,7 +1520,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if (in_array(!13,$paquetes))
+                                                                @if (!in_array(13,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
@@ -2268,7 +2267,5 @@
     console.log(e.target.files[0].name);
     }
 
-
 @endsection
-
 
