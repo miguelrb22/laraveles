@@ -76,12 +76,19 @@
             <!-- WIDGET END -->
         </div>
         <br>
+        <br>
         <div class="row">
             <br>
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
 
 
                 <form method="get" action="{{ URL::route('generarestadisticas') }}">
+                    <input type="text" name="fecha" id="date" required placeholder="Elige la fecha"> <br><br>
+                    <select required name="rango">
+                        <option value="1">Diaria</option>
+                        <option value="2">Mensual</option>
+                        <option value="3">Anual</option>
+                    </select><br><br><br><br><br>
                     <button type="submit" class="btn btn-success"> <i class="fa fa-file-excel-o"></i>   Generar estadísticas detalladas</button>
                 </form>
             </article>
@@ -91,7 +98,22 @@
 
 @endsection
 
+@section('js')
+    <script src="{{ asset('area_privada/datepickersandbox/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('area_privada/datepickersandbox/locales/bootstrap-datepicker.es.min.js') }}"></script>
+
+@endsection
+
 @section('ready')
+
+    $('#date').datepicker({
+
+    format: "yyyy-mm-dd",
+    language: "es",
+    multidate: false,
+    autoclose: true,
+    todayHighlight: true
+    });
 
     $('#dt_basic_estadisticas').dataTable({
     "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
@@ -113,6 +135,8 @@
     responsiveHelper_dt_basic.respond();
     }
     });
+
+
 @endsection
 
 
