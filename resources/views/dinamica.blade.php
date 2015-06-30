@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
-                    <section class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <section class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
                         @if(!$franInIzq->isEmpty())
                             <!-- numPublicaicones[3] el el numero de recuadros que va a haber en la izquierda-->
@@ -39,7 +39,7 @@
                         @endif
 
                     </section>
-                    <section class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <section class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                         <div class="well">
                             <label>Resultados de busqueda: <span class="badge badge-info"> {{ $resultados }} </span> franquicias  </label>
                         </div>
@@ -72,7 +72,7 @@
                                         <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                             <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($destacada->nombre."/".$destacada->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><img class="img-rounded img-responsive f-logo" src="{{ asset($destacada->logo_url) }}"></a>
                                         </div>
-                                        <div class="col col-xs-8 col-sm-8 col-md-8 col-lg-8 f-desc">
+                                        <div class="col col-xs-8 col-sm-8 col-md-8   col-lg-8 f-desc">
                                             <p>
                                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($destacada->nombre."/".$destacada->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}"><h2>{{$destacada->nombre_comercial}}</h2></a>
                                                 <p>{{ substr(strip_tags($destacada->descripcion),0,250)."..." }}</p>

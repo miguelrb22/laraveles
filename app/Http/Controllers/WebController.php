@@ -14,14 +14,12 @@ use App\model\EstadisticasDiarias;
 use App\model\Franquicia;
 use App\model\franquicia_nom_subcategoria;
 use App\model\franquicia_subcategoria;
-use App\model\franquicia_especial_subcategoria;
 use App\model\Publicaciones;
 use App\model\subcategoria;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
-use App\model\PaquetesActivos;
 use App\model\files;
 use Illuminate\Support\Facades\View;
 use App\model\publicidad;
@@ -188,6 +186,7 @@ class WebController extends Controller {
         $this->franquiciasIzq = publicidad_franquicias::where('idtipo_publicidad','=',4)
                                                         ->where('inicio','<=',$time)
                                                         ->where('final','>=',$time)
+                                                        ->take(intval($this->numeroPublicidades[3]->recuadros))
                                                         ->orderBy(DB::raw('RAND()'))
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
@@ -206,6 +205,7 @@ class WebController extends Controller {
                                                         ->where('inicio','<=',$time)
                                                         ->where('final','>=',$time)
                                                         ->orderBy(DB::raw('RAND()'))
+                                                        ->take(1)
                                                         ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
 
@@ -223,6 +223,7 @@ class WebController extends Controller {
                                                     ->where('inicio','<=',$time)
                                                     ->where('final','>=',$time)
                                                     ->orderBy(DB::raw('RAND()'))
+                                                    ->take(intval($this->numeroPublicidades[7]->recuadros))
                                                     ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
         //Compartimos el array con todas las vistas
@@ -349,6 +350,7 @@ class WebController extends Controller {
                                                     ->where('inicio','<=',$time)
                                                     ->where('final','>=',$time)
                                                     ->orderBy(DB::raw('RAND()'))
+                                                    ->take(1)
                                                     ->get(array('url_imagen','nombre','nombre_comercial','id'));
 
         //Compartimos el array con todas las vistas
@@ -377,7 +379,6 @@ class WebController extends Controller {
     public function index()
     {
 
-
         $this->impresionBA();
         $this->impresionBannerIntermedio();
         $this->impresionBannerSup();
@@ -392,8 +393,6 @@ class WebController extends Controller {
         $this->impresionRE();
         $this->impresionPatrocinadoBuscador();
         $this->impresionNoticiaDestacada();
-
-
 
         return view('inicio');
     }
@@ -546,13 +545,15 @@ class WebController extends Controller {
         $franquicias = publicidad_especial::where('nombre_paquete', 'like', $tipo )
                                             ->orderBy(DB::raw('RAND()'))->groupBy('id')->get();
 
-        if(!$franquicias->isEmpty())
-        {
-            return view('especiales',compact('franquicias','tipo'));
-        }else{
+        //hacemos las llamadas a la impresiones
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionBannerSup();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionIzquierda();
+        $this->impresionDerecha();
+        $this->impresionBannerIntermedio();
 
-            return view('especiales',compact('franquicias','tipo'));
-        }
+        return view('especiales',compact('franquicias','tipo'));
     }
 
     public function quiensoy()
@@ -566,9 +567,6 @@ class WebController extends Controller {
     }
 
     public function franquicias(){
-
-        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
-        $patrocinadas = $this->patrocinadasB;
 
         //Declaramos variables de asignacion.
         $lista = array();
@@ -590,8 +588,13 @@ class WebController extends Controller {
             $subcategorias = array();
         }
 
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionBannerSup();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionIzquierda();
+        $this->impresionDerecha();
+        $this->impresionBannerIntermedio();
 
-        $categorias = $this->categorias_deplegables;
         return view ('franquicias',compact('lista'));
     }
 
@@ -620,6 +623,14 @@ class WebController extends Controller {
         $articulos = Publicaciones::where('tipo','=','1')->paginate(5);
         $total = Publicaciones::where('tipo','=','1')->count();
         $tipo = 1;
+
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionBannerSup();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionIzquierda();
+        $this->impresionDerecha();
+        $this->impresionBannerIntermedio();
+
         return view ('noticias' ,compact('articulos','total','tipo'));
     }
 
@@ -627,6 +638,8 @@ class WebController extends Controller {
         $articulos = Publicaciones::where('tipo','=','2')->paginate(5);
         $total = Publicaciones::where('tipo','=','2')->count();
         $tipo = 2;
+
+        //llamamos a las estadisticas que se imprimen en esta vista.
         return view ('noticias' ,compact('articulos','total','tipo'));
     }
 
@@ -1029,6 +1042,7 @@ class WebController extends Controller {
 
     //Estadisticas Banner superior
     public function impresionBannerSup (){
+
 
         foreach($this->banner_superior as $franquicia){
 
