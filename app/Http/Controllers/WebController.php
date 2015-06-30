@@ -601,6 +601,10 @@ class WebController extends Controller {
 
 
     public function franquiciadores(){
+
+        $this->impresionBannerSup();
+        $this->impresionDerecha();
+
         return view ('franquicias-consultoria');
     }
 
@@ -718,9 +722,9 @@ class WebController extends Controller {
     {
 
         //llamamos a las estadisticas que se imprimen en esta vista.
-        $this->impresionBannerSup();
         $this->impresionPatrocinadoBuscador();
         $this->impresionIzquierda();
+        $this->impresionBannerSup();
         $this->impresionDerecha();
 
         return view('servicios_garantias',compact('patrocinadas'));
