@@ -716,11 +716,13 @@ class WebController extends Controller {
 
     public function servicios()
     {
-        //cogemos las patrocinadas inicializadas en el constructor y las pasamos a la vista a traves de la variable definida
-        $patrocinadas = $this->patrocinadasB;
 
-        //obtenemos las categorias del desplegable
-        $categorias = $this->categorias_deplegables;
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionBannerSup();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionIzquierda();
+        $this->impresionDerecha();
+
         return view('servicios_garantias',compact('patrocinadas'));
     }
 
