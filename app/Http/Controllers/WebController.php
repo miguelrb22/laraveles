@@ -416,8 +416,8 @@ class WebController extends Controller {
     public function emprendedor()
     {
         //llamamos a las estadisticas que se imprimen en esta vista.
-        $this->impresionBannerSup();
         $this->impresionDerecha();
+        $this->impresionBannerSup();
 
         return view('emprendedor-consultoria');
     }
@@ -567,6 +567,9 @@ class WebController extends Controller {
 
     public function contacto()
     {
+        //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionDerecha();
+
         return view('contacto');
     }
 
