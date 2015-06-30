@@ -111,6 +111,12 @@
         </div>
     @endsection
 
+    @section('der')
+
+        @include('extras.derecha')
+
+    @endsection
+
 @section('javascript')
 
     <script src="{{ URL::asset('PieProgress/js/jquery-asPieProgress.js')}}"></script>
