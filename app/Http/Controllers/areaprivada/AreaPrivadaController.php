@@ -203,10 +203,11 @@ class AreaPrivadaController extends Controller
     }
 
 
-    public function generarestadisticas()
+    public function generarestadisticas(Request $request)
     {
 
 
+        dd($request->input('fecha'));
         $data = Franquicia::all();
 
 
