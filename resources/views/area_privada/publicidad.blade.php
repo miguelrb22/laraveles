@@ -28,7 +28,7 @@
                                                                                 ->where('p.idtipo_publicidad', '=', 1)
                                                                                 ->where('p.franquicia_id','<>', 0)    ->get();
                                 //dd(intval($carouselActivas[0]->cantidad));
-                            if(intval($tamCarousel[0]->recuadros) >=  intval($carouselActivas[0]->cantidad))
+                            if(intval($tamCarousel[0]->recuadros) > intval($carouselActivas[0]->cantidad))
                                 $flagCarousel = true;
                             ?>
 
