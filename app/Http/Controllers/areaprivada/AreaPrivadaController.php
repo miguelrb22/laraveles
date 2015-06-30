@@ -220,7 +220,133 @@ class AreaPrivadaController extends Controller
 
     public function estadisticas()
     {
-        return view('area_privada.estadisticas');
+
+        $fecha = date('Y-m-j');
+        $nuevafecha = strtotime ( '-1 month' , strtotime ( $fecha ) ) ;
+        $nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+
+        $mes = explode('-',$fecha);
+        $mespas = explode('-',$nuevafecha);
+
+
+        $altas_act = Franquicia::select(DB::raw('count(*) as total'))
+            ->whereMonth('fecha_alta_ficha','=',$mes[1])
+            ->whereYear('fecha_alta_ficha','=',$mes[0])
+            ->get();
+
+        $altas_pasadas = Franquicia::select(DB::raw('count(*) as total'))
+            ->whereMonth('fecha_alta_ficha','=',$mespas[1])
+            ->whereYear('fecha_alta_ficha','=',$mespas[0])
+            ->get();
+
+
+        if($altas_act[0]->total == 0) $altas_act[0]->total = 0.9999999;
+        if($altas_pasadas[0]->total == 0) $altas_pasadas[0]->total = 0.9999999;
+
+        $altas = round(($altas_act[0]->total*100) / $altas_pasadas[0]->total,2);
+
+        $bajas_act = Franquicia::select(DB::raw('count(*) as total'))
+            ->whereMonth('fecha_vencimiento_ficha','=',$mes[1])
+            ->whereYear('fecha_vencimiento_ficha','=',$mes[0])
+            ->where('fecha_vencimiento_ficha','<',$fecha)
+            ->get();
+
+        $bajas_pasadas = Franquicia::select(DB::raw('count(*) as total'))
+            ->whereMonth('fecha_vencimiento_ficha','=',$mespas[1])
+            ->whereYear('fecha_vencimiento_ficha','=',$mespas[0])
+            ->where('fecha_vencimiento_ficha','<',$fecha)
+            ->get();
+
+        if($bajas_act[0]->total == 0) $bajas_act[0]->total = 0.9999999;
+        if($bajas_pasadas[0]->total == 0) $bajas_pasadas[0]->total = 0.9999999;
+
+        $bajas = round(($bajas_act[0]->total*100) / $bajas_pasadas[0]->total,2);
+
+        $impresiones_act = masterEstadisticas::select(DB::raw('sum(total) as total'))
+            ->whereMonth('fecha','=',$mes[1])
+            ->whereYear('fecha','=',$mes[0])
+            ->where('nombre','like','%mpresi%')
+            ->get();
+
+
+
+        $impresiones_pasadas = masterEstadisticas::select(DB::raw('sum(total) as total'))
+            ->whereMonth('fecha','=',$mespas[1])
+            ->whereYear('fecha','=',$mespas[0])
+            ->where('nombre','like','%mpresi%')
+            ->get();
+
+        if($impresiones_act[0]->total == 0) $impresiones_act[0]->total = 0.9999999;
+        if($impresiones_pasadas[0]->total == 0) $impresiones_pasadas[0]->total = 0.9999999;
+
+        $impresiones = round(($impresiones_act[0]->total*100) / $impresiones_pasadas[0]->total,2);
+
+
+
+        $clicks_act = masterEstadisticas::select(DB::raw('sum(total) as total'))
+            ->whereMonth('fecha','=',$mes[1])
+            ->whereYear('fecha','=',$mes[0])
+            ->where('nombre','like','%clic%')
+            ->get();
+
+
+
+        $clicks_pasadas = masterEstadisticas::select(DB::raw('sum(total) as total'))
+            ->whereMonth('fecha','=',$mespas[1])
+            ->whereYear('fecha','=',$mespas[0])
+            ->where('nombre','like','%clic%')
+            ->get();
+
+
+        //dd($clicks_act[0]->total, $clicks_pasadas[0]->total);
+
+        if($clicks_act[0]->total == 0) $clicks_act[0]->total = 0.9999999;
+        if($clicks_pasadas[0]->total == 0) $clicks_pasadas[0]->total = 0.9999999;
+
+        $clicks = round(($clicks_act[0]->total*100) / $clicks_pasadas[0]->total,2);
+
+        $envios_act = masterEstadisticas::select(DB::raw('sum(total) as total'))
+            ->whereMonth('fecha','=',$mes[1])
+            ->whereYear('fecha','=',$mes[0])
+            ->where('nombre','like','%informaci%')
+            ->get();
+
+
+
+        $envios_pasadas = masterEstadisticas::select(DB::raw('sum(total) as total'))
+            ->whereMonth('fecha','=',$mespas[1])
+            ->whereYear('fecha','=',$mespas[0])
+            ->where('nombre','like','%informaci%')
+            ->get();
+
+
+        if($envios_act[0]->total == 0) $envios_act[0]->total = 0.9999999;
+        if($envios_pasadas[0]->total == 0) $envios_pasadas[0]->total = 0.9999999;
+
+        $envios = round(($envios_act[0]->total*100) / $envios_pasadas[0]->total,2);
+
+
+        $anuncios_act = publicidad::select(DB::raw('count(*) as total'))
+            ->whereMonth('created_at','=',$mes[1])
+            ->whereYear('created_at','=',$mes[0])
+            ->get();
+
+
+
+        $anuncios_pasadas = publicidad::select(DB::raw('count(*) as total'))
+            ->whereMonth('created_at','=',$mespas[1])
+            ->whereYear('created_at','=',$mespas[0])
+            ->get();
+
+
+        if($anuncios_act[0]->total == 0) $anuncios_act[0]->total = 0.9999999;
+        if($anuncios_pasadas[0]->total == 0) $anuncios_pasadas[0]->total = 0.9999999;
+
+        $anuncios = round(($anuncios_act[0]->total*100) / $anuncios_pasadas[0]->total,2);
+
+
+
+        return view('area_privada.estadisticas',compact('altas','altas_act','bajas','bajas_act','impresiones','impresiones_act','clicks','clicks_act','envios','envios_act','anuncios','anuncios_act'));
     }
 
 
