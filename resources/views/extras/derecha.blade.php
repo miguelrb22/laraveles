@@ -5,7 +5,7 @@
 
             <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                 <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franSupDer[$i]->nombre."/".$franSupDer[$i]->nombre_comercial)))}}">
-                    <img class="img-responsive img-rounded" src="{{ asset($franSupDer[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
+                    <img onclick="estadisticas(12,'{{$franSupDer[$i]->id}}');" class="img-responsive img-rounded" src="{{ asset($franSupDer[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
                 </a>
             </div>
 

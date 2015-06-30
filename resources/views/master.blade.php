@@ -266,6 +266,30 @@
 
     $(document).ajaxStop($.unblockUI);
 
+    function estadisticas(tipo,franquicia){
+        alert("tipo " + tipo + " franquicia " + franquicia)
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+
+            type: "GET",
+            url: "{{ URL::route('estadisticas_click') }}",
+            data: {"tipo" : tipo , "franquicia" : franquicia},
+            dataType: "html",
+            error: function () {
+
+            },
+            success: function (data) {
+
+            }
+        });
+
+    }
+
     $(document).ready(function () {
 
 

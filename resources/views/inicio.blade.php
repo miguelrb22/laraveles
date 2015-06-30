@@ -38,13 +38,13 @@
                             <div class="well well_efect">
                                 <h4 class="text-center letra">
                                     <strong>
-                                        <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($exito[0]->nombre."/".$exito[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" title="perfil" id="{{$exito[0]->id}}">
+                                        <a onclick="estadisticas(15,'{{$exito[0]->id}}');" href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($exito[0]->nombre."/".$exito[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" title="perfil" id="{{$exito[0]->id}}">
                                             {{$exito[0]->nombre_comercial}}
                                         </a>
                                     </strong>
                                 </h4>
                                 <a href="{{URL::to('franquicias-de-'.strtolower(str_replace(' ','-',strtr(utf8_decode($exito[0]->nombre."/".$exito[0]->nombre_comercial),utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'))))}}" title="perfil">
-                                    <img  class="img-responsive c_especial" src="{{ asset($exito[0]->logo_url) }}" alt="prueba" width="100" height="100">
+                                    <img onclick="estadisticas(15,'{{$exito[0]->id}}');" class="img-responsive c_especial" src="{{ asset($exito[0]->logo_url) }}" alt="prueba" width="100" height="100">
                                 </a>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                                     @if($i < count($franInIzq))
                                         <div class="col col-xs-6 col-sm-6 col-md-12 col-lg-12 well anuncio">
                                             <a href="{{ URL::to('franquicias-de-'.strtolower(str_replace(' ','-',$franInIzq[$i]->nombre."/".$franInIzq[$i]->nombre_comercial)))}}">
-                                                <img class="img-responsive img-rounded" src="{{ asset($franInIzq[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
+                                                <img onclick="estadisticas(26,'{{$franInIzq[$i]->id}}');" class="img-responsive img-rounded" src="{{ asset($franInIzq[$i]->url_imagen) }}"  alt="prueba" style="width: auto">
                                             </a>
                                         </div>
                                     @else
@@ -443,34 +443,4 @@
         //Click en banner sup
 
     @stop
-
-
-
-<script type="text/javascript">
-
-    function estadisticas(tipo,franquicia){
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-
-            type: "GET",
-            url: "{{ URL::route('estadisticas_click') }}",
-            data: {"tipo" : tipo , "franquicia" : franquicia},
-            dataType: "html",
-            error: function () {
-
-            },
-            success: function (data) {
-
-            }
-        });
-
-    }
-
-</script>
 

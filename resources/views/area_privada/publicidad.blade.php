@@ -1520,7 +1520,7 @@
                                                     <div class="row">
                                                         <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">
                                                             <label class="toggle">
-                                                                @if (in_array(!13,$paquetes))
+                                                                @if (!in_array(13,$paquetes))
                                                                     <input type='checkbox' name='checkbox-toggle' disabled>
                                                                 @else
                                                                     <input type='checkbox' name='checkbox-toggle' checked="checked" disabled>
