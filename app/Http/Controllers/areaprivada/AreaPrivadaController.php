@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\model\Categoria;
 use App\model\Franquicia as Franquicia;
 use App\model\FranquiciaSubcategoria;
+use App\model\masterEstadisticas;
 use App\model\PaquetesActivos;
 use App\model\Publicaciones;
 use App\model\publicidad;
@@ -207,9 +208,37 @@ class AreaPrivadaController extends Controller
     {
 
 
-        dd($request->input('fecha'));
-        $data = Franquicia::all();
+        $rango = $request->input('rango');
+        $fecha = explode('-',$request->input('fecha'));
 
+        switch($rango){
+
+            case 1:
+
+                $data = masterEstadisticas::select(DB::raw('sum(total) as Total, nombre as Estadistica, nombre_comercial as Franquicia'))
+                    ->groupBy('idtipo_estadistica')
+                    ->groupBy('franquicia')
+                    ->whereDay('fecha','=',$fecha[2])
+                    ->get();
+
+                break;
+            case 2:
+
+                $data = masterEstadisticas::select(DB::raw('sum(total) as Total, nombre as Estadistica, nombre_comercial as Franquicia'))
+                    ->groupBy('idtipo_estadistica')
+                    ->groupBy('franquicia')
+                    ->whereMonth('fecha','=',$fecha[1])
+                    ->get();
+                break;
+            case 3:
+
+                $data = masterEstadisticas::select(DB::raw('sum(total) as Total, nombre as Estadistica, nombre_comercial as Franquicia'))
+                    ->groupBy('idtipo_estadistica')
+                    ->groupBy('franquicia')
+                    ->whereYear('fecha','=',$fecha[0])
+                    ->get();
+                break;
+        }
 
         Excel::create('Filename', function($excel) use($data) {
 
