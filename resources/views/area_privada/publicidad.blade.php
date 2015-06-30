@@ -1,8 +1,7 @@
-
-
 @extends('area_privada.multifranquicias')
 
 @section('main')
+
     <section id="widget-grid" class="">
         <div class="row">
             <div class="col-xs-12 col-md-12  col-sm-12 col-lg-12">
@@ -27,7 +26,7 @@
                             $carouselActivas = DB::table(DB::raw('publicidad p'))->select(DB::raw('count(p.id) as cantidad'))
                                                                                 ->where('p.idtipo_publicidad', '=', 1)
                                                                                 ->where('p.franquicia_id','<>', 1)    ->get();
-                                //dd(intval($carouselActivas[0]->cantidad));
+
                             if(intval($tamCarousel[0]->recuadros) > intval($carouselActivas[0]->cantidad))
                                 $flagCarousel = true;
                             ?>
@@ -2268,7 +2267,5 @@
     console.log(e.target.files[0].name);
     }
 
-
 @endsection
-
 
