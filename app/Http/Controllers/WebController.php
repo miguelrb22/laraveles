@@ -640,6 +640,13 @@ class WebController extends Controller {
         $tipo = 2;
 
         //llamamos a las estadisticas que se imprimen en esta vista.
+        $this->impresionBannerSup();
+        $this->impresionPatrocinadoBuscador();
+        $this->impresionIzquierda();
+        $this->impresionDerecha();
+        $this->impresionBannerIntermedio();
+
+        //llamamos a las estadisticas que se imprimen en esta vista.
         return view ('noticias' ,compact('articulos','total','tipo'));
     }
 
