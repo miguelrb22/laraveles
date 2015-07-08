@@ -25,7 +25,7 @@
                 <br>
                 <table class="table-responsive">
                     <tr>
-                        <td><img class='img-responsive' src={{ url('/').$franquicia->logo_url}} alt='' width='100' heigth='100' style="margin-bottom: 3%"/></td>
+                        <td><img class='f-logo' src={{ url('/').$franquicia->logo_url}} alt='' width='100' heigth='100' style="margin-bottom: 3%"/></td>
                     </tr>
                     <tr>
                         @if($franquicia->razon_social != '-')
