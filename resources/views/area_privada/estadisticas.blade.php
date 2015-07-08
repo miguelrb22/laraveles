@@ -33,10 +33,10 @@
                          <span>{{floor($altas_act[0]->total)}} &nbsp;  <i class="fa fa-arrow-up" style="color:green"> {{$altas}} %</i></span>
 
                     @elseif($altas < 100)
-                        <span>{{$altas_act[0]->total}} &nbsp;  <i class="fa fa-arrow-down" style="color:red"> {{100 - $altas}} %</i></span>
+                        <span>{{floor($altas_act[0]->total)}} &nbsp;  <i class="fa fa-arrow-down" style="color:red"> {{100 - $altas}} %</i></span>
 
                         @else
-                        <span>{{$altas_act[0]->total}} &nbsp;  <i class="fa fa-arrow-right" style="color:darkorange"> {{100 - $altas}} %</i></span>
+                        <span>{{floor($altas_act[0]->total)}} &nbsp;  <i class="fa fa-arrow-right" style="color:darkorange"> {{100 - $altas}} %</i></span>
 
                     @endif
 
