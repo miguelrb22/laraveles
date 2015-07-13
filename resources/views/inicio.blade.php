@@ -302,19 +302,6 @@
 
                                 ?>
 
-                                @if(!$publicaciones->isEmpty())
-
-                                    <?php
-                                        $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-                                                        "Septiembre", "Octube", "Noviembre", "Diciembre");
-
-                                        $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
-
-                                        $tam = count($publicaciones) - (floor(count($publicaciones)/3));
-
-                                        ?>
-
-
 
                             </section>
                         </div>
