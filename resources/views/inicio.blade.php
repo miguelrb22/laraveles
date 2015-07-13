@@ -311,9 +311,9 @@
                                         $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
 
                                         $tam = count($publicaciones) - 3;
-                                        dd($tam);
-                                        ?>
 
+                                        ?>
+{{dd($tam)}}
                                     @for($i=0; $i < $tam; $i++)
 
                                             <div class="row" id="noticia1">
