@@ -315,6 +315,7 @@
                                         ?>
 
                                     @for($i=0; $i < $tam; $i++)
+                                            {{dd("entra")}};
 
                                             <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
@@ -360,7 +361,6 @@
                                             <strong>Más....</strong>
                                         </h3>
                                         @for($i=$tam; $i<count($publicaciones); $i++)
-                                            {{dd("entra")}};
 
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
                                                 <a id="newsEnlace" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
