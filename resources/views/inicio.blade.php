@@ -210,7 +210,7 @@
                         <div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
                             @if(!$franInIzq->isEmpty())
-                                {{dd("entra")}};
+
                                 <!-- numPublicaicones[3] el el numero de recuadros que va a haber en la izquierda-->
                                 @for($i = 0 ;$i < $numPublicaciones[3]->recuadros; $i++)
                                     @if($i < count($franInIzq))
@@ -235,6 +235,7 @@
                             @endif
 
                         </div>
+                        {{dd("entra")}};
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
                                 @if(!$banner_int->isEmpty())
