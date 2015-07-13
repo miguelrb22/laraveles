@@ -344,7 +344,7 @@
 
                                                             //$ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
                                                               //      $hora . ":" . $minutos;
-
+                                                        echo $ffinal;
                                                     ?>
 
                                                 </p>
