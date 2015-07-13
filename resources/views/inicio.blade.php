@@ -328,7 +328,9 @@
                                                 <p class="fecha_publicacion pull-right">
 
                                                     <?php
-                                                        $fecha = $publicaciones[$i]->created_at;
+                                                    dd("entra" +$i);
+
+                                                    $fecha = $publicaciones[$i]->created_at;
 
                                                         //si los minutos aparecen con un dígito
                                                         $minutos = $fecha->minute;
@@ -346,7 +348,11 @@
 
                                                 </p>
                                             </div>
-
+                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                @if($i+1 < $tam)
+                                                    <hr class="separador_post">
+                                                @endif
+                                            </div>
                                         </div>
 
                                         @endfor
