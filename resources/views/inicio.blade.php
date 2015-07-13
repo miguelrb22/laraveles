@@ -305,10 +305,10 @@
                                 @if(!$publicaciones->isEmpty())
 
                                     <?php
-                                        $meses = array ("nada","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                        $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
                                                         "Septiembre", "Octube", "Noviembre", "Diciembre");
 
-                                        $dias = array ("nada","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+                                        $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
 
                                         $tam = count($publicaciones) - (floor(count($publicaciones)/3));
 
@@ -339,9 +339,17 @@
                                                         if(strlen($minutos) < 2){$minutos = "0".$minutos;}
                                                         if(strlen($hora) < 2){$hora = "0".$hora;}
 
-                                                        $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
-                                                                  $hora . ":" . $minutos;
 
+                                                        if($fecha->dayOfWeek > 0){
+
+                                                            $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
+                                                                    $hora . ":" . $minutos;
+                                                        }
+                                                        else{
+
+                                                            $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
+                                                                  $hora . ":" . $minutos;
+                                                        }
                                                             //$ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
                                                               //      $hora . ":" . $minutos;
                                                         echo $ffinal;
