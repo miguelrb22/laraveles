@@ -311,6 +311,7 @@
                                         $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
 
                                         $tam = count($publicaciones) - (floor(count($publicaciones)/3))
+                                        {{dd("entra 1" . $tam)}};
                                     ?>
 
                                     @for($i=0; $i < $tam; $i++)
@@ -375,7 +376,7 @@
                                     </div>
 
                                 @endif
-                                    {{dd("entra 1")}};
+
                             </section>
                         </div>
 
