@@ -235,7 +235,7 @@
                             @endif
 
                         </div>
-                        {{dd("entra")}};
+
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
                                 @if(!$banner_int->isEmpty())
@@ -377,6 +377,7 @@
 
                             </section>
                         </div>
+                        {{dd("entra")}};
                     </div>
                 </div>
             </div>
