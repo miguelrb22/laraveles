@@ -325,7 +325,7 @@
                                                 <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
                                                     <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
                                                 </p>
-                                                {{dd("peta aqui")}}
+
                                                 <p class="fecha_publicacion pull-right">
 
                                                     <?php
@@ -346,6 +346,7 @@
                                                     ?>
 
                                                 </p>
+                                                {{dd("peta aqui")}}
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 @if($i+1 < $tam)
