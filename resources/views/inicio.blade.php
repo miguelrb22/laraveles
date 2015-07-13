@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     @endif
-                        {{dd("entra")}};
+
                     @if(!$rentables->isEmpty())
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="well well_efect">
@@ -117,7 +117,7 @@
                     @endif
 
                 </section>
-
+                {{dd("entra")}};
                 <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     @if(!$baratas->isEmpty())
 
