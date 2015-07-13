@@ -304,7 +304,7 @@
 
                                 @if(!$publicaciones->isEmpty())
 
-                                    {{dd($publicaicones)}}
+                                    {{dd($publicaciones)}}
                                     <?php
                                         $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
                                                         "Septiembre", "Octube", "Noviembre", "Diciembre");
