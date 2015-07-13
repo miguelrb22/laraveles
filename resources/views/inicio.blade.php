@@ -302,6 +302,84 @@
 
                                 ?>
 
+                                @if(!$publicaciones->isEmpty())
+
+                                    <?php
+                                        $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                                        "Septiembre", "Octube", "Noviembre", "Diciembre");
+
+                                        $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+
+                                        $tam = count($publicaciones) - (floor(count($publicaciones)/3));
+
+                                        ?>
+
+                                    @for($i=0; $i < $tam; $i++)
+
+                                            <div class="row" id="noticia1">
+                                            <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
+                                                <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-prenoticia" width='' height=""></a>
+                                            </div>
+                                                {{dd("peta aqui")}}
+                                            <div class="col col-xs-7 col-sm-9 col-md-10 col-lg-10">
+                                                <h3 id="tituloNotica"><a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">{{$publicaciones[$i]->titulo}}</a></h3>
+                                                <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
+                                                    <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
+                                                </p>
+                                                <p class="fecha_publicacion pull-right">
+
+                                                    <?php
+                                                        $fecha = $publicaciones[$i]->created_at;
+
+                                                        //si los minutos aparecen con un dígito
+                                                        $minutos = $fecha->minute;
+                                                        //si la hora aparece con un dígito
+                                                        $hora = $fecha->hour;
+
+                                                        if(strlen($minutos) < 2){$minutos = "0".$minutos;}
+                                                        if(strlen($hora) < 2){$hora = "0".$hora;}
+
+                                                        $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
+                                                                      $hora . ":" . $minutos;
+
+                                                        echo $ffinal;
+                                                    ?>
+
+                                                </p>
+                                            </div>
+                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                @if($i+1 < $tam)
+                                                    <hr class="separador_post">
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        @endfor
+
+                                    <hr style="border-top: 4px solid #ccc">
+                                    <div class="row" style="margin-bottom: 5%">
+                                        <h3 class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <strong>Más....</strong>
+                                        </h3>
+                                        @for($i=$tam; $i<count($publicaciones); $i++)
+
+                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
+                                                <a id="newsEnlace" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
+                                            </div>
+                                        @endfor
+                                    </div>
+                                @else
+
+                                    <div class="row" id="noticia1">
+
+                                        <div class="col col-xs-7 col-sm-7 col-md-10 col-lg-10">
+                                            <h3 id="tituloNotica"> No hay articulos</h3>
+
+                                        </div>
+
+                                    </div>
+
+                                @endif
 
                             </section>
                         </div>
