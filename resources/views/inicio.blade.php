@@ -22,6 +22,8 @@
         @endsection
 
         @section('contenido')
+            {{dd("entra")}};
+
             <!--Seccion franquicias especiales -->
             <br>
             <div class="row especiales">
@@ -257,8 +259,6 @@
 
                                             @if(!$noticiaDestacada->isEmpty())
 
-
-                                                {{dd("entra")}};
                                                 @foreach($noticiaDestacada as $noticia)
                                                     <div class="row">
                                                         <div class="col col-xs-8 col-sm-8 col-md-9 col-lg-9">
