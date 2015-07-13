@@ -315,6 +315,7 @@
                                         ?>
 
                                     @for($i=0; $i < $tam; $i++)
+                                            {{dd("entra")}};
 
                                             <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
@@ -386,8 +387,6 @@
                 </div>
             </div>
             <!-- FIN PARTE NOTICIAS -->
-            {{dd("entra")}};
-
         @endsection
         @section('der')
             @include('extras.derecha')
