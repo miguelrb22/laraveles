@@ -308,7 +308,7 @@
                                         $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
                                                         "Septiembre", "Octube", "Noviembre", "Diciembre");
 
-                                        $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+                                        $dias = array ("Domingo", "Lunes", "Mártes", "Miércoles", "Jueves", "Viernes","Sábado");
 
                                         $tam = count($publicaciones) - (floor(count($publicaciones)/3));
 
@@ -340,16 +340,11 @@
                                                         if(strlen($hora) < 2){$hora = "0".$hora;}
 
 
-                                                        if($fecha->dayOfWeek > 0){
 
-                                                            $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
-                                                                    $hora . ":" . $minutos;
-                                                        }
-                                                        else{
 
-                                                            $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
+                                                        $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
                                                                   $hora . ":" . $minutos;
-                                                        }
+
                                                             //$ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
                                                               //      $hora . ":" . $minutos;
                                                         echo $ffinal;
