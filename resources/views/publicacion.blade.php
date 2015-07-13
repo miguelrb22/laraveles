@@ -71,10 +71,10 @@
                             <br>
                             <p class="fecha_publicacion pull-right">
                                 <?php
-                                    $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-                                        "Septiembre", "Octube", "Noviembre", "Diciembre");
+                                    $meses = array ("Diciembre","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                        "Septiembre", "Octube", "Noviembre");
 
-                                    $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+                                    $dias = array ("Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
 
                                     $fecha = $articulo[0]->created_at;
 
@@ -88,7 +88,7 @@
 
                                     if(strlen($hora) < 2){$hora = "0".$hora;}
 
-                                    $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
+                                    $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
                                             $hora . ":" . $minutos;
 
                                     echo $ffinal;
