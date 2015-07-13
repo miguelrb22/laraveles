@@ -117,7 +117,7 @@
                     @endif
 
                 </section>
-                {{dd("entra")}};
+
                 <section class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     @if(!$baratas->isEmpty())
 
@@ -201,6 +201,8 @@
                     @endif
                 </section>
             </div>
+
+            {{dd("entra")}};
             <!-- PARTE NOTICAS -->
             <div class="row">
                 <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
