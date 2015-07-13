@@ -61,10 +61,10 @@
                             <div class="row noticias">
 
                                 <?php
-                                    $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-                                        "Septiembre", "Octube", "Noviembre", "Diciembre");
+                                    $meses = array ("Diciembre","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                        "Septiembre", "Octube", "Noviembre");
 
-                                    $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
+                                    $dias = array ("Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                                 ?>
 
                                 @foreach($articulos as $articulo)

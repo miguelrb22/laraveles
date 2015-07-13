@@ -339,14 +339,10 @@
                                                         if(strlen($minutos) < 2){$minutos = "0".$minutos;}
                                                         if(strlen($hora) < 2){$hora = "0".$hora;}
 
-
-
-
+                                                        //Fallaba por dayOfWeek -1
                                                         $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
                                                                   $hora . ":" . $minutos;
 
-                                                            //$ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
-                                                              //      $hora . ":" . $minutos;
                                                         echo $ffinal;
                                                     ?>
 
