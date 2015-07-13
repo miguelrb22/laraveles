@@ -254,7 +254,6 @@
                                         </div>
                                     </div>
                                 @endif
-                                    {{dd("entra")}};
 
                                 <div class="row panel-inf" id="panelNoticias">
                                     <div class="panel-heading  text-center" id="noticiasHeader">
@@ -264,7 +263,7 @@
                                         <div class="row">
 
                                             @if(!$noticiaDestacada->isEmpty())
-
+                                                {{dd("entra")}};
                                                 @foreach($noticiaDestacada as $noticia)
                                                     <div class="row">
                                                         <div class="col col-xs-8 col-sm-8 col-md-9 col-lg-9">
