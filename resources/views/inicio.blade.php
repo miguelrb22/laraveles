@@ -328,9 +328,7 @@
                                                 <p class="fecha_publicacion pull-right">
 
                                                     <?php
-                                                    dd("entra" +$i);
-
-                                                    $fecha = $publicaciones[$i]->created_at;
+                                                        $fecha = $publicaciones[$i]->created_at;
 
                                                         //si los minutos aparecen con un dígito
                                                         $minutos = $fecha->minute;
@@ -354,6 +352,7 @@
                                                 @endif
                                             </div>
                                         </div>
+                                            {{dd("entra" +$i)}};
 
                                         @endfor
 
