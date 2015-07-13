@@ -263,7 +263,6 @@
                                         <div class="row">
 
                                             @if(!$noticiaDestacada->isEmpty())
-                                                {{dd("entra 1")}};
 
                                             @foreach($noticiaDestacada as $noticia)
                                                     <div class="row">
@@ -304,6 +303,7 @@
                                 ?>
 
                                 @if(!$publicaciones->isEmpty())
+                                        {{dd("entra 1")}};
 
                                     <?php
                                         $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
