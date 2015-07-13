@@ -315,7 +315,10 @@
                                         ?>
 
                                     @for($i=0; $i < $tam; $i++)
-                                        <div class="row" id="noticia1">
+
+                                            {{dd("entra 1" . $tam)}};
+
+                                            <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
                                                 <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}"><img src="{{ asset($publicaciones[$i]->url_imagen) }}" class="img-prenoticia" width='' height=""></a>
                                             </div>
@@ -352,7 +355,6 @@
                                             </div>
                                         </div>
                                     @endfor
-                                        {{dd("entra 1" . $tam)}};
 
                                     <hr style="border-top: 4px solid #ccc">
                                     <div class="row" style="margin-bottom: 5%">
