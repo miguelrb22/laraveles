@@ -346,13 +346,8 @@
 
                                                 </p>
                                             </div>
-                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                @if($i+1 < $tam)
-                                                    <hr class="separador_post">
-                                                @endif
-                                            </div>
+
                                         </div>
-                                            {{dd("entra")}};
 
                                         @endfor
 
