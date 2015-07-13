@@ -312,7 +312,7 @@
                                         $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
 
                                         $tam = count($publicaciones) - (floor(count($publicaciones)/3));
-
+                                        {{ dd( $tam )}}
                                         ?>
 
                                     @for($i=0; $i < $tam; $i++)
