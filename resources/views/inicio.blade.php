@@ -339,7 +339,7 @@
                                                         if(strlen($minutos) < 2){$minutos = "0".$minutos;}
                                                         if(strlen($hora) < 2){$hora = "0".$hora;}
 
-                                                        $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
+                                                        $ffinal = $dias[$fecha->dayOfWeek-1]. " " . $fecha->day . " de " . $meses[$fecha->month-1] . " de " . $fecha->year . " " .
                                                                   $hora . ":" . $minutos;
 
                                                             //$ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
