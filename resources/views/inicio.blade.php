@@ -331,7 +331,6 @@
                                                     <?php
                                                         $fecha = $publicaciones[$i]->created_at;
 
-                                                        dd($fecha);
                                                         //si los minutos aparecen con un dígito
                                                         $minutos = $fecha->minute;
                                                         //si la hora aparece con un dígito
