@@ -332,7 +332,7 @@ class WebController extends Controller {
 
         $this->publicaciones = Publicaciones::take($numeroPublicaciones)->orderBy('id','DES')->where('tipo','=',1)->get();
 
-        dd($this->publicaciones);
+        //dd($this->publicaciones);
 
         //Compartimos el array con todas las vistas
         View::share('publicaciones', $this->publicaciones);

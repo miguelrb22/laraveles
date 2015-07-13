@@ -304,6 +304,7 @@
 
                                 @if(!$publicaciones->isEmpty())
 
+                                    {{dd($publicaiconesss)}}
                                     <?php
                                         $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
                                                         "Septiembre", "Octube", "Noviembre", "Diciembre");
