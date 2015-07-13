@@ -312,8 +312,6 @@
 
                                         $tam = count($publicaciones) - (floor(count($publicaciones)/3));
 
-                                         dd("entra 1" . $tam);
-
                                         ?>
 
                                     @for($i=0; $i < $tam; $i++)
@@ -354,6 +352,7 @@
                                             </div>
                                         </div>
                                     @endfor
+                                        {{dd("entra 1" . $tam)}};
 
                                     <hr style="border-top: 4px solid #ccc">
                                     <div class="row" style="margin-bottom: 5%">
