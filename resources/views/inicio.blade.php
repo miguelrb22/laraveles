@@ -331,6 +331,8 @@
                                                     <?php
                                                         $fecha = $publicaciones[$i]->created_at;
 
+                                                        dd($fecha)
+
                                                         //si los minutos aparecen con un dígito
                                                         $minutos = $fecha->minute;
                                                         //si la hora aparece con un dígito
@@ -346,7 +348,6 @@
                                                     ?>
 
                                                 </p>
-                                                {{dd("peta aqui")}}
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 @if($i+1 < $tam)
