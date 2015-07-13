@@ -303,7 +303,6 @@
                                 ?>
 
                                 @if(!$publicaciones->isEmpty())
-                                        {{dd("entra 1")}};
 
                                     <?php
                                         $meses = array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
@@ -376,7 +375,7 @@
                                     </div>
 
                                 @endif
-
+                                    {{dd("entra 1")}};
                             </section>
                         </div>
 
