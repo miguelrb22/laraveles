@@ -238,7 +238,7 @@
 
                         <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <section>
-                                {{dd("entra")}};
+
                                 @if(!$banner_int->isEmpty())
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -254,6 +254,7 @@
                                         </div>
                                     </div>
                                 @endif
+                                    {{dd("entra")}};
 
                                 <div class="row panel-inf" id="panelNoticias">
                                     <div class="panel-heading  text-center" id="noticiasHeader">
