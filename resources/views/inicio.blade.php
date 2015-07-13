@@ -261,7 +261,6 @@
                                     </div>
                                     <div class="panel-body" style="margin-bottom: -16px;">
                                         <div class="row">
-                                            {{dd("entra")}};
 
                                             @if(!$noticiaDestacada->isEmpty())
                                                 @foreach($noticiaDestacada as $noticia)
@@ -281,7 +280,7 @@
                                                 @endforeach
 
                                             @else
-
+                                                {{dd("entra")}};
                                                 <div class="col col-xs-12 col-sm-8 col-md-9 col-lg-9">
                                                     <a href="#"><h4>Sweet Pharma cambia su estrategia</h4></a>
                                                     <p id="noticiaDes">Sweet Pharma cambia su estrategia redefiniendo las categorías de sus productos pasando a ocho categorías de tratamientos enfocadas según las necesidades del paciente: Ellos, Ellas, Amor, Salud, Emergencias, Dinero, Energía, Días grises. Esas cateogrías engloban todos sus productos y pretenden ser reflejo de todos los aspectos de Sweet Pharma. Sin embargo, sus productos como tal no cambian y ofrecen una amplia variedad de golosinas y chucherías para todos los que quieran endulzarse el día a día. </p>
