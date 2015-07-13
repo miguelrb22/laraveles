@@ -310,11 +310,11 @@
 
                                         $dias = array ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo");
 
-                                        $tam = count($publicaciones) - 3;
+                                        $tam = count($publicaciones);
 
                                         ?>
 
-                                    @for($i=0; $i < 4; $i++)
+                                    @for($i=0; $i < $tam; $i++)
 
                                             <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
@@ -354,18 +354,7 @@
                                         </div>
                                     @endfor
 
-                                    <hr style="border-top: 4px solid #ccc">
-                                    <div class="row" style="margin-bottom: 5%">
-                                        <h3 class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <strong>Más....</strong>
-                                        </h3>
-                                        @for($i=$tam; $i<count($publicaciones); $i++)
 
-                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-left:5%; margin-top:-1%">
-                                                <a id="newsEnlace" href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.$publicaciones[$i]->titulo.'/'.$publicaciones[$i]->id)))}}"><h6><i class="fa fa-share"></i> {{$publicaciones[$i]->titulo}}</h6></a>
-                                            </div>
-                                        @endfor
-                                    </div>
                                 @else
 
                                     <div class="row" id="noticia1">
