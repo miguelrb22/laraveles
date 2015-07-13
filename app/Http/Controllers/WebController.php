@@ -329,7 +329,10 @@ class WebController extends Controller {
         $numeroPublicaciones = $this->numeroPublicidades[13]->recuadros;
 
 
+
         $this->publicaciones = Publicaciones::take($numeroPublicaciones)->orderBy('id','DES')->where('tipo','=',1)->get();
+
+        dd($this->publicaciones);
 
         //Compartimos el array con todas las vistas
         View::share('publicaciones', $this->publicaciones);
