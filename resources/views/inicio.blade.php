@@ -314,8 +314,7 @@
 
                                         ?>
 
-                                    @for($i=0; $i < $tam; $i++)
-                                            {{dd("entra")}};
+                                    @for($i=0; $i < 4; $i++)
 
                                             <div class="row" id="noticia1">
                                             <div class="col col-xs-5 col-sm-3 col-md-2 col-lg-2">
