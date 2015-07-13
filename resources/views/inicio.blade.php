@@ -386,6 +386,7 @@
                 </div>
             </div>
             <!-- FIN PARTE NOTICIAS -->
+            {{dd("entra")}};
 
         @endsection
         @section('der')
@@ -397,7 +398,6 @@
                         <i class="glyphicon glyphicon-thumbs-up textoblanco"></i> <span class="textoblanco">Destacados</span>
                     </div>
                     <div class="panel-body" style="margin-bottom: -16px;">
-                        {{dd("entra")}};
                         @if(!$destacadas->isEmpty())
 
                             @for($i = 0; $i < $numPublicaciones[7]->recuadros; $i++)
