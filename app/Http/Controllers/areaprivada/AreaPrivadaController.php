@@ -253,6 +253,9 @@ class AreaPrivadaController extends Controller
 
         $altas = round(($altas_act[0]->total*100) / $altas_pasadas[0]->total,2);
 
+        if($altas_act[0]->total ==0.9999999) $altas = -100;
+
+
         $bajas_act = Franquicia::select(DB::raw('count(*) as total'))
             ->whereMonth('fecha_vencimiento_ficha','=',$mes[1])
             ->whereYear('fecha_vencimiento_ficha','=',$mes[0])
@@ -351,6 +354,10 @@ class AreaPrivadaController extends Controller
         if($anuncios_pasadas[0]->total == 0) $anuncios_pasadas[0]->total = 0.9999999;
 
         $anuncios = round(($anuncios_act[0]->total*100) / $anuncios_pasadas[0]->total,2);
+
+        if($anuncios_act[0]->total == 0.9999999) $anuncios = -100;
+
+
 
 
 

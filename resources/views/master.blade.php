@@ -9,6 +9,8 @@
     <meta name="author" content="Multifranquicias.com">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
+    <meta name="google-site-verification" content="yI4zz4ndiBJW5aRHxFl67SMv3SHQySTaT_9WWOgQPro" />
+
     <title>@yield('title')</title>
 
     <meta property="og:title" content="@yield('og:title')">
