@@ -68,7 +68,7 @@
                                     <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                                         <label>Pertenencia publicación</label>
                                         <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
-                                            <option value="1">Propia/General</option>
+                                            <?php if($rol != 1) echo "<option value='1'>Propia/General</option>" ?>
                                             <option value='2'>{{$ses->nombre_comercial}}</option>
                                         </select>
                                     </div>
@@ -87,7 +87,7 @@
                             <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                                 <label>Pertenencia publicación</label>
                                 <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
-                                    <option value="1">PropiaGeneral</option>
+                                    <option value="1">Propia/General</option>
                                 </select>
                             </div>
                         @endif
