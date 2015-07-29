@@ -517,7 +517,7 @@ class AreaPrivadaController extends Controller
         if($this->rol == 0)
              $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
         else
-            $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE && user='.$this->user)->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
+            $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE && user='.'"'.$this->user.'"')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
 
         return $paquetes;
 
@@ -529,7 +529,7 @@ class AreaPrivadaController extends Controller
         $now = date("Y-m-d", $now);
 
         if($this->rol == 0)
-            $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE && user='.'"'.$this->user.'"')->get();
+            $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE')->get();
 
         else
             $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE && user='.'"'.$this->user.'"')->get();
