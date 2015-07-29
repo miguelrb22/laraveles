@@ -529,7 +529,7 @@ class AreaPrivadaController extends Controller
         $now = date("Y-m-d", $now);
 
         if($this->rol == 0)
-            $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE')->get();
+            $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE && user='.'"'.$this->user.'"')->get();
 
         else
             $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE && user='.'"'.$this->user.'"')->get();
