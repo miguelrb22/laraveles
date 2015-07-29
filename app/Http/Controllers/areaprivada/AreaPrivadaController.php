@@ -18,6 +18,10 @@ use phpDocumentor\Reflection\DocBlock\Type\Collection;
 use Ramsey\Uuid\Console\Exception;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\View;
+
+
 class AreaPrivadaController extends Controller
 {
 
@@ -26,19 +30,33 @@ class AreaPrivadaController extends Controller
 
 
 
-    public function __construct()
+    public function __construct(Guard $auth)
     {
         $this->time = time();
         $this->time = date("Y-m-d", $this->time);
-
+        $this->rol = $auth->user()->rol;
+        $this->user = $auth->user()->username;
         $this->middleware('auth');
+        View::share('rol', $auth->user()->rol);
+        View::share('user2', $auth->user()->username);
+
+
     }
 
 
     public function index()
     {
 
-        $franquicias = Franquicia::all();
+        //dd($this->rol,$this->user);
+        if($this->rol == 1){
+
+        $franquicias = Franquicia::where('user','=',$this->user)->get();
+        }
+        else{
+
+            $franquicias = Franquicia::all();
+
+        }
         return view('area_privada.inicio', compact('franquicias'));
     }
 
@@ -94,8 +112,18 @@ class AreaPrivadaController extends Controller
 
         if (!is_null($franquicia)) {
             $id = $franquicia->id;
-        } else $id = null;
-        $publicaciones = Publicaciones::where('franquicia_id', '=', $id)->get();
+            $publicaciones = Publicaciones::where('franquicia_id', '=', $id)->get();
+
+        } else{
+
+            if($this->rol == 0) {
+                $id = null;
+                $publicaciones = Publicaciones::where('franquicia_id', '=', $id)->get();
+;
+            }
+            else $publicaciones = array();
+
+        }
         return view('area_privada.listado_articulos', compact('publicaciones'));
     }
 
@@ -151,6 +179,12 @@ class AreaPrivadaController extends Controller
             return view('area_privada.noticias', compact('entrevistas', 'destacadas','noticias'));
 
         }else{
+
+            if($this->rol == 1){
+
+               return $this->index();
+            //return "Selecciona una franquicia";
+            }
             //para pasar un array vacia hacemos una select de una franquicia que nunca va a existir
             $destacadas = publicidad::where('franquicia_id','=',999999999)->get();
             $entrevistas = publicidad::where('franquicia_id','=',999999999)->get();
@@ -163,6 +197,8 @@ class AreaPrivadaController extends Controller
 
     public function usuarios()
     {
+
+        if($this->rol == 1){return "acceso denegado";}
         return view('area_privada.gestion_usuarios');
     }
 
@@ -174,6 +210,7 @@ class AreaPrivadaController extends Controller
     public function pgeneral()
     {
 
+        if($this->rol == 1){return "acceso denegado";}
 
         $publi = PublicidadGeneral::all();
 
@@ -228,6 +265,8 @@ class AreaPrivadaController extends Controller
 
     public function estadisticas()
     {
+
+        if($this->rol == 1){return "acceso denegado";}
 
         $fecha = date('Y-m-j');
         $nuevafecha = strtotime ( '-1 month' , strtotime ( $fecha ) ) ;
@@ -475,7 +514,11 @@ class AreaPrivadaController extends Controller
         $now = time();
         $now = date("Y-m-d", $now);
 
-        $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
+        if($this->rol == 0)
+             $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE')->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
+        else
+            $paquetes = DB::table("franquicia")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= fecha_vencimiento_ficha && fecha_vencimiento_ficha >= CURRENT_DATE && user='.$this->user)->get(array('nombre_comercial','fecha_vencimiento_ficha','tf_contacto'));
+
         return $paquetes;
 
     }
@@ -485,7 +528,12 @@ class AreaPrivadaController extends Controller
         $now = time();
         $now = date("Y-m-d", $now);
 
-        $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE')->get();
+        if($this->rol == 0)
+            $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE')->get();
+
+        else
+            $paquetes = DB::table("publicidad_a_caducar")->whereRaw('DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) >= final && final >= CURRENT_DATE && user='.$this->user)->get();
+
         return $paquetes;
 
     }

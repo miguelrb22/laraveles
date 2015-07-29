@@ -39,7 +39,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('username', 'password');
 
-        if (($this->auth->attempt($credentials)) && ($this->auth->user()->rol == 0)) {
+        if (($this->auth->attempt($credentials))) /*&& ($this->auth->user()->rol == 0))*/ {
 
             return redirect('/areaprivada/dashboard');
 

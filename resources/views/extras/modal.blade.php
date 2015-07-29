@@ -15,7 +15,7 @@
                 </h4>
             </div>
 
-            <form method="post" action="{{ URL::route('login') }}">
+            <form method="post" action="{{ URL::route('login') }}" style="margin-bottom: 30px">
             <div class="modal-body">
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -39,6 +39,8 @@
                 <br>
 
                 <div class="pull-right">
+
+                    <a href="{{ URL::route('registro') }}" style="margin-right: 10px">¿No tienes cuenta? Registrese </a>
                 <button type="button" class="btn btn-default  btn-lg" data-dismiss="modal">
                     Salir
                 </button>
@@ -46,7 +48,6 @@
                     Entrar
                 </button>
                     </div>
-                <br>
             </div>
             </form>
 

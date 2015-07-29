@@ -202,6 +202,9 @@ Route::get('franquicias', ['as' => 'franquicias', 'uses' => 'WebController@franq
 
 Route::get('noticias', ['as' => 'noticias_web', 'uses' => 'WebController@noticias']);
 
+
+Route::get('registro', ['as' => 'registro', 'uses' => 'WebController@registro']);
+
 Route::get('reportajes', ['as' => 'reportajes_web', 'uses' => 'WebController@reportajes']);
 
 Route::get('resultados', ['as' => 'resultados', 'uses' => 'WebController@resultados']);
@@ -260,6 +263,7 @@ Route::post('removerSession' ,  ['as' => 'removerSession', function(){
 
 
 Route::post('nuevousuario' ,  ['as' => 'nuevousuario', 'uses' => 'models_controller\userController@nuevoAdmin']);
+Route::post('nuevousuarioUser' ,  ['as' => 'nuevousuarioUser', 'uses' => 'models_controller\userRegister@nuevoUser']);
 
 
 Route::get('noticias/{titulo}/{id}', ['as' => 'publicacion_individual', 'uses' => 'WebController@showpublicacion']);

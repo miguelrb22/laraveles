@@ -135,7 +135,7 @@
 
                             if ($ses) {
                                 echo $ses->nombre_comercial;
-                            } else echo "Ninguna franquicia cargada";?>
+                            } else echo "Ninguna franquicia cargada. Necesario para algunas opciones";?>
                         </h4>
                     </div>
                 </div>

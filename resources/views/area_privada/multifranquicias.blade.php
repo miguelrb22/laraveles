@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html lang="es" xml:lang="es">
-
 <head>
 
     <meta charset="utf-8">
@@ -236,18 +235,18 @@
                         <li id="alta">
                             <a class="needlog" href="{{ URL::route('modificar_franquicia') }}"><i class="fa fa-pencil-square-o"></i>Modificar Franquicia</a>
                         </li>
-                        <li id="publi">
-                            <a class="needlog" href="{{ URL::route('publicidad') }}"> <i class="fa fa-shopping-cart"></i> Gestión Publicidad</a>
+                        <li id="publi" style="<?php if($rol==1) echo "display: none"?>">
+                            <a class="needlog" id = "menu-publicidad" href="{{ URL::route('publicidad') }}"> <i class="fa fa-shopping-cart"></i> Gestión Publicidad</a>
                         </li>
                         <li id="asignar">
                             <a class="needlog" href="{{ URL::route('imagenes') }}"><i class="fa fa-picture-o"></i> Asignar Imagenes</a>
                         </li>
                     </ul>
                 </li>
-                <li id="categorias">
+                <li id="categorias" style="<?php if($rol==1) echo "display: none"?>">
                     <a href="{{ URL::route('categorias') }}"><i class="fa fa-lg fa-fw fa-reorder"></i> <span class="menu-item-parent">Gestión Categorías</span><b class="collapse-sign"></b></a>
                 </li>
-                <li id="usuarios">
+                <li id="usuarios" style="<?php if($rol==1) echo "display: none"?>">
                     <a href="{{ URL::route('publicidad-general') }}"><i class="fa fa-lg fa-fw fa-rss"></i> <span class="menu-item-parent">Publicidad General</span><b class="collapse-sign"></b></a>
                 </li>
                 <li id= "publicaciones">
@@ -261,10 +260,10 @@
                         </li>
                     </ul>
                 </li>
-                <li id="estadisticas">
+                <li id="estadisticas" style="<?php if($rol==1) echo "display: none"?>">
                     <a href="{{ URL::route('estadisticas') }}"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Estadísticas</span><b class="collapse-sign"></b></a>
                 </li>
-                <li id="usuarios">
+                <li id="usuarios" style="<?php if($rol==1) echo "display: none"?>" >
                     <a href="{{ URL::route('usuarios') }}"><i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent">Usuarios</span><b class="collapse-sign"></b></a>
                 </li>
             </ul>

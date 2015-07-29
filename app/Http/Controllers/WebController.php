@@ -1320,6 +1320,13 @@ class WebController extends Controller {
 
     }
 
+    public function registro (){
+
+        return view ('registro');
+
+
+    }
+
 
     //Estadisticas patrocinada buscador
     public function impresionPatrocinadoBuscador (){

@@ -318,6 +318,8 @@
                                                     </div>
                                                 </fieldset>
                                             </div>
+                                            <input type="hidden" name="user" value="{{$user2}}">
+
                                             <div id="datos_publicos_1" class="col-xs-12 col-md-6 col-sm-6">
                                                 <hr/>
                                                 <fieldset>

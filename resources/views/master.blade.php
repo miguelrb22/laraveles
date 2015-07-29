@@ -352,6 +352,68 @@
 
         });
 
+        $("#registro").submit(function(e) {
+
+            e.preventDefault();
+
+            var user = $("#user").val();
+
+            var pass = $("#pass").val();
+            var repass = $("#repass").val();
+
+            if (user.length < 8) {
+                alert("El usuario debe tener una longitud minima de 8 caracteres")
+            }
+
+            else if (pass.length < 8) {
+                alert("La contraseña debe tener una longitud minima de 8 caracteres")
+            }
+            else if (!(pass == repass)) {
+
+                alert('Las contraseñas no coinciden');
+            }
+
+            else{
+
+            $.blockUI({
+
+                message: '<h1><img src="{{ asset('images/285.GIF')}}" /></h1>',
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: 'transparent'
+                }
+
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{{ URL::route('nuevousuarioUser') }}",
+                data: $("#registro").serialize(),
+                dataType: "html",
+                error: function () {
+                    $('#loading').show();
+                    alert("error petición ajax");
+                },
+                success: function (data) {
+
+
+                    Lobibox.notify('success', {
+                        title: 'Enviado!',
+                        showClass: 'flipInX',
+                        delay: 4000,
+                        delayIndicator: false,
+
+                        position: 'bottom left',
+                        msg: 'Tu mensaje ha sido enviado con éxito. En breve nos pondremos en contacto con usted.'
+                    });
+
+                }
+            });
+
+        }
+        });
+
 
     });
 

@@ -230,6 +230,9 @@
                                                                 </section>
                                                             </div>
                                                         </div>
+
+                                                        <input type="hidden" name="user" value="{{$user2}}">
+
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <section class="col col-xs-12 col-md-12 col-sm-12 col-lg-12">

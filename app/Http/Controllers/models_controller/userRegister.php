@@ -9,29 +9,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 
-class userController extends Controller
+class userRegister extends Controller
 {
 
 
     public function __construct()
     {
-
-        $this->middleware('auth');
-    }
-
-
-    public function nuevoAdmin(Request $request)
-
-    {
-
-        User::create([
-
-            'username'   => $request->input('user'),
-            'password'   =>  Hash::make($request->input('pass')),
-            'rol'   =>  0
-
-        ]);
-
 
     }
 
