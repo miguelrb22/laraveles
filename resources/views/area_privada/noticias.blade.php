@@ -82,7 +82,7 @@
                                 @endif
                             @endif
 
-                        @if(!isset($ses))
+                        @if(!isset($ses) && $rol != 1)
                             <br>
                             <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                                 <label>Pertenencia publicación</label>
