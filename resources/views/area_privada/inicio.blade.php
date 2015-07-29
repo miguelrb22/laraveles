@@ -7,12 +7,14 @@
             o.valor="1";
             o.paquetes = [];
             o.cargando = true;
+            o.cargando2 = true;
             o.cantidad = 0;
             o.cantidad2= 0;
 
             h.post("{{URL::route('apuntoCaducar')}}").success(function (data) {
                 o.paquetes = data;
                 o.cantidad = o.paquetes.length;
+                o.cargando = false;
             }).error(function(error)
             {
             });
@@ -20,7 +22,7 @@
             h.post("{{URL::route('apuntoCaducarPaquetes')}}").success(function (data) {
                 o.paquetes2 = data;
                 o.cantidad2 = o.paquetes2.length;
-                o.cargando = false;
+                o.cargando2 = false;
 
             }).error(function(error)
             {
@@ -39,7 +41,7 @@
 
 
     <div ng-app="modulo-inicio"  ng-controller="GreetingController">
-    <span id="activity" class="activity-dropdown"  > <i class="fa fa-user"></i> <b class="badge avisos"> @{{cantidad + cantidad2}} </b> </span>
+    <span id="activity" class="activity-dropdown"  > <i class="fa fa-user"></i> <b class="badge avisos" ng-show="!cargando && !cargando2 && paquetes.length > 0"> @{{cantidad + cantidad2}} </b> </span>
 
     <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
         <div class="ajax-dropdown"  ng-controller="GreetingController">
