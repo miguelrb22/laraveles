@@ -39,7 +39,7 @@
 
 
     <div ng-app="modulo-inicio"  ng-controller="GreetingController">
-    <span id="activity" class="activity-dropdown"  > <i class="fa fa-user"></i> <b class="badge avisos" ng-show="!cargando && paquetes.length > 0"> @{{cantidad + cantidad2}} </b> </span>
+    <span id="activity" class="activity-dropdown"  > <i class="fa fa-user"></i> <b class="badge avisos"> @{{cantidad + cantidad2}} </b> </span>
 
     <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
         <div class="ajax-dropdown"  ng-controller="GreetingController">
