@@ -7,6 +7,8 @@
             o.valor="1";
             o.paquetes = [];
             o.cargando = true;
+            o.cantidad = 0;
+            o.cantidad2= 0;
 
             h.post("{{URL::route('apuntoCaducar')}}").success(function (data) {
                 o.paquetes = data;
