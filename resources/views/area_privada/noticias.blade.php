@@ -82,12 +82,12 @@
                                 @endif
                             @endif
 
-                        @if(!isset($ses) && $rol != 1)
+                        @if(!isset($ses))
                             <br>
                             <div class="input-group col-xs-9  col-sm-9 col-lg-3 col-md-3">
                                 <label>Pertenencia publicación</label>
                                 <select name="pertenencia" id="franquicia_id_articulo" class="form-control input input-sm">
-                                    <option value="1">Propia/General</option>
+                                    <option value="1">PropiaGeneral</option>
                                 </select>
                             </div>
                         @endif
