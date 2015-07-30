@@ -632,7 +632,7 @@ class WebController extends Controller {
 
         //llamamos a las estadisticas que se imprimen en esta vista.
         $this->impresionDerecha();
-        $this->banner_superior();
+        $this->impresionBannerSup();
 
         return view ('dudas-generales');
     }
@@ -641,7 +641,7 @@ class WebController extends Controller {
 
         //llamamos a las estadisticas que se imprimen en esta vista.
         $this->impresionDerecha();
-        $this->banner_superior();
+        $this->impresionBannerSup();
 
         return view ('dudas-franquicias');
     }
