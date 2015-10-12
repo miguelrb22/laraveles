@@ -399,7 +399,7 @@
 
 
                     Lobibox.notify('success', {
-                        title: 'Enviado!',
+                        title: 'Registrado!',
                         showClass: 'flipInX',
                         delay: 4000,
                         delayIndicator: false,
