@@ -24,6 +24,16 @@
                         <label for="exampleInputEmail1">{{ utf8_encode("Repetir Contraseña")}}</label>
                         <input type="password"  id="repass" class="form-control" name="repass" placeholder="{{ utf8_encode("Contraseña")}}" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="password"  id="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Telefono</label>
+                        <input type="password"  id="tel" class="form-control" name="telefono" placeholder="{{ utf8_encode("Teléfono")}}" required>
+                    </div>
                     <button type="submit" class="btn btn-info btn-lg pull-right">Registrar</button>
                 </form>
             </div>

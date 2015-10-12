@@ -23,6 +23,8 @@ class userRegister extends Controller
         User::create([
 
             'username'   => $request->input('user'),
+            'email' => $request->input('email'),
+            'telefono' => $request->input('telefono'),
             'password'   =>  Hash::make($request->input('pass')),
             'rol'   =>  1
 

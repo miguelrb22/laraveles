@@ -405,7 +405,7 @@
                         delayIndicator: false,
 
                         position: 'bottom left',
-                        msg: 'Tu mensaje ha sido enviado con éxito. En breve nos pondremos en contacto con usted.'
+                        msg: 'Registro completado con éxito'
                     });
 
                 }
