@@ -29,6 +29,28 @@ class userRegister extends Controller
             'rol'   =>  1
 
         ]);
+
+        $data = array(
+
+            'username'   => $request->input('user'),
+            'email' => $request->input('email'),
+            'telefono' => $request->input('telefono')
+        );
+
+        $fromEmail = 'info@multifranquicias.com';
+        $fromName = 'Multifranquicias';
+
+        try {
+
+
+            \Mail::send('emails.registro', $data, function ($message) use ($fromName, $fromEmail) {
+                $message->to($fromEmail, $fromName);
+                $message->from($fromEmail, $fromName);
+                $message->subject('Nuevo usuario registrado en Multifranquicias');
+            });
+
+        }catch (Exception $e){}
+        catch(\Swift_RfcComplianceException $e){}
     }
 
 
