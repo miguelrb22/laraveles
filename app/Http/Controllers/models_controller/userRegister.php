@@ -40,6 +40,7 @@ class userRegister extends Controller
         $fromEmail = 'info@multifranquicias.com';
         $fromName = 'Multifranquicias';
 
+
         try {
 
 
