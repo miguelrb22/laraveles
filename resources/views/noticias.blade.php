@@ -61,8 +61,8 @@
                             <div class="row noticias">
 
                                 <?php
-                                    $meses = array ("Diciembre","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-                                        "Septiembre", "Octube", "Noviembre");
+                                    $meses = array ("","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                        "Septiembre", "Octube", "Noviembre","Diciembre");
 
                                     $dias = array ("Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                                 ?>
