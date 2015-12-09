@@ -305,8 +305,8 @@
                                 @if(!$publicaciones->isEmpty())
 
                                     <?php
-                                        $meses = array ("Diciembre","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-                                                        "Septiembre", "Octube", "Noviembre");
+                                        $meses = array ("","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                                                        "Septiembre", "Octube", "Noviembre","Diciembre");
 
                                         $dias = array ("Domingo", "Lunes", "Mártes", "Miércoles", "Jueves", "Viernes","Sábado");
 
@@ -341,14 +341,8 @@
                                                         if(strlen($minutos) < 2){$minutos = "0".$minutos;}
                                                         if(strlen($hora) < 2){$hora = "0".$hora;}
 
-                                                        $anio = $fecha->month;
-
-                                                        if($fecha->month){ $anio = 0;}
-
-
-
                                                         //Fallaba por dayOfWeek -1
-                                                        $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$anio] . " de " . $fecha->year . " " .
+                                                        $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$fecha->month] . " de " . $fecha->year . " " .
                                                                   $hora . ":" . $minutos;
 
                                                         echo $ffinal;
