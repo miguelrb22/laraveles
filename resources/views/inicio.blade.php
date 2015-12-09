@@ -325,6 +325,36 @@
                                                 <p id="textoNoticia"> {{$publicaciones[$i]->resumen.' ...'}}
                                                     <a href="{{ strtolower(str_replace(" ","-",URL::to('noticias/'.preg_replace("/[^a-zA-Z0-9\s\-]/","",$publicaciones[$i]->titulo).'/'.$publicaciones[$i]->id)))}}">seguir leyendo</a>
                                                 </p>
+
+                                                <p class="fecha_publicacion pull-right">
+
+                                                    <?php
+
+
+                                                        $fecha = $publicaciones[$i]->created_at;
+
+                                                        //si los minutos aparecen con un dígito
+                                                        $minutos = $fecha->minute;
+                                                        //si la hora aparece con un dígito
+                                                        $hora = $fecha->hour;
+
+                                                        if(strlen($minutos) < 2){$minutos = "0".$minutos;}
+                                                        if(strlen($hora) < 2){$hora = "0".$hora;}
+
+                                                        $anio = $fecha->month;
+
+                                                        if($fecha->month){ $anio = 0;}
+
+
+
+                                                        //Fallaba por dayOfWeek -1
+                                                        $ffinal = $dias[$fecha->dayOfWeek]. " " . $fecha->day . " de " . $meses[$anio] . " de " . $fecha->year . " " .
+                                                                  $hora . ":" . $minutos;
+
+                                                        echo $ffinal;
+                                                    ?>
+
+                                                </p>
                                             </div>
                                             <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 @if($i+1 < $tam)
